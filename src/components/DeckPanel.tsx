@@ -487,12 +487,12 @@ export default function DeckPanel() {
       <DeckSelector />
 
       {/* Oshi slot + Stats */}
-      <div className="px-3 py-2.5 border-b border-gray-800">
-        <p className="text-[10px] text-gray-500 mb-2 uppercase tracking-wider font-medium">오시</p>
+      <div className="px-3 py-2 border-b border-gray-800">
+        <p className="text-[10px] text-gray-500 mb-1.5 uppercase tracking-wider font-medium">오시</p>
         <div className="flex gap-3 items-start">
           {/* Oshi image */}
           <div
-            className="w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2"
+            className="w-16 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2"
             style={{ borderColor: oshiAccent + 'aa' }}
           >
             {deck.oshi ? (

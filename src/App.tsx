@@ -10,7 +10,7 @@ export default function App() {
   const mainCount = getMainDeckCount();
 
   return (
-    <div className="h-screen overflow-hidden" style={{ background: '#0f0f1a' }}>
+    <div className="h-dvh overflow-hidden" style={{ background: '#0f0f1a' }}>
 
       {/* ── Desktop (md+) ── */}
       <div className="hidden md:flex h-full overflow-hidden">

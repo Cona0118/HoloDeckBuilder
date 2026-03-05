@@ -92,7 +92,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
       {/* Info */}
       <div className="px-2 py-2 flex items-baseline justify-between gap-1 w-full">
         <p className="text-sm font-semibold text-white leading-tight truncate min-w-0">{card.name}</p>
-        <span className="text-xs text-gray-500 shrink-0">{card.cardNumber}</span>
+        <span className="hidden md:inline text-xs text-gray-500 shrink-0">{card.cardNumber}</span>
       </div>
     </div>
   );
