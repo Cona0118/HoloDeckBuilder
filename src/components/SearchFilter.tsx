@@ -12,7 +12,7 @@ import type { CardColor, CardType, HolomemSubtype, SupportSubtype } from '../typ
 const TYPES: CardType[] = ['oshi', 'holomem', 'support'];
 const COLORS: CardColor[] = ['white', 'green', 'red', 'blue', 'purple', 'yellow'];
 const HOLOMEM_SUBTYPES: HolomemSubtype[] = ['debut', '1st', '2nd', 'spot'];
-const SUPPORT_SUBTYPES: SupportSubtype[] = ['item', 'event', 'tool', 'mascot', 'fan', 'staff'];
+const SUPPORT_SUBTYPES: SupportSubtype[] = ['staff', 'item', 'event', 'tool', 'mascot', 'fan'];
 
 const COLOR_DOT: Record<CardColor, string> = {
   white:  '#e5e7eb',

@@ -11,7 +11,7 @@ const HOLOMEM_SUBTYPE_ORDER: Record<HolomemSubtype, number> = {
 };
 
 const SUPPORT_SUBTYPE_ORDER: Record<SupportSubtype, number> = {
-  item: 0, event: 1, tool: 2, mascot: 3, fan: 4, staff: 5, '': 99,
+  staff: 0, item: 1, event: 2, tool: 3, mascot: 4, fan: 5, '': 99,
 };
 
 function sortHolomemEntries(a: DeckEntry, b: DeckEntry): number {
@@ -383,7 +383,11 @@ async function exportDeckAsImage(deck: Deck) {
   // Main deck (right area): holomem first, then support, each sorted by card number
   const expanded: { imageUrl?: string; name: string; accent: string }[] = [];
   const holomem = deck.mainDeck.filter(e => e.card.type === 'holomem').sort(sortHolomemEntries);
-  const support = deck.mainDeck.filter(e => e.card.type === 'support').sort((a, b) => a.card.cardNumber.localeCompare(b.card.cardNumber));
+  const support = deck.mainDeck.filter(e => e.card.type === 'support').sort((a, b) => {
+    const ao = SUPPORT_SUBTYPE_ORDER[a.card.supportSubtype as SupportSubtype] ?? 99;
+    const bo = SUPPORT_SUBTYPE_ORDER[b.card.supportSubtype as SupportSubtype] ?? 99;
+    return ao !== bo ? ao - bo : a.card.cardNumber.localeCompare(b.card.cardNumber);
+  });
   [...holomem, ...support].forEach(({ card, count }) => {
     for (let i = 0; i < count; i++) {
       expanded.push({ imageUrl: card.imageUrl, name: card.name, accent: getAccentColor(card) });
