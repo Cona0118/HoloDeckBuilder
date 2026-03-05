@@ -1,14 +1,5 @@
 import type { Card } from '../types/card';
-import {
-  getAccentColor,
-  TYPE_LABELS,
-  TYPE_BG,
-  HOLOMEM_SUBTYPE_LABELS,
-  SUPPORT_SUBTYPE_LABELS,
-  SUPPORT_SUBTYPE_BG,
-  COLOR_LABELS,
-  COLOR_ACCENT,
-} from '../utils/cardUtils';
+import { getAccentColor } from '../utils/cardUtils';
 import { useDeckStore } from '../store/deckStore';
 
 interface CardItemProps {
