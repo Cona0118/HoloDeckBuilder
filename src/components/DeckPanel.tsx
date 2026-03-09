@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDeckStore } from '../store/deckStore';
 import { COLOR_ACCENT, getAccentColor } from '../utils/cardUtils';
 import type { CardColor, Deck, DeckEntry, HolomemSubtype, SupportSubtype } from '../types/card';
@@ -38,19 +38,34 @@ const CHEER_IMAGE: Record<CardColor, string> = {
 // Image card thumbnail
 // ──────────────────────────────
 function DeckEntryCard({ entry, onAdd, onRemove }: { entry: DeckEntry; onAdd: () => void; onRemove: () => void }) {
+  const [overlayVisible, setOverlayVisible] = useState(false);
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
   const atLimit = entry.count >= cardLimit;
 
+  // 터치로 오버레이를 열었을 때 외부 클릭 시 닫기
+  useEffect(() => {
+    if (!overlayVisible) return;
+    const close = () => setOverlayVisible(false);
+    const timer = setTimeout(() => document.addEventListener('click', close), 0);
+    return () => { clearTimeout(timer); document.removeEventListener('click', close); };
+  }, [overlayVisible]);
+
   return (
-    <div
-      className="relative group"
-      onClick={atLimit ? undefined : onAdd}
-      onContextMenu={(e) => { e.preventDefault(); onRemove(); }}
-    >
+    <div className="relative group">
       <div
         className="relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border cursor-pointer"
         style={{ borderColor: accent + '66' }}
+        onClick={(e) => {
+          const isTouch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
+          if (isTouch) {
+            e.stopPropagation();
+            setOverlayVisible(true);
+          } else {
+            if (!atLimit) onAdd();
+          }
+        }}
+        onContextMenu={(e) => { e.preventDefault(); onRemove(); }}
       >
         {entry.card.imageUrl ? (
           <img
@@ -73,14 +88,16 @@ function DeckEntryCard({ entry, onAdd, onRemove }: { entry: DeckEntry; onAdd: ()
           ×{entry.count}
         </span>
 
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5">
+        {/* Hover overlay (desktop) / tap overlay (mobile) */}
+        <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+          overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+        }`}>
           <button
-            onClick={(e) => { e.stopPropagation(); onRemove(); }}
+            onClick={(e) => { e.stopPropagation(); onRemove(); setOverlayVisible(false); }}
             className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
           >−</button>
           <button
-            onClick={(e) => { e.stopPropagation(); onAdd(); }}
+            onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); setOverlayVisible(false); }}
             disabled={atLimit}
             className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
           >+</button>
@@ -218,7 +235,7 @@ function CheerCard({ color, count, full, onAdd, onRemove }: {
 }
 
 function CheerSection() {
-  const { getActiveDeck, addCheer, removeCheer } = useDeckStore();
+  const { getActiveDeck, addCheer, removeCheer, clearCheers } = useDeckStore();
   const [open, setOpen] = useState(true);
   const deck = getActiveDeck();
   if (!deck) return null;
@@ -229,23 +246,33 @@ function CheerSection() {
 
   return (
     <div className="border-t border-gray-800">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between px-3 py-2 hover:bg-gray-800/50 transition-colors"
-      >
-        <p className="text-[10px] text-gray-500 uppercase tracking-wider">엘 덱</p>
-        <div className="flex items-center gap-2">
-          <span className={`text-xs font-bold ${total === CHEER_MAX ? 'text-green-400' : total > CHEER_MAX ? 'text-red-400' : 'text-gray-400'}`}>
-            {total} / {CHEER_MAX}
-          </span>
-          <svg
-            className={`w-3.5 h-3.5 text-gray-500 transition-transform ${open ? 'rotate-180' : ''}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+      <div className="w-full flex items-center justify-between px-3 py-2">
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="flex items-center gap-2 flex-1"
+        >
+          <p className="text-[10px] text-gray-500 uppercase tracking-wider">엘 덱</p>
+          <div className="flex items-center gap-2">
+            <span className={`text-xs font-bold ${total === CHEER_MAX ? 'text-green-400' : total > CHEER_MAX ? 'text-red-400' : 'text-gray-400'}`}>
+              {total} / {CHEER_MAX}
+            </span>
+            <svg
+              className={`w-3.5 h-3.5 text-gray-500 transition-transform ${open ? 'rotate-180' : ''}`}
+              fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </button>
+        {total > 0 && (
+          <button
+            onClick={() => clearCheers()}
+            className="ml-2 px-2 py-0.5 text-[10px] text-gray-500 hover:text-amber-300 hover:bg-amber-900/40 rounded border border-gray-700 transition-colors"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </button>
+            초기화
+          </button>
+        )}
+      </div>
       {open && (
         <div className="grid grid-cols-6 gap-1 px-3 pb-3">
           {CHEER_COLORS.map((color) => (
@@ -290,62 +317,33 @@ function rrect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h
   ctx.closePath();
 }
 
-async function exportDeckAsImage(deck: Deck) {
-  // 16:9 canvas
-  const W = 1600;
-  const H = 900;
-  const PAD = 12;
-  const GAP = 8;
-
-  // Deck dimensions first — right-aligned to canvas edge
-  const CARD_COLS = 10;
-  const CARD_GAP = 4;
-  const CARD_H = Math.floor((H - 2 * PAD - CARD_GAP * 4) / 5);  // 172px
-  const CARD_W = Math.floor(CARD_H / 1.4);                        // 122px
-  const DECK_TOTAL_W = CARD_COLS * CARD_W + CARD_GAP * 9;         // 1256px
-  const DECK_X = W - PAD - DECK_TOTAL_W;                          // 332px — right-aligned
-
-  // Left column: oshi + cheers, width = all space left of deck
-  const LEFT_W = DECK_X - PAD - GAP;                              // 312px
-  const OSHI_W = LEFT_W;
-  const OSHI_H = Math.round(OSHI_W * 1.4);                        // 437px
-
-  // Cheers below oshi (5 cols × 4 rows = 20 max)
-  const CHEER_COLS = 5;
-  const CHEER_GAP = 4;
-  const CHEER_W = Math.floor((LEFT_W - CHEER_GAP * (CHEER_COLS - 1)) / CHEER_COLS);  // 59px
-  const CHEER_H = Math.round(CHEER_W * 1.4);                      // 83px
-
-  // Build cheer list early to compute total height for vertical centering
-  const cheers = deck.cheers ?? {};
-  const cheerList: CardColor[] = [];
-  CHEER_COLORS.forEach((c) => {
-    for (let i = 0; i < (cheers[c] ?? 0); i++) cheerList.push(c);
+async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'expanded') {
+  // Sorted deck entries
+  const holomem = deck.mainDeck.filter(e => e.card.type === 'holomem').sort(sortHolomemEntries);
+  const support = deck.mainDeck.filter(e => e.card.type === 'support').sort((a, b) => {
+    const ao = SUPPORT_SUBTYPE_ORDER[a.card.supportSubtype as SupportSubtype] ?? 99;
+    const bo = SUPPORT_SUBTYPE_ORDER[b.card.supportSubtype as SupportSubtype] ?? 99;
+    return ao !== bo ? ao - bo : a.card.cardNumber.localeCompare(b.card.cardNumber);
   });
-  const cheerRows = cheerList.length > 0 ? Math.ceil(cheerList.length / CHEER_COLS) : 0;
-  const cheerTotalH = cheerRows > 0 ? cheerRows * CHEER_H + (cheerRows - 1) * CHEER_GAP : 0;
-  const leftTotalH = OSHI_H + (cheerTotalH > 0 ? GAP + cheerTotalH : 0);
-  const LEFT_START_Y = Math.floor((H - leftTotalH) / 2);
-  const CHEER_START_Y = LEFT_START_Y + OSHI_H + GAP;
+  const cheers = deck.cheers ?? {};
 
-  // Preload all images in parallel
+  // Preload all images
   const urlSet = new Set<string>();
   if (deck.oshi?.imageUrl) urlSet.add(deck.oshi.imageUrl);
   deck.mainDeck.forEach((e) => { if (e.card.imageUrl) urlSet.add(e.card.imageUrl); });
-  CHEER_COLORS.forEach((c) => { if (deck.cheers?.[c]) urlSet.add(CHEER_IMAGE[c]); });
-
+  CHEER_COLORS.forEach((c) => urlSet.add(CHEER_IMAGE[c]));
   const cache = new Map<string, HTMLImageElement>();
   await Promise.all([...urlSet].map(async (url) => {
     try { cache.set(url, await loadImage(url)); } catch { /* skip */ }
   }));
 
+  // Canvas size (compact height is computed dynamically below)
+  const W = mode === 'compact' ? 1200 : 1600;
+  const H = mode === 'compact' ? 0 : 900;
   const canvas = document.createElement('canvas');
   canvas.width = W;
   canvas.height = H;
   const ctx = canvas.getContext('2d')!;
-
-  ctx.fillStyle = '#111827';
-  ctx.fillRect(0, 0, W, H);
 
   function drawSlot(imageUrl: string | undefined, label: string, x: number, y: number, w: number, h: number, accent = '#6b7280') {
     ctx.save();
@@ -370,35 +368,154 @@ async function exportDeckAsImage(deck: Deck) {
     ctx.stroke();
   }
 
-  // Oshi (vertically centered in left column)
-  drawSlot(deck.oshi?.imageUrl, deck.oshi?.name ?? '?', PAD, LEFT_START_Y, OSHI_W, OSHI_H, deck.oshi ? getAccentColor(deck.oshi) : '#6b7280');
+  function drawBadge(x: number, y: number, count: number) {
+    const text = `×${count}`;
+    const fontSize = 20;
+    ctx.font = `bold ${fontSize}px sans-serif`;
+    const padX = 9, padY = 5;
+    const tw = ctx.measureText(text).width;
+    const bw = Math.ceil(tw + padX * 2);
+    const bh = fontSize + padY * 2;
+    const br = bh / 2;
 
-  // Cheers (below oshi)
-  cheerList.forEach((c, i) => {
-    const col = i % CHEER_COLS;
-    const row = Math.floor(i / CHEER_COLS);
-    drawSlot(CHEER_IMAGE[c], c, PAD + col * (CHEER_W + CHEER_GAP), CHEER_START_Y + row * (CHEER_H + CHEER_GAP), CHEER_W, CHEER_H, COLOR_ACCENT[c]);
-  });
+    // Shadow
+    ctx.save();
+    ctx.shadowColor = 'rgba(0,0,0,0.75)';
+    ctx.shadowBlur = 6;
+    ctx.shadowOffsetX = 1;
+    ctx.shadowOffsetY = 1;
 
-  // Main deck (right area): holomem first, then support, each sorted by card number
-  const expanded: { imageUrl?: string; name: string; accent: string }[] = [];
-  const holomem = deck.mainDeck.filter(e => e.card.type === 'holomem').sort(sortHolomemEntries);
-  const support = deck.mainDeck.filter(e => e.card.type === 'support').sort((a, b) => {
-    const ao = SUPPORT_SUBTYPE_ORDER[a.card.supportSubtype as SupportSubtype] ?? 99;
-    const bo = SUPPORT_SUBTYPE_ORDER[b.card.supportSubtype as SupportSubtype] ?? 99;
-    return ao !== bo ? ao - bo : a.card.cardNumber.localeCompare(b.card.cardNumber);
-  });
-  [...holomem, ...support].forEach(({ card, count }) => {
-    for (let i = 0; i < count; i++) {
-      expanded.push({ imageUrl: card.imageUrl, name: card.name, accent: getAccentColor(card) });
-    }
-  });
+    // Background
+    ctx.fillStyle = 'rgba(17,10,60,0.95)';
+    rrect(ctx, x, y, bw, bh, br);
+    ctx.fill();
+    ctx.restore();
 
-  expanded.slice(0, 50).forEach((c, i) => {
-    const col = i % CARD_COLS;
-    const row = Math.floor(i / CARD_COLS);
-    drawSlot(c.imageUrl, c.name, DECK_X + col * (CARD_W + CARD_GAP), PAD + row * (CARD_H + CARD_GAP), CARD_W, CARD_H, c.accent);
-  });
+    // Border
+    ctx.strokeStyle = '#818cf8';
+    ctx.lineWidth = 1.5;
+    rrect(ctx, x, y, bw, bh, br);
+    ctx.stroke();
+
+    // Text
+    ctx.fillStyle = '#e0e7ff';
+    ctx.font = `bold ${fontSize}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, x + bw / 2, y + bh / 2 + 0.5);
+  }
+
+  if (mode === 'expanded') {
+    // ── 16:9 expanded layout ──────────────────────────────────────────
+    ctx.fillStyle = '#111827';
+    ctx.fillRect(0, 0, W, H);
+    const PAD = 12;
+    const GAP = 8;
+    const CARD_COLS = 10;
+    const CARD_GAP = 4;
+    const CARD_H = Math.floor((H - 2 * PAD - CARD_GAP * 4) / 5);
+    const CARD_W = Math.floor(CARD_H / 1.4);
+    const DECK_TOTAL_W = CARD_COLS * CARD_W + CARD_GAP * 9;
+    const DECK_X = W - PAD - DECK_TOTAL_W;
+
+    const LEFT_W = DECK_X - PAD - GAP;
+    const OSHI_W = LEFT_W;
+    const OSHI_H = Math.round(OSHI_W * 1.4);
+
+    const CHEER_COLS = 5;
+    const CHEER_GAP = 4;
+    const CHEER_W = Math.floor((LEFT_W - CHEER_GAP * (CHEER_COLS - 1)) / CHEER_COLS);
+    const CHEER_H = Math.round(CHEER_W * 1.4);
+
+    const cheerList: CardColor[] = [];
+    CHEER_COLORS.forEach((c) => { for (let i = 0; i < (cheers[c] ?? 0); i++) cheerList.push(c); });
+    const cheerRows = cheerList.length > 0 ? Math.ceil(cheerList.length / CHEER_COLS) : 0;
+    const cheerTotalH = cheerRows > 0 ? cheerRows * CHEER_H + (cheerRows - 1) * CHEER_GAP : 0;
+    const leftTotalH = OSHI_H + (cheerTotalH > 0 ? GAP + cheerTotalH : 0);
+    const LEFT_START_Y = Math.floor((H - leftTotalH) / 2);
+    const CHEER_START_Y = LEFT_START_Y + OSHI_H + GAP;
+
+    drawSlot(deck.oshi?.imageUrl, deck.oshi?.name ?? '?', PAD, LEFT_START_Y, OSHI_W, OSHI_H, deck.oshi ? getAccentColor(deck.oshi) : '#6b7280');
+    cheerList.forEach((c, i) => {
+      const col = i % CHEER_COLS;
+      const row = Math.floor(i / CHEER_COLS);
+      drawSlot(CHEER_IMAGE[c], c, PAD + col * (CHEER_W + CHEER_GAP), CHEER_START_Y + row * (CHEER_H + CHEER_GAP), CHEER_W, CHEER_H, COLOR_ACCENT[c]);
+    });
+
+    const expanded: { imageUrl?: string; name: string; accent: string }[] = [];
+    [...holomem, ...support].forEach(({ card, count }) => {
+      for (let i = 0; i < count; i++) expanded.push({ imageUrl: card.imageUrl, name: card.name, accent: getAccentColor(card) });
+    });
+    expanded.slice(0, 50).forEach((c, i) => {
+      const col = i % CARD_COLS;
+      const row = Math.floor(i / CARD_COLS);
+      drawSlot(c.imageUrl, c.name, DECK_X + col * (CARD_W + CARD_GAP), PAD + row * (CARD_H + CARD_GAP), CARD_W, CARD_H, c.accent);
+    });
+
+  } else {
+    // ── compact layout (dynamic height) ───────────────────────────────
+    const PAD = 24;
+    const CARD_GAP = 8;
+    const SECTION_GAP = 20;
+    const CARD_COLS = 5;
+    const AVAIL_W = W - 2 * PAD;
+    const CARD_W = Math.floor((AVAIL_W - CARD_GAP * (CARD_COLS - 1)) / CARD_COLS);
+    const CARD_H = Math.round(CARD_W * 1.4);
+
+    // Oshi: 2×2 card slots
+    const OSHI_W = 2 * CARD_W + CARD_GAP;
+    const OSHI_H = 2 * CARD_H + CARD_GAP;
+
+    // Unique deck cards
+    const unique: { imageUrl?: string; name: string; accent: string; count: number }[] = [];
+    [...holomem, ...support].forEach(({ card, count }) => {
+      unique.push({ imageUrl: card.imageUrl, name: card.name, accent: getAccentColor(card), count });
+    });
+
+    // Compute deck rows and dynamic canvas height
+    const DECK_Y = PAD + OSHI_H + SECTION_GAP;
+    const ROWS = unique.length > 0 ? Math.max(1, Math.ceil(unique.length / CARD_COLS)) : 0;
+    const DECK_H = ROWS > 0 ? ROWS * CARD_H + (ROWS - 1) * CARD_GAP : 0;
+    const H_compact = DECK_Y + DECK_H + PAD;
+
+    // Set canvas dimensions and fill background
+    canvas.height = H_compact;
+    ctx.fillStyle = '#111827';
+    ctx.fillRect(0, 0, W, H_compact);
+
+    // Oshi
+    drawSlot(deck.oshi?.imageUrl, deck.oshi?.name ?? '?', PAD, PAD, OSHI_W, OSHI_H, deck.oshi ? getAccentColor(deck.oshi) : '#6b7280');
+
+    // Cheers: 3 cols × 2 rows — all 6 colors shown, 0-count grayed out
+    const CHEER_COLS = 3;
+    const CHEER_X = PAD + OSHI_W + CARD_GAP;
+    CHEER_COLORS.forEach((c, i) => {
+      const cnt = cheers[c] ?? 0;
+      const col = i % CHEER_COLS;
+      const row = Math.floor(i / CHEER_COLS);
+      const cx = CHEER_X + col * (CARD_W + CARD_GAP);
+      const cy = PAD + row * (CARD_H + CARD_GAP);
+      if (cnt === 0) {
+        ctx.save();
+        ctx.globalAlpha = 0.25;
+        drawSlot(CHEER_IMAGE[c], c, cx, cy, CARD_W, CARD_H, COLOR_ACCENT[c]);
+        ctx.restore();
+      } else {
+        drawSlot(CHEER_IMAGE[c], c, cx, cy, CARD_W, CARD_H, COLOR_ACCENT[c]);
+        drawBadge(cx + 6, cy + 6, cnt);
+      }
+    });
+
+    // Main deck: consistent CARD_W/CARD_H for all cards
+    unique.forEach((c, i) => {
+      const col = i % CARD_COLS;
+      const row = Math.floor(i / CARD_COLS);
+      const x = PAD + col * (CARD_W + CARD_GAP);
+      const y = DECK_Y + row * (CARD_H + CARD_GAP);
+      drawSlot(c.imageUrl, c.name, x, y, CARD_W, CARD_H, c.accent);
+      drawBadge(x + 6, y + 6, c.count);
+    });
+  }
 
   const link = document.createElement('a');
   link.download = `${deck.name.replace(/\s+/g, '_')}-deck.png`;
@@ -420,11 +537,11 @@ function ExportPanel() {
     setTimeout(() => setCopied(false), 2000);
   }
 
-  async function handleImageExport() {
+  async function handleImageExport(mode: 'expanded' | 'compact') {
     const deck = getActiveDeck();
     if (!deck) return;
     setExporting(true);
-    try { await exportDeckAsImage(deck); } finally { setExporting(false); }
+    try { await exportDeckAsImage(deck, mode); } finally { setExporting(false); }
   }
 
   return (
@@ -439,13 +556,22 @@ function ExportPanel() {
       >
         {copied ? '✓ 복사됨!' : '덱 목록 복사 (공유)'}
       </button>
-      <button
-        onClick={handleImageExport}
-        disabled={exporting}
-        className="w-full py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
-      >
-        {exporting ? '내보내는 중...' : '이미지로 내보내기'}
-      </button>
+      <div className="flex gap-2">
+        <button
+          onClick={() => handleImageExport('expanded')}
+          disabled={exporting}
+          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+        >
+          {exporting ? '...' : '이미지 (전체)'}
+        </button>
+        <button
+          onClick={() => handleImageExport('compact')}
+          disabled={exporting}
+          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+        >
+          {exporting ? '...' : '이미지 (요약)'}
+        </button>
+      </div>
     </div>
   );
 }
@@ -554,19 +680,22 @@ export default function DeckPanel() {
             {mainCount > 0 && (
               <div className="flex flex-col gap-1 text-[11px]">
                 {holomemCount > 0 && (
-                  <div className="flex gap-2 items-center flex-wrap">
+                  <div className="flex items-center flex-wrap gap-1">
                     <span className="text-emerald-400 font-medium">홀로멤 {holomemCount}</span>
-                    {(['debut', '1st', '2nd', 'spot'] as HolomemSubtype[]).map((sub) =>
-                      holomemSubtypeCounts[sub] ? (
-                        <span key={sub} className="text-emerald-600">{sub} {holomemSubtypeCounts[sub]}</span>
-                      ) : null
-                    )}
+                    {(() => {
+                      const parts = (['debut', '1st', '2nd', 'spot'] as HolomemSubtype[])
+                        .filter((sub) => holomemSubtypeCounts[sub])
+                        .map((sub) => `${sub} : ${holomemSubtypeCounts[sub]}`);
+                      return parts.length > 0
+                        ? <span className="text-emerald-600">( {parts.join(' / ')} )</span>
+                        : null;
+                    })()}
                   </div>
                 )}
                 {supportCount > 0 && (
                   <div className="flex gap-2 items-center">
                     <span className="text-sky-400 font-medium">서포트 {supportCount}</span>
-                    {limitedCount > 0 && <span className="text-rose-400">리미티드 {limitedCount}</span>}
+                    {limitedCount > 0 && <span className="text-rose-400">( 리미티드 : {limitedCount} )</span>}
                   </div>
                 )}
               </div>

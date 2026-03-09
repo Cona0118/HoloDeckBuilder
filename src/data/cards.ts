@@ -175,7 +175,7 @@ export const CARDS: Card[] = [
     id: "hBD24-018",
     cardNumber: "hBD24-018",
     setId: "hBD24",
-    name: "이윤다 리스",
+    name: "아윤다 리스",
     type: "oshi",
     color: ["yellow"],
     imageUrl: "/images/PR/hBD24-018_P_02.png",
@@ -7552,7 +7552,7 @@ export const CARDS: Card[] = [
     name: "츠노마키 와타메",
     type: "oshi",
     color: ["white"],
-    imageUrl: "/images/hBP07/hBP07-001.png",
+    imageUrl: "/images/hBP07/hBP07-001_OSR.png",
     limit: 1,
   },
   {
@@ -7562,7 +7562,7 @@ export const CARDS: Card[] = [
     name: "베스티아 제타",
     type: "oshi",
     color: ["white"],
-    imageUrl: "/images/hBP07/hBP07-002.png",
+    imageUrl: "/images/hBP07/hBP07-002_OSR.png",
     limit: 1,
   },
   {
@@ -7572,7 +7572,7 @@ export const CARDS: Card[] = [
     name: "오오카미 미오",
     type: "oshi",
     color: ["green"],
-    imageUrl: "/images/hBP07/hBP07-003.png",
+    imageUrl: "/images/hBP07/hBP07-003_OSR.png",
     limit: 1,
   },
   {
@@ -7582,7 +7582,7 @@ export const CARDS: Card[] = [
     name: "아카이 하아토",
     type: "oshi",
     color: ["red"],
-    imageUrl: "/images/hBP07/hBP07-004.png",
+    imageUrl: "/images/hBP07/hBP07-004_OSR.png",
     limit: 1,
   },
   {
@@ -7592,7 +7592,7 @@ export const CARDS: Card[] = [
     name: "오로 크로니",
     type: "oshi",
     color: ["blue"],
-    imageUrl: "/images/hBP07/hBP07-005.png",
+    imageUrl: "/images/hBP07/hBP07-005_OSR.png",
     limit: 1,
   },
   {
@@ -7602,7 +7602,7 @@ export const CARDS: Card[] = [
     name: "AZKi",
     type: "oshi",
     color: ["purple"],
-    imageUrl: "/images/hBP07/hBP07-006.png",
+    imageUrl: "/images/hBP07/hBP07-006_OSR.png",
     limit: 1,
   },
   {
@@ -7612,7 +7612,7 @@ export const CARDS: Card[] = [
     name: "모모스즈 네네",
     type: "oshi",
     color: ["yellow"],
-    imageUrl: "/images/hBP07/hBP07-007.png",
+    imageUrl: "/images/hBP07/hBP07-007_OSR.png",
     limit: 1,
   },
   {
@@ -7623,7 +7623,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-008.png",
+    imageUrl: "/images/hBP07/hBP07-008_C.png",
     limit: 4,
   },
   {
@@ -7634,7 +7634,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-009.png",
+    imageUrl: "/images/hBP07/hBP07-009_U.png",
     limit: 4,
   },
   {
@@ -7645,7 +7645,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-010.png",
+    imageUrl: "/images/hBP07/hBP07-010_C.png",
     limit: 4,
   },
   {
@@ -7656,7 +7656,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-011.png",
+    imageUrl: "/images/hBP07/hBP07-011_C.png",
     limit: 4,
   },
   {
@@ -7667,7 +7667,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-012.png",
+    imageUrl: "/images/hBP07/hBP07-012_R.png",
     limit: 4,
   },
   {
@@ -7678,7 +7678,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-013.png",
+    imageUrl: "/images/hBP07/hBP07-013_U.png",
     limit: 4,
   },
   {
@@ -7689,7 +7689,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-014.png",
+    imageUrl: "/images/hBP07/hBP07-014_RR.png",
     limit: 4,
   },
   {
@@ -7700,7 +7700,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-015.png",
+    imageUrl: "/images/hBP07/hBP07-015_C.png",
     limit: 4,
   },
   {
@@ -7711,7 +7711,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-016.png",
+    imageUrl: "/images/hBP07/hBP07-016_U.png",
     limit: 4,
   },
   {
@@ -7722,7 +7722,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-017.png",
+    imageUrl: "/images/hBP07/hBP07-017_C.png",
     limit: 4,
   },
   {
@@ -7733,7 +7733,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-018.png",
+    imageUrl: "/images/hBP07/hBP07-018_C.png",
     limit: 4,
   },
   {
@@ -7744,7 +7744,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-019.png",
+    imageUrl: "/images/hBP07/hBP07-019_R.png",
     limit: 4,
   },
   {
@@ -7755,7 +7755,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-020.png",
+    imageUrl: "/images/hBP07/hBP07-020_U.png",
     limit: 4,
   },
   {
@@ -7766,7 +7766,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-021.png",
+    imageUrl: "/images/hBP07/hBP07-021_RR.png",
     limit: 4,
   },
   {
@@ -7777,7 +7777,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["white"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-022.png",
+    imageUrl: "/images/hBP07/hBP07-022_R.png",
     limit: 4,
   },
   {
@@ -7788,7 +7788,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-023.png",
+    imageUrl: "/images/hBP07/hBP07-023_C.png",
     limit: 4,
   },
   {
@@ -7799,7 +7799,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-024.png",
+    imageUrl: "/images/hBP07/hBP07-024_U.png",
     limit: 4,
   },
   {
@@ -7810,7 +7810,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-025.png",
+    imageUrl: "/images/hBP07/hBP07-025_C.png",
     limit: 4,
   },
   {
@@ -7821,7 +7821,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-026.png",
+    imageUrl: "/images/hBP07/hBP07-026_C.png",
     limit: 4,
   },
   {
@@ -7832,7 +7832,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-027.png",
+    imageUrl: "/images/hBP07/hBP07-027_R.png",
     limit: 4,
   },
   {
@@ -7843,7 +7843,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-028.png",
+    imageUrl: "/images/hBP07/hBP07-028_U.png",
     limit: 4,
   },
   {
@@ -7854,7 +7854,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-029.png",
+    imageUrl: "/images/hBP07/hBP07-029_RR.png",
     limit: 4,
   },
   {
@@ -7865,7 +7865,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-030.png",
+    imageUrl: "/images/hBP07/hBP07-030_R.png",
     limit: 4,
   },
   {
@@ -7876,7 +7876,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-031.png",
+    imageUrl: "/images/hBP07/hBP07-031_R.png",
     limit: 4,
   },
   {
@@ -7887,7 +7887,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-032.png",
+    imageUrl: "/images/hBP07/hBP07-032_C.png",
     limit: 4,
   },
   {
@@ -7898,7 +7898,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-033.png",
+    imageUrl: "/images/hBP07/hBP07-033_U.png",
     limit: 4,
   },
   {
@@ -7909,7 +7909,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-034.png",
+    imageUrl: "/images/hBP07/hBP07-034_R.png",
     limit: 4,
   },
   {
@@ -7920,7 +7920,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["green"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-035.png",
+    imageUrl: "/images/hBP07/hBP07-035_RR.png",
     limit: 4,
   },
   {
@@ -7931,7 +7931,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-036.png",
+    imageUrl: "/images/hBP07/hBP07-036_C.png",
     limit: 4,
   },
   {
@@ -7942,7 +7942,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-037.png",
+    imageUrl: "/images/hBP07/hBP07-037_U.png",
     limit: 4,
   },
   {
@@ -7953,7 +7953,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-038.png",
+    imageUrl: "/images/hBP07/hBP07-038_C.png",
     limit: 4,
   },
   {
@@ -7964,7 +7964,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-039.png",
+    imageUrl: "/images/hBP07/hBP07-039_C.png",
     limit: 4,
   },
   {
@@ -7975,7 +7975,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-040.png",
+    imageUrl: "/images/hBP07/hBP07-040_R.png",
     limit: 4,
   },
   {
@@ -7986,7 +7986,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-041.png",
+    imageUrl: "/images/hBP07/hBP07-041_U.png",
     limit: 4,
   },
   {
@@ -7997,7 +7997,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-042.png",
+    imageUrl: "/images/hBP07/hBP07-042_RR.png",
     limit: 4,
   },
   {
@@ -8008,7 +8008,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-043.png",
+    imageUrl: "/images/hBP07/hBP07-043_R.png",
     limit: 4,
   },
   {
@@ -8019,7 +8019,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-044.png",
+    imageUrl: "/images/hBP07/hBP07-044_R.png",
     limit: 4,
   },
   {
@@ -8030,7 +8030,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-045.png",
+    imageUrl: "/images/hBP07/hBP07-045_R.png",
     limit: 4,
   },
   {
@@ -8041,7 +8041,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-046.png",
+    imageUrl: "/images/hBP07/hBP07-046_C.png",
     limit: 4,
   },
   {
@@ -8052,7 +8052,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-047.png",
+    imageUrl: "/images/hBP07/hBP07-047_U.png",
     limit: 4,
   },
   {
@@ -8063,7 +8063,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-048.png",
+    imageUrl: "/images/hBP07/hBP07-048_R.png",
     limit: 4,
   },
   {
@@ -8074,7 +8074,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["red"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-049.png",
+    imageUrl: "/images/hBP07/hBP07-049_RR.png",
     limit: 4,
   },
   {
@@ -8085,7 +8085,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-050.png",
+    imageUrl: "/images/hBP07/hBP07-050_C.png",
     limit: 4,
   },
   {
@@ -8096,7 +8096,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-051.png",
+    imageUrl: "/images/hBP07/hBP07-051_U.png",
     limit: 4,
   },
   {
@@ -8107,7 +8107,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-052.png",
+    imageUrl: "/images/hBP07/hBP07-052_C.png",
     limit: 4,
   },
   {
@@ -8118,7 +8118,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-053.png",
+    imageUrl: "/images/hBP07/hBP07-053_C.png",
     limit: 4,
   },
   {
@@ -8129,7 +8129,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-054.png",
+    imageUrl: "/images/hBP07/hBP07-054_R.png",
     limit: 4,
   },
   {
@@ -8140,7 +8140,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-055.png",
+    imageUrl: "/images/hBP07/hBP07-055_U.png",
     limit: 4,
   },
   {
@@ -8151,7 +8151,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-056.png",
+    imageUrl: "/images/hBP07/hBP07-056_RR.png",
     limit: 4,
   },
   {
@@ -8162,7 +8162,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-057.png",
+    imageUrl: "/images/hBP07/hBP07-057_R.png",
     limit: 4,
   },
   {
@@ -8173,7 +8173,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-058.png",
+    imageUrl: "/images/hBP07/hBP07-058_R.png",
     limit: 4,
   },
   {
@@ -8184,7 +8184,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-059.png",
+    imageUrl: "/images/hBP07/hBP07-059_C.png",
     limit: 4,
   },
   {
@@ -8195,7 +8195,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-060.png",
+    imageUrl: "/images/hBP07/hBP07-060_U.png",
     limit: 4,
   },
   {
@@ -8206,7 +8206,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-061.png",
+    imageUrl: "/images/hBP07/hBP07-061_R.png",
     limit: 4,
   },
   {
@@ -8217,7 +8217,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-062.png",
+    imageUrl: "/images/hBP07/hBP07-062_RR.png",
     limit: 4,
   },
   {
@@ -8228,7 +8228,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-063.png",
+    imageUrl: "/images/hBP07/hBP07-063_C.png",
     limit: 4,
   },
   {
@@ -8239,7 +8239,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-064.png",
+    imageUrl: "/images/hBP07/hBP07-064_U.png",
     limit: 4,
   },
   {
@@ -8250,7 +8250,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-065.png",
+    imageUrl: "/images/hBP07/hBP07-065_C.png",
     limit: 4,
   },
   {
@@ -8261,7 +8261,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-066.png",
+    imageUrl: "/images/hBP07/hBP07-066_C.png",
     limit: 4,
   },
   {
@@ -8272,7 +8272,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-067.png",
+    imageUrl: "/images/hBP07/hBP07-067_R.png",
     limit: 4,
   },
   {
@@ -8283,7 +8283,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-068.png",
+    imageUrl: "/images/hBP07/hBP07-068_U.png",
     limit: 4,
   },
   {
@@ -8294,7 +8294,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-069.png",
+    imageUrl: "/images/hBP07/hBP07-069_RR.png",
     limit: 4,
   },
   {
@@ -8305,7 +8305,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-070.png",
+    imageUrl: "/images/hBP07/hBP07-070_R.png",
     limit: 4,
   },
   {
@@ -8316,7 +8316,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-071.png",
+    imageUrl: "/images/hBP07/hBP07-071_C.png",
     limit: 4,
   },
   {
@@ -8327,7 +8327,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-072.png",
+    imageUrl: "/images/hBP07/hBP07-072_U.png",
     limit: 4,
   },
   {
@@ -8338,7 +8338,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-073.png",
+    imageUrl: "/images/hBP07/hBP07-073_R.png",
     limit: 4,
   },
   {
@@ -8349,7 +8349,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-074.png",
+    imageUrl: "/images/hBP07/hBP07-074_RR.png",
     limit: 4,
   },
   {
@@ -8360,7 +8360,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-075.png",
+    imageUrl: "/images/hBP07/hBP07-075_R.png",
     limit: 4,
   },
   {
@@ -8371,7 +8371,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["purple"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-076.png",
+    imageUrl: "/images/hBP07/hBP07-076_R.png",
     limit: 4,
   },
   {
@@ -8382,7 +8382,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-077.png",
+    imageUrl: "/images/hBP07/hBP07-077_C.png",
     limit: 4,
   },
   {
@@ -8393,7 +8393,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-078.png",
+    imageUrl: "/images/hBP07/hBP07-078_U.png",
     limit: 4,
   },
   {
@@ -8404,7 +8404,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-079.png",
+    imageUrl: "/images/hBP07/hBP07-079_C.png",
     limit: 4,
   },
   {
@@ -8415,7 +8415,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-080.png",
+    imageUrl: "/images/hBP07/hBP07-080_C.png",
     limit: 4,
   },
   {
@@ -8426,7 +8426,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-081.png",
+    imageUrl: "/images/hBP07/hBP07-081_R.png",
     limit: 4,
   },
   {
@@ -8437,7 +8437,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-082.png",
+    imageUrl: "/images/hBP07/hBP07-082_U.png",
     limit: 4,
   },
   {
@@ -8448,7 +8448,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-083.png",
+    imageUrl: "/images/hBP07/hBP07-083_RR.png",
     limit: 4,
   },
   {
@@ -8459,7 +8459,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-084.png",
+    imageUrl: "/images/hBP07/hBP07-084_R.png",
     limit: 4,
   },
   {
@@ -8470,7 +8470,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-085.png",
+    imageUrl: "/images/hBP07/hBP07-085_R.png",
     limit: 4,
   },
   {
@@ -8481,7 +8481,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-086.png",
+    imageUrl: "/images/hBP07/hBP07-086_R.png",
     limit: 4,
   },
   {
@@ -8492,7 +8492,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "debut",
-    imageUrl: "/images/hBP07/hBP07-087.png",
+    imageUrl: "/images/hBP07/hBP07-087_C.png",
     limit: 4,
   },
   {
@@ -8503,7 +8503,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-088.png",
+    imageUrl: "/images/hBP07/hBP07-088_U.png",
     limit: 4,
   },
   {
@@ -8514,7 +8514,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "1st",
-    imageUrl: "/images/hBP07/hBP07-089.png",
+    imageUrl: "/images/hBP07/hBP07-089_R.png",
     limit: 4,
   },
   {
@@ -8525,7 +8525,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     color: ["yellow"],
     holomemSubtype: "2nd",
-    imageUrl: "/images/hBP07/hBP07-090.png",
+    imageUrl: "/images/hBP07/hBP07-090_RR.png",
     limit: 4,
   },
   {
@@ -8535,7 +8535,7 @@ export const CARDS: Card[] = [
     name: "라이브 스태프",
     type: "support",
     supportSubtype: "staff",
-    imageUrl: "/images/hBP07/hBP07-091.png",
+    imageUrl: "/images/hBP07/hBP07-091_C.png",
     limit: 4,
   },
   {
@@ -8546,7 +8546,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "item",
     limited: true,
-    imageUrl: "/images/hBP07/hBP07-092.png",
+    imageUrl: "/images/hBP07/hBP07-092_U.png",
     limit: 4,
   },
   {
@@ -8556,7 +8556,7 @@ export const CARDS: Card[] = [
     name: "우마미!",
     type: "support",
     supportSubtype: "event",
-    imageUrl: "/images/hBP07/hBP07-093.png",
+    imageUrl: "/images/hBP07/hBP07-093_C.png",
     limit: 4,
   },
   {
@@ -8567,7 +8567,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP07/hBP07-094.png",
+    imageUrl: "/images/hBP07/hBP07-094_U.png",
     limit: 4,
   },
   {
@@ -8578,7 +8578,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP07/hBP07-095.png",
+    imageUrl: "/images/hBP07/hBP07-095_C.png",
     limit: 4,
   },
   {
@@ -8588,7 +8588,7 @@ export const CARDS: Card[] = [
     name: "쨔마여행",
     type: "support",
     supportSubtype: "event",
-    imageUrl: "/images/hBP07/hBP07-096.png",
+    imageUrl: "/images/hBP07/hBP07-096_U.png",
     limit: 4,
   },
   {
@@ -8599,7 +8599,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP07/hBP07-097.png",
+    imageUrl: "/images/hBP07/hBP07-097_U.png",
     limit: 4,
   },
   {
@@ -8610,7 +8610,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP07/hBP07-098.png",
+    imageUrl: "/images/hBP07/hBP07-098_U.png",
     limit: 4,
   },
   {
@@ -8621,7 +8621,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP07/hBP07-099.png",
+    imageUrl: "/images/hBP07/hBP07-099_C.png",
     limit: 4,
   },
   {
@@ -8631,7 +8631,7 @@ export const CARDS: Card[] = [
     name: "프론티어 스피릿",
     type: "support",
     supportSubtype: "event",
-    imageUrl: "/images/hBP07/hBP07-100.png",
+    imageUrl: "/images/hBP07/hBP07-100_U.png",
     limit: 4,
   },
   {
@@ -8641,7 +8641,7 @@ export const CARDS: Card[] = [
     name: "ASMR 마이크",
     type: "support",
     supportSubtype: "tool",
-    imageUrl: "/images/hBP07/hBP07-101.png",
+    imageUrl: "/images/hBP07/hBP07-101_C.png",
     limit: 4,
   },
   {
@@ -8651,7 +8651,7 @@ export const CARDS: Card[] = [
     name: "츠노마키 와타메의 헤머",
     type: "support",
     supportSubtype: "tool",
-    imageUrl: "/images/hBP07/hBP07-102.png",
+    imageUrl: "/images/hBP07/hBP07-102_U.png",
     limit: 4,
   },
   {
@@ -8661,7 +8661,7 @@ export const CARDS: Card[] = [
     name: "기리파톱사슴벌레",
     type: "support",
     supportSubtype: "tool",
-    imageUrl: "/images/hBP07/hBP07-103.png",
+    imageUrl: "/images/hBP07/hBP07-103_U.png",
     limit: 4,
   },
   {
@@ -8671,7 +8671,7 @@ export const CARDS: Card[] = [
     name: "Thorn",
     type: "support",
     supportSubtype: "tool",
-    imageUrl: "/images/hBP07/hBP07-104.png",
+    imageUrl: "/images/hBP07/hBP07-104_U.png",
     limit: 4,
   },
   {
@@ -8681,7 +8681,7 @@ export const CARDS: Card[] = [
     name: "BAZO",
     type: "support",
     supportSubtype: "mascot",
-    imageUrl: "/images/hBP07/hBP07-105.png",
+    imageUrl: "/images/hBP07/hBP07-105_C.png",
     limit: 4,
   },
   {
@@ -8691,7 +8691,7 @@ export const CARDS: Card[] = [
     name: "하토타우로스",
     type: "support",
     supportSubtype: "mascot",
-    imageUrl: "/images/hBP07/hBP07-106.png",
+    imageUrl: "/images/hBP07/hBP07-106_U.png",
     limit: 4,
   },
   {
@@ -8701,7 +8701,7 @@ export const CARDS: Card[] = [
     name: "Boros",
     type: "support",
     supportSubtype: "mascot",
-    imageUrl: "/images/hBP07/hBP07-107.png",
+    imageUrl: "/images/hBP07/hBP07-107_U.png",
     limit: 4,
   },
   {
@@ -8711,7 +8711,7 @@ export const CARDS: Card[] = [
     name: "Zecretary",
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP07/hBP07-108.png",
+    imageUrl: "/images/hBP07/hBP07-108_C.png",
     limit: 4,
   },
   {
@@ -8721,7 +8721,7 @@ export const CARDS: Card[] = [
     name: "Kronies",
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP07/hBP07-109.png",
+    imageUrl: "/images/hBP07/hBP07-109_C.png",
     limit: 4,
   },
   {
@@ -8731,7 +8731,7 @@ export const CARDS: Card[] = [
     name: "넷코",
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP07/hBP07-110.png",
+    imageUrl: "/images/hBP07/hBP07-110_C.png",
     limit: 4,
   },
   {

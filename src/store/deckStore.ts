@@ -46,6 +46,7 @@ interface DeckState {
   addCheer: (color: CardColor) => void;
   removeCheer: (color: CardColor) => void;
   clearDeck: () => void;
+  clearCheers: () => void;
 
   setFilter: (filter: Partial<FilterState>) => void;
   resetFilter: () => void;
@@ -206,6 +207,17 @@ export const useDeckStore = create<DeckState>()(
           return {
             decks: s.decks.map((d) =>
               d.id === id ? { ...d, oshi: null, mainDeck: [], cheers: {}, updatedAt: Date.now() } : d
+            ),
+          };
+        });
+      },
+
+      clearCheers: () => {
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          return {
+            decks: s.decks.map((d) =>
+              d.id === id ? { ...d, cheers: {}, updatedAt: Date.now() } : d
             ),
           };
         });
