@@ -37,19 +37,13 @@ const CHEER_IMAGE: Record<CardColor, string> = {
 // ──────────────────────────────
 // Image card thumbnail
 // ──────────────────────────────
-function DeckEntryCard({ entry, onAdd, onRemove }: { entry: DeckEntry; onAdd: () => void; onRemove: () => void }) {
-  const [overlayVisible, setOverlayVisible] = useState(false);
+function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay }: {
+  entry: DeckEntry; onAdd: () => void; onRemove: () => void;
+  overlayVisible: boolean; onShowOverlay: () => void; onHideOverlay: () => void;
+}) {
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
   const atLimit = entry.count >= cardLimit;
-
-  // 터치로 오버레이를 열었을 때 외부 클릭 시 닫기
-  useEffect(() => {
-    if (!overlayVisible) return;
-    const close = () => setOverlayVisible(false);
-    const timer = setTimeout(() => document.addEventListener('click', close), 0);
-    return () => { clearTimeout(timer); document.removeEventListener('click', close); };
-  }, [overlayVisible]);
 
   return (
     <div className="relative group">
@@ -60,7 +54,7 @@ function DeckEntryCard({ entry, onAdd, onRemove }: { entry: DeckEntry; onAdd: ()
           const isTouch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
           if (isTouch) {
             e.stopPropagation();
-            setOverlayVisible(true);
+            onShowOverlay();
           } else {
             if (!atLimit) onAdd();
           }
@@ -93,11 +87,11 @@ function DeckEntryCard({ entry, onAdd, onRemove }: { entry: DeckEntry; onAdd: ()
           overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
         }`}>
           <button
-            onClick={(e) => { e.stopPropagation(); onRemove(); setOverlayVisible(false); }}
+            onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
             className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
           >−</button>
           <button
-            onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); setOverlayVisible(false); }}
+            onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
             disabled={atLimit}
             className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
           >+</button>
@@ -582,6 +576,15 @@ function ExportPanel() {
 export default function DeckPanel() {
   const { getActiveDeck, addCard, removeCard, getDeckErrors } = useDeckStore();
   const deck = getActiveDeck();
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+  // 외부 클릭 시 오버레이 닫기
+  useEffect(() => {
+    if (!activeCardId) return;
+    const close = () => setActiveCardId(null);
+    const timer = setTimeout(() => document.addEventListener('click', close), 0);
+    return () => { clearTimeout(timer); document.removeEventListener('click', close); };
+  }, [activeCardId]);
 
   if (!deck) return null;
 
@@ -725,6 +728,9 @@ export default function DeckPanel() {
                       entry={entry}
                       onAdd={() => addCard(entry.card)}
                       onRemove={() => removeCard(entry.card)}
+                      overlayVisible={activeCardId === entry.card.id}
+                      onShowOverlay={() => setActiveCardId(entry.card.id)}
+                      onHideOverlay={() => setActiveCardId(null)}
                     />
                   ))}
                 </div>
