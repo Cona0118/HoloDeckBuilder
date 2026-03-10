@@ -20,9 +20,12 @@ export default function CardGrid() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [cardSize, setCardSize] = useState<CardSize>('md');
 
-  const filtered = filterCards(CARDS, filter).sort((a, b) =>
-    a.cardNumber.localeCompare(b.cardNumber)
-  );
+  const filtered = filterCards(CARDS, filter).sort((a, b) => {
+    const aIsHBD = /^hBD\d/.test(a.cardNumber);
+    const bIsHBD = /^hBD\d/.test(b.cardNumber);
+    if (aIsHBD !== bIsHBD) return aIsHBD ? 1 : -1;
+    return a.cardNumber.localeCompare(b.cardNumber);
+  });
 
   return (
     <div className="flex flex-col h-full overflow-hidden">

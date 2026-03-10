@@ -18,6 +18,7 @@ export interface Card {
   id: string;
   name: string;
   nameJp?: string;
+  keywords?: string[];     // 검색 전용 별칭 (UI 미노출)
   type: CardType;
   color?: CardColor[];        // Oshi / Holomem만 색상 보유
   setId: string;

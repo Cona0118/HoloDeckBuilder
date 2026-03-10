@@ -74,7 +74,8 @@ export function filterCards(cards: Card[], filter: FilterState): Card[] {
         card.name.toLowerCase().includes(q) ||
         (card.nameJp ?? '').toLowerCase().includes(q) ||
         card.cardNumber.toLowerCase().includes(q) ||
-        (card.tags ?? []).some((tag) => tag.toLowerCase().includes(q));
+        (card.tags ?? []).some((tag) => tag.toLowerCase().includes(q)) ||
+        (card.keywords ?? []).some((kw) => kw.toLowerCase().includes(q));
       if (!match) return false;
     }
     if (filter.types.length > 0 && !filter.types.includes(card.type)) return false;
