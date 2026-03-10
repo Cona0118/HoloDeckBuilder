@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useDeckStore } from '../store/deckStore';
-import { SETS } from '../data/cards';
+import { SETS, CARDS } from '../data/cards';
 import {
   COLOR_LABELS,
   TYPE_LABELS,
@@ -52,6 +52,12 @@ export default function SearchFilter() {
   const { filter, setFilter, resetFilter } = useDeckStore();
   const [filtersOpen, setFiltersOpen] = useState(false);
 
+  const allTags = useMemo(() => {
+    const set = new Set<string>();
+    CARDS.forEach((c) => c.tags?.forEach((t) => set.add(t)));
+    return [...set].sort();
+  }, []);
+
   function toggleType(t: CardType) {
     const has = filter.types.includes(t);
     const newTypes = has ? filter.types.filter((x) => x !== t) : [...filter.types, t];
@@ -80,6 +86,10 @@ export default function SearchFilter() {
     const has = filter.sets.includes(s);
     setFilter({ sets: has ? filter.sets.filter((x) => x !== s) : [...filter.sets, s] });
   }
+  function toggleTag(t: string) {
+    const has = filter.tags.includes(t);
+    setFilter({ tags: has ? filter.tags.filter((x) => x !== t) : [...filter.tags, t] });
+  }
 
   const colorDisabled =
     filter.types.length > 0 && !filter.types.includes('oshi') && !filter.types.includes('holomem');
@@ -91,11 +101,12 @@ export default function SearchFilter() {
     filter.holomemSubtypes.length ||
     filter.supportSubtypes.length ||
     filter.limitedFilter !== null ||
+    filter.tags.length ||
     filter.sets.length;
 
   const activeFilterCount = filter.types.length + filter.colors.length +
     filter.holomemSubtypes.length + filter.supportSubtypes.length +
-    filter.sets.length + (filter.limitedFilter !== null ? 1 : 0);
+    filter.tags.length + filter.sets.length + (filter.limitedFilter !== null ? 1 : 0);
 
   return (
     <div className="flex flex-col bg-gray-900 border-b border-gray-800">
@@ -192,6 +203,40 @@ export default function SearchFilter() {
                   {val ? '리미티드' : '일반'}
                 </button>
               ))}
+            </div>
+          )}
+
+          {/* 태그 */}
+          {allTags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 items-center">
+              <span className="text-xs text-gray-500 shrink-0">태그:</span>
+              {allTags.map((t) => (
+                <ToggleChip key={t} value={t} label={t} active={filter.tags.includes(t)} onToggle={toggleTag} />
+              ))}
+              {filter.tags.length >= 2 && (
+                <div className="flex items-center gap-0.5 ml-1 bg-gray-800 border border-gray-700 rounded-full p-0.5">
+                  <button
+                    onClick={() => setFilter({ tagFilterMode: 'or' })}
+                    className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
+                      filter.tagFilterMode === 'or'
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-gray-400 hover:text-gray-200'
+                    }`}
+                  >
+                    OR
+                  </button>
+                  <button
+                    onClick={() => setFilter({ tagFilterMode: 'and' })}
+                    className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
+                      filter.tagFilterMode === 'and'
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-gray-400 hover:text-gray-200'
+                    }`}
+                  >
+                    AND
+                  </button>
+                </div>
+              )}
             </div>
           )}
 

@@ -73,7 +73,8 @@ export function filterCards(cards: Card[], filter: FilterState): Card[] {
       const match =
         card.name.toLowerCase().includes(q) ||
         (card.nameJp ?? '').toLowerCase().includes(q) ||
-        card.cardNumber.toLowerCase().includes(q);
+        card.cardNumber.toLowerCase().includes(q) ||
+        (card.tags ?? []).some((tag) => tag.toLowerCase().includes(q));
       if (!match) return false;
     }
     if (filter.types.length > 0 && !filter.types.includes(card.type)) return false;
@@ -90,7 +91,13 @@ export function filterCards(cards: Card[], filter: FilterState): Card[] {
       if (card.type !== 'support') return false;
       if (filter.limitedFilter !== (card.limited === true)) return false;
     }
-    if (filter.tags.length > 0 && !filter.tags.some((t) => card.tags?.includes(t))) return false;
+    if (filter.tags.length > 0) {
+      const cardTags = card.tags ?? [];
+      const match = filter.tagFilterMode === 'and'
+        ? filter.tags.every((t) => cardTags.includes(t))
+        : filter.tags.some((t) => cardTags.includes(t));
+      if (!match) return false;
+    }
     if (filter.sets.length > 0) {
       const normalizedSetId = /^hBD\d/.test(card.setId) ? 'hBD' : card.setId;
       if (!filter.sets.includes(normalizedSetId)) return false;

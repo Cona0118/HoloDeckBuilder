@@ -64,5 +64,6 @@ export interface FilterState {
   supportSubtypes: SupportSubtype[];
   limitedFilter: boolean | null;  // null=전체, true=리미티드만, false=일반만
   tags: string[];
+  tagFilterMode: 'and' | 'or';
   sets: string[];
 }

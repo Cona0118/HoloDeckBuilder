@@ -68,6 +68,7 @@ const defaultFilter: FilterState = {
   supportSubtypes: [],
   limitedFilter: null,
   tags: [],
+  tagFilterMode: 'or',
   sets: [],
 };
 
