@@ -47,8 +47,10 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   const [previewOpen, setPreviewOpen] = useState(false);
   const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
+  const isTouch = useRef(false);
 
-  function startLongPress() {
+  function startLongPress(e: React.PointerEvent) {
+    isTouch.current = e.pointerType === 'touch';
     didLongPress.current = false;
     longPressTimer.current = setTimeout(() => {
       didLongPress.current = true;
@@ -93,7 +95,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
               if (!atLimit) onAdd();
             }
           }}
-          onContextMenu={(e) => { e.preventDefault(); if (didLongPress.current) { didLongPress.current = false; return; } onRemove(); }}
+          onContextMenu={(e) => { e.preventDefault(); if (isTouch.current) return; if (didLongPress.current) { didLongPress.current = false; return; } onRemove(); }}
         >
           {entry.card.imageUrl ? (
             <img

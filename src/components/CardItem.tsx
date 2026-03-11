@@ -14,6 +14,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
   const [previewOpen, setPreviewOpen] = useState(false);
   const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
+  const isTouch = useRef(false);
 
   const accent = getAccentColor(card);
   const entry = activeDeck?.mainDeck.find((e) => e.card.id === card.id);
@@ -22,7 +23,8 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
     card.type === "oshi" && activeDeck?.oshi?.id === card.id;
   const highlighted = countInDeck > 0 || isOshiSelected;
 
-  function startLongPress() {
+  function startLongPress(e: React.PointerEvent) {
+    isTouch.current = e.pointerType === 'touch';
     didLongPress.current = false;
     longPressTimer.current = setTimeout(() => {
       didLongPress.current = true;
@@ -49,6 +51,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
 
   function handleContextMenu(e: React.MouseEvent) {
     e.preventDefault();
+    if (isTouch.current) return;
     if (didLongPress.current) { didLongPress.current = false; return; }
     if (card.type !== "oshi") removeCard(card);
   }
