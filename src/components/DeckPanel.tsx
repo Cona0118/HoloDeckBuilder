@@ -101,6 +101,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
               alt={entry.card.name}
               className="w-full h-full object-cover"
               draggable={false}
+              style={{ pointerEvents: 'none' }}
             />
           ) : (
             <div
@@ -678,7 +679,7 @@ export default function DeckPanel() {
           >
             {deck.oshi ? (
               deck.oshi.imageUrl ? (
-                <img src={deck.oshi.imageUrl} alt={deck.oshi.name} className="w-full h-full object-cover" draggable={false} />
+                <img src={deck.oshi.imageUrl} alt={deck.oshi.name} className="w-full h-full object-cover" draggable={false} style={{ pointerEvents: 'none' }} />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-2xl font-bold" style={{ background: oshiAccent + '33', color: oshiAccent }}>
                   {deck.oshi.name[0]}

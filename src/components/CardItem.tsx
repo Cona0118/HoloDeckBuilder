@@ -117,6 +117,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
               className="w-full h-full object-cover"
               draggable={false}
               loading="lazy"
+              style={{ pointerEvents: 'none' }}
             />
           ) : (
             <div className="flex flex-col items-center gap-1 p-2 text-center">
