@@ -122,8 +122,6 @@ export const useDeckStore = create<DeckState>()(
           if (!activeDeck) return s;
 
           const entries = activeDeck.mainDeck;
-          if (getCardCount(entries) >= MAIN_DECK_MAX) return s;
-
           const cardLimit = card.limit ?? 4;
           const existing = entries.find((e) => e.card.id === card.id);
           if (existing && existing.count >= cardLimit) return s;
@@ -172,7 +170,6 @@ export const useDeckStore = create<DeckState>()(
           const deck = s.decks.find((d) => d.id === id);
           if (!deck) return s;
           const cheers = deck.cheers ?? {};
-          if (getCheerTotal(cheers) >= CHEER_MAX) return s;
           return {
             decks: s.decks.map((d) =>
               d.id === id
@@ -276,7 +273,10 @@ export const useDeckStore = create<DeckState>()(
         const errors: string[] = [];
         if (!deck.oshi) errors.push('오시 카드가 없습니다.');
         const main = getCardCount(deck.mainDeck);
-        if (main !== MAIN_DECK_MAX) errors.push(`메인 덱: ${main}/${MAIN_DECK_MAX}장`);
+        if (main < MAIN_DECK_MAX) errors.push(`메인 덱: ${main}/${MAIN_DECK_MAX}장`);
+        if (main > MAIN_DECK_MAX) errors.push(`메인 덱 초과: ${main}/${MAIN_DECK_MAX}장`);
+        const cheerTotal = getCheerTotal(deck.cheers ?? {});
+        if (cheerTotal > CHEER_MAX) errors.push(`엘 덱 초과: ${cheerTotal}/${CHEER_MAX}장`);
         return errors;
       },
     }),

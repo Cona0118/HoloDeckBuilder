@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDeckStore } from '../store/deckStore';
 import { COLOR_ACCENT, getAccentColor } from '../utils/cardUtils';
 import type { CardColor, Deck, DeckEntry, HolomemSubtype, SupportSubtype } from '../types/card';
@@ -185,45 +185,48 @@ function DeckSelector() {
 // ──────────────────────────────
 // Cheer deck
 // ──────────────────────────────
-function CheerCard({ color, count, full, onAdd, onRemove }: {
-  color: CardColor; count: number; full: boolean;
+function CheerCard({ color, count, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay }: {
+  color: CardColor; count: number;
   onAdd: () => void; onRemove: () => void;
+  overlayVisible: boolean; onShowOverlay: () => void; onHideOverlay: () => void;
 }) {
-  const holdRef = useRef<{ timeout: ReturnType<typeof setTimeout> | null; interval: ReturnType<typeof setInterval> | null }>({ timeout: null, interval: null });
-
-  function startHold(action: () => void) {
-    action();
-    holdRef.current.timeout = setTimeout(() => {
-      holdRef.current.interval = setInterval(action, 80);
-    }, 450);
-  }
-
-  function stopHold() {
-    if (holdRef.current.timeout) { clearTimeout(holdRef.current.timeout); holdRef.current.timeout = null; }
-    if (holdRef.current.interval) { clearInterval(holdRef.current.interval); holdRef.current.interval = null; }
-  }
-
   return (
-    <div
-      className={`relative cursor-pointer select-none rounded overflow-hidden aspect-2.5/3.5 border transition-opacity ${
-        full && count === 0 ? 'opacity-30' : 'opacity-100'
-      }`}
-      style={{ borderColor: COLOR_ACCENT[color] + '66' }}
-      onMouseDown={(e) => {
-        e.preventDefault();
-        if (e.button === 0) startHold(onAdd);
-        else if (e.button === 2) startHold(onRemove);
-      }}
-      onMouseUp={stopHold}
-      onMouseLeave={stopHold}
-      onContextMenu={(e) => e.preventDefault()}
-    >
-      <img src={CHEER_IMAGE[color]} alt={color} className="w-full h-full object-cover" draggable={false} />
-      {count > 0 && (
-        <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">
-          ×{count}
-        </span>
-      )}
+    <div className="relative group">
+      <div
+        className="relative w-full aspect-2.5/3.5 rounded overflow-hidden border cursor-pointer"
+        style={{ borderColor: COLOR_ACCENT[color] + '66' }}
+        onClick={(e) => {
+          const isTouch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
+          if (isTouch) {
+            e.stopPropagation();
+            onShowOverlay();
+          } else {
+            onAdd();
+          }
+        }}
+        onContextMenu={(e) => { e.preventDefault(); onRemove(); }}
+      >
+        <img src={CHEER_IMAGE[color]} alt={color} className="w-full h-full object-cover" draggable={false} />
+        {count > 0 && (
+          <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">
+            ×{count}
+          </span>
+        )}
+
+        {/* Hover overlay (desktop) / tap overlay (mobile) */}
+        <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+          overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+        }`}>
+          <button
+            onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
+            className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
+          >−</button>
+          <button
+            onClick={(e) => { e.stopPropagation(); onAdd(); onHideOverlay(); }}
+            className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 text-white text-base font-bold flex items-center justify-center"
+          >+</button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -231,12 +234,20 @@ function CheerCard({ color, count, full, onAdd, onRemove }: {
 function CheerSection() {
   const { getActiveDeck, addCheer, removeCheer, clearCheers } = useDeckStore();
   const [open, setOpen] = useState(true);
+  const [activeColor, setActiveColor] = useState<CardColor | null>(null);
   const deck = getActiveDeck();
+
+  useEffect(() => {
+    if (!activeColor) return;
+    const close = () => setActiveColor(null);
+    const timer = setTimeout(() => document.addEventListener('click', close), 0);
+    return () => { clearTimeout(timer); document.removeEventListener('click', close); };
+  }, [activeColor]);
+
   if (!deck) return null;
 
   const cheers = deck.cheers ?? {};
   const total = Object.values(cheers).reduce((s, v) => s + (v ?? 0), 0);
-  const full = total >= CHEER_MAX;
 
   return (
     <div className="border-t border-gray-800">
@@ -274,9 +285,11 @@ function CheerSection() {
               key={color}
               color={color}
               count={cheers[color] ?? 0}
-              full={full}
               onAdd={() => addCheer(color)}
               onRemove={() => removeCheer(color)}
+              overlayVisible={activeColor === color}
+              onShowOverlay={() => setActiveColor(color)}
+              onHideOverlay={() => setActiveColor(null)}
             />
           ))}
         </div>
