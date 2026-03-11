@@ -84,7 +84,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
           <img
             src={card.imageUrl}
             alt={card.name}
-            className="h-[94vh] w-auto max-w-[94vw] rounded-xl shadow-2xl"
+            className="max-h-[94vh] max-w-[94vw] w-auto h-auto rounded-xl shadow-2xl"
             draggable={false}
           />
         </div>

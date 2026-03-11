@@ -70,7 +70,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
           <img
             src={entry.card.imageUrl}
             alt={entry.card.name}
-            className="h-[94vh] w-auto max-w-[94vw] rounded-xl shadow-2xl"
+            className="max-h-[94vh] max-w-[94vw] w-auto h-auto rounded-xl shadow-2xl"
             draggable={false}
           />
         </div>
