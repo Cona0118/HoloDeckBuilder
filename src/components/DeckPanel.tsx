@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDeckStore } from '../store/deckStore';
 import { COLOR_ACCENT, getAccentColor } from '../utils/cardUtils';
 import type { CardColor, Deck, DeckEntry, HolomemSubtype, SupportSubtype } from '../types/card';
@@ -44,60 +44,95 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
   const atLimit = entry.count >= cardLimit;
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const didLongPress = useRef(false);
+
+  function startLongPress() {
+    didLongPress.current = false;
+    longPressTimer.current = setTimeout(() => {
+      didLongPress.current = true;
+      if (entry.card.imageUrl) setPreviewOpen(true);
+    }, 500);
+  }
+
+  function cancelLongPress() {
+    if (longPressTimer.current) { clearTimeout(longPressTimer.current); longPressTimer.current = null; }
+  }
 
   return (
-    <div className="relative group">
-      <div
-        className="relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border cursor-pointer"
-        style={{ borderColor: accent + '66' }}
-        onClick={(e) => {
-          const isTouch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
-          if (isTouch) {
-            e.stopPropagation();
-            onShowOverlay();
-          } else {
-            if (!atLimit) onAdd();
-          }
-        }}
-        onContextMenu={(e) => { e.preventDefault(); onRemove(); }}
-      >
-        {entry.card.imageUrl ? (
+    <>
+      {previewOpen && (
+        <div
+          className="fixed inset-0 z-50 overflow-auto bg-black/80"
+          onClick={() => setPreviewOpen(false)}
+        >
           <img
             src={entry.card.imageUrl}
             alt={entry.card.name}
-            className="w-full h-full object-cover"
+            className="h-[94vh] w-auto max-w-[94vw] rounded-xl shadow-2xl"
             draggable={false}
           />
-        ) : (
-          <div
-            className="w-full h-full flex items-center justify-center p-1"
-            style={{ background: accent + '22' }}
-          >
-            <span className="text-[9px] text-center text-gray-400 leading-tight">{entry.card.name}</span>
+        </div>
+      )}
+      <div className="relative group">
+        <div
+          className="relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border cursor-pointer"
+          style={{ borderColor: accent + '66' }}
+          onPointerDown={startLongPress}
+          onPointerUp={cancelLongPress}
+          onPointerLeave={cancelLongPress}
+          onPointerCancel={cancelLongPress}
+          onClick={(e) => {
+            if (didLongPress.current) { didLongPress.current = false; return; }
+            const isTouch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
+            if (isTouch) {
+              e.stopPropagation();
+              onShowOverlay();
+            } else {
+              if (!atLimit) onAdd();
+            }
+          }}
+          onContextMenu={(e) => { e.preventDefault(); onRemove(); }}
+        >
+          {entry.card.imageUrl ? (
+            <img
+              src={entry.card.imageUrl}
+              alt={entry.card.name}
+              className="w-full h-full object-cover"
+              draggable={false}
+            />
+          ) : (
+            <div
+              className="w-full h-full flex items-center justify-center p-1"
+              style={{ background: accent + '22' }}
+            >
+              <span className="text-[9px] text-center text-gray-400 leading-tight">{entry.card.name}</span>
+            </div>
+          )}
+
+          {/* Count badge */}
+          <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
+            ×{entry.count}
+          </span>
+
+          {/* Hover overlay (desktop) / tap overlay (mobile) */}
+          <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+            overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+          }`}>
+            <button
+              onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
+              className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
+            >−</button>
+            <button
+              onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
+              disabled={atLimit}
+              className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
+            >+</button>
           </div>
-        )}
-
-        {/* Count badge */}
-        <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
-          ×{entry.count}
-        </span>
-
-        {/* Hover overlay (desktop) / tap overlay (mobile) */}
-        <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
-          overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-        }`}>
-          <button
-            onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
-            className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
-          >−</button>
-          <button
-            onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
-            disabled={atLimit}
-            className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
-          >+</button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
