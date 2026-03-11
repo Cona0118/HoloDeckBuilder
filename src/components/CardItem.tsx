@@ -104,7 +104,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
         {/* Image area */}
         <div
           className="relative w-full aspect-2.5/3.5 flex items-center justify-center overflow-hidden bg-gray-900"
-          style={{ minHeight: 50 }}
+          style={{ minHeight: 50, WebkitTouchCallout: 'none' }}
           onPointerDown={startLongPress}
           onPointerUp={cancelLongPress}
           onPointerLeave={cancelLongPress}

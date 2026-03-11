@@ -78,7 +78,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
       <div className="relative group">
         <div
           className="relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border cursor-pointer"
-          style={{ borderColor: accent + '66' }}
+          style={{ borderColor: accent + '66', WebkitTouchCallout: 'none' }}
           onPointerDown={startLongPress}
           onPointerUp={cancelLongPress}
           onPointerLeave={cancelLongPress}
