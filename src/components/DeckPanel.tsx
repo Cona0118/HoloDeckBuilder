@@ -93,7 +93,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
               if (!atLimit) onAdd();
             }
           }}
-          onContextMenu={(e) => { e.preventDefault(); onRemove(); }}
+          onContextMenu={(e) => { e.preventDefault(); if (didLongPress.current) { didLongPress.current = false; return; } onRemove(); }}
         >
           {entry.card.imageUrl ? (
             <img

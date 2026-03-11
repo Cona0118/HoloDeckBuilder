@@ -49,6 +49,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
 
   function handleContextMenu(e: React.MouseEvent) {
     e.preventDefault();
+    if (didLongPress.current) { didLongPress.current = false; return; }
     if (card.type !== "oshi") removeCard(card);
   }
 
