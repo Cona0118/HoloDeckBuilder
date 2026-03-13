@@ -54,6 +54,7 @@ interface DeckState {
   setSelectedCard: (card: Card | null) => void;
 
   reorderMainDeck: (draggedId: string, targetId: string, before: boolean) => void;
+  swapMainDeckEntries: (id1: string, id2: string) => void;
 
   exportDeckText: () => string;
 
@@ -229,6 +230,20 @@ export const useDeckStore = create<DeckState>()(
               d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d
             ),
           };
+        });
+      },
+
+      swapMainDeckEntries: (id1, id2) => {
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          const deck = s.decks.find((d) => d.id === id);
+          if (!deck) return s;
+          const mainDeck = [...deck.mainDeck];
+          const i1 = mainDeck.findIndex((e) => e.card.id === id1);
+          const i2 = mainDeck.findIndex((e) => e.card.id === id2);
+          if (i1 === -1 || i2 === -1) return s;
+          [mainDeck[i1], mainDeck[i2]] = [mainDeck[i2], mainDeck[i1]];
+          return { decks: s.decks.map((d) => d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d) };
         });
       },
 

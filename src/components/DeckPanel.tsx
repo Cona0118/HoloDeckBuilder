@@ -31,33 +31,45 @@ type DragPhase =
 // ──────────────────────────────
 // Image card thumbnail
 // ──────────────────────────────
-function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay, isDragging, dropIndicator, onDragStart, editMode }: {
+function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay, isDragging, dropIndicator, onDragStart, onTap, editMode, isSelected }: {
   entry: DeckEntry; onAdd: () => void; onRemove: () => void;
   overlayVisible: boolean; onShowOverlay: () => void; onHideOverlay: () => void;
   isDragging: boolean;
   dropIndicator: 'before' | 'after' | null;
   onDragStart: (imageUrl: string | undefined, x: number, y: number, w: number, h: number) => void;
+  onTap: () => void;
   editMode: boolean;
+  isSelected: boolean;
 }) {
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
   const atLimit = entry.count >= cardLimit;
   const isTouch = useRef(false);
-  const didDrag = useRef(false);
+  const startPos = useRef<{ x: number; y: number } | null>(null);
+  const wasDrag = useRef(false);
 
   function handlePointerDown(e: React.PointerEvent) {
     isTouch.current = e.pointerType === 'touch';
-    didDrag.current = false;
+    startPos.current = { x: e.clientX, y: e.clientY };
+    wasDrag.current = false;
     if (!editMode) return;
     e.preventDefault();
     const el = e.currentTarget as HTMLElement;
     el.setPointerCapture(e.pointerId);
     const rect = el.getBoundingClientRect();
-    didDrag.current = true;
     onDragStart(entry.card.imageUrl, e.clientX, e.clientY, rect.width, rect.height);
   }
 
-  const boxShadow = dropIndicator === 'before'
+  function handlePointerMove(e: React.PointerEvent) {
+    if (!startPos.current) return;
+    const dx = e.clientX - startPos.current.x;
+    const dy = e.clientY - startPos.current.y;
+    if (Math.sqrt(dx * dx + dy * dy) > 8) wasDrag.current = true;
+  }
+
+  const boxShadow = isSelected
+    ? '0 0 0 2px #22c55e'
+    : dropIndicator === 'before'
     ? '-3px 0 0 0 #6366f1'
     : dropIndicator === 'after'
     ? '3px 0 0 0 #6366f1'
@@ -66,16 +78,21 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   return (
     <div className="relative group" data-deck-card-id={entry.card.id}>
       <div
-        className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? 'cursor-grab active:cursor-grabbing' : 'cursor-pointer'}`}
+        className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? 'cursor-pointer' : 'cursor-pointer'}`}
         style={{
-          borderColor: editMode ? '#6366f1aa' : accent + '66',
+          borderColor: isSelected ? '#22c55e' : editMode ? '#6366f1aa' : accent + '66',
           WebkitTouchCallout: 'none',
           opacity: isDragging ? 0.3 : 1,
           boxShadow,
         }}
         onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
         onClick={(e) => {
-          if (editMode) return;
+          if (editMode) {
+            if (wasDrag.current) return;
+            onTap();
+            return;
+          }
           const touch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
           if (touch) {
             e.stopPropagation();
@@ -113,11 +130,11 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
           ×{entry.count}
         </span>
 
-        {/* Edit mode indicator */}
-        {editMode && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <svg className="w-5 h-5 text-indigo-300 opacity-70 drop-shadow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        {/* Selected indicator in edit mode */}
+        {isSelected && (
+          <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
+            <svg className="w-6 h-6 text-green-400 drop-shadow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
             </svg>
           </div>
         )}
@@ -625,10 +642,11 @@ function ExportPanel() {
 // Main
 // ──────────────────────────────
 export default function DeckPanel() {
-  const { getActiveDeck, addCard, removeCard, getDeckErrors, reorderMainDeck } = useDeckStore();
+  const { getActiveDeck, addCard, removeCard, getDeckErrors, reorderMainDeck, swapMainDeckEntries } = useDeckStore();
   const deck = getActiveDeck();
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
+  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
   // Drag state
   const dragRef = useRef<DragPhase>({ phase: 'idle' });
@@ -849,7 +867,7 @@ export default function DeckPanel() {
         {deck.mainDeck.length > 0 && (
           <div className="flex justify-end px-3 pb-1.5">
             <button
-              onClick={() => setEditMode((v) => !v)}
+              onClick={() => { setEditMode((v) => !v); setSelectedCardId(null); }}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all ${
                 editMode
                   ? 'bg-indigo-700 border-indigo-500 text-white'
@@ -888,6 +906,17 @@ export default function DeckPanel() {
                       isDragging={dragRender.phase !== 'idle' && dragRender.cardId === entry.card.id}
                       dropIndicator={dropTarget?.cardId === entry.card.id ? (dropTarget.before ? 'before' : 'after') : null}
                       editMode={editMode}
+                      isSelected={selectedCardId === entry.card.id}
+                      onTap={() => {
+                        if (selectedCardId === null) {
+                          setSelectedCardId(entry.card.id);
+                        } else if (selectedCardId === entry.card.id) {
+                          setSelectedCardId(null);
+                        } else {
+                          swapMainDeckEntries(selectedCardId, entry.card.id);
+                          setSelectedCardId(null);
+                        }
+                      }}
                       onDragStart={(imageUrl, x, y, w, h) => {
                         const next: DragPhase = { phase: 'potential', cardId: entry.card.id, imageUrl, x, y, w, h };
                         dragRef.current = next;
