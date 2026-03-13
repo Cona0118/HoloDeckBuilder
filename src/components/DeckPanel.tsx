@@ -31,52 +31,30 @@ type DragPhase =
 // ──────────────────────────────
 // Image card thumbnail
 // ──────────────────────────────
-function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay, isDragging, dropIndicator, onLongPress }: {
+function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay, isDragging, dropIndicator, onDragStart, editMode }: {
   entry: DeckEntry; onAdd: () => void; onRemove: () => void;
   overlayVisible: boolean; onShowOverlay: () => void; onHideOverlay: () => void;
   isDragging: boolean;
   dropIndicator: 'before' | 'after' | null;
-  onLongPress: (imageUrl: string | undefined, x: number, y: number, w: number, h: number) => void;
+  onDragStart: (imageUrl: string | undefined, x: number, y: number, w: number, h: number) => void;
+  editMode: boolean;
 }) {
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
   const atLimit = entry.count >= cardLimit;
   const isTouch = useRef(false);
-  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const didLongPress = useRef(false);
-  const startPos = useRef<{ x: number; y: number } | null>(null);
+  const didDrag = useRef(false);
 
   function handlePointerDown(e: React.PointerEvent) {
     isTouch.current = e.pointerType === 'touch';
-    const startX = e.clientX;
-    const startY = e.clientY;
-    startPos.current = { x: startX, y: startY };
-    didLongPress.current = false;
+    didDrag.current = false;
+    if (!editMode) return;
+    e.preventDefault();
     const el = e.currentTarget as HTMLElement;
     el.setPointerCapture(e.pointerId);
     const rect = el.getBoundingClientRect();
-    longPressTimer.current = setTimeout(() => {
-      didLongPress.current = true;
-      onLongPress(entry.card.imageUrl, startX, startY, rect.width, rect.height);
-    }, 300);
-  }
-
-  function handlePointerMove(e: React.PointerEvent) {
-    if (startPos.current && longPressTimer.current) {
-      const dx = e.clientX - startPos.current.x;
-      const dy = e.clientY - startPos.current.y;
-      if (Math.sqrt(dx * dx + dy * dy) > 8) {
-        clearTimeout(longPressTimer.current);
-        longPressTimer.current = null;
-      }
-    }
-  }
-
-  function cancelLongPress() {
-    if (longPressTimer.current) {
-      clearTimeout(longPressTimer.current);
-      longPressTimer.current = null;
-    }
+    didDrag.current = true;
+    onDragStart(entry.card.imageUrl, e.clientX, e.clientY, rect.width, rect.height);
   }
 
   const boxShadow = dropIndicator === 'before'
@@ -88,19 +66,16 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   return (
     <div className="relative group" data-deck-card-id={entry.card.id}>
       <div
-        className="relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border cursor-pointer"
+        className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? 'cursor-grab active:cursor-grabbing' : 'cursor-pointer'}`}
         style={{
-          borderColor: accent + '66',
+          borderColor: editMode ? '#6366f1aa' : accent + '66',
           WebkitTouchCallout: 'none',
           opacity: isDragging ? 0.3 : 1,
           boxShadow,
         }}
         onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={cancelLongPress}
-        onPointerCancel={cancelLongPress}
         onClick={(e) => {
-          if (didLongPress.current) { didLongPress.current = false; return; }
+          if (editMode) return;
           const touch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
           if (touch) {
             e.stopPropagation();
@@ -109,7 +84,12 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
             if (!atLimit) onAdd();
           }
         }}
-        onContextMenu={(e) => { e.preventDefault(); if (isTouch.current) return; if (didLongPress.current) { didLongPress.current = false; return; } onRemove(); }}
+        onContextMenu={(e) => {
+          e.preventDefault();
+          if (editMode) return;
+          if (isTouch.current) return;
+          onRemove();
+        }}
       >
         {entry.card.imageUrl ? (
           <img
@@ -133,20 +113,31 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
           ×{entry.count}
         </span>
 
-        {/* Hover overlay (desktop) / tap overlay (mobile) */}
-        <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
-          overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-        }`}>
-          <button
-            onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
-            className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
-          >−</button>
-          <button
-            onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
-            disabled={atLimit}
-            className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
-          >+</button>
-        </div>
+        {/* Edit mode indicator */}
+        {editMode && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg className="w-5 h-5 text-indigo-300 opacity-70 drop-shadow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </div>
+        )}
+
+        {/* Hover overlay (desktop) / tap overlay (mobile) — hidden in edit mode */}
+        {!editMode && (
+          <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+            overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+          }`}>
+            <button
+              onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
+              className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
+            >−</button>
+            <button
+              onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
+              disabled={atLimit}
+              className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
+            >+</button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -637,6 +628,7 @@ export default function DeckPanel() {
   const { getActiveDeck, addCard, removeCard, getDeckErrors, reorderMainDeck } = useDeckStore();
   const deck = getActiveDeck();
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const [editMode, setEditMode] = useState(false);
 
   // Drag state
   const dragRef = useRef<DragPhase>({ phase: 'idle' });
@@ -853,6 +845,25 @@ export default function DeckPanel() {
 
       {/* Card image grid */}
       <div className="flex-1 overflow-y-auto py-2">
+        {/* Edit mode toggle */}
+        {deck.mainDeck.length > 0 && (
+          <div className="flex justify-end px-3 pb-1.5">
+            <button
+              onClick={() => setEditMode((v) => !v)}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all ${
+                editMode
+                  ? 'bg-indigo-700 border-indigo-500 text-white'
+                  : 'bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500'
+              }`}
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              {editMode ? '편집 완료' : '순서 편집'}
+            </button>
+          </div>
+        )}
+
         {deck.mainDeck.length === 0 ? (
           <div className="flex items-center justify-center h-20 text-xs text-gray-600">
             카드를 추가하세요
@@ -876,7 +887,8 @@ export default function DeckPanel() {
                       onHideOverlay={() => setActiveCardId(null)}
                       isDragging={dragRender.phase !== 'idle' && dragRender.cardId === entry.card.id}
                       dropIndicator={dropTarget?.cardId === entry.card.id ? (dropTarget.before ? 'before' : 'after') : null}
-                      onLongPress={(imageUrl, x, y, w, h) => {
+                      editMode={editMode}
+                      onDragStart={(imageUrl, x, y, w, h) => {
                         const next: DragPhase = { phase: 'potential', cardId: entry.card.id, imageUrl, x, y, w, h };
                         dragRef.current = next;
                         setDragRender({ ...next });
