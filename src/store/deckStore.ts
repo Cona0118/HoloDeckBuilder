@@ -53,6 +53,8 @@ interface DeckState {
 
   setSelectedCard: (card: Card | null) => void;
 
+  reorderMainDeck: (draggedId: string, targetId: string, before: boolean) => void;
+
   exportDeckText: () => string;
 
   getActiveDeck: () => Deck | null;
@@ -205,6 +207,26 @@ export const useDeckStore = create<DeckState>()(
           return {
             decks: s.decks.map((d) =>
               d.id === id ? { ...d, oshi: null, mainDeck: [], cheers: {}, updatedAt: Date.now() } : d
+            ),
+          };
+        });
+      },
+
+      reorderMainDeck: (draggedId, targetId, before) => {
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          const deck = s.decks.find((d) => d.id === id);
+          if (!deck) return s;
+          const mainDeck = [...deck.mainDeck];
+          const fromIdx = mainDeck.findIndex((e) => e.card.id === draggedId);
+          const toIdx = mainDeck.findIndex((e) => e.card.id === targetId);
+          if (fromIdx === -1 || toIdx === -1 || fromIdx === toIdx) return s;
+          const [moved] = mainDeck.splice(fromIdx, 1);
+          const adjustedToIdx = fromIdx < toIdx ? toIdx - 1 : toIdx;
+          mainDeck.splice(before ? adjustedToIdx : adjustedToIdx + 1, 0, moved);
+          return {
+            decks: s.decks.map((d) =>
+              d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d
             ),
           };
         });

@@ -1,24 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDeckStore } from '../store/deckStore';
 import { COLOR_ACCENT, getAccentColor } from '../utils/cardUtils';
-import type { CardColor, Deck, DeckEntry, HolomemSubtype, SupportSubtype } from '../types/card';
+import type { CardColor, Deck, DeckEntry, HolomemSubtype } from '../types/card';
 import { CARDS } from '../data/cards';
 
 const CHEER_MAX = 20;
-
-const HOLOMEM_SUBTYPE_ORDER: Record<HolomemSubtype, number> = {
-  debut: 0, '1st': 1, '2nd': 2, spot: 3,
-};
-
-const SUPPORT_SUBTYPE_ORDER: Record<SupportSubtype, number> = {
-  staff: 0, item: 1, event: 2, tool: 3, mascot: 4, fan: 5, '': 99,
-};
-
-function sortHolomemEntries(a: DeckEntry, b: DeckEntry): number {
-  const ao = HOLOMEM_SUBTYPE_ORDER[a.card.holomemSubtype as HolomemSubtype] ?? 99;
-  const bo = HOLOMEM_SUBTYPE_ORDER[b.card.holomemSubtype as HolomemSubtype] ?? 99;
-  return ao !== bo ? ao - bo : a.card.cardNumber.localeCompare(b.card.cardNumber);
-}
 
 /** 저장된 카드 객체가 구버전일 수 있으므로 CARDS에서 최신 limit를 조회 */
 function getLiveLimit(cardId: string, fallbackLimit?: number): number {
@@ -35,107 +21,134 @@ const CHEER_IMAGE: Record<CardColor, string> = {
 };
 
 // ──────────────────────────────
+// Drag types
+// ──────────────────────────────
+type DragPhase =
+  | { phase: 'idle' }
+  | { phase: 'potential'; cardId: string; imageUrl?: string; x: number; y: number; w: number; h: number }
+  | { phase: 'dragging'; cardId: string; imageUrl?: string; x: number; y: number; w: number; h: number };
+
+// ──────────────────────────────
 // Image card thumbnail
 // ──────────────────────────────
-function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay }: {
+function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay, isDragging, dropIndicator, onLongPress }: {
   entry: DeckEntry; onAdd: () => void; onRemove: () => void;
   overlayVisible: boolean; onShowOverlay: () => void; onHideOverlay: () => void;
+  isDragging: boolean;
+  dropIndicator: 'before' | 'after' | null;
+  onLongPress: (imageUrl: string | undefined, x: number, y: number, w: number, h: number) => void;
 }) {
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
   const atLimit = entry.count >= cardLimit;
-  const [previewOpen, setPreviewOpen] = useState(false);
+  const isTouch = useRef(false);
   const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
-  const isTouch = useRef(false);
+  const startPos = useRef<{ x: number; y: number } | null>(null);
 
-  function startLongPress(e: React.PointerEvent) {
+  function handlePointerDown(e: React.PointerEvent) {
     isTouch.current = e.pointerType === 'touch';
+    const startX = e.clientX;
+    const startY = e.clientY;
+    startPos.current = { x: startX, y: startY };
     didLongPress.current = false;
+    const el = e.currentTarget as HTMLElement;
+    el.setPointerCapture(e.pointerId);
+    const rect = el.getBoundingClientRect();
     longPressTimer.current = setTimeout(() => {
       didLongPress.current = true;
-      if (entry.card.imageUrl) setPreviewOpen(true);
-    }, 500);
+      onLongPress(entry.card.imageUrl, startX, startY, rect.width, rect.height);
+    }, 300);
+  }
+
+  function handlePointerMove(e: React.PointerEvent) {
+    if (startPos.current && longPressTimer.current) {
+      const dx = e.clientX - startPos.current.x;
+      const dy = e.clientY - startPos.current.y;
+      if (Math.sqrt(dx * dx + dy * dy) > 8) {
+        clearTimeout(longPressTimer.current);
+        longPressTimer.current = null;
+      }
+    }
   }
 
   function cancelLongPress() {
-    if (longPressTimer.current) { clearTimeout(longPressTimer.current); longPressTimer.current = null; }
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
   }
 
+  const boxShadow = dropIndicator === 'before'
+    ? '-3px 0 0 0 #6366f1'
+    : dropIndicator === 'after'
+    ? '3px 0 0 0 #6366f1'
+    : undefined;
+
   return (
-    <>
-      {previewOpen && (
-        <div
-          className="fixed inset-0 z-50 overflow-auto bg-black/80"
-          onClick={() => setPreviewOpen(false)}
-        >
+    <div className="relative group" data-deck-card-id={entry.card.id}>
+      <div
+        className="relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border cursor-pointer"
+        style={{
+          borderColor: accent + '66',
+          WebkitTouchCallout: 'none',
+          opacity: isDragging ? 0.3 : 1,
+          boxShadow,
+        }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={cancelLongPress}
+        onPointerCancel={cancelLongPress}
+        onClick={(e) => {
+          if (didLongPress.current) { didLongPress.current = false; return; }
+          const touch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
+          if (touch) {
+            e.stopPropagation();
+            onShowOverlay();
+          } else {
+            if (!atLimit) onAdd();
+          }
+        }}
+        onContextMenu={(e) => { e.preventDefault(); if (isTouch.current) return; if (didLongPress.current) { didLongPress.current = false; return; } onRemove(); }}
+      >
+        {entry.card.imageUrl ? (
           <img
             src={entry.card.imageUrl}
             alt={entry.card.name}
-            className="max-h-[94vh] max-w-[94vw] w-auto h-auto rounded-xl shadow-2xl"
+            className="w-full h-full object-cover"
             draggable={false}
+            style={{ pointerEvents: 'none' }}
           />
-        </div>
-      )}
-      <div className="relative group">
-        <div
-          className="relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border cursor-pointer"
-          style={{ borderColor: accent + '66', WebkitTouchCallout: 'none' }}
-          onPointerDown={startLongPress}
-          onPointerUp={cancelLongPress}
-          onPointerLeave={cancelLongPress}
-          onPointerCancel={cancelLongPress}
-          onClick={(e) => {
-            if (didLongPress.current) { didLongPress.current = false; return; }
-            const isTouch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
-            if (isTouch) {
-              e.stopPropagation();
-              onShowOverlay();
-            } else {
-              if (!atLimit) onAdd();
-            }
-          }}
-          onContextMenu={(e) => { e.preventDefault(); if (isTouch.current) return; if (didLongPress.current) { didLongPress.current = false; return; } onRemove(); }}
-        >
-          {entry.card.imageUrl ? (
-            <img
-              src={entry.card.imageUrl}
-              alt={entry.card.name}
-              className="w-full h-full object-cover"
-              draggable={false}
-              style={{ pointerEvents: 'none' }}
-            />
-          ) : (
-            <div
-              className="w-full h-full flex items-center justify-center p-1"
-              style={{ background: accent + '22' }}
-            >
-              <span className="text-[9px] text-center text-gray-400 leading-tight">{entry.card.name}</span>
-            </div>
-          )}
-
-          {/* Count badge */}
-          <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
-            ×{entry.count}
-          </span>
-
-          {/* Hover overlay (desktop) / tap overlay (mobile) */}
-          <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
-            overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-          }`}>
-            <button
-              onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
-              className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
-            >−</button>
-            <button
-              onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
-              disabled={atLimit}
-              className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
-            >+</button>
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center p-1"
+            style={{ background: accent + '22' }}
+          >
+            <span className="text-[9px] text-center text-gray-400 leading-tight">{entry.card.name}</span>
           </div>
+        )}
+
+        {/* Count badge */}
+        <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
+          ×{entry.count}
+        </span>
+
+        {/* Hover overlay (desktop) / tap overlay (mobile) */}
+        <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+          overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+        }`}>
+          <button
+            onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
+            className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
+          >−</button>
+          <button
+            onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
+            disabled={atLimit}
+            className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
+          >+</button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -363,13 +376,9 @@ function rrect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h
 }
 
 async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'expanded') {
-  // Sorted deck entries
-  const holomem = deck.mainDeck.filter(e => e.card.type === 'holomem').sort(sortHolomemEntries);
-  const support = deck.mainDeck.filter(e => e.card.type === 'support').sort((a, b) => {
-    const ao = SUPPORT_SUBTYPE_ORDER[a.card.supportSubtype as SupportSubtype] ?? 99;
-    const bo = SUPPORT_SUBTYPE_ORDER[b.card.supportSubtype as SupportSubtype] ?? 99;
-    return ao !== bo ? ao - bo : a.card.cardNumber.localeCompare(b.card.cardNumber);
-  });
+  // Use user's custom order (no sort)
+  const holomem = deck.mainDeck.filter(e => e.card.type === 'holomem');
+  const support = deck.mainDeck.filter(e => e.card.type === 'support');
   const cheers = deck.cheers ?? {};
 
   // Preload all images
@@ -511,7 +520,7 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     const OSHI_W = 2 * CARD_W + CARD_GAP;
     const OSHI_H = 2 * CARD_H + CARD_GAP;
 
-    // Unique deck cards
+    // Unique deck cards in user order
     const unique: { imageUrl?: string; name: string; accent: string; count: number }[] = [];
     [...holomem, ...support].forEach(({ card, count }) => {
       unique.push({ imageUrl: card.imageUrl, name: card.name, accent: getAccentColor(card), count });
@@ -625,9 +634,98 @@ function ExportPanel() {
 // Main
 // ──────────────────────────────
 export default function DeckPanel() {
-  const { getActiveDeck, addCard, removeCard, getDeckErrors } = useDeckStore();
+  const { getActiveDeck, addCard, removeCard, getDeckErrors, reorderMainDeck } = useDeckStore();
   const deck = getActiveDeck();
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+  // Drag state
+  const dragRef = useRef<DragPhase>({ phase: 'idle' });
+  const [dragRender, setDragRender] = useState<DragPhase>({ phase: 'idle' });
+  const [dropTarget, setDropTarget] = useState<{ cardId: string; before: boolean } | null>(null);
+
+  // Stable refs for listeners
+  const dropTargetRef = useRef(dropTarget);
+  useEffect(() => { dropTargetRef.current = dropTarget; }, [dropTarget]);
+  const deckRef = useRef(deck);
+  useEffect(() => { deckRef.current = deck; }, [deck]);
+
+  const isDragActive = dragRender.phase !== 'idle';
+
+  // Document-level drag listeners
+  useEffect(() => {
+    if (!isDragActive) return;
+
+    function onMove(e: PointerEvent) {
+      e.preventDefault();
+      const d = dragRef.current;
+      if (d.phase === 'idle') return;
+      const newX = e.clientX;
+      const newY = e.clientY;
+
+      if (d.phase === 'potential') {
+        const dx = newX - d.x;
+        const dy = newY - d.y;
+        if (Math.sqrt(dx * dx + dy * dy) > 8) {
+          const next: DragPhase = { phase: 'dragging', cardId: d.cardId, imageUrl: d.imageUrl, x: newX, y: newY, w: d.w, h: d.h };
+          dragRef.current = next;
+          setDragRender({ ...next });
+          setActiveCardId(null);
+        } else {
+          dragRef.current = { ...d, x: newX, y: newY };
+        }
+        return;
+      }
+
+      // phase === 'dragging'
+      dragRef.current = { ...d, x: newX, y: newY };
+      setDragRender({ ...dragRef.current });
+
+      // Find drop target (ghost has pointer-events:none so elementFromPoint works through it)
+      const el = document.elementFromPoint(newX, newY);
+      const cardEl = el?.closest('[data-deck-card-id]') as HTMLElement | null;
+      const targetId = cardEl?.dataset.deckCardId;
+
+      if (targetId && targetId !== d.cardId) {
+        // Only allow drop within same card type section
+        const currentDeck = deckRef.current;
+        const draggedEntry = currentDeck?.mainDeck.find(e => e.card.id === d.cardId);
+        const targetEntry = currentDeck?.mainDeck.find(e => e.card.id === targetId);
+        if (draggedEntry && targetEntry && draggedEntry.card.type === targetEntry.card.type) {
+          const rect = cardEl!.getBoundingClientRect();
+          const before = newX < rect.left + rect.width / 2;
+          setDropTarget(prev =>
+            prev?.cardId === targetId && prev?.before === before ? prev : { cardId: targetId, before }
+          );
+        } else {
+          setDropTarget(prev => prev ? null : prev);
+        }
+      } else {
+        setDropTarget(prev => prev ? null : prev);
+      }
+    }
+
+    function onUp() {
+      const d = dragRef.current;
+      const dt = dropTargetRef.current;
+
+      if (d.phase === 'dragging') {
+        if (dt) reorderMainDeck(d.cardId, dt.cardId, dt.before);
+      }
+
+      dragRef.current = { phase: 'idle' };
+      setDragRender({ phase: 'idle' });
+      setDropTarget(null);
+    }
+
+    document.addEventListener('pointermove', onMove, { passive: false });
+    document.addEventListener('pointerup', onUp);
+    document.addEventListener('pointercancel', onUp);
+    return () => {
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerup', onUp);
+      document.removeEventListener('pointercancel', onUp);
+    };
+  }, [isDragActive, reorderMainDeck]);
 
   // 외부 클릭 시 오버레이 닫기
   useEffect(() => {
@@ -648,16 +746,10 @@ export default function DeckPanel() {
     if (card.holomemSubtype) holomemSubtypeCounts[card.holomemSubtype] = (holomemSubtypeCounts[card.holomemSubtype] ?? 0) + count;
   });
   const limitedCount = deck.mainDeck.filter(e => e.card.type === 'support' && e.card.limited).reduce((s, e) => s + e.count, 0);
-  const holomemEntries = deck.mainDeck
-    .filter((e) => e.card.type === 'holomem')
-    .sort(sortHolomemEntries);
-  const supportEntries = deck.mainDeck
-    .filter((e) => e.card.type === 'support')
-    .sort((a, b) => {
-      const ao = SUPPORT_SUBTYPE_ORDER[a.card.supportSubtype as SupportSubtype] ?? 99;
-      const bo = SUPPORT_SUBTYPE_ORDER[b.card.supportSubtype as SupportSubtype] ?? 99;
-      return ao !== bo ? ao - bo : a.card.cardNumber.localeCompare(b.card.cardNumber);
-    });
+
+  // Use mainDeck array order (user's custom order, no sort)
+  const holomemEntries = deck.mainDeck.filter((e) => e.card.type === 'holomem');
+  const supportEntries = deck.mainDeck.filter((e) => e.card.type === 'support');
 
   const sections = [
     { label: '홀로멤', entries: holomemEntries },
@@ -782,6 +874,13 @@ export default function DeckPanel() {
                       overlayVisible={activeCardId === entry.card.id}
                       onShowOverlay={() => setActiveCardId(entry.card.id)}
                       onHideOverlay={() => setActiveCardId(null)}
+                      isDragging={dragRender.phase !== 'idle' && dragRender.cardId === entry.card.id}
+                      dropIndicator={dropTarget?.cardId === entry.card.id ? (dropTarget.before ? 'before' : 'after') : null}
+                      onLongPress={(imageUrl, x, y, w, h) => {
+                        const next: DragPhase = { phase: 'potential', cardId: entry.card.id, imageUrl, x, y, w, h };
+                        dragRef.current = next;
+                        setDragRender({ ...next });
+                      }}
                     />
                   ))}
                 </div>
@@ -793,6 +892,30 @@ export default function DeckPanel() {
 
       <CheerSection />
       <ExportPanel />
+
+      {/* Drag ghost */}
+      {dragRender.phase === 'dragging' && (
+        <div
+          className="fixed z-50 pointer-events-none rounded overflow-hidden shadow-2xl border-2 border-indigo-400"
+          style={{
+            width: dragRender.w,
+            height: dragRender.h,
+            left: dragRender.x - dragRender.w / 2,
+            top: dragRender.y - dragRender.h / 2,
+            opacity: 0.85,
+            transform: 'rotate(3deg) scale(1.06)',
+          }}
+        >
+          {dragRender.imageUrl ? (
+            <img src={dragRender.imageUrl} className="w-full h-full object-cover" draggable={false} style={{ pointerEvents: 'none' }} />
+          ) : (
+            <div className="w-full h-full bg-gray-700" />
+          )}
+        </div>
+      )}
+
+
     </div>
   );
 }
+
