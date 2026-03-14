@@ -9736,7 +9736,7 @@ export const CARDS: Card[] = [
     color: ["blue"],
     holomemSubtype: "debut",
     imageUrl: "/images/hSD03/hSD03-002_C.png",
-    limit: 4,
+    limit: 50,
   },
   {
     id: "hSD03-003",

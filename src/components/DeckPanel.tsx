@@ -865,7 +865,7 @@ export default function DeckPanel() {
       <div className="flex-1 overflow-y-auto py-2">
         {/* Edit mode toggle */}
         {deck.mainDeck.length > 0 && (
-          <div className="flex justify-end px-3 pb-1.5">
+          <div className="flex justify-end gap-2 px-3 pb-1.5">
             <button
               onClick={() => { setEditMode((v) => !v); setSelectedCardId(null); }}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all ${

@@ -250,7 +250,7 @@ export const useDeckStore = create<DeckState>()(
 
       sortMainDeckDefault: () => {
         const subtypeOrder: Record<string, number> = { debut: 0, '1st': 1, '2nd': 2, spot: 3 };
-        const supportOrder: Record<string, number> = { event: 0, limited: 1, fan: 2, mascot: 3, tool: 4, item: 5, staff: 6, '': 7 };
+        const supportOrder: Record<string, number> = { staff: 0, item: 1, event: 2, tool: 3, mascot: 4, fan: 5, '': 6 };
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const deck = s.decks.find((d) => d.id === id);
@@ -267,7 +267,7 @@ export const useDeckStore = create<DeckState>()(
               const sb = supportOrder[b.card.supportSubtype ?? ''] ?? 9;
               if (sa !== sb) return sa - sb;
             }
-            return a.card.name.localeCompare(b.card.name, 'ko');
+            return a.card.cardNumber.localeCompare(b.card.cardNumber);
           });
           return { decks: s.decks.map((d) => d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d) };
         });
