@@ -55,6 +55,7 @@ interface DeckState {
 
   reorderMainDeck: (draggedId: string, targetId: string, before: boolean) => void;
   swapMainDeckEntries: (id1: string, id2: string) => void;
+  sortMainDeckDefault: () => void;
 
   exportDeckText: () => string;
 
@@ -243,6 +244,31 @@ export const useDeckStore = create<DeckState>()(
           const i2 = mainDeck.findIndex((e) => e.card.id === id2);
           if (i1 === -1 || i2 === -1) return s;
           [mainDeck[i1], mainDeck[i2]] = [mainDeck[i2], mainDeck[i1]];
+          return { decks: s.decks.map((d) => d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d) };
+        });
+      },
+
+      sortMainDeckDefault: () => {
+        const subtypeOrder: Record<string, number> = { debut: 0, '1st': 1, '2nd': 2, spot: 3 };
+        const supportOrder: Record<string, number> = { event: 0, limited: 1, fan: 2, mascot: 3, tool: 4, item: 5, staff: 6, '': 7 };
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          const deck = s.decks.find((d) => d.id === id);
+          if (!deck) return s;
+          const mainDeck = [...deck.mainDeck].sort((a, b) => {
+            const typeOrd = (t: string) => t === 'holomem' ? 0 : 1;
+            if (typeOrd(a.card.type) !== typeOrd(b.card.type)) return typeOrd(a.card.type) - typeOrd(b.card.type);
+            if (a.card.type === 'holomem') {
+              const sa = subtypeOrder[a.card.holomemSubtype ?? ''] ?? 9;
+              const sb = subtypeOrder[b.card.holomemSubtype ?? ''] ?? 9;
+              if (sa !== sb) return sa - sb;
+            } else {
+              const sa = supportOrder[a.card.supportSubtype ?? ''] ?? 9;
+              const sb = supportOrder[b.card.supportSubtype ?? ''] ?? 9;
+              if (sa !== sb) return sa - sb;
+            }
+            return a.card.name.localeCompare(b.card.name, 'ko');
+          });
           return { decks: s.decks.map((d) => d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d) };
         });
       },

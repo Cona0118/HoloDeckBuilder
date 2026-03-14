@@ -642,7 +642,7 @@ function ExportPanel() {
 // Main
 // ──────────────────────────────
 export default function DeckPanel() {
-  const { getActiveDeck, addCard, removeCard, getDeckErrors, reorderMainDeck, swapMainDeckEntries } = useDeckStore();
+  const { getActiveDeck, addCard, removeCard, getDeckErrors, reorderMainDeck, swapMainDeckEntries, sortMainDeckDefault } = useDeckStore();
   const deck = getActiveDeck();
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
@@ -879,6 +879,17 @@ export default function DeckPanel() {
               </svg>
               {editMode ? '편집 완료' : '순서 편집'}
             </button>
+            {editMode && (
+              <button
+                onClick={() => { sortMainDeckDefault(); setSelectedCardId(null); }}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h5m4 0l4-4m0 0l4 4m-4-4v12" />
+                </svg>
+                기본 정렬
+              </button>
+            )}
           </div>
         )}
 
@@ -913,7 +924,10 @@ export default function DeckPanel() {
                         } else if (selectedCardId === entry.card.id) {
                           setSelectedCardId(null);
                         } else {
-                          swapMainDeckEntries(selectedCardId, entry.card.id);
+                          const selectedEntry = deck?.mainDeck.find((e) => e.card.id === selectedCardId);
+                          if (selectedEntry && selectedEntry.card.type === entry.card.type) {
+                            swapMainDeckEntries(selectedCardId, entry.card.id);
+                          }
                           setSelectedCardId(null);
                         }
                       }}
