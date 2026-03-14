@@ -196,6 +196,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBD24-020",
     setId: "hBD24",
     name: "후와와 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "oshi",
     color: ["blue"],
     imageUrl: "/images/PR/hBD24-020_P.png",
@@ -206,6 +207,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBD24-021",
     setId: "hBD24",
     name: "모코코 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "oshi",
     color: ["red"],
     imageUrl: "/images/PR/hBD24-021_P.png",
@@ -3333,7 +3335,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-004",
     setId: "hBP03",
     name: "FUWAMOCO",
-    keywords: ["후와모코"],
+    keywords: ["후와모코", "kawaii"],
     type: "oshi",
     color: ["blue"],
     imageUrl: "/images/hBP03/hBP03-004_OSR.png",
@@ -3719,6 +3721,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-037",
     setId: "hBP03",
     name: "모코코 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["red"],
     holomemSubtype: "debut",
@@ -3731,6 +3734,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-038",
     setId: "hBP03",
     name: "모코코 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
@@ -3743,6 +3747,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-039",
     setId: "hBP03",
     name: "모코코 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
@@ -3755,6 +3760,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-040",
     setId: "hBP03",
     name: "후와와 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "debut",
@@ -3767,6 +3773,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-041",
     setId: "hBP03",
     name: "후와와 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
@@ -3779,6 +3786,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-042",
     setId: "hBP03",
     name: "후와와 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
@@ -3791,6 +3799,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-043",
     setId: "hBP03",
     name: "후와와 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "2nd",
@@ -3871,7 +3880,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP03-050",
     setId: "hBP03",
     name: "FUWAMOCO",
-    keywords: ["후와모코", "후와와 어비스가드", "모코코 어비스가드"],
+    keywords: ["후와모코", "후와와 어비스가드", "모코코 어비스가드", "kawaii"],
     tags: ["#EN", "#Advent", "#동물귀"],
     type: "holomem",
     color: ["blue", "red"],
@@ -6238,6 +6247,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP05-038",
     setId: "hBP05",
     name: "모코코 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["red"],
     holomemSubtype: "1st",
@@ -6382,6 +6392,7 @@ export const CARDS: Card[] = [
     cardNumber: "hBP05-050",
     setId: "hBP05",
     name: "후와와 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "1st",
@@ -11051,6 +11062,7 @@ export const CARDS: Card[] = [
     cardNumber: "hSD12-013",
     setId: "hSD12",
     name: "모코코 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["red"],
     holomemSubtype: "debut",
@@ -11063,6 +11075,7 @@ export const CARDS: Card[] = [
     cardNumber: "hSD12-014",
     setId: "hSD12",
     name: "후와와 어비스가드",
+    keywords: ["kawaii"], // easteregg
     type: "holomem",
     color: ["blue"],
     holomemSubtype: "debut",

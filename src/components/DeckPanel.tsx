@@ -47,24 +47,47 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   const isTouch = useRef(false);
   const startPos = useRef<{ x: number; y: number } | null>(null);
   const wasDrag = useRef(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const didLongPress = useRef(false);
+
+  function cancelLongPress() {
+    if (longPressTimer.current) { clearTimeout(longPressTimer.current); longPressTimer.current = null; }
+  }
 
   function handlePointerDown(e: React.PointerEvent) {
     isTouch.current = e.pointerType === 'touch';
     startPos.current = { x: e.clientX, y: e.clientY };
     wasDrag.current = false;
-    if (!editMode) return;
-    e.preventDefault();
-    const el = e.currentTarget as HTMLElement;
-    el.setPointerCapture(e.pointerId);
-    const rect = el.getBoundingClientRect();
-    onDragStart(entry.card.imageUrl, e.clientX, e.clientY, rect.width, rect.height);
+    didLongPress.current = false;
+
+    if (editMode) {
+      e.preventDefault();
+      const el = e.currentTarget as HTMLElement;
+      el.setPointerCapture(e.pointerId);
+      const rect = el.getBoundingClientRect();
+      onDragStart(entry.card.imageUrl, e.clientX, e.clientY, rect.width, rect.height);
+    } else {
+      cancelLongPress();
+      longPressTimer.current = setTimeout(() => {
+        didLongPress.current = true;
+        if (entry.card.imageUrl) setPreviewOpen(true);
+      }, 500);
+    }
+  }
+
+  function handlePointerUp() {
+    cancelLongPress();
   }
 
   function handlePointerMove(e: React.PointerEvent) {
     if (!startPos.current) return;
     const dx = e.clientX - startPos.current.x;
     const dy = e.clientY - startPos.current.y;
-    if (Math.sqrt(dx * dx + dy * dy) > 8) wasDrag.current = true;
+    if (Math.sqrt(dx * dx + dy * dy) > 8) {
+      wasDrag.current = true;
+      cancelLongPress();
+    }
   }
 
   const boxShadow = isSelected
@@ -76,6 +99,14 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
     : undefined;
 
   return (
+    <>
+    {previewOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={() => setPreviewOpen(false)}>
+        <img src={entry.card.imageUrl} alt={entry.card.name}
+          className="max-h-[94vh] max-w-[94vw] w-auto h-auto rounded-xl shadow-2xl"
+          draggable={false} style={{ pointerEvents: 'none' }} />
+      </div>
+    )}
     <div className="relative group" data-deck-card-id={entry.card.id}>
       <div
         className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? 'cursor-pointer' : 'cursor-pointer'}`}
@@ -86,8 +117,12 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
           boxShadow,
         }}
         onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={() => cancelLongPress()}
+        onPointerCancel={() => cancelLongPress()}
         onPointerMove={handlePointerMove}
         onClick={(e) => {
+          if (didLongPress.current) { didLongPress.current = false; return; }
           if (editMode) {
             if (wasDrag.current) return;
             onTap();
@@ -126,7 +161,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
         )}
 
         {/* Count badge */}
-        <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
+        <span className="absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
           ×{entry.count}
         </span>
 
@@ -157,6 +192,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
         )}
       </div>
     </div>
+    </>
   );
 }
 
@@ -267,7 +303,7 @@ function CheerCard({ color, count, onAdd, onRemove, overlayVisible, onShowOverla
       >
         <img src={CHEER_IMAGE[color]} alt={color} className="w-full h-full object-cover" draggable={false} />
         {count > 0 && (
-          <span className="absolute top-0.5 left-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">
+          <span className="absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">
             ×{count}
           </span>
         )}
@@ -430,7 +466,7 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     ctx.stroke();
   }
 
-  function drawBadge(x: number, y: number, count: number) {
+  function drawBadge(cardX: number, cardY: number, cardW: number, count: number) {
     const text = `×${count}`;
     const fontSize = 20;
     ctx.font = `bold ${fontSize}px sans-serif`;
@@ -439,6 +475,8 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     const bw = Math.ceil(tw + padX * 2);
     const bh = fontSize + padY * 2;
     const br = bh / 2;
+    const bx = cardX + cardW - bw - 4;
+    const by = cardY + 4;
 
     // Shadow
     ctx.save();
@@ -449,14 +487,14 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
 
     // Background
     ctx.fillStyle = 'rgba(17,10,60,0.95)';
-    rrect(ctx, x, y, bw, bh, br);
+    rrect(ctx, bx, by, bw, bh, br);
     ctx.fill();
     ctx.restore();
 
     // Border
     ctx.strokeStyle = '#818cf8';
     ctx.lineWidth = 1.5;
-    rrect(ctx, x, y, bw, bh, br);
+    rrect(ctx, bx, by, bw, bh, br);
     ctx.stroke();
 
     // Text
@@ -464,7 +502,7 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     ctx.font = `bold ${fontSize}px sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(text, x + bw / 2, y + bh / 2 + 0.5);
+    ctx.fillText(text, bx + bw / 2, by + bh / 2 + 0.5);
   }
 
   if (mode === 'expanded') {
@@ -484,24 +522,27 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     const OSHI_W = LEFT_W;
     const OSHI_H = Math.round(OSHI_W * 1.4);
 
-    const CHEER_COLS = 5;
+    const CHEER_COLS = 3;
     const CHEER_GAP = 4;
     const CHEER_W = Math.floor((LEFT_W - CHEER_GAP * (CHEER_COLS - 1)) / CHEER_COLS);
     const CHEER_H = Math.round(CHEER_W * 1.4);
 
-    const cheerList: CardColor[] = [];
-    CHEER_COLORS.forEach((c) => { for (let i = 0; i < (cheers[c] ?? 0); i++) cheerList.push(c); });
-    const cheerRows = cheerList.length > 0 ? Math.ceil(cheerList.length / CHEER_COLS) : 0;
+    // Cheer summary: show each color with ×N badge (skip 0-count)
+    const cheerSummary = CHEER_COLORS.filter((c) => (cheers[c] ?? 0) > 0);
+    const cheerRows = cheerSummary.length > 0 ? Math.ceil(cheerSummary.length / CHEER_COLS) : 0;
     const cheerTotalH = cheerRows > 0 ? cheerRows * CHEER_H + (cheerRows - 1) * CHEER_GAP : 0;
     const leftTotalH = OSHI_H + (cheerTotalH > 0 ? GAP + cheerTotalH : 0);
     const LEFT_START_Y = Math.floor((H - leftTotalH) / 2);
     const CHEER_START_Y = LEFT_START_Y + OSHI_H + GAP;
 
     drawSlot(deck.oshi?.imageUrl, deck.oshi?.name ?? '?', PAD, LEFT_START_Y, OSHI_W, OSHI_H, deck.oshi ? getAccentColor(deck.oshi) : '#6b7280');
-    cheerList.forEach((c, i) => {
+    cheerSummary.forEach((c, i) => {
       const col = i % CHEER_COLS;
       const row = Math.floor(i / CHEER_COLS);
-      drawSlot(CHEER_IMAGE[c], c, PAD + col * (CHEER_W + CHEER_GAP), CHEER_START_Y + row * (CHEER_H + CHEER_GAP), CHEER_W, CHEER_H, COLOR_ACCENT[c]);
+      const cx = PAD + col * (CHEER_W + CHEER_GAP);
+      const cy = CHEER_START_Y + row * (CHEER_H + CHEER_GAP);
+      drawSlot(CHEER_IMAGE[c], c, cx, cy, CHEER_W, CHEER_H, COLOR_ACCENT[c]);
+      drawBadge(cx, cy, CHEER_W, cheers[c]!);
     });
 
     const expanded: { imageUrl?: string; name: string; accent: string }[] = [];
@@ -564,7 +605,7 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
         ctx.restore();
       } else {
         drawSlot(CHEER_IMAGE[c], c, cx, cy, CARD_W, CARD_H, COLOR_ACCENT[c]);
-        drawBadge(cx + 6, cy + 6, cnt);
+        drawBadge(cx, cy, CARD_W, cnt);
       }
     });
 
@@ -575,7 +616,7 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
       const x = PAD + col * (CARD_W + CARD_GAP);
       const y = DECK_Y + row * (CARD_H + CARD_GAP);
       drawSlot(c.imageUrl, c.name, x, y, CARD_W, CARD_H, c.accent);
-      drawBadge(x + 6, y + 6, c.count);
+      drawBadge(x, y, CARD_W, c.count);
     });
   }
 
