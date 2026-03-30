@@ -7,11 +7,21 @@ export type HolomemSubtype = 'debut' | '1st' | '2nd' | 'spot';
 
 export type SupportSubtype = 'event' | 'fan' | 'mascot' | 'tool' | 'item' | 'staff' | '';
 
+export type CostColor = 'white' | 'green' | 'red' | 'blue' | 'purple' | 'yellow' | 'colorless';
+
 export interface CardAbility {
   name: string;
-  cost?: string;
+  cost?: CostColor[];     // 코스트 색상 배열 (이미지로 표시)
   description: string;
-  timing?: string;
+  timing?: string;         // bloom, collab, gift 등
+  damage?: number;         // 아츠 데미지
+  specialDamage?: { color: CardColor; value: number };  // 특공 (색 + 데미지)
+}
+
+export interface OshiAbility {
+  name: string;
+  cost?: string;           // "홀로 파워 -N" 형태
+  description: string;
 }
 
 export interface Card {
@@ -28,12 +38,16 @@ export interface Card {
   // Holomem
   hp?: number;
   holomemSubtype?: HolomemSubtype;
+  batonPass?: number;           // 바톤터치 비용 (컬러리스 옐 수)
+  extraRule?: string;           // 엑스트라 룰 텍스트
   tags?: string[];
   abilities?: CardAbility[];
 
   // Oshi
-  oshiAbility?: CardAbility;
-  spAbility?: CardAbility;
+  life?: number;
+  oshiStageAbility?: OshiAbility;  // 오시 스테이지 스킬
+  oshiAbility?: OshiAbility;
+  spAbility?: OshiAbility;
 
   // Support
   supportSubtype?: SupportSubtype;
@@ -62,6 +76,7 @@ export interface FilterState {
   types: CardType[];
   colors: CardColor[];
   holomemSubtypes: HolomemSubtype[];
+  buzzOnly: boolean;                 // true=버즈(1st)만 필터
   supportSubtypes: SupportSubtype[];
   limitedFilter: boolean | null;  // null=전체, true=리미티드만, false=일반만
   tags: string[];

@@ -66,6 +66,10 @@ export const SUPPORT_SUBTYPE_BG: Record<SupportSubtype, string> = {
   '':      'bg-gray-600 text-white',
 };
 
+export function isBuzz(card: Card): boolean {
+  return card.type === 'holomem' && card.holomemSubtype === '1st' && !!card.extraRule?.includes('라이프 -2');
+}
+
 export function filterCards(cards: Card[], filter: FilterState): Card[] {
   return cards.filter((card) => {
     if (filter.searchText) {
@@ -84,6 +88,9 @@ export function filterCards(cards: Card[], filter: FilterState): Card[] {
     }
     if (filter.holomemSubtypes.length > 0) {
       if (card.type !== 'holomem' || !card.holomemSubtype || !filter.holomemSubtypes.includes(card.holomemSubtype)) return false;
+    }
+    if (filter.buzzOnly) {
+      if (card.type !== 'holomem' || card.holomemSubtype !== '1st' || !isBuzz(card)) return false;
     }
     if (filter.supportSubtypes.length > 0) {
       if (card.type !== 'support' || !filter.supportSubtypes.includes(card.supportSubtype ?? '')) return false;

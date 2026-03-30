@@ -29,6 +29,24 @@ function getCardCount(entries: DeckEntry[]): number {
   return entries.reduce((sum, e) => sum + e.count, 0);
 }
 
+const subtypeOrder: Record<string, number> = { debut: 0, '1st': 1, '2nd': 2, spot: 3 };
+const supportOrder: Record<string, number> = { staff: 0, item: 1, event: 2, tool: 3, mascot: 4, fan: 5, '': 6 };
+
+function compareEntries(a: DeckEntry, b: DeckEntry): number {
+  const typeOrd = (t: string) => t === 'holomem' ? 0 : 1;
+  if (typeOrd(a.card.type) !== typeOrd(b.card.type)) return typeOrd(a.card.type) - typeOrd(b.card.type);
+  if (a.card.type === 'holomem') {
+    const sa = subtypeOrder[a.card.holomemSubtype ?? ''] ?? 9;
+    const sb = subtypeOrder[b.card.holomemSubtype ?? ''] ?? 9;
+    if (sa !== sb) return sa - sb;
+  } else {
+    const sa = supportOrder[a.card.supportSubtype ?? ''] ?? 9;
+    const sb = supportOrder[b.card.supportSubtype ?? ''] ?? 9;
+    if (sa !== sb) return sa - sb;
+  }
+  return a.card.cardNumber.localeCompare(b.card.cardNumber);
+}
+
 interface DeckState {
   decks: Deck[];
   activeDeckId: string | null;
@@ -69,6 +87,7 @@ const defaultFilter: FilterState = {
   types: [],
   colors: [],
   holomemSubtypes: [],
+  buzzOnly: false,
   supportSubtypes: [],
   limitedFilter: null,
   tags: [],
@@ -130,11 +149,21 @@ export const useDeckStore = create<DeckState>()(
           const existing = entries.find((e) => e.card.id === card.id);
           if (existing && existing.count >= cardLimit) return s;
 
-          const newEntries = existing
-            ? entries.map((e) =>
-                e.card.id === card.id ? { ...e, count: e.count + 1 } : e
-              )
-            : [...entries, { card, count: 1 }];
+          let newEntries: DeckEntry[];
+          if (existing) {
+            newEntries = entries.map((e) =>
+              e.card.id === card.id ? { ...e, count: e.count + 1 } : e
+            );
+          } else {
+            const newEntry: DeckEntry = { card, count: 1 };
+            const insertIdx = entries.findIndex((e) => compareEntries(newEntry, e) < 0);
+            newEntries = [...entries];
+            if (insertIdx === -1) {
+              newEntries.push(newEntry);
+            } else {
+              newEntries.splice(insertIdx, 0, newEntry);
+            }
+          }
 
           return {
             decks: s.decks.map((d) =>
@@ -249,26 +278,11 @@ export const useDeckStore = create<DeckState>()(
       },
 
       sortMainDeckDefault: () => {
-        const subtypeOrder: Record<string, number> = { debut: 0, '1st': 1, '2nd': 2, spot: 3 };
-        const supportOrder: Record<string, number> = { staff: 0, item: 1, event: 2, tool: 3, mascot: 4, fan: 5, '': 6 };
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const deck = s.decks.find((d) => d.id === id);
           if (!deck) return s;
-          const mainDeck = [...deck.mainDeck].sort((a, b) => {
-            const typeOrd = (t: string) => t === 'holomem' ? 0 : 1;
-            if (typeOrd(a.card.type) !== typeOrd(b.card.type)) return typeOrd(a.card.type) - typeOrd(b.card.type);
-            if (a.card.type === 'holomem') {
-              const sa = subtypeOrder[a.card.holomemSubtype ?? ''] ?? 9;
-              const sb = subtypeOrder[b.card.holomemSubtype ?? ''] ?? 9;
-              if (sa !== sb) return sa - sb;
-            } else {
-              const sa = supportOrder[a.card.supportSubtype ?? ''] ?? 9;
-              const sb = supportOrder[b.card.supportSubtype ?? ''] ?? 9;
-              if (sa !== sb) return sa - sb;
-            }
-            return a.card.cardNumber.localeCompare(b.card.cardNumber);
-          });
+          const mainDeck = [...deck.mainDeck].sort(compareEntries);
           return { decks: s.decks.map((d) => d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d) };
         });
       },

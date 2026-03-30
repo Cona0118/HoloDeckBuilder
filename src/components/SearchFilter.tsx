@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useDeckStore } from '../store/deckStore';
 import { SETS, CARDS } from '../data/cards';
 import {
@@ -24,17 +24,20 @@ const COLOR_DOT: Record<CardColor, string> = {
 };
 
 function ToggleChip<T extends string>({
-  value, label, active, onToggle, dot,
+  value, label, active, onToggle, dot, disabled,
 }: {
-  value: T; label: string; active: boolean; onToggle: (v: T) => void; dot?: string;
+  value: T; label: string; active: boolean; onToggle: (v: T) => void; dot?: string; disabled?: boolean;
 }) {
   return (
     <button
-      onClick={() => onToggle(value)}
+      onClick={() => !disabled && onToggle(value)}
+      disabled={disabled}
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${
-        active
-          ? 'bg-indigo-600 border-indigo-500 text-white'
-          : 'bg-gray-800 border-gray-700 text-gray-300 hover:border-gray-500'
+        disabled
+          ? 'bg-gray-900 border-gray-700 text-gray-600 cursor-not-allowed'
+          : active
+            ? 'bg-indigo-600 border-indigo-500 text-white'
+            : 'bg-gray-800 border-gray-700 text-gray-300 hover:border-gray-500'
       }`}
     >
       {dot && (
@@ -51,6 +54,7 @@ function ToggleChip<T extends string>({
 export default function SearchFilter() {
   const { filter, setFilter, resetFilter } = useDeckStore();
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const had1stBeforeBuzz = useRef(false);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
@@ -63,7 +67,7 @@ export default function SearchFilter() {
     const newTypes = has ? filter.types.filter((x) => x !== t) : [...filter.types, t];
     const hasColor = newTypes.includes('oshi') || newTypes.includes('holomem');
     const extra = hasColor ? {} : { colors: [] };
-    if (has && t === 'holomem') setFilter({ types: newTypes, holomemSubtypes: [], ...extra });
+    if (has && t === 'holomem') setFilter({ types: newTypes, holomemSubtypes: [], buzzOnly: false, ...extra });
     else if (has && t === 'support') setFilter({ types: newTypes, supportSubtypes: [], limitedFilter: null, ...extra });
     else setFilter({ types: newTypes, ...extra });
   }
@@ -73,7 +77,21 @@ export default function SearchFilter() {
   }
   function toggleHolomemSubtype(s: HolomemSubtype) {
     const has = filter.holomemSubtypes.includes(s);
-    setFilter({ holomemSubtypes: has ? filter.holomemSubtypes.filter((x) => x !== s) : [...filter.holomemSubtypes, s] });
+    const next = has ? filter.holomemSubtypes.filter((x) => x !== s) : [...filter.holomemSubtypes, s];
+    // 1st 해제 시 버즈 필터도 해제
+    const buzzReset = s === '1st' && has ? { buzzOnly: false } : {};
+    setFilter({ holomemSubtypes: next, ...buzzReset });
+  }
+  function toggleBuzz() {
+    const next = !filter.buzzOnly;
+    if (next) {
+      had1stBeforeBuzz.current = filter.holomemSubtypes.includes('1st');
+      const subs = had1stBeforeBuzz.current ? filter.holomemSubtypes : [...filter.holomemSubtypes, '1st'];
+      setFilter({ buzzOnly: true, holomemSubtypes: subs });
+    } else {
+      const subs = had1stBeforeBuzz.current ? filter.holomemSubtypes : filter.holomemSubtypes.filter((x) => x !== '1st');
+      setFilter({ buzzOnly: false, holomemSubtypes: subs });
+    }
   }
   function toggleSupportSubtype(s: SupportSubtype) {
     const has = filter.supportSubtypes.includes(s);
@@ -177,7 +195,18 @@ export default function SearchFilter() {
             <div className="flex flex-wrap gap-1.5 items-center pl-2 border-l-2 border-emerald-700">
               <span className="text-xs text-gray-500 shrink-0">세부:</span>
               {HOLOMEM_SUBTYPES.map((s) => (
-                <ToggleChip key={s} value={s} label={HOLOMEM_SUBTYPE_LABELS[s]} active={filter.holomemSubtypes.includes(s)} onToggle={toggleHolomemSubtype} />
+                <span key={s} className="contents">
+                  <ToggleChip
+                    value={s}
+                    label={HOLOMEM_SUBTYPE_LABELS[s]}
+                    active={filter.holomemSubtypes.includes(s)}
+                    onToggle={toggleHolomemSubtype}
+                    disabled={s === '1st' && filter.buzzOnly}
+                  />
+                  {s === '1st' && (
+                    <ToggleChip value="buzz" label="Buzz" active={filter.buzzOnly} onToggle={toggleBuzz} />
+                  )}
+                </span>
               ))}
             </div>
           )}
