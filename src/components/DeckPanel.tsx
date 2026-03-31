@@ -808,6 +808,7 @@ export default function DeckPanel() {
   ];
 
   const oshiAccent = deck.oshi ? getAccentColor(deck.oshi) : '#6b7280';
+  const [oshiOpen, setOshiOpen] = useState(true);
 
   return (
     <div className="flex flex-col h-full overflow-hidden bg-gray-950">
@@ -815,89 +816,104 @@ export default function DeckPanel() {
 
       {/* Oshi slot + Stats */}
       <div className="px-3 py-2 border-b border-gray-800">
-        <p className="text-[10px] text-gray-500 mb-1.5 uppercase tracking-wider font-medium">오시</p>
-        <div className="flex gap-3 items-start">
-          {/* Oshi image */}
-          <div
-            className="w-16 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2"
-            style={{ borderColor: oshiAccent + 'aa' }}
-          >
-            {deck.oshi ? (
-              deck.oshi.imageUrl ? (
-                <img src={deck.oshi.imageUrl} alt={deck.oshi.name} className="w-full h-full object-cover" draggable={false} style={{ pointerEvents: 'none' }} />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-2xl font-bold" style={{ background: oshiAccent + '33', color: oshiAccent }}>
-                  {deck.oshi.name[0]}
-                </div>
-              )
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gray-800">
-                <span className="text-xs text-gray-500 text-center leading-tight px-1">오시 선택</span>
-              </div>
-            )}
-          </div>
+        {/* Header - 모바일에서 접기/펼치기 */}
+        <button
+          className="md:pointer-events-none w-full flex items-center justify-between mb-1.5"
+          onClick={() => setOshiOpen((v) => !v)}
+        >
+          <p className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">
+            오시 {deck.oshi ? `· ${deck.oshi.name}` : ''}
+            <span className="text-gray-600 ml-1 font-medium">{mainCount}/50</span>
+          </p>
+          <svg className={`w-3.5 h-3.5 text-gray-500 md:hidden transition-transform ${oshiOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
 
-          {/* Right: oshi info + stats */}
-          <div className="flex-1 min-w-0 flex flex-col gap-2">
-            {deck.oshi && (
-              <div>
-                <p className="text-sm font-semibold text-amber-200 truncate">{deck.oshi.name}</p>
-                <p className="text-xs text-gray-400 mt-0.5">{deck.oshi.cardNumber}</p>
-              </div>
-            )}
-
-            {/* Errors */}
-            {errors.length > 0 && (
-              <div className="flex flex-col gap-0.5">
-                {errors.map((e, i) => (
-                  <div key={i} className="flex items-center gap-1 text-xs text-amber-400">
-                    <svg className="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
-                    {e}
+        <div className={`${oshiOpen ? '' : 'hidden md:block'}`}>
+          <div className="flex gap-3 items-start">
+            {/* Oshi image */}
+            <div
+              className="w-12 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2"
+              style={{ borderColor: oshiAccent + 'aa' }}
+            >
+              {deck.oshi ? (
+                deck.oshi.imageUrl ? (
+                  <img src={deck.oshi.imageUrl} alt={deck.oshi.name} className="w-full h-full object-cover" draggable={false} style={{ pointerEvents: 'none' }} />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-2xl font-bold" style={{ background: oshiAccent + '33', color: oshiAccent }}>
+                    {deck.oshi.name[0]}
                   </div>
-                ))}
-              </div>
-            )}
-
-            {/* Progress bar */}
-            <div>
-              <div className="flex justify-between text-xs mb-1">
-                <span className="text-gray-400">메인 덱</span>
-                <span className={mainCount === 50 ? 'text-green-400 font-bold' : 'text-white font-medium'}>{mainCount} / 50</span>
-              </div>
-              <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
-                <div
-                  className={`h-full rounded-full transition-all ${mainCount === 50 ? 'bg-green-500' : mainCount > 50 ? 'bg-red-500' : 'bg-indigo-500'}`}
-                  style={{ width: `${Math.min((mainCount / 50) * 100, 100)}%` }}
-                />
-              </div>
+                )
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gray-800">
+                  <span className="text-xs text-gray-500 text-center leading-tight px-1">오시 선택</span>
+                </div>
+              )}
             </div>
 
-            {mainCount > 0 && (
-              <div className="flex flex-col gap-1 text-[11px]">
-                {holomemCount > 0 && (
-                  <div className="flex items-center flex-wrap gap-1">
-                    <span className="text-emerald-400 font-medium">홀로멤 {holomemCount}</span>
-                    {(() => {
-                      const parts = (['debut', '1st', '2nd', 'spot'] as HolomemSubtype[])
-                        .filter((sub) => holomemSubtypeCounts[sub])
-                        .map((sub) => `${sub} : ${holomemSubtypeCounts[sub]}`);
-                      return parts.length > 0
-                        ? <span className="text-emerald-600">( {parts.join(' / ')} )</span>
-                        : null;
-                    })()}
-                  </div>
-                )}
-                {supportCount > 0 && (
-                  <div className="flex gap-2 items-center">
-                    <span className="text-sky-400 font-medium">서포트 {supportCount}</span>
-                    {limitedCount > 0 && <span className="text-rose-400">( 리미티드 : {limitedCount} )</span>}
-                  </div>
-                )}
-              </div>
-            )}
+            {/* Right: oshi info + stats */}
+            <div className="flex-1 min-w-0 flex flex-col gap-2">
+              {deck.oshi && (
+                <div>
+                  <p className="text-sm font-semibold text-amber-200 truncate">{deck.oshi.name}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{deck.oshi.cardNumber}</p>
+                </div>
+              )}
 
+              {/* Errors */}
+              {errors.length > 0 && (
+                <div className="flex flex-col gap-0.5">
+                  {errors.map((e, i) => (
+                    <div key={i} className="flex items-center gap-1 text-xs text-amber-400">
+                      <svg className="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                      {e}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Progress bar */}
+              <div>
+                <div className="flex justify-between text-xs mb-1">
+                  <span className="text-gray-400">메인 덱</span>
+                  <span className={mainCount === 50 ? 'text-green-400 font-bold' : 'text-white font-medium'}>{mainCount} / 50</span>
+                </div>
+                <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all ${mainCount === 50 ? 'bg-green-500' : mainCount > 50 ? 'bg-red-500' : 'bg-indigo-500'}`}
+                    style={{ width: `${Math.min((mainCount / 50) * 100, 100)}%` }}
+                  />
+                </div>
+              </div>
+
+              {mainCount > 0 && (
+                <div className="flex flex-col gap-1 text-[11px]">
+                  {holomemCount > 0 && (
+                    <div className="flex items-center flex-wrap gap-1">
+                      <span className="text-emerald-400 font-medium">홀로멤 {holomemCount}</span>
+                      {(() => {
+                        const parts = (['debut', '1st', '2nd', 'spot'] as HolomemSubtype[])
+                          .filter((sub) => holomemSubtypeCounts[sub])
+                          .map((sub) => `${sub} : ${holomemSubtypeCounts[sub]}`);
+                        return parts.length > 0
+                          ? <span className="text-emerald-600">( {parts.join(' / ')} )</span>
+                          : null;
+                      })()}
+                    </div>
+                  )}
+                  {supportCount > 0 && (
+                    <div className="flex gap-2 items-center">
+                      <span className="text-sky-400 font-medium">서포트 {supportCount}</span>
+                      {limitedCount > 0 && <span className="text-rose-400">( 리미티드 : {limitedCount} )</span>}
+                    </div>
+                  )}
+                </div>
+              )}
+
+            </div>
           </div>
         </div>
       </div>

@@ -95,20 +95,20 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
           onClick={() => setPreviewOpen(false)}
         >
           <div
-            className="flex gap-4 max-h-[90vh] max-w-[90vw]"
+            className="flex flex-col md:flex-row gap-3 md:gap-4 max-h-[90vh] max-w-[95vw] md:max-w-[90vw] overflow-y-auto md:overflow-y-visible"
             onClick={(e) => e.stopPropagation()}
           >
             {/* 확대 카드 이미지 */}
             <img
               src={card.imageUrl}
               alt={card.name}
-              className="max-h-[85vh] max-w-[40vw] w-auto rounded-xl shadow-2xl object-contain shrink-0"
+              className="max-h-[40vh] md:max-h-[85vh] max-w-full md:max-w-[40vw] w-auto rounded-xl shadow-2xl object-contain shrink-0 self-center"
               draggable={false}
             />
 
             {/* 카드 정보 패널 */}
             <div
-              className="w-104 shrink-0 bg-gray-900 rounded-xl border overflow-y-auto flex flex-col"
+              className="w-full md:w-104 shrink-0 bg-gray-900 rounded-xl border overflow-y-auto flex flex-col max-h-[50vh] md:max-h-[85vh]"
               style={{ borderColor: accent }}
             >
               <div className="h-1.5 w-full shrink-0" style={{ background: accent }} />
