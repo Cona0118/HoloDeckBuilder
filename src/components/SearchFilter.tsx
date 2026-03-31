@@ -1,32 +1,61 @@
-import { useState, useMemo, useRef } from 'react';
-import { useDeckStore } from '../store/deckStore';
-import { SETS, CARDS } from '../data/cards';
+import { useState, useMemo, useRef } from "react";
+import { useDeckStore } from "../store/deckStore";
+import { SETS, CARDS } from "../data/cards";
 import {
   COLOR_LABELS,
   TYPE_LABELS,
   HOLOMEM_SUBTYPE_LABELS,
   SUPPORT_SUBTYPE_LABELS,
-} from '../utils/cardUtils';
-import type { CardColor, CardType, HolomemSubtype, SupportSubtype } from '../types/card';
+} from "../utils/cardUtils";
+import type {
+  CardColor,
+  CardType,
+  HolomemSubtype,
+  SupportSubtype,
+} from "../types/card";
 
-const TYPES: CardType[] = ['oshi', 'holomem', 'support'];
-const COLORS: CardColor[] = ['white', 'green', 'red', 'blue', 'purple', 'yellow'];
-const HOLOMEM_SUBTYPES: HolomemSubtype[] = ['debut', '1st', '2nd', 'spot'];
-const SUPPORT_SUBTYPES: SupportSubtype[] = ['staff', 'item', 'event', 'tool', 'mascot', 'fan'];
+const TYPES: CardType[] = ["oshi", "holomem", "support"];
+const COLORS: CardColor[] = [
+  "white",
+  "green",
+  "red",
+  "blue",
+  "purple",
+  "yellow",
+];
+const HOLOMEM_SUBTYPES: HolomemSubtype[] = ["debut", "1st", "2nd", "spot"];
+const SUPPORT_SUBTYPES: SupportSubtype[] = [
+  "staff",
+  "item",
+  "event",
+  "tool",
+  "mascot",
+  "fan",
+];
 
 const COLOR_DOT: Record<CardColor, string> = {
-  white:  '#e5e7eb',
-  green:  '#16a34a',
-  red:    '#dc2626',
-  blue:   '#2563eb',
-  purple: '#9333ea',
-  yellow: '#ca8a04',
+  white: "#e5e7eb",
+  green: "#16a34a",
+  red: "#dc2626",
+  blue: "#2563eb",
+  purple: "#9333ea",
+  yellow: "#ca8a04",
 };
 
 function ToggleChip<T extends string>({
-  value, label, active, onToggle, dot, disabled,
+  value,
+  label,
+  active,
+  onToggle,
+  dot,
+  disabled,
 }: {
-  value: T; label: string; active: boolean; onToggle: (v: T) => void; dot?: string; disabled?: boolean;
+  value: T;
+  label: string;
+  active: boolean;
+  onToggle: (v: T) => void;
+  dot?: string;
+  disabled?: boolean;
 }) {
   return (
     <button
@@ -34,10 +63,10 @@ function ToggleChip<T extends string>({
       disabled={disabled}
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${
         disabled
-          ? 'bg-gray-900 border-gray-700 text-gray-600 cursor-not-allowed'
+          ? "bg-gray-900 border-gray-700 text-gray-600 cursor-not-allowed"
           : active
-            ? 'bg-indigo-600 border-indigo-500 text-white'
-            : 'bg-gray-800 border-gray-700 text-gray-300 hover:border-gray-500'
+            ? "bg-indigo-600 border-indigo-500 text-white"
+            : "bg-gray-800 border-gray-700 text-gray-300 hover:border-gray-500"
       }`}
     >
       {dot && (
@@ -64,53 +93,87 @@ export default function SearchFilter() {
 
   function toggleType(t: CardType) {
     const has = filter.types.includes(t);
-    const newTypes = has ? filter.types.filter((x) => x !== t) : [...filter.types, t];
-    const hasColor = newTypes.includes('oshi') || newTypes.includes('holomem');
+    const newTypes = has
+      ? filter.types.filter((x) => x !== t)
+      : [...filter.types, t];
+    const hasColor = newTypes.includes("oshi") || newTypes.includes("holomem");
     const extra = hasColor ? {} : { colors: [] };
-    if (has && t === 'holomem') setFilter({ types: newTypes, holomemSubtypes: [], buzzOnly: false, ...extra });
-    else if (has && t === 'support') setFilter({ types: newTypes, supportSubtypes: [], limitedFilter: null, ...extra });
+    if (has && t === "holomem")
+      setFilter({
+        types: newTypes,
+        holomemSubtypes: [],
+        buzzOnly: false,
+        ...extra,
+      });
+    else if (has && t === "support")
+      setFilter({
+        types: newTypes,
+        supportSubtypes: [],
+        limitedFilter: null,
+        ...extra,
+      });
     else setFilter({ types: newTypes, ...extra });
   }
   function toggleColor(c: CardColor) {
     const has = filter.colors.includes(c);
-    setFilter({ colors: has ? filter.colors.filter((x) => x !== c) : [...filter.colors, c] });
+    setFilter({
+      colors: has
+        ? filter.colors.filter((x) => x !== c)
+        : [...filter.colors, c],
+    });
   }
   function toggleHolomemSubtype(s: HolomemSubtype) {
     const has = filter.holomemSubtypes.includes(s);
-    const next = has ? filter.holomemSubtypes.filter((x) => x !== s) : [...filter.holomemSubtypes, s];
+    const next = has
+      ? filter.holomemSubtypes.filter((x) => x !== s)
+      : [...filter.holomemSubtypes, s];
     // 1st 해제 시 버즈 필터도 해제
-    const buzzReset = s === '1st' && has ? { buzzOnly: false } : {};
+    const buzzReset = s === "1st" && has ? { buzzOnly: false } : {};
     setFilter({ holomemSubtypes: next, ...buzzReset });
   }
   function toggleBuzz() {
     const next = !filter.buzzOnly;
     if (next) {
-      had1stBeforeBuzz.current = filter.holomemSubtypes.includes('1st');
-      const subs = had1stBeforeBuzz.current ? filter.holomemSubtypes : [...filter.holomemSubtypes, '1st'];
+      had1stBeforeBuzz.current = filter.holomemSubtypes.includes("1st");
+      const subs = had1stBeforeBuzz.current
+        ? filter.holomemSubtypes
+        : [...filter.holomemSubtypes, "1st" as HolomemSubtype];
       setFilter({ buzzOnly: true, holomemSubtypes: subs });
     } else {
-      const subs = had1stBeforeBuzz.current ? filter.holomemSubtypes : filter.holomemSubtypes.filter((x) => x !== '1st');
+      const subs = had1stBeforeBuzz.current
+        ? filter.holomemSubtypes
+        : filter.holomemSubtypes.filter((x) => x !== "1st");
       setFilter({ buzzOnly: false, holomemSubtypes: subs });
     }
   }
   function toggleSupportSubtype(s: SupportSubtype) {
     const has = filter.supportSubtypes.includes(s);
-    setFilter({ supportSubtypes: has ? filter.supportSubtypes.filter((x) => x !== s) : [...filter.supportSubtypes, s] });
+    setFilter({
+      supportSubtypes: has
+        ? filter.supportSubtypes.filter((x) => x !== s)
+        : [...filter.supportSubtypes, s],
+    });
   }
   function toggleLimitedFilter(val: boolean) {
     setFilter({ limitedFilter: filter.limitedFilter === val ? null : val });
   }
   function toggleSet(s: string) {
     const has = filter.sets.includes(s);
-    setFilter({ sets: has ? filter.sets.filter((x) => x !== s) : [...filter.sets, s] });
+    setFilter({
+      sets: has ? filter.sets.filter((x) => x !== s) : [...filter.sets, s],
+    });
   }
   function toggleTag(t: string) {
     const has = filter.tags.includes(t);
-    setFilter({ tags: has ? filter.tags.filter((x) => x !== t) : [...filter.tags, t] });
+    setFilter({
+      tags: has ? filter.tags.filter((x) => x !== t) : [...filter.tags, t],
+    });
   }
 
   const colorDisabled =
-    filter.types.length > 0 && !filter.types.includes('oshi') && !filter.types.includes('holomem');
+    filter.types.length > 0 &&
+    !filter.types.includes("oshi") &&
+    !filter.types.includes("holomem");
 
   const hasAnyFilter =
     filter.searchText ||
@@ -122,17 +185,32 @@ export default function SearchFilter() {
     filter.tags.length ||
     filter.sets.length;
 
-  const activeFilterCount = filter.types.length + filter.colors.length +
-    filter.holomemSubtypes.length + filter.supportSubtypes.length +
-    filter.tags.length + filter.sets.length + (filter.limitedFilter !== null ? 1 : 0);
+  const activeFilterCount =
+    filter.types.length +
+    filter.colors.length +
+    filter.holomemSubtypes.length +
+    filter.supportSubtypes.length +
+    filter.tags.length +
+    filter.sets.length +
+    (filter.limitedFilter !== null ? 1 : 0);
 
   return (
     <div className="flex flex-col bg-gray-900 border-b border-gray-800">
       {/* Search row */}
       <div className="flex gap-2 p-3">
         <div className="relative flex-1">
-          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+          <svg
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"
+            />
           </svg>
           <input
             type="text"
@@ -147,12 +225,22 @@ export default function SearchFilter() {
           onClick={() => setFiltersOpen((v) => !v)}
           className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border text-xs font-medium transition-colors ${
             filtersOpen || activeFilterCount > 0
-              ? 'bg-indigo-700 border-indigo-600 text-white'
-              : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500'
+              ? "bg-indigo-700 border-indigo-600 text-white"
+              : "bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500"
           }`}
         >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" />
+          <svg
+            className="w-3.5 h-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"
+            />
           </svg>
           필터
           {activeFilterCount > 0 && (
@@ -178,20 +266,35 @@ export default function SearchFilter() {
           <div className="flex flex-wrap gap-1.5 items-center">
             <span className="text-xs text-gray-500 shrink-0">타입:</span>
             {TYPES.map((t) => (
-              <ToggleChip key={t} value={t} label={TYPE_LABELS[t]} active={filter.types.includes(t)} onToggle={toggleType} />
+              <ToggleChip
+                key={t}
+                value={t}
+                label={TYPE_LABELS[t]}
+                active={filter.types.includes(t)}
+                onToggle={toggleType}
+              />
             ))}
           </div>
 
           {/* 색상 (오시/홀로멤) */}
-          <div className={`flex flex-wrap gap-1.5 items-center transition-opacity ${colorDisabled ? 'opacity-30 pointer-events-none' : ''}`}>
+          <div
+            className={`flex flex-wrap gap-1.5 items-center transition-opacity ${colorDisabled ? "opacity-30 pointer-events-none" : ""}`}
+          >
             <span className="text-xs text-gray-500 shrink-0">색상:</span>
             {COLORS.map((c) => (
-              <ToggleChip key={c} value={c} label={COLOR_LABELS[c]} active={filter.colors.includes(c)} onToggle={toggleColor} dot={COLOR_DOT[c]} />
+              <ToggleChip
+                key={c}
+                value={c}
+                label={COLOR_LABELS[c]}
+                active={filter.colors.includes(c)}
+                onToggle={toggleColor}
+                dot={COLOR_DOT[c]}
+              />
             ))}
           </div>
 
           {/* 홀로멤 세부 분류 */}
-          {filter.types.includes('holomem') && (
+          {filter.types.includes("holomem") && (
             <div className="flex flex-wrap gap-1.5 items-center pl-2 border-l-2 border-emerald-700">
               <span className="text-xs text-gray-500 shrink-0">세부:</span>
               {HOLOMEM_SUBTYPES.map((s) => (
@@ -201,10 +304,15 @@ export default function SearchFilter() {
                     label={HOLOMEM_SUBTYPE_LABELS[s]}
                     active={filter.holomemSubtypes.includes(s)}
                     onToggle={toggleHolomemSubtype}
-                    disabled={s === '1st' && filter.buzzOnly}
+                    disabled={s === "1st" && filter.buzzOnly}
                   />
-                  {s === '1st' && (
-                    <ToggleChip value="buzz" label="Buzz" active={filter.buzzOnly} onToggle={toggleBuzz} />
+                  {s === "1st" && (
+                    <ToggleChip
+                      value="buzz"
+                      label="Buzz"
+                      active={filter.buzzOnly}
+                      onToggle={toggleBuzz}
+                    />
                   )}
                 </span>
               ))}
@@ -212,11 +320,17 @@ export default function SearchFilter() {
           )}
 
           {/* 서포트 세부 분류 */}
-          {filter.types.includes('support') && (
+          {filter.types.includes("support") && (
             <div className="flex flex-wrap gap-1.5 items-center pl-2 border-l-2 border-sky-700">
               <span className="text-xs text-gray-500 shrink-0">세부:</span>
               {SUPPORT_SUBTYPES.map((s) => (
-                <ToggleChip key={s} value={s} label={SUPPORT_SUBTYPE_LABELS[s]} active={filter.supportSubtypes.includes(s)} onToggle={toggleSupportSubtype} />
+                <ToggleChip
+                  key={s}
+                  value={s}
+                  label={SUPPORT_SUBTYPE_LABELS[s]}
+                  active={filter.supportSubtypes.includes(s)}
+                  onToggle={toggleSupportSubtype}
+                />
               ))}
               <span className="text-xs text-gray-600 mx-0.5">|</span>
               {([true, false] as const).map((val) => (
@@ -225,11 +339,11 @@ export default function SearchFilter() {
                   onClick={() => toggleLimitedFilter(val)}
                   className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
                     filter.limitedFilter === val
-                      ? 'bg-rose-700 border-rose-600 text-white'
-                      : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500'
+                      ? "bg-rose-700 border-rose-600 text-white"
+                      : "bg-gray-800 border-gray-700 text-gray-400 hover:border-gray-500"
                   }`}
                 >
-                  {val ? '리미티드' : '일반'}
+                  {val ? "리미티드" : "일반"}
                 </button>
               ))}
             </div>
@@ -240,26 +354,32 @@ export default function SearchFilter() {
             <div className="flex flex-wrap gap-1.5 items-center">
               <span className="text-xs text-gray-500 shrink-0">태그:</span>
               {allTags.map((t) => (
-                <ToggleChip key={t} value={t} label={t} active={filter.tags.includes(t)} onToggle={toggleTag} />
+                <ToggleChip
+                  key={t}
+                  value={t}
+                  label={t}
+                  active={filter.tags.includes(t)}
+                  onToggle={toggleTag}
+                />
               ))}
               {filter.tags.length >= 2 && (
                 <div className="flex items-center gap-0.5 ml-1 bg-gray-800 border border-gray-700 rounded-full p-0.5">
                   <button
-                    onClick={() => setFilter({ tagFilterMode: 'or' })}
+                    onClick={() => setFilter({ tagFilterMode: "or" })}
                     className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
-                      filter.tagFilterMode === 'or'
-                        ? 'bg-indigo-600 text-white'
-                        : 'text-gray-400 hover:text-gray-200'
+                      filter.tagFilterMode === "or"
+                        ? "bg-indigo-600 text-white"
+                        : "text-gray-400 hover:text-gray-200"
                     }`}
                   >
                     OR
                   </button>
                   <button
-                    onClick={() => setFilter({ tagFilterMode: 'and' })}
+                    onClick={() => setFilter({ tagFilterMode: "and" })}
                     className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
-                      filter.tagFilterMode === 'and'
-                        ? 'bg-indigo-600 text-white'
-                        : 'text-gray-400 hover:text-gray-200'
+                      filter.tagFilterMode === "and"
+                        ? "bg-indigo-600 text-white"
+                        : "text-gray-400 hover:text-gray-200"
                     }`}
                   >
                     AND
@@ -272,9 +392,17 @@ export default function SearchFilter() {
           {/* 세트 */}
           <div className="flex flex-wrap gap-1.5 items-center">
             <span className="text-xs text-gray-500 shrink-0">세트:</span>
-            {[...SETS].sort((a, b) => a.id.localeCompare(b.id)).map((s) => (
-              <ToggleChip key={s.id} value={s.id} label={s.id} active={filter.sets.includes(s.id)} onToggle={toggleSet} />
-            ))}
+            {[...SETS]
+              .sort((a, b) => a.id.localeCompare(b.id))
+              .map((s) => (
+                <ToggleChip
+                  key={s.id}
+                  value={s.id}
+                  label={s.id}
+                  active={filter.sets.includes(s.id)}
+                  onToggle={toggleSet}
+                />
+              ))}
           </div>
         </div>
       )}
