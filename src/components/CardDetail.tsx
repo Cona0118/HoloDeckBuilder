@@ -1,4 +1,4 @@
-import type { Card } from '../types/card';
+import type { Card, CardAbility, OshiAbility } from '../types/card';
 import {
   getAccentColor,
   COLOR_LABELS,
@@ -188,7 +188,7 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
 
 function AbilityBlock({ label, ability, color }: {
   label: string;
-  ability: { name: string; cost?: string; description: string };
+  ability: CardAbility | OshiAbility;
   color: string;
 }) {
   const timingLabels: Record<string, string> = {
@@ -210,7 +210,7 @@ function AbilityBlock({ label, ability, color }: {
         <span className="text-sm font-semibold text-white">{ability.name}</span>
         {ability.cost && (
           <span className="ml-auto text-xs bg-gray-700 text-yellow-400 px-1.5 py-0.5 rounded-full border border-yellow-700/50">
-            Cost {ability.cost}
+            {typeof ability.cost === 'string' ? ability.cost : ability.cost.join(', ')}
           </span>
         )}
       </div>
