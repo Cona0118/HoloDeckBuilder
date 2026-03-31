@@ -815,7 +815,7 @@ export default function DeckPanel() {
       <DeckSelector />
 
       {/* Oshi slot + Stats */}
-      <div className="px-3 py-2 border-b border-gray-800">
+      <div className="px-3 py-1 md:py-2 border-b border-gray-800">
         {/* Header - 모바일에서 접기/펼치기 */}
         <button
           className="md:pointer-events-none w-full flex items-center justify-between mb-1.5"
@@ -831,10 +831,10 @@ export default function DeckPanel() {
         </button>
 
         <div className={`${oshiOpen ? '' : 'hidden md:block'}`}>
-          <div className="flex gap-3 items-start">
+          <div className="flex gap-2 md:gap-3 items-start">
             {/* Oshi image */}
             <div
-              className="w-12 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2"
+              className="w-10 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2"
               style={{ borderColor: oshiAccent + 'aa' }}
             >
               {deck.oshi ? (
@@ -853,11 +853,11 @@ export default function DeckPanel() {
             </div>
 
             {/* Right: oshi info + stats */}
-            <div className="flex-1 min-w-0 flex flex-col gap-2">
+            <div className="flex-1 min-w-0 flex flex-col gap-1 md:gap-2">
               {deck.oshi && (
                 <div>
-                  <p className="text-sm font-semibold text-amber-200 truncate">{deck.oshi.name}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{deck.oshi.cardNumber}</p>
+                  <p className="text-xs md:text-sm font-semibold text-amber-200 truncate">{deck.oshi.name}</p>
+                  <p className="text-[10px] md:text-xs text-gray-400">{deck.oshi.cardNumber}</p>
                 </div>
               )}
 
@@ -877,7 +877,7 @@ export default function DeckPanel() {
 
               {/* Progress bar */}
               <div>
-                <div className="flex justify-between text-xs mb-1">
+                <div className="flex justify-between text-[10px] md:text-xs mb-0.5 md:mb-1">
                   <span className="text-gray-400">메인 덱</span>
                   <span className={mainCount === 50 ? 'text-green-400 font-bold' : 'text-white font-medium'}>{mainCount} / 50</span>
                 </div>
@@ -890,7 +890,7 @@ export default function DeckPanel() {
               </div>
 
               {mainCount > 0 && (
-                <div className="flex flex-col gap-1 text-[11px]">
+                <div className="flex flex-col gap-0.5 md:gap-1 text-[10px] md:text-[11px]">
                   {holomemCount > 0 && (
                     <div className="flex items-center flex-wrap gap-1">
                       <span className="text-emerald-400 font-medium">홀로멤 {holomemCount}</span>
