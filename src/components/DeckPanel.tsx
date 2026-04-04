@@ -3,6 +3,7 @@ import { useDeckStore } from '../store/deckStore';
 import { COLOR_ACCENT, getAccentColor } from '../utils/cardUtils';
 import type { CardColor, Deck, DeckEntry, HolomemSubtype } from '../types/card';
 import { CARDS } from '../data/cards';
+import CardPreviewModal from './CardPreviewModal';
 
 const CHEER_MAX = 20;
 
@@ -101,11 +102,7 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   return (
     <>
     {previewOpen && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={() => setPreviewOpen(false)}>
-        <img src={entry.card.imageUrl} alt={entry.card.name}
-          className="max-h-[94vh] max-w-[94vw] w-auto h-auto rounded-xl shadow-2xl"
-          draggable={false} style={{ pointerEvents: 'none' }} />
-      </div>
+      <CardPreviewModal card={entry.card} onClose={() => setPreviewOpen(false)} />
     )}
     <div className="relative group" data-deck-card-id={entry.card.id}>
       <div
