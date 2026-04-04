@@ -65,6 +65,7 @@ interface DeckState {
   removeCheer: (color: CardColor) => void;
   clearDeck: () => void;
   clearCheers: () => void;
+  fillCheers: () => void;
 
   setFilter: (filter: Partial<FilterState>) => void;
   resetFilter: () => void;
@@ -293,6 +294,27 @@ export const useDeckStore = create<DeckState>()(
           return {
             decks: s.decks.map((d) =>
               d.id === id ? { ...d, cheers: {}, updatedAt: Date.now() } : d
+            ),
+          };
+        });
+      },
+
+      fillCheers: () => {
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          const deck = s.decks.find((d) => d.id === id);
+          if (!deck || !deck.oshi) return s;
+          const oshiColors = deck.oshi.color ?? [];
+          if (oshiColors.length === 0) return s;
+          const perColor = Math.floor(CHEER_MAX / oshiColors.length);
+          const remainder = CHEER_MAX % oshiColors.length;
+          const cheers: Partial<Record<CardColor, number>> = {};
+          oshiColors.forEach((c, i) => {
+            cheers[c] = perColor + (i < remainder ? 1 : 0);
+          });
+          return {
+            decks: s.decks.map((d) =>
+              d.id === id ? { ...d, cheers, updatedAt: Date.now() } : d
             ),
           };
         });

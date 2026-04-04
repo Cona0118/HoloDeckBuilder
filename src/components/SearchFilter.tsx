@@ -83,6 +83,8 @@ function ToggleChip<T extends string>({
 export default function SearchFilter() {
   const { filter, setFilter, resetFilter } = useDeckStore();
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [tagsOpen, setTagsOpen] = useState(false);
+  const [setsOpen, setSetsOpen] = useState(false);
   const had1stBeforeBuzz = useRef(false);
 
   const allTags = useMemo(() => {
@@ -351,58 +353,88 @@ export default function SearchFilter() {
 
           {/* 태그 */}
           {allTags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 items-center">
-              <span className="text-xs text-gray-500 shrink-0">태그:</span>
-              {allTags.map((t) => (
-                <ToggleChip
-                  key={t}
-                  value={t}
-                  label={t}
-                  active={filter.tags.includes(t)}
-                  onToggle={toggleTag}
-                />
-              ))}
-              {filter.tags.length >= 2 && (
-                <div className="flex items-center gap-0.5 ml-1 bg-gray-800 border border-gray-700 rounded-full p-0.5">
-                  <button
-                    onClick={() => setFilter({ tagFilterMode: "or" })}
-                    className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
-                      filter.tagFilterMode === "or"
-                        ? "bg-indigo-600 text-white"
-                        : "text-gray-400 hover:text-gray-200"
-                    }`}
-                  >
-                    OR
-                  </button>
-                  <button
-                    onClick={() => setFilter({ tagFilterMode: "and" })}
-                    className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
-                      filter.tagFilterMode === "and"
-                        ? "bg-indigo-600 text-white"
-                        : "text-gray-400 hover:text-gray-200"
-                    }`}
-                  >
-                    AND
-                  </button>
+            <div>
+              <button
+                onClick={() => setTagsOpen((v) => !v)}
+                className="flex items-center gap-1.5 mb-1"
+              >
+                <span className="text-xs text-gray-500 shrink-0">태그</span>
+                {filter.tags.length > 0 && (
+                  <span className="text-[10px] text-indigo-400 font-medium">{filter.tags.length}</span>
+                )}
+                <svg className={`w-3 h-3 text-gray-500 transition-transform ${tagsOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {tagsOpen && (
+                <div className="flex flex-wrap gap-1.5 items-center">
+                  {allTags.map((t) => (
+                    <ToggleChip
+                      key={t}
+                      value={t}
+                      label={t}
+                      active={filter.tags.includes(t)}
+                      onToggle={toggleTag}
+                    />
+                  ))}
+                  {filter.tags.length >= 2 && (
+                    <div className="flex items-center gap-0.5 ml-1 bg-gray-800 border border-gray-700 rounded-full p-0.5">
+                      <button
+                        onClick={() => setFilter({ tagFilterMode: "or" })}
+                        className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
+                          filter.tagFilterMode === "or"
+                            ? "bg-indigo-600 text-white"
+                            : "text-gray-400 hover:text-gray-200"
+                        }`}
+                      >
+                        OR
+                      </button>
+                      <button
+                        onClick={() => setFilter({ tagFilterMode: "and" })}
+                        className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
+                          filter.tagFilterMode === "and"
+                            ? "bg-indigo-600 text-white"
+                            : "text-gray-400 hover:text-gray-200"
+                        }`}
+                      >
+                        AND
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           )}
 
           {/* 세트 */}
-          <div className="flex flex-wrap gap-1.5 items-center">
-            <span className="text-xs text-gray-500 shrink-0">세트:</span>
-            {[...SETS]
-              .sort((a, b) => a.id.localeCompare(b.id))
-              .map((s) => (
-                <ToggleChip
-                  key={s.id}
-                  value={s.id}
-                  label={s.id}
-                  active={filter.sets.includes(s.id)}
-                  onToggle={toggleSet}
-                />
-              ))}
+          <div>
+            <button
+              onClick={() => setSetsOpen((v) => !v)}
+              className="flex items-center gap-1.5 mb-1"
+            >
+              <span className="text-xs text-gray-500 shrink-0">세트</span>
+              {filter.sets.length > 0 && (
+                <span className="text-[10px] text-indigo-400 font-medium">{filter.sets.length}</span>
+              )}
+              <svg className={`w-3 h-3 text-gray-500 transition-transform ${setsOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {setsOpen && (
+              <div className="flex flex-wrap gap-1.5 items-center">
+                {[...SETS]
+                  .sort((a, b) => a.id.localeCompare(b.id))
+                  .map((s) => (
+                    <ToggleChip
+                      key={s.id}
+                      value={s.id}
+                      label={s.id}
+                      active={filter.sets.includes(s.id)}
+                      onToggle={toggleSet}
+                    />
+                  ))}
+              </div>
+            )}
           </div>
         </div>
       )}

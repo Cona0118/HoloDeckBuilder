@@ -132,6 +132,11 @@ export default function CardDetail({ card, onClose }: CardDetailProps) {
 
         {/* Abilities */}
         <div className="p-4 flex flex-col gap-3">
+          {card.limited && (
+            <div className="rounded-lg bg-red-900 px-3 py-1.5">
+              <p className="text-[11px] font-bold text-white tracking-wide text-center">LIMITED : 턴에 1번 밖에 사용할 수 없다.</p>
+            </div>
+          )}
           {card.oshiAbility && (
             <AbilityBlock label="오시 능력" ability={card.oshiAbility} color={accent} />
           )}
@@ -214,7 +219,7 @@ function AbilityBlock({ label, ability, color }: {
           </span>
         )}
       </div>
-      <p className="text-xs text-gray-300 leading-relaxed">{ability.description}</p>
+      <p className="text-xs text-gray-300 leading-relaxed whitespace-pre-line">{ability.description}</p>
     </div>
   );
 }

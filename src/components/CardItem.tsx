@@ -189,6 +189,11 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
                 {card.spAbility && (
                   <PreviewOshiAbility label="SP 효과" ability={card.spAbility} color="#f59e0b" />
                 )}
+                {card.type === "support" && card.limited && (
+                  <div className="rounded-lg bg-red-900 px-3 py-1.5">
+                    <p className="text-[11px] font-bold text-white tracking-wide text-center">LIMITED : 턴에 1번 밖에 사용할 수 없다.</p>
+                  </div>
+                )}
                 {card.abilities?.map((ab, i) => (
                   <PreviewAbility key={i} label={ab.damage !== undefined ? "아츠" : (ab.timing ?? "효과")} ability={ab} color={TIMING_COLOR[ab.timing ?? ''] ?? accent} />
                 ))}
@@ -225,6 +230,13 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
                         ))
                       )}
                     </div>
+                  </div>
+                )}
+
+                {/* 제한카드 */}
+                {card.restricted && (
+                  <div className="rounded-lg bg-red-900/50 border border-red-700/50 px-3 py-1.5">
+                    <p className="text-[11px] font-bold text-red-300 text-center">제한카드 ({card.restricted})</p>
                   </div>
                 )}
               </div>
@@ -326,15 +338,23 @@ const HOLO_ARTS_MAP: Record<string, string> = {
 };
 
 function RichText({ text }: { text: string }) {
-  const parts = text.split(/(홀로아츠 [WGRPBYN])/g);
+  const lines = text.split('\n');
   return (
     <>
-      {parts.map((part, i) => {
-        const m = part.match(/^홀로아츠 ([WGRPBYN])$/);
-        if (m && HOLO_ARTS_MAP[m[1]]) {
-          return <img key={i} src={HOLO_ARTS_MAP[m[1]]} alt={part} className="inline-block w-4 h-4 align-text-bottom mx-0.5" draggable={false} />;
-        }
-        return <span key={i}>{part}</span>;
+      {lines.map((line, li) => {
+        const parts = line.split(/(홀로아츠 [WGRPBYN])/g);
+        return (
+          <span key={li}>
+            {li > 0 && <br />}
+            {parts.map((part, pi) => {
+              const m = part.match(/^홀로아츠 ([WGRPBYN])$/);
+              if (m && HOLO_ARTS_MAP[m[1]]) {
+                return <img key={pi} src={HOLO_ARTS_MAP[m[1]]} alt={part} className="inline-block w-4 h-4 align-text-bottom mx-0.5" draggable={false} />;
+              }
+              return <span key={pi}>{part}</span>;
+            })}
+          </span>
+        );
       })}
     </>
   );

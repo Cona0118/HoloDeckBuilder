@@ -327,7 +327,7 @@ function CheerCard({ color, count, onAdd, onRemove, overlayVisible, onShowOverla
 }
 
 function CheerSection() {
-  const { getActiveDeck, addCheer, removeCheer, clearCheers } = useDeckStore();
+  const { getActiveDeck, addCheer, removeCheer, clearCheers, fillCheers } = useDeckStore();
   const [open, setOpen] = useState(true);
   const [activeColor, setActiveColor] = useState<CardColor | null>(null);
   const deck = getActiveDeck();
@@ -364,14 +364,24 @@ function CheerSection() {
             </svg>
           </div>
         </button>
-        {total > 0 && (
-          <button
-            onClick={() => clearCheers()}
-            className="ml-2 px-2 py-0.5 text-[10px] text-gray-500 hover:text-amber-300 hover:bg-amber-900/40 rounded border border-gray-700 transition-colors"
-          >
-            초기화
-          </button>
-        )}
+        <div className="flex items-center gap-1">
+          {deck.oshi && total < CHEER_MAX && (
+            <button
+              onClick={() => fillCheers()}
+              className="px-2 py-0.5 text-[10px] text-gray-500 hover:text-green-300 hover:bg-green-900/40 rounded border border-gray-700 transition-colors"
+            >
+              20장 채우기
+            </button>
+          )}
+          {total > 0 && (
+            <button
+              onClick={() => clearCheers()}
+              className="px-2 py-0.5 text-[10px] text-gray-500 hover:text-amber-300 hover:bg-amber-900/40 rounded border border-gray-700 transition-colors"
+            >
+              초기화
+            </button>
+          )}
+        </div>
       </div>
       {open && (
         <div className="grid grid-cols-6 gap-1 px-3 pb-3">
@@ -786,6 +796,8 @@ export default function DeckPanel() {
     return () => { clearTimeout(timer); document.removeEventListener('click', close); };
   }, [activeCardId]);
 
+  const [oshiOpen, setOshiOpen] = useState(true);
+
   if (!deck) return null;
 
   const mainCount = deck.mainDeck.reduce((s, e) => s + e.count, 0);
@@ -808,8 +820,6 @@ export default function DeckPanel() {
   ];
 
   const oshiAccent = deck.oshi ? getAccentColor(deck.oshi) : '#6b7280';
-  const [oshiOpen, setOshiOpen] = useState(true);
-
   return (
     <div className="flex flex-col h-full overflow-hidden bg-gray-950">
       <DeckSelector />

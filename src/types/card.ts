@@ -54,6 +54,7 @@ export interface Card {
   limited?: boolean;
 
   limit?: number;
+  restricted?: string;          // 제한카드 표시 (예: "2025.04.21~")
 }
 
 export interface DeckEntry {
