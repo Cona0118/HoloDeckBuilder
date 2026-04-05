@@ -73,13 +73,14 @@ export function isBuzz(card: Card): boolean {
 export function filterCards(cards: Card[], filter: FilterState): Card[] {
   return cards.filter((card) => {
     if (filter.searchText) {
-      const q = filter.searchText.toLowerCase();
-      const match =
+      const queries = filter.searchText.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+      const match = queries.some(q =>
         card.name.toLowerCase().includes(q) ||
         (card.nameJp ?? '').toLowerCase().includes(q) ||
         card.cardNumber.toLowerCase().includes(q) ||
         (card.tags ?? []).some((tag) => tag.toLowerCase().includes(q)) ||
-        (card.keywords ?? []).some((kw) => kw.toLowerCase().includes(q));
+        (card.keywords ?? []).some((kw) => kw.toLowerCase().includes(q))
+      );
       if (!match) return false;
     }
     if (filter.types.length > 0 && !filter.types.includes(card.type)) return false;

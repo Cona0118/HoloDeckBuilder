@@ -25292,7 +25292,7 @@ export const CARDS: Card[] = [
     setId: "hSD13",
     name: "JUSTICE,JUST LIKE THAT!!!!",
     nameJp: "JUSTICE, JUST LIKE THAT!!!!",
-    keywords: ["저스티스 저스트 라이크 댓"],
+    keywords: ["저스티스 저스트 라이크 댓", "JUSTICE JUST LIKE THAT!!!!"],
     type: "support",
     supportSubtype: "event",
     limited: true,
