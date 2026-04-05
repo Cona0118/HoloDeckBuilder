@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import type { Card, CardAbility, OshiAbility } from "../types/card";
 import { isBuzz } from "../utils/cardUtils";
 import {
@@ -19,7 +20,7 @@ interface CardPreviewModalProps {
 export default function CardPreviewModal({ card, onClose }: CardPreviewModalProps) {
   const accent = getAccentColor(card);
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
       onClick={onClose}
@@ -47,7 +48,7 @@ export default function CardPreviewModal({ card, onClose }: CardPreviewModalProp
 
         {/* 카드 정보 패널 */}
         <div
-          className="w-full md:w-104 shrink-0 bg-gray-900 rounded-xl border overflow-y-auto flex flex-col max-h-[50vh] md:max-h-[85vh]"
+          className="w-full md:w-140 shrink-0 bg-gray-900 rounded-xl border overflow-y-auto flex flex-col max-h-[50vh] md:max-h-[85vh]"
           style={{ borderColor: accent }}
         >
           <div className="h-1.5 w-full shrink-0" style={{ background: accent }} />
@@ -172,7 +173,8 @@ export default function CardPreviewModal({ card, onClose }: CardPreviewModalProp
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

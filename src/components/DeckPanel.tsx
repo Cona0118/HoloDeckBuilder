@@ -1,43 +1,90 @@
-import { useState, useEffect, useRef } from 'react';
-import { useDeckStore } from '../store/deckStore';
-import { COLOR_ACCENT, getAccentColor } from '../utils/cardUtils';
-import type { CardColor, Deck, DeckEntry, HolomemSubtype } from '../types/card';
-import { CARDS } from '../data/cards';
-import CardPreviewModal from './CardPreviewModal';
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import { useDeckStore } from "../store/deckStore";
+import { COLOR_ACCENT, getAccentColor } from "../utils/cardUtils";
+import type { CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
+import { CARDS } from "../data/cards";
+import CardPreviewModal from "./CardPreviewModal";
 
 const CHEER_MAX = 20;
 
 /** 저장된 카드 객체가 구버전일 수 있으므로 CARDS에서 최신 limit를 조회 */
 function getLiveLimit(cardId: string, fallbackLimit?: number): number {
-  return CARDS.find(c => c.id === cardId)?.limit ?? fallbackLimit ?? 4;
+  return CARDS.find((c) => c.id === cardId)?.limit ?? fallbackLimit ?? 4;
 }
-const CHEER_COLORS: CardColor[] = ['white', 'green', 'red', 'blue', 'purple', 'yellow'];
+const CHEER_COLORS: CardColor[] = [
+  "white",
+  "green",
+  "red",
+  "blue",
+  "purple",
+  "yellow",
+];
 const CHEER_IMAGE: Record<CardColor, string> = {
-  white:  '/images/hY/hY01.png',
-  green:  '/images/hY/hY02.png',
-  red:    '/images/hY/hY03.png',
-  blue:   '/images/hY/hY04.png',
-  purple: '/images/hY/hY05.png',
-  yellow: '/images/hY/hY06.png',
+  white: "/images/hY/hY01.png",
+  green: "/images/hY/hY02.png",
+  red: "/images/hY/hY03.png",
+  blue: "/images/hY/hY04.png",
+  purple: "/images/hY/hY05.png",
+  yellow: "/images/hY/hY06.png",
 };
 
 // ──────────────────────────────
 // Drag types
 // ──────────────────────────────
 type DragPhase =
-  | { phase: 'idle' }
-  | { phase: 'potential'; cardId: string; imageUrl?: string; x: number; y: number; w: number; h: number }
-  | { phase: 'dragging'; cardId: string; imageUrl?: string; x: number; y: number; w: number; h: number };
+  | { phase: "idle" }
+  | {
+      phase: "potential";
+      cardId: string;
+      imageUrl?: string;
+      x: number;
+      y: number;
+      w: number;
+      h: number;
+    }
+  | {
+      phase: "dragging";
+      cardId: string;
+      imageUrl?: string;
+      x: number;
+      y: number;
+      w: number;
+      h: number;
+    };
 
 // ──────────────────────────────
 // Image card thumbnail
 // ──────────────────────────────
-function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay, isDragging, dropIndicator, onDragStart, onTap, editMode, isSelected }: {
-  entry: DeckEntry; onAdd: () => void; onRemove: () => void;
-  overlayVisible: boolean; onShowOverlay: () => void; onHideOverlay: () => void;
+function DeckEntryCard({
+  entry,
+  onAdd,
+  onRemove,
+  overlayVisible,
+  onShowOverlay,
+  onHideOverlay,
+  isDragging,
+  dropIndicator,
+  onDragStart,
+  onTap,
+  editMode,
+  isSelected,
+}: {
+  entry: DeckEntry;
+  onAdd: () => void;
+  onRemove: () => void;
+  overlayVisible: boolean;
+  onShowOverlay: () => void;
+  onHideOverlay: () => void;
   isDragging: boolean;
-  dropIndicator: 'before' | 'after' | null;
-  onDragStart: (imageUrl: string | undefined, x: number, y: number, w: number, h: number) => void;
+  dropIndicator: "before" | "after" | null;
+  onDragStart: (
+    imageUrl: string | undefined,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+  ) => void;
   onTap: () => void;
   editMode: boolean;
   isSelected: boolean;
@@ -53,11 +100,14 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   const didLongPress = useRef(false);
 
   function cancelLongPress() {
-    if (longPressTimer.current) { clearTimeout(longPressTimer.current); longPressTimer.current = null; }
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
   }
 
   function handlePointerDown(e: React.PointerEvent) {
-    isTouch.current = e.pointerType === 'touch';
+    isTouch.current = e.pointerType === "touch";
     startPos.current = { x: e.clientX, y: e.clientY };
     wasDrag.current = false;
     didLongPress.current = false;
@@ -67,7 +117,13 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
       const el = e.currentTarget as HTMLElement;
       el.setPointerCapture(e.pointerId);
       const rect = el.getBoundingClientRect();
-      onDragStart(entry.card.imageUrl, e.clientX, e.clientY, rect.width, rect.height);
+      onDragStart(
+        entry.card.imageUrl,
+        e.clientX,
+        e.clientY,
+        rect.width,
+        rect.height,
+      );
     } else {
       cancelLongPress();
       longPressTimer.current = setTimeout(() => {
@@ -92,103 +148,142 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
   }
 
   const boxShadow = isSelected
-    ? '0 0 0 2px #22c55e'
-    : dropIndicator === 'before'
-    ? '-3px 0 0 0 #6366f1'
-    : dropIndicator === 'after'
-    ? '3px 0 0 0 #6366f1'
-    : undefined;
+    ? "0 0 0 2px #22c55e"
+    : dropIndicator === "before"
+      ? "-3px 0 0 0 #6366f1"
+      : dropIndicator === "after"
+        ? "3px 0 0 0 #6366f1"
+        : undefined;
 
   return (
     <>
-    {previewOpen && (
-      <CardPreviewModal card={entry.card} onClose={() => setPreviewOpen(false)} />
-    )}
-    <div className="relative group" data-deck-card-id={entry.card.id}>
-      <div
-        className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? 'cursor-pointer' : 'cursor-pointer'}`}
-        style={{
-          borderColor: isSelected ? '#22c55e' : editMode ? '#6366f1aa' : accent + '66',
-          WebkitTouchCallout: 'none',
-          opacity: isDragging ? 0.3 : 1,
-          boxShadow,
-        }}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onPointerLeave={() => cancelLongPress()}
-        onPointerCancel={() => cancelLongPress()}
-        onPointerMove={handlePointerMove}
-        onClick={(e) => {
-          if (didLongPress.current) { didLongPress.current = false; return; }
-          if (editMode) {
-            if (wasDrag.current) return;
-            onTap();
-            return;
-          }
-          const touch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
-          if (touch) {
-            e.stopPropagation();
-            onShowOverlay();
-          } else {
-            if (!atLimit) onAdd();
-          }
-        }}
-        onContextMenu={(e) => {
-          e.preventDefault();
-          if (editMode) return;
-          if (isTouch.current) return;
-          onRemove();
-        }}
-      >
-        {entry.card.imageUrl ? (
-          <img
-            src={entry.card.imageUrl}
-            alt={entry.card.name}
-            className="w-full h-full object-cover"
-            draggable={false}
-            style={{ pointerEvents: 'none' }}
-          />
-        ) : (
-          <div
-            className="w-full h-full flex items-center justify-center p-1"
-            style={{ background: accent + '22' }}
-          >
-            <span className="text-[9px] text-center text-gray-400 leading-tight">{entry.card.name}</span>
-          </div>
-        )}
+      {previewOpen && (
+        <CardPreviewModal
+          card={entry.card}
+          onClose={() => setPreviewOpen(false)}
+        />
+      )}
+      <div className="relative group" data-deck-card-id={entry.card.id}>
+        <div
+          className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? "cursor-pointer" : "cursor-pointer"}`}
+          style={{
+            borderColor: isSelected
+              ? "#22c55e"
+              : editMode
+                ? "#6366f1aa"
+                : accent + "66",
+            WebkitTouchCallout: "none",
+            opacity: isDragging ? 0.3 : 1,
+            boxShadow,
+          }}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onPointerLeave={() => cancelLongPress()}
+          onPointerCancel={() => cancelLongPress()}
+          onPointerMove={handlePointerMove}
+          onClick={(e) => {
+            if (didLongPress.current) {
+              didLongPress.current = false;
+              return;
+            }
+            if (editMode) {
+              if (wasDrag.current) return;
+              onTap();
+              return;
+            }
+            const touch =
+              (e.nativeEvent as PointerEvent).pointerType === "touch";
+            if (touch) {
+              e.stopPropagation();
+              onShowOverlay();
+            } else {
+              if (!atLimit) onAdd();
+            }
+          }}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            if (editMode) return;
+            if (isTouch.current) return;
+            onRemove();
+          }}
+        >
+          {entry.card.imageUrl ? (
+            <img
+              src={entry.card.imageUrl}
+              alt={entry.card.name}
+              className="w-full h-full object-cover"
+              draggable={false}
+              style={{ pointerEvents: "none" }}
+            />
+          ) : (
+            <div
+              className="w-full h-full flex items-center justify-center p-1"
+              style={{ background: accent + "22" }}
+            >
+              <span className="text-[9px] text-center text-gray-400 leading-tight">
+                {entry.card.name}
+              </span>
+            </div>
+          )}
 
-        {/* Count badge */}
-        <span className="absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
-          ×{entry.count}
-        </span>
+          {/* Count badge */}
+          <span className="absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
+            ×{entry.count}
+          </span>
 
-        {/* Selected indicator in edit mode */}
-        {isSelected && (
-          <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
-            <svg className="w-6 h-6 text-green-400 drop-shadow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-        )}
+          {/* Selected indicator in edit mode */}
+          {isSelected && (
+            <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
+              <svg
+                className="w-6 h-6 text-green-400 drop-shadow"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+          )}
 
-        {/* Hover overlay (desktop) / tap overlay (mobile) — hidden in edit mode */}
-        {!editMode && (
-          <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
-            overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-          }`}>
-            <button
-              onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
-              className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
-            >−</button>
-            <button
-              onClick={(e) => { e.stopPropagation(); if (!atLimit) onAdd(); onHideOverlay(); }}
-              disabled={atLimit}
-              className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
-            >+</button>
-          </div>
-        )}
+          {/* Hover overlay (desktop) / tap overlay (mobile) — hidden in edit mode */}
+          {!editMode && (
+            <div
+              className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+                overlayVisible
+                  ? "opacity-100"
+                  : "opacity-0 group-hover:opacity-100"
+              }`}
+            >
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onRemove();
+                  onHideOverlay();
+                }}
+                className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
+              >
+                −
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!atLimit) onAdd();
+                  onHideOverlay();
+                }}
+                disabled={atLimit}
+                className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 disabled:opacity-40 text-white text-base font-bold flex items-center justify-center"
+              >
+                +
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 }
@@ -197,13 +292,22 @@ function DeckEntryCard({ entry, onAdd, onRemove, overlayVisible, onShowOverlay, 
 // Deck selector
 // ──────────────────────────────
 function DeckSelector() {
-  const { decks, activeDeckId, setActiveDeck, createDeck, deleteDeck, renameDeck, getActiveDeck, clearDeck } = useDeckStore();
+  const {
+    decks,
+    activeDeckId,
+    setActiveDeck,
+    createDeck,
+    deleteDeck,
+    renameDeck,
+    getActiveDeck,
+    clearDeck,
+  } = useDeckStore();
   const [renaming, setRenaming] = useState(false);
-  const [newName, setNewName] = useState('');
+  const [newName, setNewName] = useState("");
   const activeDeck = getActiveDeck();
 
   function startRename() {
-    setNewName(activeDeck?.name ?? '');
+    setNewName(activeDeck?.name ?? "");
     setRenaming(true);
   }
   function confirmRename() {
@@ -215,18 +319,22 @@ function DeckSelector() {
     <div className="flex flex-col gap-2 p-3 border-b border-gray-800">
       <div className="flex gap-2">
         <select
-          value={activeDeckId ?? decks[0]?.id ?? ''}
+          value={activeDeckId ?? decks[0]?.id ?? ""}
           onChange={(e) => setActiveDeck(e.target.value)}
           className="flex-1 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white px-2 py-1.5 focus:outline-none focus:border-indigo-500"
         >
           {decks.map((d) => (
-            <option key={d.id} value={d.id}>{d.name}</option>
+            <option key={d.id} value={d.id}>
+              {d.name}
+            </option>
           ))}
         </select>
         <button
           onClick={() => createDeck()}
           className="px-3 py-1.5 bg-indigo-700 hover:bg-indigo-600 text-white text-xs rounded-lg transition-colors"
-        >+ 새 덱</button>
+        >
+          + 새 덱
+        </button>
       </div>
 
       <div className="flex gap-1">
@@ -236,26 +344,48 @@ function DeckSelector() {
               autoFocus
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
-              onKeyDown={(e) => { if (e.key === 'Enter') confirmRename(); if (e.key === 'Escape') setRenaming(false); }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") confirmRename();
+                if (e.key === "Escape") setRenaming(false);
+              }}
               className="flex-1 bg-gray-800 border border-indigo-500 rounded px-2 py-1 text-xs text-white focus:outline-none"
             />
-            <button onClick={confirmRename} className="px-2 py-1 bg-green-700 text-white text-xs rounded">저장</button>
-            <button onClick={() => setRenaming(false)} className="px-2 py-1 bg-gray-700 text-white text-xs rounded">취소</button>
+            <button
+              onClick={confirmRename}
+              className="px-2 py-1 bg-green-700 text-white text-xs rounded"
+            >
+              저장
+            </button>
+            <button
+              onClick={() => setRenaming(false)}
+              className="px-2 py-1 bg-gray-700 text-white text-xs rounded"
+            >
+              취소
+            </button>
           </>
         ) : (
           <>
-            <button onClick={startRename} className="px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs rounded border border-gray-700 transition-colors">
+            <button
+              onClick={startRename}
+              className="px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs rounded border border-gray-700 transition-colors"
+            >
               이름 변경
             </button>
             {activeDeck && (
               <button
                 onClick={() => {
-                  if (confirm(`"${activeDeck.name}" 덱을 초기화하시겠습니까?\n오시와 모든 카드가 제거됩니다.`)) {
+                  if (
+                    confirm(
+                      `"${activeDeck.name}" 덱을 초기화하시겠습니까?\n오시와 모든 카드가 제거됩니다.`,
+                    )
+                  ) {
                     clearDeck();
                   }
                 }}
                 className="px-2 py-1 bg-gray-800 hover:bg-amber-900 text-gray-400 hover:text-amber-300 text-xs rounded border border-gray-700 transition-colors"
-              >초기화</button>
+              >
+                초기화
+              </button>
             )}
             {decks.length > 1 && activeDeck && (
               <button
@@ -265,7 +395,9 @@ function DeckSelector() {
                   }
                 }}
                 className="px-2 py-1 bg-gray-800 hover:bg-red-900 text-gray-400 hover:text-red-300 text-xs rounded border border-gray-700 transition-colors"
-              >삭제</button>
+              >
+                삭제
+              </button>
             )}
           </>
         )}
@@ -277,18 +409,31 @@ function DeckSelector() {
 // ──────────────────────────────
 // Cheer deck
 // ──────────────────────────────
-function CheerCard({ color, count, onAdd, onRemove, overlayVisible, onShowOverlay, onHideOverlay }: {
-  color: CardColor; count: number;
-  onAdd: () => void; onRemove: () => void;
-  overlayVisible: boolean; onShowOverlay: () => void; onHideOverlay: () => void;
+function CheerCard({
+  color,
+  count,
+  onAdd,
+  onRemove,
+  overlayVisible,
+  onShowOverlay,
+  onHideOverlay,
+}: {
+  color: CardColor;
+  count: number;
+  onAdd: () => void;
+  onRemove: () => void;
+  overlayVisible: boolean;
+  onShowOverlay: () => void;
+  onHideOverlay: () => void;
 }) {
   return (
     <div className="relative group">
       <div
         className="relative w-full aspect-2.5/3.5 rounded overflow-hidden border cursor-pointer"
-        style={{ borderColor: COLOR_ACCENT[color] + '66' }}
+        style={{ borderColor: COLOR_ACCENT[color] + "66" }}
         onClick={(e) => {
-          const isTouch = (e.nativeEvent as PointerEvent).pointerType === 'touch';
+          const isTouch =
+            (e.nativeEvent as PointerEvent).pointerType === "touch";
           if (isTouch) {
             e.stopPropagation();
             onShowOverlay();
@@ -296,9 +441,17 @@ function CheerCard({ color, count, onAdd, onRemove, overlayVisible, onShowOverla
             onAdd();
           }
         }}
-        onContextMenu={(e) => { e.preventDefault(); onRemove(); }}
+        onContextMenu={(e) => {
+          e.preventDefault();
+          onRemove();
+        }}
       >
-        <img src={CHEER_IMAGE[color]} alt={color} className="w-full h-full object-cover" draggable={false} />
+        <img
+          src={CHEER_IMAGE[color]}
+          alt={color}
+          className="w-full h-full object-cover"
+          draggable={false}
+        />
         {count > 0 && (
           <span className="absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">
             ×{count}
@@ -306,17 +459,31 @@ function CheerCard({ color, count, onAdd, onRemove, overlayVisible, onShowOverla
         )}
 
         {/* Hover overlay (desktop) / tap overlay (mobile) */}
-        <div className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
-          overlayVisible ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-        }`}>
+        <div
+          className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+            overlayVisible ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+          }`}
+        >
           <button
-            onClick={(e) => { e.stopPropagation(); onRemove(); onHideOverlay(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onRemove();
+              onHideOverlay();
+            }}
             className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
-          >−</button>
+          >
+            −
+          </button>
           <button
-            onClick={(e) => { e.stopPropagation(); onAdd(); onHideOverlay(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onAdd();
+              onHideOverlay();
+            }}
             className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 text-white text-base font-bold flex items-center justify-center"
-          >+</button>
+          >
+            +
+          </button>
         </div>
       </div>
     </div>
@@ -324,7 +491,8 @@ function CheerCard({ color, count, onAdd, onRemove, overlayVisible, onShowOverla
 }
 
 function CheerSection() {
-  const { getActiveDeck, addCheer, removeCheer, clearCheers, fillCheers } = useDeckStore();
+  const { getActiveDeck, addCheer, removeCheer, clearCheers, fillCheers } =
+    useDeckStore();
   const [open, setOpen] = useState(true);
   const [activeColor, setActiveColor] = useState<CardColor | null>(null);
   const deck = getActiveDeck();
@@ -332,8 +500,14 @@ function CheerSection() {
   useEffect(() => {
     if (!activeColor) return;
     const close = () => setActiveColor(null);
-    const timer = setTimeout(() => document.addEventListener('click', close), 0);
-    return () => { clearTimeout(timer); document.removeEventListener('click', close); };
+    const timer = setTimeout(
+      () => document.addEventListener("click", close),
+      0,
+    );
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("click", close);
+    };
   }, [activeColor]);
 
   if (!deck) return null;
@@ -348,16 +522,27 @@ function CheerSection() {
           onClick={() => setOpen((v) => !v)}
           className="flex items-center gap-2 flex-1"
         >
-          <p className="text-[10px] text-gray-500 uppercase tracking-wider">엘 덱</p>
+          <p className="text-[10px] text-gray-500 uppercase tracking-wider">
+            엘 덱
+          </p>
           <div className="flex items-center gap-2">
-            <span className={`text-xs font-bold ${total === CHEER_MAX ? 'text-green-400' : total > CHEER_MAX ? 'text-red-400' : 'text-gray-400'}`}>
+            <span
+              className={`text-xs font-bold ${total === CHEER_MAX ? "text-green-400" : total > CHEER_MAX ? "text-red-400" : "text-gray-400"}`}
+            >
               {total} / {CHEER_MAX}
             </span>
             <svg
-              className={`w-3.5 h-3.5 text-gray-500 transition-transform ${open ? 'rotate-180' : ''}`}
-              fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              className={`w-3.5 h-3.5 text-gray-500 transition-transform ${open ? "rotate-180" : ""}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
             </svg>
           </div>
         </button>
@@ -412,7 +597,14 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-function rrect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
+function rrect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+) {
   ctx.beginPath();
   ctx.moveTo(x + r, y);
   ctx.lineTo(x + w - r, y);
@@ -426,31 +618,50 @@ function rrect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h
   ctx.closePath();
 }
 
-async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'expanded') {
+async function exportDeckAsImage(
+  deck: Deck,
+  mode: "expanded" | "compact" = "expanded",
+) {
   // Use user's custom order (no sort)
-  const holomem = deck.mainDeck.filter(e => e.card.type === 'holomem');
-  const support = deck.mainDeck.filter(e => e.card.type === 'support');
+  const holomem = deck.mainDeck.filter((e) => e.card.type === "holomem");
+  const support = deck.mainDeck.filter((e) => e.card.type === "support");
   const cheers = deck.cheers ?? {};
 
   // Preload all images
   const urlSet = new Set<string>();
   if (deck.oshi?.imageUrl) urlSet.add(deck.oshi.imageUrl);
-  deck.mainDeck.forEach((e) => { if (e.card.imageUrl) urlSet.add(e.card.imageUrl); });
+  deck.mainDeck.forEach((e) => {
+    if (e.card.imageUrl) urlSet.add(e.card.imageUrl);
+  });
   CHEER_COLORS.forEach((c) => urlSet.add(CHEER_IMAGE[c]));
   const cache = new Map<string, HTMLImageElement>();
-  await Promise.all([...urlSet].map(async (url) => {
-    try { cache.set(url, await loadImage(url)); } catch { /* skip */ }
-  }));
+  await Promise.all(
+    [...urlSet].map(async (url) => {
+      try {
+        cache.set(url, await loadImage(url));
+      } catch {
+        /* skip */
+      }
+    }),
+  );
 
   // Canvas size (compact height is computed dynamically below)
-  const W = mode === 'compact' ? 1200 : 1600;
-  const H = mode === 'compact' ? 0 : 900;
-  const canvas = document.createElement('canvas');
+  const W = mode === "compact" ? 1200 : 1600;
+  const H = mode === "compact" ? 0 : 900;
+  const canvas = document.createElement("canvas");
   canvas.width = W;
   canvas.height = H;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext("2d")!;
 
-  function drawSlot(imageUrl: string | undefined, label: string, x: number, y: number, w: number, h: number, accent = '#6b7280') {
+  function drawSlot(
+    imageUrl: string | undefined,
+    label: string,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    accent = "#6b7280",
+  ) {
     ctx.save();
     rrect(ctx, x, y, w, h, 3);
     ctx.clip();
@@ -458,26 +669,32 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     if (img) {
       ctx.drawImage(img, x, y, w, h);
     } else {
-      ctx.fillStyle = accent + '33';
+      ctx.fillStyle = accent + "33";
       ctx.fillRect(x, y, w, h);
-      ctx.fillStyle = '#9ca3af';
+      ctx.fillStyle = "#9ca3af";
       ctx.font = `${Math.max(6, Math.floor(w * 0.12))}px sans-serif`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
       ctx.fillText(label.slice(0, 8), x + w / 2, y + h / 2);
     }
     ctx.restore();
-    ctx.strokeStyle = accent + '88';
+    ctx.strokeStyle = accent + "88";
     ctx.lineWidth = 1;
     rrect(ctx, x, y, w, h, 3);
     ctx.stroke();
   }
 
-  function drawBadge(cardX: number, cardY: number, cardW: number, count: number) {
+  function drawBadge(
+    cardX: number,
+    cardY: number,
+    cardW: number,
+    count: number,
+  ) {
     const text = `×${count}`;
     const fontSize = 20;
     ctx.font = `bold ${fontSize}px sans-serif`;
-    const padX = 9, padY = 5;
+    const padX = 9,
+      padY = 5;
     const tw = ctx.measureText(text).width;
     const bw = Math.ceil(tw + padX * 2);
     const bh = fontSize + padY * 2;
@@ -487,34 +704,34 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
 
     // Shadow
     ctx.save();
-    ctx.shadowColor = 'rgba(0,0,0,0.75)';
+    ctx.shadowColor = "rgba(0,0,0,0.75)";
     ctx.shadowBlur = 6;
     ctx.shadowOffsetX = 1;
     ctx.shadowOffsetY = 1;
 
     // Background
-    ctx.fillStyle = 'rgba(17,10,60,0.95)';
+    ctx.fillStyle = "rgba(17,10,60,0.95)";
     rrect(ctx, bx, by, bw, bh, br);
     ctx.fill();
     ctx.restore();
 
     // Border
-    ctx.strokeStyle = '#818cf8';
+    ctx.strokeStyle = "#818cf8";
     ctx.lineWidth = 1.5;
     rrect(ctx, bx, by, bw, bh, br);
     ctx.stroke();
 
     // Text
-    ctx.fillStyle = '#e0e7ff';
+    ctx.fillStyle = "#e0e7ff";
     ctx.font = `bold ${fontSize}px sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
     ctx.fillText(text, bx + bw / 2, by + bh / 2 + 0.5);
   }
 
-  if (mode === 'expanded') {
+  if (mode === "expanded") {
     // ── 16:9 expanded layout ──────────────────────────────────────────
-    ctx.fillStyle = '#111827';
+    ctx.fillStyle = "#111827";
     ctx.fillRect(0, 0, W, H);
     const PAD = 12;
     const GAP = 8;
@@ -531,18 +748,30 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
 
     const CHEER_COLS = 3;
     const CHEER_GAP = 4;
-    const CHEER_W = Math.floor((LEFT_W - CHEER_GAP * (CHEER_COLS - 1)) / CHEER_COLS);
+    const CHEER_W = Math.floor(
+      (LEFT_W - CHEER_GAP * (CHEER_COLS - 1)) / CHEER_COLS,
+    );
     const CHEER_H = Math.round(CHEER_W * 1.4);
 
     // Cheer summary: show each color with ×N badge (skip 0-count)
     const cheerSummary = CHEER_COLORS.filter((c) => (cheers[c] ?? 0) > 0);
-    const cheerRows = cheerSummary.length > 0 ? Math.ceil(cheerSummary.length / CHEER_COLS) : 0;
-    const cheerTotalH = cheerRows > 0 ? cheerRows * CHEER_H + (cheerRows - 1) * CHEER_GAP : 0;
+    const cheerRows =
+      cheerSummary.length > 0 ? Math.ceil(cheerSummary.length / CHEER_COLS) : 0;
+    const cheerTotalH =
+      cheerRows > 0 ? cheerRows * CHEER_H + (cheerRows - 1) * CHEER_GAP : 0;
     const leftTotalH = OSHI_H + (cheerTotalH > 0 ? GAP + cheerTotalH : 0);
     const LEFT_START_Y = Math.floor((H - leftTotalH) / 2);
     const CHEER_START_Y = LEFT_START_Y + OSHI_H + GAP;
 
-    drawSlot(deck.oshi?.imageUrl, deck.oshi?.name ?? '?', PAD, LEFT_START_Y, OSHI_W, OSHI_H, deck.oshi ? getAccentColor(deck.oshi) : '#6b7280');
+    drawSlot(
+      deck.oshi?.imageUrl,
+      deck.oshi?.name ?? "?",
+      PAD,
+      LEFT_START_Y,
+      OSHI_W,
+      OSHI_H,
+      deck.oshi ? getAccentColor(deck.oshi) : "#6b7280",
+    );
     cheerSummary.forEach((c, i) => {
       const col = i % CHEER_COLS;
       const row = Math.floor(i / CHEER_COLS);
@@ -554,14 +783,26 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
 
     const expanded: { imageUrl?: string; name: string; accent: string }[] = [];
     [...holomem, ...support].forEach(({ card, count }) => {
-      for (let i = 0; i < count; i++) expanded.push({ imageUrl: card.imageUrl, name: card.name, accent: getAccentColor(card) });
+      for (let i = 0; i < count; i++)
+        expanded.push({
+          imageUrl: card.imageUrl,
+          name: card.name,
+          accent: getAccentColor(card),
+        });
     });
     expanded.slice(0, 50).forEach((c, i) => {
       const col = i % CARD_COLS;
       const row = Math.floor(i / CARD_COLS);
-      drawSlot(c.imageUrl, c.name, DECK_X + col * (CARD_W + CARD_GAP), PAD + row * (CARD_H + CARD_GAP), CARD_W, CARD_H, c.accent);
+      drawSlot(
+        c.imageUrl,
+        c.name,
+        DECK_X + col * (CARD_W + CARD_GAP),
+        PAD + row * (CARD_H + CARD_GAP),
+        CARD_W,
+        CARD_H,
+        c.accent,
+      );
     });
-
   } else {
     // ── compact layout (dynamic height) ───────────────────────────────
     const PAD = 24;
@@ -569,7 +810,9 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     const SECTION_GAP = 20;
     const CARD_COLS = 5;
     const AVAIL_W = W - 2 * PAD;
-    const CARD_W = Math.floor((AVAIL_W - CARD_GAP * (CARD_COLS - 1)) / CARD_COLS);
+    const CARD_W = Math.floor(
+      (AVAIL_W - CARD_GAP * (CARD_COLS - 1)) / CARD_COLS,
+    );
     const CARD_H = Math.round(CARD_W * 1.4);
 
     // Oshi: 2×2 card slots
@@ -577,24 +820,43 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     const OSHI_H = 2 * CARD_H + CARD_GAP;
 
     // Unique deck cards in user order
-    const unique: { imageUrl?: string; name: string; accent: string; count: number }[] = [];
+    const unique: {
+      imageUrl?: string;
+      name: string;
+      accent: string;
+      count: number;
+    }[] = [];
     [...holomem, ...support].forEach(({ card, count }) => {
-      unique.push({ imageUrl: card.imageUrl, name: card.name, accent: getAccentColor(card), count });
+      unique.push({
+        imageUrl: card.imageUrl,
+        name: card.name,
+        accent: getAccentColor(card),
+        count,
+      });
     });
 
     // Compute deck rows and dynamic canvas height
     const DECK_Y = PAD + OSHI_H + SECTION_GAP;
-    const ROWS = unique.length > 0 ? Math.max(1, Math.ceil(unique.length / CARD_COLS)) : 0;
+    const ROWS =
+      unique.length > 0 ? Math.max(1, Math.ceil(unique.length / CARD_COLS)) : 0;
     const DECK_H = ROWS > 0 ? ROWS * CARD_H + (ROWS - 1) * CARD_GAP : 0;
     const H_compact = DECK_Y + DECK_H + PAD;
 
     // Set canvas dimensions and fill background
     canvas.height = H_compact;
-    ctx.fillStyle = '#111827';
+    ctx.fillStyle = "#111827";
     ctx.fillRect(0, 0, W, H_compact);
 
     // Oshi
-    drawSlot(deck.oshi?.imageUrl, deck.oshi?.name ?? '?', PAD, PAD, OSHI_W, OSHI_H, deck.oshi ? getAccentColor(deck.oshi) : '#6b7280');
+    drawSlot(
+      deck.oshi?.imageUrl,
+      deck.oshi?.name ?? "?",
+      PAD,
+      PAD,
+      OSHI_W,
+      OSHI_H,
+      deck.oshi ? getAccentColor(deck.oshi) : "#6b7280",
+    );
 
     // Cheers: 3 cols × 2 rows — all 6 colors shown, 0-count grayed out
     const CHEER_COLS = 3;
@@ -627,16 +889,16 @@ async function exportDeckAsImage(deck: Deck, mode: 'expanded' | 'compact' = 'exp
     });
   }
 
-  const link = document.createElement('a');
-  link.download = `${deck.name.replace(/\s+/g, '_')}-deck.png`;
-  link.href = canvas.toDataURL('image/png');
+  const link = document.createElement("a");
+  link.download = `${deck.name.replace(/\s+/g, "_")}-deck.png`;
+  link.href = canvas.toDataURL("image/png");
   link.click();
 }
 
 // ──────────────────────────────
 // Export
 // ──────────────────────────────
-function ExportPanel() {
+function ExportPanel({ onOpenDrawSim }: { onOpenDrawSim: () => void }) {
   const { exportDeckText, getActiveDeck } = useDeckStore();
   const [copied, setCopied] = useState(false);
   const [exporting, setExporting] = useState(false);
@@ -647,39 +909,49 @@ function ExportPanel() {
     setTimeout(() => setCopied(false), 2000);
   }
 
-  async function handleImageExport(mode: 'expanded' | 'compact') {
+  async function handleImageExport(mode: "expanded" | "compact") {
     const deck = getActiveDeck();
     if (!deck) return;
     setExporting(true);
-    try { await exportDeckAsImage(deck, mode); } finally { setExporting(false); }
+    try {
+      await exportDeckAsImage(deck, mode);
+    } finally {
+      setExporting(false);
+    }
   }
 
   return (
     <div className="p-3 border-t border-gray-800 flex flex-col gap-2">
       <button
-        onClick={handleCopy}
-        className={`w-full py-2 rounded-lg text-sm font-medium transition-all ${
-          copied
-            ? 'bg-green-700 text-white'
-            : 'bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700'
-        }`}
+        onClick={onOpenDrawSim}
+        className="w-full py-2 rounded-lg text-sm font-medium transition-all bg-indigo-800 hover:bg-indigo-700 text-indigo-200 border border-indigo-700"
       >
-        {copied ? '✓ 복사됨!' : '덱 목록 복사 (공유)'}
+        드로우 시뮬레이션
       </button>
       <div className="flex gap-2">
         <button
-          onClick={() => handleImageExport('expanded')}
-          disabled={exporting}
-          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+          onClick={handleCopy}
+          className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
+            copied
+              ? "bg-green-700 text-white"
+              : "bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700"
+          }`}
         >
-          {exporting ? '...' : '이미지 (전체)'}
+          {copied ? "✓ 복사됨!" : "덱 목록 복사"}
         </button>
         <button
-          onClick={() => handleImageExport('compact')}
+          onClick={() => handleImageExport("expanded")}
           disabled={exporting}
           className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
         >
-          {exporting ? '...' : '이미지 (요약)'}
+          {exporting ? "..." : "이미지 (전체)"}
+        </button>
+        <button
+          onClick={() => handleImageExport("compact")}
+          disabled={exporting}
+          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+        >
+          {exporting ? "..." : "이미지 (요약)"}
         </button>
       </div>
     </div>
@@ -690,24 +962,39 @@ function ExportPanel() {
 // Main
 // ──────────────────────────────
 export default function DeckPanel() {
-  const { getActiveDeck, addCard, removeCard, getDeckErrors, reorderMainDeck, swapMainDeckEntries, sortMainDeckDefault } = useDeckStore();
+  const {
+    getActiveDeck,
+    addCard,
+    removeCard,
+    getDeckErrors,
+    reorderMainDeck,
+    swapMainDeckEntries,
+    sortMainDeckDefault,
+  } = useDeckStore();
   const deck = getActiveDeck();
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
   const [editMode, setEditMode] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
   // Drag state
-  const dragRef = useRef<DragPhase>({ phase: 'idle' });
-  const [dragRender, setDragRender] = useState<DragPhase>({ phase: 'idle' });
-  const [dropTarget, setDropTarget] = useState<{ cardId: string; before: boolean } | null>(null);
+  const dragRef = useRef<DragPhase>({ phase: "idle" });
+  const [dragRender, setDragRender] = useState<DragPhase>({ phase: "idle" });
+  const [dropTarget, setDropTarget] = useState<{
+    cardId: string;
+    before: boolean;
+  } | null>(null);
 
   // Stable refs for listeners
   const dropTargetRef = useRef(dropTarget);
-  useEffect(() => { dropTargetRef.current = dropTarget; }, [dropTarget]);
+  useEffect(() => {
+    dropTargetRef.current = dropTarget;
+  }, [dropTarget]);
   const deckRef = useRef(deck);
-  useEffect(() => { deckRef.current = deck; }, [deck]);
+  useEffect(() => {
+    deckRef.current = deck;
+  }, [deck]);
 
-  const isDragActive = dragRender.phase !== 'idle';
+  const isDragActive = dragRender.phase !== "idle";
 
   // Document-level drag listeners
   useEffect(() => {
@@ -716,15 +1003,23 @@ export default function DeckPanel() {
     function onMove(e: PointerEvent) {
       e.preventDefault();
       const d = dragRef.current;
-      if (d.phase === 'idle') return;
+      if (d.phase === "idle") return;
       const newX = e.clientX;
       const newY = e.clientY;
 
-      if (d.phase === 'potential') {
+      if (d.phase === "potential") {
         const dx = newX - d.x;
         const dy = newY - d.y;
         if (Math.sqrt(dx * dx + dy * dy) > 8) {
-          const next: DragPhase = { phase: 'dragging', cardId: d.cardId, imageUrl: d.imageUrl, x: newX, y: newY, w: d.w, h: d.h };
+          const next: DragPhase = {
+            phase: "dragging",
+            cardId: d.cardId,
+            imageUrl: d.imageUrl,
+            x: newX,
+            y: newY,
+            w: d.w,
+            h: d.h,
+          };
           dragRef.current = next;
           setDragRender({ ...next });
           setActiveCardId(null);
@@ -740,25 +1035,35 @@ export default function DeckPanel() {
 
       // Find drop target (ghost has pointer-events:none so elementFromPoint works through it)
       const el = document.elementFromPoint(newX, newY);
-      const cardEl = el?.closest('[data-deck-card-id]') as HTMLElement | null;
+      const cardEl = el?.closest("[data-deck-card-id]") as HTMLElement | null;
       const targetId = cardEl?.dataset.deckCardId;
 
       if (targetId && targetId !== d.cardId) {
         // Only allow drop within same card type section
         const currentDeck = deckRef.current;
-        const draggedEntry = currentDeck?.mainDeck.find(e => e.card.id === d.cardId);
-        const targetEntry = currentDeck?.mainDeck.find(e => e.card.id === targetId);
-        if (draggedEntry && targetEntry && draggedEntry.card.type === targetEntry.card.type) {
+        const draggedEntry = currentDeck?.mainDeck.find(
+          (e) => e.card.id === d.cardId,
+        );
+        const targetEntry = currentDeck?.mainDeck.find(
+          (e) => e.card.id === targetId,
+        );
+        if (
+          draggedEntry &&
+          targetEntry &&
+          draggedEntry.card.type === targetEntry.card.type
+        ) {
           const rect = cardEl!.getBoundingClientRect();
           const before = newX < rect.left + rect.width / 2;
-          setDropTarget(prev =>
-            prev?.cardId === targetId && prev?.before === before ? prev : { cardId: targetId, before }
+          setDropTarget((prev) =>
+            prev?.cardId === targetId && prev?.before === before
+              ? prev
+              : { cardId: targetId, before },
           );
         } else {
-          setDropTarget(prev => prev ? null : prev);
+          setDropTarget((prev) => (prev ? null : prev));
         }
       } else {
-        setDropTarget(prev => prev ? null : prev);
+        setDropTarget((prev) => (prev ? null : prev));
       }
     }
 
@@ -766,22 +1071,22 @@ export default function DeckPanel() {
       const d = dragRef.current;
       const dt = dropTargetRef.current;
 
-      if (d.phase === 'dragging') {
+      if (d.phase === "dragging") {
         if (dt) reorderMainDeck(d.cardId, dt.cardId, dt.before);
       }
 
-      dragRef.current = { phase: 'idle' };
-      setDragRender({ phase: 'idle' });
+      dragRef.current = { phase: "idle" };
+      setDragRender({ phase: "idle" });
       setDropTarget(null);
     }
 
-    document.addEventListener('pointermove', onMove, { passive: false });
-    document.addEventListener('pointerup', onUp);
-    document.addEventListener('pointercancel', onUp);
+    document.addEventListener("pointermove", onMove, { passive: false });
+    document.addEventListener("pointerup", onUp);
+    document.addEventListener("pointercancel", onUp);
     return () => {
-      document.removeEventListener('pointermove', onMove);
-      document.removeEventListener('pointerup', onUp);
-      document.removeEventListener('pointercancel', onUp);
+      document.removeEventListener("pointermove", onMove);
+      document.removeEventListener("pointerup", onUp);
+      document.removeEventListener("pointercancel", onUp);
     };
   }, [isDragActive, reorderMainDeck]);
 
@@ -789,34 +1094,68 @@ export default function DeckPanel() {
   useEffect(() => {
     if (!activeCardId) return;
     const close = () => setActiveCardId(null);
-    const timer = setTimeout(() => document.addEventListener('click', close), 0);
-    return () => { clearTimeout(timer); document.removeEventListener('click', close); };
+    const timer = setTimeout(
+      () => document.addEventListener("click", close),
+      0,
+    );
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("click", close);
+    };
   }, [activeCardId]);
 
   const [oshiOpen, setOshiOpen] = useState(true);
+  const [drawSimOpen, setDrawSimOpen] = useState(false);
+  const [oshiPreviewOpen, setOshiPreviewOpen] = useState(false);
+  const oshiLongPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const oshiDidLongPress = useRef(false);
+
+  function startOshiLongPress() {
+    oshiDidLongPress.current = false;
+    oshiLongPressTimer.current = setTimeout(() => {
+      oshiDidLongPress.current = true;
+      if (deck?.oshi?.imageUrl) setOshiPreviewOpen(true);
+    }, 500);
+  }
+  function cancelOshiLongPress() {
+    if (oshiLongPressTimer.current) {
+      clearTimeout(oshiLongPressTimer.current);
+      oshiLongPressTimer.current = null;
+    }
+  }
 
   if (!deck) return null;
 
   const mainCount = deck.mainDeck.reduce((s, e) => s + e.count, 0);
   const errors = getDeckErrors();
-  const holomemCount = deck.mainDeck.filter(e => e.card.type === 'holomem').reduce((s, e) => s + e.count, 0);
-  const supportCount = deck.mainDeck.filter(e => e.card.type === 'support').reduce((s, e) => s + e.count, 0);
+  const holomemCount = deck.mainDeck
+    .filter((e) => e.card.type === "holomem")
+    .reduce((s, e) => s + e.count, 0);
+  const supportCount = deck.mainDeck
+    .filter((e) => e.card.type === "support")
+    .reduce((s, e) => s + e.count, 0);
   const holomemSubtypeCounts: Partial<Record<HolomemSubtype, number>> = {};
-  deck.mainDeck.filter(e => e.card.type === 'holomem').forEach(({ card, count }) => {
-    if (card.holomemSubtype) holomemSubtypeCounts[card.holomemSubtype] = (holomemSubtypeCounts[card.holomemSubtype] ?? 0) + count;
-  });
-  const limitedCount = deck.mainDeck.filter(e => e.card.type === 'support' && e.card.limited).reduce((s, e) => s + e.count, 0);
+  deck.mainDeck
+    .filter((e) => e.card.type === "holomem")
+    .forEach(({ card, count }) => {
+      if (card.holomemSubtype)
+        holomemSubtypeCounts[card.holomemSubtype] =
+          (holomemSubtypeCounts[card.holomemSubtype] ?? 0) + count;
+    });
+  const limitedCount = deck.mainDeck
+    .filter((e) => e.card.type === "support" && e.card.limited)
+    .reduce((s, e) => s + e.count, 0);
 
   // Use mainDeck array order (user's custom order, no sort)
-  const holomemEntries = deck.mainDeck.filter((e) => e.card.type === 'holomem');
-  const supportEntries = deck.mainDeck.filter((e) => e.card.type === 'support');
+  const holomemEntries = deck.mainDeck.filter((e) => e.card.type === "holomem");
+  const supportEntries = deck.mainDeck.filter((e) => e.card.type === "support");
 
   const sections = [
-    { label: '홀로멤', entries: holomemEntries },
-    { label: '서포트', entries: supportEntries },
+    { label: "홀로멤", entries: holomemEntries },
+    { label: "서포트", entries: supportEntries },
   ];
 
-  const oshiAccent = deck.oshi ? getAccentColor(deck.oshi) : '#6b7280';
+  const oshiAccent = deck.oshi ? getAccentColor(deck.oshi) : "#6b7280";
   return (
     <div className="flex flex-col h-full overflow-hidden bg-gray-950">
       <DeckSelector />
@@ -829,32 +1168,68 @@ export default function DeckPanel() {
           onClick={() => setOshiOpen((v) => !v)}
         >
           <p className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">
-            오시 {deck.oshi ? `· ${deck.oshi.name}` : ''}
-            <span className="text-gray-600 ml-1 font-medium">{mainCount}/50</span>
+            오시 {deck.oshi ? `· ${deck.oshi.name}` : ""}
+            <span className="text-gray-600 ml-1 font-medium">
+              {mainCount}/50
+            </span>
           </p>
-          <svg className={`w-3.5 h-3.5 text-gray-500 md:hidden transition-transform ${oshiOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <svg
+            className={`w-3.5 h-3.5 text-gray-500 md:hidden transition-transform ${oshiOpen ? "rotate-180" : ""}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </button>
 
-        <div className={`${oshiOpen ? '' : 'hidden md:block'}`}>
+        <div className={`${oshiOpen ? "" : "hidden md:block"}`}>
           <div className="flex gap-2 md:gap-3 items-start">
             {/* Oshi image */}
+            {oshiPreviewOpen && deck.oshi && (
+              <CardPreviewModal
+                card={deck.oshi}
+                onClose={() => setOshiPreviewOpen(false)}
+              />
+            )}
             <div
-              className="w-10 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2"
-              style={{ borderColor: oshiAccent + 'aa' }}
+              className="w-10 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2 select-none"
+              style={{
+                borderColor: oshiAccent + "aa",
+                WebkitTouchCallout: "none",
+              }}
+              onPointerDown={deck.oshi ? startOshiLongPress : undefined}
+              onPointerUp={cancelOshiLongPress}
+              onPointerLeave={cancelOshiLongPress}
+              onPointerCancel={cancelOshiLongPress}
             >
               {deck.oshi ? (
                 deck.oshi.imageUrl ? (
-                  <img src={deck.oshi.imageUrl} alt={deck.oshi.name} className="w-full h-full object-cover" draggable={false} style={{ pointerEvents: 'none' }} />
+                  <img
+                    src={deck.oshi.imageUrl}
+                    alt={deck.oshi.name}
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    style={{ pointerEvents: "none" }}
+                  />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-2xl font-bold" style={{ background: oshiAccent + '33', color: oshiAccent }}>
+                  <div
+                    className="w-full h-full flex items-center justify-center text-2xl font-bold"
+                    style={{ background: oshiAccent + "33", color: oshiAccent }}
+                  >
                     {deck.oshi.name[0]}
                   </div>
                 )
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gray-800">
-                  <span className="text-xs text-gray-500 text-center leading-tight px-1">오시 선택</span>
+                  <span className="text-xs text-gray-500 text-center leading-tight px-1">
+                    오시 선택
+                  </span>
                 </div>
               )}
             </div>
@@ -863,8 +1238,12 @@ export default function DeckPanel() {
             <div className="flex-1 min-w-0 flex flex-col gap-1 md:gap-2">
               {deck.oshi && (
                 <div>
-                  <p className="text-xs md:text-sm font-semibold text-amber-200 truncate">{deck.oshi.name}</p>
-                  <p className="text-[10px] md:text-xs text-gray-400">{deck.oshi.cardNumber}</p>
+                  <p className="text-xs md:text-sm font-semibold text-amber-200 truncate">
+                    {deck.oshi.name}
+                  </p>
+                  <p className="text-[10px] md:text-xs text-gray-400">
+                    {deck.oshi.cardNumber}
+                  </p>
                 </div>
               )}
 
@@ -872,9 +1251,20 @@ export default function DeckPanel() {
               {errors.length > 0 && (
                 <div className="flex flex-col gap-0.5">
                   {errors.map((e, i) => (
-                    <div key={i} className="flex items-center gap-1 text-xs text-amber-400">
-                      <svg className="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    <div
+                      key={i}
+                      className="flex items-center gap-1 text-xs text-amber-400"
+                    >
+                      <svg
+                        className="w-3.5 h-3.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                       {e}
                     </div>
@@ -886,12 +1276,22 @@ export default function DeckPanel() {
               <div>
                 <div className="flex justify-between text-[10px] md:text-xs mb-0.5 md:mb-1">
                   <span className="text-gray-400">메인 덱</span>
-                  <span className={mainCount === 50 ? 'text-green-400 font-bold' : 'text-white font-medium'}>{mainCount} / 50</span>
+                  <span
+                    className={
+                      mainCount === 50
+                        ? "text-green-400 font-bold"
+                        : "text-white font-medium"
+                    }
+                  >
+                    {mainCount} / 50
+                  </span>
                 </div>
                 <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                   <div
-                    className={`h-full rounded-full transition-all ${mainCount === 50 ? 'bg-green-500' : mainCount > 50 ? 'bg-red-500' : 'bg-indigo-500'}`}
-                    style={{ width: `${Math.min((mainCount / 50) * 100, 100)}%` }}
+                    className={`h-full rounded-full transition-all ${mainCount === 50 ? "bg-green-500" : mainCount > 50 ? "bg-red-500" : "bg-indigo-500"}`}
+                    style={{
+                      width: `${Math.min((mainCount / 50) * 100, 100)}%`,
+                    }}
                   />
                 </div>
               </div>
@@ -900,26 +1300,39 @@ export default function DeckPanel() {
                 <div className="flex flex-col gap-0.5 md:gap-1 text-[10px] md:text-[11px]">
                   {holomemCount > 0 && (
                     <div className="flex items-center flex-wrap gap-1">
-                      <span className="text-emerald-400 font-medium">홀로멤 {holomemCount}</span>
+                      <span className="text-emerald-400 font-medium">
+                        홀로멤 {holomemCount}
+                      </span>
                       {(() => {
-                        const parts = (['debut', '1st', '2nd', 'spot'] as HolomemSubtype[])
+                        const parts = (
+                          ["debut", "1st", "2nd", "spot"] as HolomemSubtype[]
+                        )
                           .filter((sub) => holomemSubtypeCounts[sub])
-                          .map((sub) => `${sub} : ${holomemSubtypeCounts[sub]}`);
-                        return parts.length > 0
-                          ? <span className="text-emerald-600">( {parts.join(' / ')} )</span>
-                          : null;
+                          .map(
+                            (sub) => `${sub} : ${holomemSubtypeCounts[sub]}`,
+                          );
+                        return parts.length > 0 ? (
+                          <span className="text-emerald-600">
+                            ( {parts.join(" / ")} )
+                          </span>
+                        ) : null;
                       })()}
                     </div>
                   )}
                   {supportCount > 0 && (
                     <div className="flex gap-2 items-center">
-                      <span className="text-sky-400 font-medium">서포트 {supportCount}</span>
-                      {limitedCount > 0 && <span className="text-rose-400">( 리미티드 : {limitedCount} )</span>}
+                      <span className="text-sky-400 font-medium">
+                        서포트 {supportCount}
+                      </span>
+                      {limitedCount > 0 && (
+                        <span className="text-rose-400">
+                          ( 리미티드 : {limitedCount} )
+                        </span>
+                      )}
                     </div>
                   )}
                 </div>
               )}
-
             </div>
           </div>
         </div>
@@ -931,25 +1344,51 @@ export default function DeckPanel() {
         {deck.mainDeck.length > 0 && (
           <div className="flex justify-end gap-2 px-3 pb-1.5">
             <button
-              onClick={() => { setEditMode((v) => !v); setSelectedCardId(null); }}
+              onClick={() => {
+                setEditMode((v) => !v);
+                setSelectedCardId(null);
+              }}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all ${
                 editMode
-                  ? 'bg-indigo-700 border-indigo-500 text-white'
-                  : 'bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500'
+                  ? "bg-indigo-700 border-indigo-500 text-white"
+                  : "bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
               }`}
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
-              {editMode ? '편집 완료' : '순서 편집'}
+              {editMode ? "편집 완료" : "순서 편집"}
             </button>
             {editMode && (
               <button
-                onClick={() => { sortMainDeckDefault(); setSelectedCardId(null); }}
+                onClick={() => {
+                  sortMainDeckDefault();
+                  setSelectedCardId(null);
+                }}
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
               >
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h5m4 0l4-4m0 0l4 4m-4-4v12" />
+                <svg
+                  className="w-3.5 h-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 4h13M3 8h9M3 12h5m4 0l4-4m0 0l4 4m-4-4v12"
+                  />
                 </svg>
                 기본 정렬
               </button>
@@ -966,7 +1405,10 @@ export default function DeckPanel() {
             section.entries.length === 0 ? null : (
               <div key={section.label} className="mb-3">
                 <p className="text-xs text-gray-400 font-medium uppercase tracking-wider px-3 py-1.5">
-                  {section.label} <span className="text-gray-500 font-normal">({section.entries.reduce((s, e) => s + e.count, 0)})</span>
+                  {section.label}{" "}
+                  <span className="text-gray-500 font-normal">
+                    ({section.entries.reduce((s, e) => s + e.count, 0)})
+                  </span>
                 </p>
                 <div className="grid grid-cols-5 gap-1 px-2">
                   {section.entries.map((entry) => (
@@ -978,8 +1420,17 @@ export default function DeckPanel() {
                       overlayVisible={activeCardId === entry.card.id}
                       onShowOverlay={() => setActiveCardId(entry.card.id)}
                       onHideOverlay={() => setActiveCardId(null)}
-                      isDragging={dragRender.phase !== 'idle' && dragRender.cardId === entry.card.id}
-                      dropIndicator={dropTarget?.cardId === entry.card.id ? (dropTarget.before ? 'before' : 'after') : null}
+                      isDragging={
+                        dragRender.phase !== "idle" &&
+                        dragRender.cardId === entry.card.id
+                      }
+                      dropIndicator={
+                        dropTarget?.cardId === entry.card.id
+                          ? dropTarget.before
+                            ? "before"
+                            : "after"
+                          : null
+                      }
                       editMode={editMode}
                       isSelected={selectedCardId === entry.card.id}
                       onTap={() => {
@@ -988,15 +1439,28 @@ export default function DeckPanel() {
                         } else if (selectedCardId === entry.card.id) {
                           setSelectedCardId(null);
                         } else {
-                          const selectedEntry = deck?.mainDeck.find((e) => e.card.id === selectedCardId);
-                          if (selectedEntry && selectedEntry.card.type === entry.card.type) {
+                          const selectedEntry = deck?.mainDeck.find(
+                            (e) => e.card.id === selectedCardId,
+                          );
+                          if (
+                            selectedEntry &&
+                            selectedEntry.card.type === entry.card.type
+                          ) {
                             swapMainDeckEntries(selectedCardId, entry.card.id);
                           }
                           setSelectedCardId(null);
                         }
                       }}
                       onDragStart={(imageUrl, x, y, w, h) => {
-                        const next: DragPhase = { phase: 'potential', cardId: entry.card.id, imageUrl, x, y, w, h };
+                        const next: DragPhase = {
+                          phase: "potential",
+                          cardId: entry.card.id,
+                          imageUrl,
+                          x,
+                          y,
+                          w,
+                          h,
+                        };
                         dragRef.current = next;
                         setDragRender({ ...next });
                       }}
@@ -1004,16 +1468,19 @@ export default function DeckPanel() {
                   ))}
                 </div>
               </div>
-            )
+            ),
           )
         )}
       </div>
 
       <CheerSection />
-      <ExportPanel />
+      <ExportPanel onOpenDrawSim={() => setDrawSimOpen(true)} />
+      {drawSimOpen && deck && (
+        <DrawSimModal deck={deck} onClose={() => setDrawSimOpen(false)} />
+      )}
 
       {/* Drag ghost */}
-      {dragRender.phase === 'dragging' && (
+      {dragRender.phase === "dragging" && (
         <div
           className="fixed z-50 pointer-events-none rounded overflow-hidden shadow-2xl border-2 border-indigo-400"
           style={{
@@ -1022,19 +1489,170 @@ export default function DeckPanel() {
             left: dragRender.x - dragRender.w / 2,
             top: dragRender.y - dragRender.h / 2,
             opacity: 0.85,
-            transform: 'rotate(3deg) scale(1.06)',
+            transform: "rotate(3deg) scale(1.06)",
           }}
         >
           {dragRender.imageUrl ? (
-            <img src={dragRender.imageUrl} className="w-full h-full object-cover" draggable={false} style={{ pointerEvents: 'none' }} />
+            <img
+              src={dragRender.imageUrl}
+              className="w-full h-full object-cover"
+              draggable={false}
+              style={{ pointerEvents: "none" }}
+            />
           ) : (
             <div className="w-full h-full bg-gray-700" />
           )}
         </div>
       )}
-
-
     </div>
   );
 }
 
+// ──────────────────────────────
+// Draw Simulation
+// ──────────────────────────────
+function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
+  const INITIAL_HAND = 7;
+
+  function buildPool() {
+    const pool: DeckEntry["card"][] = [];
+    for (const entry of deck.mainDeck) {
+      for (let i = 0; i < entry.count; i++) pool.push(entry.card);
+    }
+    return pool;
+  }
+
+  function shuffle<T>(arr: T[]): T[] {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function drawInitial() {
+    const shuffled = shuffle(buildPool());
+    return {
+      hand: shuffled.slice(0, INITIAL_HAND),
+      remaining: shuffled.slice(INITIAL_HAND),
+    };
+  }
+
+  const [state, setState] = useState(drawInitial);
+
+  function reset() {
+    setState(drawInitial());
+  }
+
+  function drawOne() {
+    if (state.remaining.length === 0) return;
+    setState((prev) => ({
+      hand: [...prev.hand, prev.remaining[0]],
+      remaining: prev.remaining.slice(1),
+    }));
+  }
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-2 md:p-4"
+      onClick={onClose}
+    >
+      <div
+        className="bg-gray-900 rounded-xl border border-gray-700 w-full h-full md:h-auto max-w-none md:max-w-5xl md:max-h-[90vh] flex flex-col overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800">
+          <h3 className="text-sm font-bold text-white">드로우 시뮬레이션</h3>
+          <button
+            onClick={onClose}
+            className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Info */}
+        <div className="px-4 py-2 flex items-center gap-3 text-xs text-gray-400 border-b border-gray-800">
+          <span>
+            패: <strong className="text-white">{state.hand.length}</strong>장
+          </span>
+          <span>
+            덱 잔여:{" "}
+            <strong className="text-white">{state.remaining.length}</strong>장
+          </span>
+        </div>
+
+        {/* Hand */}
+        <div className="flex-1 overflow-y-auto p-4">
+          <div className="grid grid-cols-5 sm:grid-cols-7 gap-2">
+            {state.hand.map((card, i) => {
+              const accent = getAccentColor(card);
+              return (
+                <div
+                  key={`${card.id}-${i}`}
+                  className="relative aspect-2.5/3.5 rounded overflow-hidden border bg-gray-800"
+                  style={{ borderColor: accent + "66" }}
+                >
+                  {card.imageUrl ? (
+                    <img
+                      src={card.imageUrl}
+                      alt={card.name}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full flex items-center justify-center p-1"
+                      style={{ background: accent + "22" }}
+                    >
+                      <span className="text-[8px] text-center text-gray-400 leading-tight">
+                        {card.name}
+                      </span>
+                    </div>
+                  )}
+                  {i >= INITIAL_HAND && (
+                    <span className="absolute top-0.5 right-0.5 text-[8px] bg-indigo-600/90 text-white px-1 rounded-full">
+                      +{i - INITIAL_HAND + 1}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="px-4 py-3 border-t border-gray-800 flex gap-2">
+          <button
+            onClick={reset}
+            className="flex-1 py-2 rounded-lg text-sm font-medium bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-all"
+          >
+            멀리건 (다시 셔플)
+          </button>
+          <button
+            onClick={drawOne}
+            disabled={state.remaining.length === 0}
+            className="flex-1 py-2 rounded-lg text-sm font-medium bg-indigo-800 hover:bg-indigo-700 text-indigo-200 border border-indigo-700 transition-all disabled:opacity-40"
+          >
+            1장 드로우
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
