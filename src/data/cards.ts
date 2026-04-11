@@ -25634,7 +25634,8 @@ export const CARDS: Card[] = [
     id: "hBP08-003",
     cardNumber: "hBP08-003",
     setId: "hBP08",
-    name: "Fuwamoco",
+    name: "FUWAMOCO",
+    nameJp: "FUWAMOCO",
     type: "oshi",
     color: ["red"],
     life: 5,
@@ -25651,6 +25652,36 @@ export const CARDS: Card[] = [
       description:
         "[턴에 1번] 자신의 스테이지에 홀로아츠 R이 있다면, 자신의 아카이브의 #Advent를 가진 홀로멤 1장을 패로 되돌린다. 홀로아츠 B이 있다면, 자신의 아카이브의 옐 1장을 자신의 #Advent를 가진 홀로멤에게 보낸다.",
     },
+  },
+  {
+    id: "hBP08-011",
+    cardNumber: "hBP08-011",
+    setId: "hBP08",
+    name: "IRyS",
+    nameJp: "IRyS",
+    keywords: ["아이리스"],
+    type: "holomem",
+    holomemSubtype: "1st",
+    color: ["white"],
+    hp: 170,
+    imageUrl: "/images/hBP08/hBP08-011.png",
+    tags: ["#EN", "#Promise", "#노래"],
+    batonPass: 1,
+    abilities: [
+      {
+        name: "The Hot Pink One",
+        timing: "collab",
+        description:
+          "이 홀로멤에게 홀로아츠 W옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
+      },
+      {
+        name: "Hot Ending",
+        cost: ["colorless"],
+        damage: 30,
+        description:
+          "이 홀로멤에게 홀로아츠 P옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
+      },
+    ],
   },
   {
     id: "hBP08-031",
@@ -25683,10 +25714,98 @@ export const CARDS: Card[] = [
     extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
   },
   {
+    id: "hBP08-041",
+    cardNumber: "hBP08-041",
+    setId: "hBP08",
+    name: "타카나시 키아라",
+    nameJp: "小鳥遊キアラ",
+    type: "holomem",
+    holomemSubtype: "debut",
+    color: ["red"],
+    hp: 130,
+    imageUrl: "/images/hBP08/hBP08-041.png",
+    tags: ["#EN", "#Myth", "#새"],
+    batonPass: 1,
+    abilities: [
+      {
+        name: "불사조식 에어로빅",
+        timing: "gift",
+        description:
+          "상대의 턴에서, 이 홀로멤이 다운 했을 때, 이 홀로멤을 아카이브 하는 대신에 패로 되돌릴 수 있다.",
+      },
+      {
+        name: '"열광적인 밤"은 실존한다!!!',
+        cost: ["colorless"],
+        damage: 20,
+        description: "자신의 덱의 위에서부터 1장을 아카이브 한다.",
+      },
+    ],
+  },
+  {
+    id: "hBP08-054",
+    cardNumber: "hBP08-054",
+    setId: "hBP08",
+    name: "무나 호시노바",
+    nameJp: "ムーナ・ホシノヴァ",
+    type: "holomem",
+    holomemSubtype: "2nd",
+    color: ["blue"],
+    hp: 200,
+    imageUrl: "/images/hBP08/hBP08-054.png",
+    tags: ["#ID", "#ID 1기생", "#노래"],
+    batonPass: 1,
+    abilities: [
+      {
+        name: "이 유대가 우리들!",
+        timing: "bloom",
+        description:
+          "자신의 오시 홀로멤의 색이 녹색이나 청색이나 황색이라면, 자신의 아카이브의 청 옐을 자신의 #ID 1기생을 가진 홀로멤 1~3명에게 1장씩 보낸다.",
+      },
+      {
+        name: "혼자가 아니야, 지금은 함께",
+        cost: ["colorless", "colorless", "colorless"],
+        damage: 130,
+        specialDamage: { color: "red", value: 50 },
+        description:
+          "이 홀로멤에게 붙어 있는 옐 3장을 아카이브 할 수 있다 : 자신의 덱을 3장 드로우 한다.",
+      },
+    ],
+  },
+  {
+    id: "hBP08-055",
+    cardNumber: "hBP08-055",
+    setId: "hBP08",
+    name: "후와와 어비스가드",
+    nameJp: "フワワ・アビスガード",
+    type: "holomem",
+    holomemSubtype: "debut",
+    color: ["red"],
+    hp: 110,
+    imageUrl: "/images/hBP08/hBP08-055.png",
+    tags: ["#EN", "#Advent", "#동물귀"],
+    batonPass: 1,
+    abilities: [
+      {
+        name: "FUWAMOCO와 함께라면 괜찮아",
+        timing: "collab",
+        description:
+          "자신의 아카이브의 옐 1장을 자신의 #Advent를 가진 홀로멤에게 보낸다.",
+      },
+      {
+        name: "당신의 푹신푹신한 후와와",
+        cost: ["blue"],
+        damage: 20,
+        description:
+          "이 홀로멤에게 홀로아츠 R옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
+      },
+    ],
+  },
+  {
     id: "hBP08-048",
     cardNumber: "hBP08-048",
     setId: "hBP08",
     name: "미즈미야 스우",
+    nameJp: "水宮枢",
     type: "holomem",
     holomemSubtype: "debut",
     color: ["yellow"],
@@ -25706,6 +25825,35 @@ export const CARDS: Card[] = [
         cost: ["colorless"],
         damage: 30,
         description: "",
+      },
+    ],
+  },
+  {
+    id: "hBP08-079",
+    cardNumber: "hBP08-079",
+    setId: "hBP08",
+    name: "오토노세 카나데",
+    nameJp: "音乃瀬奏",
+    type: "holomem",
+    holomemSubtype: "1st",
+    color: ["yellow"],
+    hp: 170,
+    imageUrl: "/images/hBP08/hBP08-079.png",
+    tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
+    batonPass: 1,
+    abilities: [
+      {
+        name: "여명의 가희",
+        timing: "gift",
+        description:
+          "자신의 스테이지에 #ReGLOSS를 가진 2nd 홀로멤이 있다면, 이 홀로멤의 HP +50.",
+      },
+      {
+        name: "청렴한 노랫소리",
+        cost: ["colorless"],
+        damage: 10,
+        description:
+          "자신의 아카이브의 옐 1장을 자신의 #ReGLOSS를 가진 센터 홀로멤에게 보낼 수 있다.",
       },
     ],
   },
@@ -25749,9 +25897,26 @@ export const CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-097.png",
     abilities: [
       {
-        name: "파멸의 주문",
+        name: "",
         description:
           "이 카드는, 자신의 스테이지의 전원이 #EN을 가진 홀로멤이고, 자신의 라이프가 3 이하가 아니라면 사용할 수 없다.\n\n서로의 센터 홀로멤과 콜라보 홀로멤에게 특수 대미지 50을 준다. 단, 이 능력으로 다운 해도 라이프는 줄지 않는다.",
+      },
+    ],
+  },
+  {
+    id: "hBP08-102",
+    cardNumber: "hBP08-102",
+    setId: "hBP08",
+    name: "쿨한 파카",
+    type: "support",
+    tags: ["#Buzz 굿즈"],
+    supportSubtype: "tool",
+    imageUrl: "/images/hBP08/hBP08-102.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆Buzz 홀로멤에게 붙어 있다면 능력 추가\n[턴에 1번] 이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 덱을 2장 드로우 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
   },
