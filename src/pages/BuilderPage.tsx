@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import CardGrid from '../components/CardGrid';
 import DeckPanel from '../components/DeckPanel';
 import { useDeckStore } from '../store/deckStore';
@@ -10,7 +11,13 @@ export default function BuilderPage() {
   const mainCount = getMainDeckCount();
 
   return (
-    <div className="h-dvh overflow-hidden" style={{ background: '#0f0f1a' }}>
+    <div className="h-dvh overflow-hidden relative" style={{ background: '#0f0f1a' }}>
+      <Link
+        to="/board"
+        className="absolute top-2 right-2 z-40 px-3 py-1.5 text-xs bg-gray-800/90 hover:bg-gray-700 text-gray-200 rounded-lg border border-gray-700 backdrop-blur"
+      >
+        게시판 →
+      </Link>
       {/* Desktop (md+) */}
       <div className="hidden md:flex h-full overflow-hidden">
         <div className="flex-1 min-w-0 overflow-hidden">
