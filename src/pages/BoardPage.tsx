@@ -4,6 +4,7 @@ import { listDeckPosts, PAGE_SIZE } from '../api/deckPosts';
 import type { DeckPost } from '../types/deckPost';
 import PostListItem from '../components/PostListItem';
 import Pagination from '../components/Pagination';
+import DeletePostDialog from '../components/DeletePostDialog';
 
 export default function BoardPage() {
   const [params, setParams] = useSearchParams();
@@ -14,6 +15,7 @@ export default function BoardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [reloadKey, setReloadKey] = useState(0);
+  const [deleteTarget, setDeleteTarget] = useState<DeckPost | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -50,9 +52,8 @@ export default function BoardPage() {
   function handleLoadIntoDeck(post: DeckPost) {
     alert(`불러오기 미구현: ${post.title}`);
   }
-  // Task 17에서 본 구현으로 교체
   function handleDeleteRequest(post: DeckPost) {
-    alert(`삭제 미구현: ${post.title}`);
+    setDeleteTarget(post);
   }
 
   return (
@@ -102,6 +103,18 @@ export default function BoardPage() {
           </>
         )}
       </div>
+
+      {deleteTarget && (
+        <DeletePostDialog
+          post={deleteTarget}
+          onClose={() => setDeleteTarget(null)}
+          onDeleted={() => {
+            setDeleteTarget(null);
+            reload();
+            alert('삭제되었습니다.');
+          }}
+        />
+      )}
     </div>
   );
 }
