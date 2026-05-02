@@ -923,17 +923,17 @@ function ExportPanel({ onOpenDrawSim }: { onOpenDrawSim: () => void }) {
   }
 
   return (
-    <div className="p-3 border-t border-gray-800 flex flex-col gap-2">
+    <div className="px-3 pt-2 pb-1.5 border-t border-gray-800 flex flex-col gap-1.5">
       <button
         onClick={onOpenDrawSim}
-        className="w-full py-2 rounded-lg text-sm font-medium transition-all bg-indigo-800 hover:bg-indigo-700 text-indigo-200 border border-indigo-700"
+        className="w-full py-1.5 rounded-lg text-xs font-medium transition-all bg-indigo-800 hover:bg-indigo-700 text-indigo-200 border border-indigo-700"
       >
         드로우 시뮬레이션
       </button>
-      <div className="flex gap-2">
+      <div className="flex gap-1.5">
         <button
           onClick={handleCopy}
-          className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
+          className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-all ${
             copied
               ? "bg-green-700 text-white"
               : "bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700"
@@ -944,14 +944,14 @@ function ExportPanel({ onOpenDrawSim }: { onOpenDrawSim: () => void }) {
         <button
           onClick={() => handleImageExport("expanded")}
           disabled={exporting}
-          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+          className="flex-1 py-1.5 rounded-lg text-xs font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
         >
           {exporting ? "..." : "이미지 (전체)"}
         </button>
         <button
           onClick={() => handleImageExport("compact")}
           disabled={exporting}
-          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+          className="flex-1 py-1.5 rounded-lg text-xs font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
         >
           {exporting ? "..." : "이미지 (요약)"}
         </button>
@@ -1478,18 +1478,18 @@ export default function DeckPanel() {
 
       <CheerSection />
       <ExportPanel onOpenDrawSim={() => setDrawSimOpen(true)} />
-      <div className="px-3 pb-3 border-t border-gray-800 flex gap-2 mt-3">
+      <div className="px-3 pb-2 flex gap-1.5">
         <button
           onClick={() => setShareOpen(true)}
           disabled={errors.length > 0}
           title={errors.length > 0 ? "덱 검증 오류를 먼저 해결해주세요" : undefined}
-          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700"
+          className="flex-1 py-1.5 rounded-lg text-xs font-medium transition-all bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700"
         >
           덱 공유하기
         </button>
         <Link
           to="/board"
-          className="shrink-0 px-3 py-2 rounded-lg text-sm font-medium bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 flex items-center"
+          className="flex-1 py-1.5 rounded-lg text-xs font-medium bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 flex items-center justify-center"
         >
           게시판 →
         </Link>
