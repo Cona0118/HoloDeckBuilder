@@ -86,9 +86,14 @@ export default function PostDeckView({ oshiCardId, mainDeck, cheers }: Props) {
           )}
         </div>
         {oshi && (
-          <p className="mt-1 text-xs text-amber-200 font-semibold text-center md:text-left truncate">
-            {oshi.name}
-          </p>
+          <div className="mt-1 flex items-baseline justify-between gap-2">
+            <p className="text-xs text-amber-200 font-semibold truncate">
+              {oshi.name}
+            </p>
+            <span className="text-[10px] text-gray-500 shrink-0">
+              {oshi.cardNumber}
+            </span>
+          </div>
         )}
       </div>
 
@@ -101,7 +106,7 @@ export default function PostDeckView({ oshiCardId, mainDeck, cheers }: Props) {
               ({mainDeck.reduce((s, e) => s + e.count, 0)})
             </span>
           </p>
-          <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-1">
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-1.5">
             {mainDeck.map((e, idx) => {
               const card = getCard(e.cardId);
               const accent = card ? getAccentColor(card) : '#6b7280';

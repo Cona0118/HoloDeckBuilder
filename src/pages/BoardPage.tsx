@@ -5,6 +5,7 @@ import type { DeckPost } from '../types/deckPost';
 import PostListItem from '../components/PostListItem';
 import Pagination from '../components/Pagination';
 import DeletePostDialog from '../components/DeletePostDialog';
+import Footer from '../components/Footer';
 import { useDeckStore } from '../store/deckStore';
 import { resolveSnapshot } from '../utils/deckSnapshot';
 
@@ -83,7 +84,8 @@ export default function BoardPage() {
   }
 
   return (
-    <div className="h-dvh overflow-y-auto" style={{ background: '#0f0f1a' }}>
+    <div className="h-dvh flex flex-col" style={{ background: '#0f0f1a' }}>
+      <div className="flex-1 overflow-y-auto">
       <div className="max-w-4xl mx-auto px-3 sm:px-4 py-6">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl md:text-2xl font-bold text-white">덱 공유 게시판</h1>
@@ -129,6 +131,9 @@ export default function BoardPage() {
           </>
         )}
       </div>
+      </div>
+
+      <Footer />
 
       {deleteTarget && (
         <DeletePostDialog

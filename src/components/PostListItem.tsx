@@ -29,7 +29,7 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
       <div
-        className="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-800/60 transition-colors"
+        className="flex items-center gap-2 sm:gap-3 px-3 py-2.5 cursor-pointer hover:bg-gray-800/60 transition-colors"
         onClick={() => setOpen((v) => !v)}
       >
         {/* 오시 썸네일 */}
@@ -46,14 +46,15 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
           )}
         </div>
 
-        {/* 제목 / 작성자 / 날짜 */}
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-white truncate">{post.title}</p>
-          <div className="flex flex-col sm:flex-row sm:gap-2 text-[11px] text-gray-400">
-            <span className="truncate">by {post.author}</span>
-            <span className="text-gray-500 hidden sm:inline">·</span>
-            <span className="text-gray-500">{formatDate(post.createdAt)}</span>
-          </div>
+        {/* 제목 (크게) */}
+        <p className="flex-1 min-w-0 text-base sm:text-lg font-semibold text-white truncate">
+          {post.title}
+        </p>
+
+        {/* 작성자 / 날짜 (오른쪽) */}
+        <div className="flex flex-col items-end shrink-0 text-[10px] sm:text-[11px] text-gray-400 leading-tight">
+          <span className="truncate max-w-[100px] sm:max-w-none">by {post.author}</span>
+          <span className="text-gray-500">{formatDate(post.createdAt)}</span>
         </div>
 
         {/* 우측 액션 */}

@@ -4,6 +4,7 @@ import { useDeckStore } from "../store/deckStore";
 import { COLOR_ACCENT, getAccentColor } from "../utils/cardUtils";
 import type { CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
 import { CARDS } from "../data/cards";
+import { Link } from "react-router-dom";
 import CardPreviewModal from "./CardPreviewModal";
 import SharePostDialog from "./SharePostDialog";
 
@@ -1477,15 +1478,21 @@ export default function DeckPanel() {
 
       <CheerSection />
       <ExportPanel onOpenDrawSim={() => setDrawSimOpen(true)} />
-      <div className="px-3 pb-3 border-t border-gray-800">
+      <div className="px-3 pb-3 border-t border-gray-800 flex gap-2 mt-3">
         <button
           onClick={() => setShareOpen(true)}
           disabled={errors.length > 0}
           title={errors.length > 0 ? "덱 검증 오류를 먼저 해결해주세요" : undefined}
-          className="w-full mt-3 py-2 rounded-lg text-sm font-medium transition-all bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700"
+          className="flex-1 py-2 rounded-lg text-sm font-medium transition-all bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700"
         >
           덱 공유하기
         </button>
+        <Link
+          to="/board"
+          className="shrink-0 px-3 py-2 rounded-lg text-sm font-medium bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 flex items-center"
+        >
+          게시판 →
+        </Link>
       </div>
       {shareOpen && deck && (
         <SharePostDialog
