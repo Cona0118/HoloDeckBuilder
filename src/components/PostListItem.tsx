@@ -1,0 +1,100 @@
+import { useState } from 'react';
+import type { DeckPost } from '../types/deckPost';
+import { CARDS } from '../data/cards';
+import { getAccentColor } from '../utils/cardUtils';
+import PostDeckView from './PostDeckView';
+
+interface Props {
+  post: DeckPost;
+  onLoadIntoDeck: (post: DeckPost) => void;
+  onDeleteRequest: (post: DeckPost) => void;
+}
+
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mi = String(d.getMinutes()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd} ${hh}:${mi}`;
+}
+
+export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: Props) {
+  const [open, setOpen] = useState(false);
+  const oshi = CARDS.find((c) => c.id === post.oshiCardId);
+  const oshiAccent = oshi ? getAccentColor(oshi) : '#6b7280';
+
+  return (
+    <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+      <div
+        className="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-800/60 transition-colors"
+        onClick={() => setOpen((v) => !v)}
+      >
+        {/* 오시 썸네일 */}
+        <div
+          className="w-10 h-14 sm:w-12 sm:h-16 shrink-0 rounded overflow-hidden border bg-gray-800"
+          style={{ borderColor: oshiAccent + '88' }}
+        >
+          {oshi?.imageUrl ? (
+            <img src={oshi.imageUrl} alt={oshi.name} className="w-full h-full object-cover" draggable={false} />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-[8px] text-gray-500 text-center px-0.5">
+              {oshi ? oshi.name : '카드 없음'}
+            </div>
+          )}
+        </div>
+
+        {/* 제목 / 작성자 / 날짜 */}
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold text-white truncate">{post.title}</p>
+          <div className="flex flex-col sm:flex-row sm:gap-2 text-[11px] text-gray-400">
+            <span className="truncate">by {post.author}</span>
+            <span className="text-gray-500 hidden sm:inline">·</span>
+            <span className="text-gray-500">{formatDate(post.createdAt)}</span>
+          </div>
+        </div>
+
+        {/* 우측 액션 */}
+        <div className="flex items-center gap-1 shrink-0">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onDeleteRequest(post);
+            }}
+            className="px-2 py-1 text-[11px] text-gray-500 hover:text-red-300 hover:bg-red-900/40 rounded border border-gray-700"
+          >
+            삭제
+          </button>
+          <svg
+            className={`w-4 h-4 text-gray-500 transition-transform ${open ? 'rotate-180' : ''}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+
+      {open && (
+        <>
+          <PostDeckView
+            oshiCardId={post.oshiCardId}
+            mainDeck={post.mainDeck}
+            cheers={post.cheers}
+          />
+          <div className="flex justify-end px-3 py-2 border-t border-gray-800 bg-gray-950">
+            <button
+              onClick={() => onLoadIntoDeck(post)}
+              className="px-3 py-1.5 text-xs font-medium bg-indigo-700 hover:bg-indigo-600 text-white rounded-lg border border-indigo-600"
+            >
+              내 덱으로 불러오기
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
