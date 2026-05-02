@@ -900,7 +900,15 @@ async function exportDeckAsImage(
 // ──────────────────────────────
 // Export
 // ──────────────────────────────
-function ExportPanel({ onOpenDrawSim }: { onOpenDrawSim: () => void }) {
+function ExportPanel({
+  onOpenDrawSim,
+  onShare,
+  shareDisabled,
+}: {
+  onOpenDrawSim: () => void;
+  onShare: () => void;
+  shareDisabled: boolean;
+}) {
   const { exportDeckText, getActiveDeck } = useDeckStore();
   const [copied, setCopied] = useState(false);
   const [exporting, setExporting] = useState(false);
@@ -923,38 +931,56 @@ function ExportPanel({ onOpenDrawSim }: { onOpenDrawSim: () => void }) {
   }
 
   return (
-    <div className="px-3 pt-2 pb-1.5 border-t border-gray-800 flex flex-col gap-1.5">
-      <button
-        onClick={onOpenDrawSim}
-        className="w-full py-1.5 rounded-lg text-xs font-medium transition-all bg-indigo-800 hover:bg-indigo-700 text-indigo-200 border border-indigo-700"
-      >
-        드로우 시뮬레이션
-      </button>
+    <div className="px-3 py-2 border-t border-gray-800 flex flex-col gap-1.5">
+      {/* 주요 액션: 시뮬 + 공유 */}
       <div className="flex gap-1.5">
         <button
-          onClick={handleCopy}
-          className={`flex-1 py-1.5 rounded-lg text-xs font-medium transition-all ${
-            copied
-              ? "bg-green-700 text-white"
-              : "bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700"
-          }`}
+          onClick={onOpenDrawSim}
+          className="flex-1 py-2 rounded-lg text-sm font-medium bg-indigo-700 hover:bg-indigo-600 text-white border border-indigo-600 transition-colors"
         >
-          {copied ? "✓ 복사됨!" : "덱 목록 복사"}
+          드로우 시뮬레이션
         </button>
+        <button
+          onClick={onShare}
+          disabled={shareDisabled}
+          title={shareDisabled ? "덱 검증 오류를 먼저 해결해주세요" : undefined}
+          className="flex-1 py-2 rounded-lg text-sm font-medium bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700 transition-colors"
+        >
+          덱 공유하기
+        </button>
+      </div>
+
+      {/* 보조 액션: 텍스트 링크 형태 */}
+      <div className="flex items-center justify-center flex-wrap gap-x-1 gap-y-0.5 text-[11px] text-gray-400 pt-0.5">
+        <button
+          onClick={handleCopy}
+          className="hover:text-white px-1.5 py-0.5 transition-colors"
+        >
+          {copied ? "✓ 복사됨" : "텍스트 복사"}
+        </button>
+        <span className="text-gray-700">·</span>
         <button
           onClick={() => handleImageExport("expanded")}
           disabled={exporting}
-          className="flex-1 py-1.5 rounded-lg text-xs font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+          className="hover:text-white px-1.5 py-0.5 transition-colors disabled:opacity-50"
         >
-          {exporting ? "..." : "이미지 (전체)"}
+          이미지(전체)
         </button>
+        <span className="text-gray-700">·</span>
         <button
           onClick={() => handleImageExport("compact")}
           disabled={exporting}
-          className="flex-1 py-1.5 rounded-lg text-xs font-medium transition-all bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 disabled:opacity-50"
+          className="hover:text-white px-1.5 py-0.5 transition-colors disabled:opacity-50"
         >
-          {exporting ? "..." : "이미지 (요약)"}
+          이미지(요약)
         </button>
+        <span className="text-gray-700">·</span>
+        <Link
+          to="/board"
+          className="hover:text-white px-1.5 py-0.5 transition-colors"
+        >
+          게시판 →
+        </Link>
       </div>
     </div>
   );
@@ -1477,23 +1503,11 @@ export default function DeckPanel() {
       </div>
 
       <CheerSection />
-      <ExportPanel onOpenDrawSim={() => setDrawSimOpen(true)} />
-      <div className="px-3 pb-2 flex gap-1.5">
-        <button
-          onClick={() => setShareOpen(true)}
-          disabled={errors.length > 0}
-          title={errors.length > 0 ? "덱 검증 오류를 먼저 해결해주세요" : undefined}
-          className="flex-1 py-1.5 rounded-lg text-xs font-medium transition-all bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700"
-        >
-          덱 공유하기
-        </button>
-        <Link
-          to="/board"
-          className="flex-1 py-1.5 rounded-lg text-xs font-medium bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 flex items-center justify-center"
-        >
-          게시판 →
-        </Link>
-      </div>
+      <ExportPanel
+        onOpenDrawSim={() => setDrawSimOpen(true)}
+        onShare={() => setShareOpen(true)}
+        shareDisabled={errors.length > 0}
+      />
       {shareOpen && deck && (
         <SharePostDialog
           deck={deck}
