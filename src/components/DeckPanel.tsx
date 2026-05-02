@@ -5,6 +5,7 @@ import { COLOR_ACCENT, getAccentColor } from "../utils/cardUtils";
 import type { CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
 import { CARDS } from "../data/cards";
 import CardPreviewModal from "./CardPreviewModal";
+import SharePostDialog from "./SharePostDialog";
 
 const CHEER_MAX = 20;
 
@@ -1106,6 +1107,7 @@ export default function DeckPanel() {
 
   const [oshiOpen, setOshiOpen] = useState(true);
   const [drawSimOpen, setDrawSimOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
   const [oshiPreviewOpen, setOshiPreviewOpen] = useState(false);
   const oshiLongPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const oshiDidLongPress = useRef(false);
@@ -1475,6 +1477,26 @@ export default function DeckPanel() {
 
       <CheerSection />
       <ExportPanel onOpenDrawSim={() => setDrawSimOpen(true)} />
+      <div className="px-3 pb-3 border-t border-gray-800">
+        <button
+          onClick={() => setShareOpen(true)}
+          disabled={errors.length > 0}
+          title={errors.length > 0 ? "덱 검증 오류를 먼저 해결해주세요" : undefined}
+          className="w-full mt-3 py-2 rounded-lg text-sm font-medium transition-all bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700"
+        >
+          덱 공유하기
+        </button>
+      </div>
+      {shareOpen && deck && (
+        <SharePostDialog
+          deck={deck}
+          onClose={() => setShareOpen(false)}
+          onSuccess={() => {
+            setShareOpen(false);
+            alert("게시판에 업로드되었습니다.");
+          }}
+        />
+      )}
       {drawSimOpen && deck && (
         <DrawSimModal deck={deck} onClose={() => setDrawSimOpen(false)} />
       )}
