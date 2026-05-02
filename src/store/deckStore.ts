@@ -54,6 +54,11 @@ interface DeckState {
   selectedCard: Card | null;
 
   createDeck: (name?: string) => void;
+  /** snapshot으로 새 덱을 만들고 active로 설정. 누락 카드는 호출 측에서 미리 스킵. */
+  createDeckFromSnapshot: (
+    name: string,
+    resolved: { oshi: Card | null; mainDeck: DeckEntry[]; cheers: Partial<Record<CardColor, number>> },
+  ) => string;
   deleteDeck: (id: string) => void;
   renameDeck: (id: string, name: string) => void;
   setActiveDeck: (id: string) => void;
@@ -107,6 +112,17 @@ export const useDeckStore = create<DeckState>()(
       createDeck: (name = '새 덱') => {
         const deck = createEmptyDeck(name);
         set((s) => ({ decks: [...s.decks, deck], activeDeckId: deck.id }));
+      },
+
+      createDeckFromSnapshot: (name, resolved) => {
+        const deck: Deck = {
+          ...createEmptyDeck(name),
+          oshi: resolved.oshi,
+          mainDeck: resolved.mainDeck.map((e) => ({ ...e })),
+          cheers: { ...resolved.cheers },
+        };
+        set((s) => ({ decks: [...s.decks, deck], activeDeckId: deck.id }));
+        return deck.id;
       },
 
       deleteDeck: (id) => {
