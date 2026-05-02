@@ -84,8 +84,8 @@ export default function BoardPage() {
   }
 
   return (
-    <div className="h-dvh flex flex-col" style={{ background: '#0f0f1a' }}>
-      <div className="flex-1 overflow-y-auto">
+    <div className="min-h-dvh flex flex-col" style={{ background: '#0f0f1a' }}>
+      <div className="flex-1">
       <div className="max-w-4xl mx-auto px-3 sm:px-4 py-6">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-xl md:text-2xl font-bold text-white">덱 공유 게시판</h1>

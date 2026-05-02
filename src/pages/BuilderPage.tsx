@@ -11,8 +11,8 @@ export default function BuilderPage() {
   const mainCount = getMainDeckCount();
 
   return (
-    <div className="h-dvh flex flex-col" style={{ background: '#0f0f1a' }}>
-      <div className="flex-1 min-h-0 relative overflow-hidden">
+    <div className="min-h-dvh flex flex-col" style={{ background: '#0f0f1a' }}>
+      <div className="h-dvh relative overflow-hidden">
         {/* Desktop (md+) */}
         <div className="hidden md:flex h-full overflow-hidden">
           <div className="flex-1 min-w-0 overflow-hidden">
