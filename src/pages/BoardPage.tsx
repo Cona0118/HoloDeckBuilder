@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { listDeckPosts, PAGE_SIZE } from '../api/deckPosts';
 import type { DeckPost } from '../types/deckPost';
 import PostListItem from '../components/PostListItem';
 import Pagination from '../components/Pagination';
 import DeletePostDialog from '../components/DeletePostDialog';
+import { useDeckStore } from '../store/deckStore';
+import { resolveSnapshot } from '../utils/deckSnapshot';
 
 export default function BoardPage() {
   const [params, setParams] = useSearchParams();
   const page = Math.max(1, parseInt(params.get('page') ?? '1', 10) || 1);
+  const navigate = useNavigate();
+  const createDeckFromSnapshot = useDeckStore((s) => s.createDeckFromSnapshot);
 
   const [posts, setPosts] = useState<DeckPost[]>([]);
   const [total, setTotal] = useState(0);
@@ -48,10 +52,32 @@ export default function BoardPage() {
     setReloadKey((k) => k + 1);
   }
 
-  // Task 16에서 본 구현으로 교체
   function handleLoadIntoDeck(post: DeckPost) {
-    alert(`불러오기 미구현: ${post.title}`);
+    const ok = window.confirm(`「${post.title}」을(를) 새 덱으로 추가합니다.`);
+    if (!ok) return;
+
+    const resolved = resolveSnapshot({
+      oshiCardId: post.oshiCardId,
+      mainDeck: post.mainDeck,
+      cheers: post.cheers,
+    });
+
+    createDeckFromSnapshot(post.title, {
+      oshi: resolved.oshi,
+      mainDeck: resolved.mainDeck,
+      cheers: resolved.cheers,
+    });
+
+    if (resolved.missingCardCount > 0) {
+      alert(
+        `덱이 추가되었습니다. (${resolved.missingCardCount}장 카드를 불러오지 못했습니다.)`,
+      );
+    } else {
+      alert('덱이 추가되었습니다.');
+    }
+    navigate('/');
   }
+
   function handleDeleteRequest(post: DeckPost) {
     setDeleteTarget(post);
   }
