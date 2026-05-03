@@ -1,0 +1,357 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1777746959662,
+  "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "react",
+        "version": "19.2.0",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.0",
+        "category": "frontend"
+      },
+      {
+        "name": "vite",
+        "version": "7.3.1",
+        "category": "build"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build 2>&1 | tail -10",
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc -b && vite build",
+      "lint": "eslint .",
+      "preview": "vite preview"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": "type-based"
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "src"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "dist": {
+      "path": "dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 2,
+      "lastAccessed": 1777746959609,
+      "keyFiles": [
+        "index.html",
+        "vite.svg"
+      ]
+    },
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 1,
+      "lastAccessed": 1777746959610,
+      "keyFiles": [
+        "vite.svg"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 4,
+      "lastAccessed": 1777746959620,
+      "keyFiles": [
+        "App.css",
+        "App.tsx",
+        "index.css",
+        "main.tsx"
+      ]
+    },
+    "dist\\assets": {
+      "path": "dist\\assets",
+      "purpose": "Static assets",
+      "fileCount": 2,
+      "lastAccessed": 1777746959622,
+      "keyFiles": [
+        "index-BzJiN00D.js",
+        "index-CbixO_fp.css"
+      ]
+    },
+    "src\\assets": {
+      "path": "src\\assets",
+      "purpose": "Static assets",
+      "fileCount": 1,
+      "lastAccessed": 1777746959623,
+      "keyFiles": [
+        "react.svg"
+      ]
+    },
+    "src\\components": {
+      "path": "src\\components",
+      "purpose": "UI components",
+      "fileCount": 7,
+      "lastAccessed": 1777746959623,
+      "keyFiles": [
+        "CardDetail.tsx",
+        "CardGrid.tsx",
+        "CardItem.tsx"
+      ]
+    },
+    "src\\data": {
+      "path": "src\\data",
+      "purpose": "Data files",
+      "fileCount": 1,
+      "lastAccessed": 1777746959625,
+      "keyFiles": [
+        "cards.ts"
+      ]
+    },
+    "src\\types": {
+      "path": "src\\types",
+      "purpose": "Type definitions",
+      "fileCount": 1,
+      "lastAccessed": 1777746959626,
+      "keyFiles": [
+        "card.ts"
+      ]
+    },
+    "src\\utils": {
+      "path": "src\\utils",
+      "purpose": "Utility functions",
+      "fileCount": 1,
+      "lastAccessed": 1777746959631,
+      "keyFiles": [
+        "cardUtils.ts"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src\\pages\\BoardPage.tsx",
+      "accessCount": 17,
+      "lastAccessed": 1777755324311,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\DeckPanel.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1777754747621,
+      "type": "file"
+    },
+    {
+      "path": "src\\data\\cards.ts",
+      "accessCount": 7,
+      "lastAccessed": 1777748139432,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\CardPreviewModal.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777780136869,
+      "type": "file"
+    },
+    {
+      "path": "src\\pages\\BuilderPage.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1777754246841,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\card.ts",
+      "accessCount": 3,
+      "lastAccessed": 1777749054211,
+      "type": "file"
+    },
+    {
+      "path": "src\\App.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777751523355,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PostDeckView.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777753739175,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\deckPost.ts",
+      "accessCount": 3,
+      "lastAccessed": 1777755107262,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\SharePostDialog.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777755222871,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PostListItem.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1777755254580,
+      "type": "file"
+    },
+    {
+      "path": "src/data/cards.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777747963027,
+      "type": "directory"
+    },
+    {
+      "path": "docs\\superpowers\\specs\\2026-05-03-deck-board-design.md",
+      "accessCount": 2,
+      "lastAccessed": 1777750472907,
+      "type": "file"
+    },
+    {
+      "path": "src/types/card.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777751345689,
+      "type": "directory"
+    },
+    {
+      "path": "src\\store\\deckStore.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777751405459,
+      "type": "file"
+    },
+    {
+      "path": "docs\\SUPABASE_SETUP.md",
+      "accessCount": 2,
+      "lastAccessed": 1777755084057,
+      "type": "file"
+    },
+    {
+      "path": "src\\api\\deckPosts.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777755176745,
+      "type": "file"
+    },
+    {
+      "path": "src/components/CardPreviewModal.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1777780004928,
+      "type": "directory"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1777749046006,
+      "type": "file"
+    },
+    {
+      "path": "src\\main.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777750550625,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\CardItem.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777750552144,
+      "type": "file"
+    },
+    {
+      "path": "src\\utils\\cardUtils.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777750552399,
+      "type": "file"
+    },
+    {
+      "path": "docs\\superpowers\\plans\\2026-05-03-deck-board.md",
+      "accessCount": 1,
+      "lastAccessed": 1777750832185,
+      "type": "file"
+    },
+    {
+      "path": ".env.local.example",
+      "accessCount": 1,
+      "lastAccessed": 1777751155959,
+      "type": "file"
+    },
+    {
+      "path": "src\\lib\\supabase.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777751190571,
+      "type": "file"
+    },
+    {
+      "path": "src\\utils\\password.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777751311478,
+      "type": "file"
+    },
+    {
+      "path": "src\\utils\\deckSnapshot.ts",
+      "accessCount": 1,
+      "lastAccessed": 1777751359615,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\Pagination.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777752305934,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\DeletePostDialog.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777752409979,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 1,
+      "lastAccessed": 1777752611301,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\Footer.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777753621293,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\OshiPickerModal.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1777755287193,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

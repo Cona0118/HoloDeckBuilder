@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { createPortal } from 'react-dom';
-import type { Deck } from '../types/card';
-import { deckToSnapshot } from '../utils/deckSnapshot';
-import { createDeckPost } from '../api/deckPosts';
-import { isValidPassword, MIN_PASSWORD_LENGTH } from '../utils/password';
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import type { Deck } from "../types/card";
+import { deckToSnapshot } from "../utils/deckSnapshot";
+import { createDeckPost } from "../api/deckPosts";
+import { isValidPassword, MIN_PASSWORD_LENGTH } from "../utils/password";
 
 interface Props {
   deck: Deck;
@@ -16,16 +16,16 @@ const AUTHOR_MAX = 20;
 const TOURNAMENT_MAX = 40;
 
 export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
-  const [title, setTitle] = useState(deck.name ?? '');
-  const [author, setAuthor] = useState('');
-  const [password, setPassword] = useState('');
+  const [title, setTitle] = useState(deck.name ?? "");
+  const [author, setAuthor] = useState("");
+  const [password, setPassword] = useState("");
   const [isAward, setIsAward] = useState(false);
-  const [tournamentName, setTournamentName] = useState('');
+  const [tournamentName, setTournamentName] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const titleTrimmed = title.trim();
-  const authorFinal = (author.trim() || '익명').slice(0, AUTHOR_MAX);
+  const authorFinal = (author.trim() || "익명").slice(0, AUTHOR_MAX);
   const tournamentTrimmed = tournamentName.trim().slice(0, TOURNAMENT_MAX);
 
   const canSubmit =
@@ -51,7 +51,7 @@ export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
       });
       onSuccess();
     } catch (e) {
-      setError(e instanceof Error ? e.message : '업로드에 실패했습니다.');
+      setError(e instanceof Error ? e.message : "업로드에 실패했습니다.");
       setSubmitting(false);
     }
   }
@@ -78,7 +78,9 @@ export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
 
         <div className="flex flex-col gap-3 p-4">
           <label className="flex flex-col gap-1">
-            <span className="text-[11px] text-gray-400 uppercase tracking-wider">게시글 제목</span>
+            <span className="text-[11px] text-gray-400 uppercase tracking-wider">
+              게시글 제목
+            </span>
             <input
               autoFocus
               value={title}
@@ -90,7 +92,9 @@ export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
           </label>
 
           <label className="flex flex-col gap-1">
-            <span className="text-[11px] text-gray-400 uppercase tracking-wider">작성자 (기본: 익명)</span>
+            <span className="text-[11px] text-gray-400 uppercase tracking-wider">
+              작성자 (기본: 익명)
+            </span>
             <input
               value={author}
               maxLength={AUTHOR_MAX}
@@ -115,7 +119,11 @@ export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
               maxLength={TOURNAMENT_MAX}
               onChange={(e) => setTournamentName(e.target.value)}
               disabled={!isAward}
-              placeholder={isAward ? '대회명 (예: 2026 비공인 결승)' : '입상덱 체크 시 활성화'}
+              placeholder={
+                isAward
+                  ? "대회명 (예: 2026.05.16 범계 익스컵)"
+                  : "입상덱 체크 시 활성화"
+              }
               className="bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm text-white focus:outline-none focus:border-amber-500 disabled:opacity-50 disabled:cursor-not-allowed"
             />
           </div>
@@ -147,7 +155,7 @@ export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
             disabled={!canSubmit}
             className="flex-1 py-2 rounded-lg text-sm bg-indigo-700 hover:bg-indigo-600 text-white disabled:opacity-40"
           >
-            {submitting ? '업로드 중...' : '공유하기'}
+            {submitting ? "업로드 중..." : "공유하기"}
           </button>
         </div>
       </div>
