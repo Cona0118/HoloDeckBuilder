@@ -27594,6 +27594,37 @@ export const CARDS: Card[] = [
     limit: 4,
   },
   {
+    id: "hBP08-066",
+    cardNumber: "hBP08-066",
+    setId: "hBP08",
+    name: "타카네 루이",
+    nameJp: "鷹嶺ルイ",
+    type: "holomem",
+    hp: 200,
+    color: ["purple"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
+    imageUrl: "/images/hBP08/hBP08-066.png",
+    abilities: [
+      {
+        name: "그렇게나 얼굴이 빨게?",
+        description:
+          "자신의 아카이브의 서포트 카드 1장을 덱의 위로 되돌릴 수 있다.",
+        timing: "collab",
+      },
+      {
+        name: "술, 깨러 갈까?",
+        description:
+          "자신의 패 1~2장을 아카이브 할 수 있다 : 아카이브 한 카드 1장당, 이 아츠 +20.",
+        damage: 60,
+        specialDamage: { color: "yellow", value: 50 },
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
     id: "hBP08-069",
     cardNumber: "hBP08-069",
     setId: "hBP08",

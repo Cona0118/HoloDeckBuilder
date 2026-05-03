@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build 2>&1 | tail -10",
+    "buildCommand": "npx tsc --noEmit 2>&1 | head -30",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -162,8 +162,14 @@
   "hotPaths": [
     {
       "path": "src\\pages\\BoardPage.tsx",
-      "accessCount": 17,
-      "lastAccessed": 1777755324311,
+      "accessCount": 19,
+      "lastAccessed": 1777781868644,
+      "type": "file"
+    },
+    {
+      "path": "src\\data\\cards.ts",
+      "accessCount": 18,
+      "lastAccessed": 1777781715625,
       "type": "file"
     },
     {
@@ -173,15 +179,9 @@
       "type": "file"
     },
     {
-      "path": "src\\data\\cards.ts",
-      "accessCount": 7,
-      "lastAccessed": 1777748139432,
-      "type": "file"
-    },
-    {
       "path": "src\\components\\CardPreviewModal.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777780136869,
+      "accessCount": 8,
+      "lastAccessed": 1777781860290,
       "type": "file"
     },
     {
@@ -192,8 +192,14 @@
     },
     {
       "path": "src\\types\\card.ts",
-      "accessCount": 3,
-      "lastAccessed": 1777749054211,
+      "accessCount": 6,
+      "lastAccessed": 1777781598537,
+      "type": "file"
+    },
+    {
+      "path": "src\\api\\deckPosts.ts",
+      "accessCount": 5,
+      "lastAccessed": 1777782001594,
       "type": "file"
     },
     {
@@ -227,6 +233,12 @@
       "type": "file"
     },
     {
+      "path": "docs\\SUPABASE_SETUP.md",
+      "accessCount": 3,
+      "lastAccessed": 1777781946062,
+      "type": "file"
+    },
+    {
       "path": "src/data/cards.ts",
       "accessCount": 2,
       "lastAccessed": 1777747963027,
@@ -251,22 +263,22 @@
       "type": "file"
     },
     {
-      "path": "docs\\SUPABASE_SETUP.md",
-      "accessCount": 2,
-      "lastAccessed": 1777755084057,
-      "type": "file"
-    },
-    {
-      "path": "src\\api\\deckPosts.ts",
-      "accessCount": 2,
-      "lastAccessed": 1777755176745,
-      "type": "file"
-    },
-    {
       "path": "src/components/CardPreviewModal.tsx",
       "accessCount": 2,
       "lastAccessed": 1777780004928,
       "type": "directory"
+    },
+    {
+      "path": "src\\lib\\supabase.ts",
+      "accessCount": 2,
+      "lastAccessed": 1777781921634,
+      "type": "file"
+    },
+    {
+      "path": "docs\\superpowers\\plans\\2026-05-03-deck-board.md",
+      "accessCount": 2,
+      "lastAccessed": 1777781927428,
+      "type": "file"
     },
     {
       "path": "package.json",
@@ -293,21 +305,9 @@
       "type": "file"
     },
     {
-      "path": "docs\\superpowers\\plans\\2026-05-03-deck-board.md",
-      "accessCount": 1,
-      "lastAccessed": 1777750832185,
-      "type": "file"
-    },
-    {
       "path": ".env.local.example",
       "accessCount": 1,
       "lastAccessed": 1777751155959,
-      "type": "file"
-    },
-    {
-      "path": "src\\lib\\supabase.ts",
-      "accessCount": 1,
-      "lastAccessed": 1777751190571,
       "type": "file"
     },
     {
@@ -350,6 +350,12 @@
       "path": "src\\components\\OshiPickerModal.tsx",
       "accessCount": 1,
       "lastAccessed": 1777755287193,
+      "type": "file"
+    },
+    {
+      "path": "public\\images\\hBP08\\hBP08-066.png",
+      "accessCount": 1,
+      "lastAccessed": 1777781584397,
       "type": "file"
     }
   ],

@@ -62,8 +62,13 @@ export async function listDeckPosts(
   if (filter?.oshiCardId) {
     query = query.eq('oshi_card_id', filter.oshiCardId);
   } else if (filter?.containsCardId) {
-    // jsonb @> 연산자: main_deck 배열에 {cardId: X}를 포함하는 row 매칭
-    query = query.contains('main_deck', [{ cardId: filter.containsCardId }]);
+    // jsonb @> 연산자: main_deck 배열에 {cardId: X}를 포함하는 row 매칭.
+    // postgrest-js의 .contains()는 배열 인자를 PG 배열 리터럴(cs.{...})로
+    // 직렬화하므로 jsonb 배열엔 JSON 문자열을 넘겨 cs.<json> 분기를 태운다.
+    query = query.contains(
+      'main_deck',
+      JSON.stringify([{ cardId: filter.containsCardId }]),
+    );
   }
 
   const { data, count, error } = await query
