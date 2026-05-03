@@ -16,6 +16,8 @@ export interface DeckPost {
   oshiCardId: string;
   mainDeck: Array<{ cardId: string; count: number }>;
   cheers: Partial<Record<CardColor, number>>;
+  isAward: boolean;
+  tournamentName: string | null;
   createdAt: string;
 }
 
@@ -24,4 +26,6 @@ export interface CreatePostInput {
   author: string;
   password: string;
   snapshot: DeckSnapshot;
+  isAward: boolean;
+  tournamentName: string | null;
 }

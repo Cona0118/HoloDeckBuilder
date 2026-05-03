@@ -13,20 +13,26 @@ interface Props {
 
 const TITLE_MAX = 50;
 const AUTHOR_MAX = 20;
+const TOURNAMENT_MAX = 40;
 
 export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
   const [title, setTitle] = useState(deck.name ?? '');
   const [author, setAuthor] = useState('');
   const [password, setPassword] = useState('');
+  const [isAward, setIsAward] = useState(false);
+  const [tournamentName, setTournamentName] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const titleTrimmed = title.trim();
   const authorFinal = (author.trim() || '익명').slice(0, AUTHOR_MAX);
+  const tournamentTrimmed = tournamentName.trim().slice(0, TOURNAMENT_MAX);
+
   const canSubmit =
     !!titleTrimmed &&
     titleTrimmed.length <= TITLE_MAX &&
     isValidPassword(password) &&
+    (!isAward || tournamentTrimmed.length > 0) &&
     !submitting;
 
   async function handleSubmit() {
@@ -40,6 +46,8 @@ export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
         author: authorFinal,
         password,
         snapshot,
+        isAward,
+        tournamentName: isAward ? tournamentTrimmed : null,
       });
       onSuccess();
     } catch (e) {
@@ -91,6 +99,26 @@ export default function SharePostDialog({ deck, onClose, onSuccess }: Props) {
               className="bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm text-white focus:outline-none focus:border-indigo-500"
             />
           </label>
+
+          <div className="flex flex-col gap-1.5">
+            <label className="flex items-center gap-2 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                checked={isAward}
+                onChange={(e) => setIsAward(e.target.checked)}
+                className="accent-amber-500 w-4 h-4"
+              />
+              <span className="text-xs text-gray-300">🏆 입상덱입니다</span>
+            </label>
+            <input
+              value={tournamentName}
+              maxLength={TOURNAMENT_MAX}
+              onChange={(e) => setTournamentName(e.target.value)}
+              disabled={!isAward}
+              placeholder={isAward ? '대회명 (예: 2026 비공인 결승)' : '입상덱 체크 시 활성화'}
+              className="bg-gray-800 border border-gray-700 rounded px-2 py-1.5 text-sm text-white focus:outline-none focus:border-amber-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            />
+          </div>
 
           <label className="flex flex-col gap-1">
             <span className="text-[11px] text-gray-400 uppercase tracking-wider">

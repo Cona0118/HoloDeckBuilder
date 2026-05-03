@@ -46,10 +46,22 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
           )}
         </div>
 
-        {/* 제목 (크게) */}
-        <p className="flex-1 min-w-0 text-base sm:text-lg font-semibold text-white truncate">
-          {post.title}
-        </p>
+        {/* 제목 + 입상덱 마크 */}
+        <div className="flex-1 min-w-0 flex items-center gap-2">
+          <p className="min-w-0 text-base sm:text-lg font-semibold text-white truncate">
+            {post.title}
+          </p>
+          {post.isAward && (
+            <span className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-900/60 text-amber-300 border border-amber-700/50">
+              <span>🏆</span>
+              {post.tournamentName && (
+                <span className="hidden sm:inline truncate max-w-[140px]">
+                  {post.tournamentName}
+                </span>
+              )}
+            </span>
+          )}
+        </div>
 
         {/* 작성자 / 날짜 (오른쪽) */}
         <div className="flex flex-col items-end shrink-0 text-[10px] sm:text-[11px] text-gray-400 leading-tight">

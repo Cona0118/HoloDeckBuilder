@@ -69,6 +69,18 @@ grant execute on function delete_deck_post(uuid, text) to anon, authenticated;
 3. `anon public` key → `.env.local`의 `VITE_SUPABASE_ANON_KEY`
 4. 프로젝트 루트의 `.env.local.example`을 복사해서 `.env.local`을 만든 뒤 위 값 입력
 
-## 4. 검증
+## 4. 마이그레이션: 입상덱 컬럼 추가
+
+이미 `deck_posts` 테이블이 만들어져 있는 경우, 입상덱 정보를 담을 컬럼을 추가하기 위해 SQL Editor에서 다음을 한 번 더 실행:
+
+```sql
+alter table deck_posts
+  add column if not exists is_award boolean not null default false,
+  add column if not exists tournament_name text;
+```
+
+신규 프로젝트라면 `2.` 단계에 이 두 컬럼을 추가해서 한 번에 만들어도 무방.
+
+## 5. 검증
 - 개발 서버 재시작 (`npm run dev`)
 - 브라우저 콘솔에 supabase 관련 경고가 없으면 OK

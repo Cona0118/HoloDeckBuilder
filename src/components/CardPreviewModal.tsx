@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import type { Card, CardAbility, OshiAbility } from "../types/card";
 import { isBuzz } from "../utils/cardUtils";
 import {
@@ -19,6 +20,13 @@ interface CardPreviewModalProps {
 
 export default function CardPreviewModal({ card, onClose }: CardPreviewModalProps) {
   const accent = getAccentColor(card);
+  const navigate = useNavigate();
+
+  function handleDeckSearch() {
+    const param = card.type === "oshi" ? "oshi" : "card";
+    onClose();
+    navigate(`/board?${param}=${encodeURIComponent(card.id)}`);
+  }
 
   return createPortal(
     <div
@@ -48,12 +56,12 @@ export default function CardPreviewModal({ card, onClose }: CardPreviewModalProp
 
         {/* 카드 정보 패널 */}
         <div
-          className="w-full md:w-140 shrink-0 bg-gray-900 rounded-xl border overflow-y-auto flex flex-col max-h-[50vh] md:max-h-[85vh]"
+          className="w-full md:w-140 shrink-0 bg-gray-900 rounded-xl border flex flex-col max-h-[50vh] md:max-h-[85vh] overflow-hidden"
           style={{ borderColor: accent }}
         >
           <div className="h-1.5 w-full shrink-0" style={{ background: accent }} />
 
-          <div className="p-4 flex flex-col gap-3">
+          <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
             {/* 타입 + 서브타입 + 색상 */}
             <div className="flex items-center gap-1.5 flex-wrap">
               <span className={`text-xs font-bold px-2 py-0.5 rounded ${TYPE_BG[card.type]}`}>
@@ -170,6 +178,19 @@ export default function CardPreviewModal({ card, onClose }: CardPreviewModalProp
                 <p className="text-[11px] font-bold text-red-300 text-center">제한카드 ({card.restricted})</p>
               </div>
             )}
+          </div>
+
+          {/* 덱 레시피 검색 (sticky 하단) */}
+          <div className="shrink-0 px-4 py-2 border-t border-gray-800 flex justify-end">
+            <button
+              onClick={handleDeckSearch}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-indigo-700 hover:bg-indigo-600 text-white rounded-lg border border-indigo-600 transition-colors"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+              </svg>
+              이 카드를 사용한 덱 검색
+            </button>
           </div>
         </div>
       </div>

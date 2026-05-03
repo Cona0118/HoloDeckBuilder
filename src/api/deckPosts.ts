@@ -11,8 +11,13 @@ interface DbDeckPost {
   oshi_card_id: string;
   main_deck: Array<{ cardId: string; count: number }>;
   cheers: Record<string, number>;
+  is_award: boolean | null;
+  tournament_name: string | null;
   created_at: string;
 }
+
+const SELECT_COLUMNS =
+  'id, title, author, oshi_card_id, main_deck, cheers, is_award, tournament_name, created_at';
 
 function toDeckPost(row: DbDeckPost): DeckPost {
   return {
@@ -22,8 +27,17 @@ function toDeckPost(row: DbDeckPost): DeckPost {
     oshiCardId: row.oshi_card_id,
     mainDeck: row.main_deck ?? [],
     cheers: (row.cheers ?? {}) as DeckPost['cheers'],
+    isAward: row.is_award ?? false,
+    tournamentName: row.tournament_name ?? null,
     createdAt: row.created_at,
   };
+}
+
+export interface ListPostsFilter {
+  /** 오시 카드 ID 정확 일치 */
+  oshiCardId?: string;
+  /** 메인덱에 해당 cardId가 포함된 게시글 */
+  containsCardId?: string;
 }
 
 export interface ListPostsResult {
@@ -33,16 +47,26 @@ export interface ListPostsResult {
 }
 
 /** 1-based 페이지 번호. 최신순 고정. */
-export async function listDeckPosts(page: number): Promise<ListPostsResult> {
+export async function listDeckPosts(
+  page: number,
+  filter?: ListPostsFilter,
+): Promise<ListPostsResult> {
   const safePage = Math.max(1, Math.floor(page));
   const from = (safePage - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
-  const { data, count, error } = await supabase
+  let query = supabase
     .from('deck_posts')
-    .select('id, title, author, oshi_card_id, main_deck, cheers, created_at', {
-      count: 'exact',
-    })
+    .select(SELECT_COLUMNS, { count: 'exact' });
+
+  if (filter?.oshiCardId) {
+    query = query.eq('oshi_card_id', filter.oshiCardId);
+  } else if (filter?.containsCardId) {
+    // jsonb @> 연산자: main_deck 배열에 {cardId: X}를 포함하는 row 매칭
+    query = query.contains('main_deck', [{ cardId: filter.containsCardId }]);
+  }
+
+  const { data, count, error } = await query
     .order('created_at', { ascending: false })
     .range(from, to);
 
@@ -67,8 +91,10 @@ export async function createDeckPost(input: CreatePostInput): Promise<DeckPost> 
       oshi_card_id: input.snapshot.oshiCardId,
       main_deck: input.snapshot.mainDeck,
       cheers: input.snapshot.cheers,
+      is_award: input.isAward,
+      tournament_name: input.tournamentName,
     })
-    .select('id, title, author, oshi_card_id, main_deck, cheers, created_at')
+    .select(SELECT_COLUMNS)
     .single();
 
   if (error) throw error;
