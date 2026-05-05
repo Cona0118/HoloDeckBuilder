@@ -10,7 +10,7 @@
 ## 2. SQL 실행 (SQL Editor → + New query)
 
 ```sql
-create extension if not exists pgcrypto;
+create extension if not exists pgcrypto with schema extensions;
 
 create table deck_posts (
   id              uuid primary key default gen_random_uuid(),
@@ -45,14 +45,14 @@ create or replace function delete_deck_post(post_id uuid, password text)
 returns boolean
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   stored_hash text;
 begin
   select password_hash into stored_hash from deck_posts where id = post_id;
   if stored_hash is null then return false; end if;
-  if crypt(password, stored_hash) = stored_hash then
+  if extensions.crypt(password, stored_hash) = stored_hash then
     delete from deck_posts where id = post_id;
     return true;
   end if;

@@ -27,7 +27,14 @@ export default function DeletePostDialog({ post, onClose, onDeleted }: Props) {
         setSubmitting(false);
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : '삭제에 실패했습니다.');
+      console.error('[DeletePostDialog] delete failed:', e);
+      const msg =
+        e instanceof Error
+          ? e.message
+          : typeof e === 'object' && e !== null && 'message' in e
+            ? String((e as { message: unknown }).message)
+            : '삭제에 실패했습니다.';
+      setError(msg);
       setSubmitting(false);
     }
   }
