@@ -38,6 +38,8 @@ export interface ListPostsFilter {
   oshiCardId?: string;
   /** 메인덱에 해당 cardId가 포함된 게시글 */
   containsCardId?: string;
+  /** 입상덱만 표시 */
+  awardOnly?: boolean;
 }
 
 export interface ListPostsResult {
@@ -69,6 +71,10 @@ export async function listDeckPosts(
       'main_deck',
       JSON.stringify([{ cardId: filter.containsCardId }]),
     );
+  }
+
+  if (filter?.awardOnly) {
+    query = query.eq('is_award', true);
   }
 
   const { data, count, error } = await query

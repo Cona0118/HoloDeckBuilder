@@ -16,6 +16,7 @@ export default function BoardPage() {
   const page = Math.max(1, parseInt(params.get('page') ?? '1', 10) || 1);
   const oshiFilter = params.get('oshi') ?? '';
   const containsFilter = params.get('card') ?? '';
+  const awardOnly = params.get('award') === '1';
   const navigate = useNavigate();
   const createDeckFromSnapshot = useDeckStore((s) => s.createDeckFromSnapshot);
 
@@ -28,10 +29,12 @@ export default function BoardPage() {
   const [pickerOpen, setPickerOpen] = useState(false);
 
   const filter: ListPostsFilter = useMemo(() => {
-    if (oshiFilter) return { oshiCardId: oshiFilter };
-    if (containsFilter) return { containsCardId: containsFilter };
-    return {};
-  }, [oshiFilter, containsFilter]);
+    const f: ListPostsFilter = {};
+    if (oshiFilter) f.oshiCardId = oshiFilter;
+    else if (containsFilter) f.containsCardId = containsFilter;
+    if (awardOnly) f.awardOnly = true;
+    return f;
+  }, [oshiFilter, containsFilter, awardOnly]);
 
   const filterCard = useMemo(() => {
     const id = oshiFilter || containsFilter;
@@ -74,12 +77,25 @@ export default function BoardPage() {
 
   function handlePickOshi(oshiCardId: string) {
     setPickerOpen(false);
-    setParams({ oshi: oshiCardId }, { replace: false });
+    const next: Record<string, string> = { oshi: oshiCardId };
+    if (awardOnly) next.award = '1';
+    setParams(next, { replace: false });
     window.scrollTo({ top: 0 });
   }
 
   function clearFilter() {
-    setParams({}, { replace: false });
+    const next: Record<string, string> = {};
+    if (awardOnly) next.award = '1';
+    setParams(next, { replace: false });
+  }
+
+  function toggleAwardOnly() {
+    const next = new URLSearchParams(params);
+    next.delete('page');
+    if (awardOnly) next.delete('award');
+    else next.set('award', '1');
+    setParams(next, { replace: false });
+    window.scrollTo({ top: 0 });
   }
 
   function handleLoadIntoDeck(post: DeckPost) {
@@ -129,6 +145,20 @@ export default function BoardPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
               </svg>
             </button>
+            <button
+              onClick={toggleAwardOnly}
+              aria-pressed={awardOnly}
+              title={awardOnly ? '입상덱 필터 해제' : '입상덱만 보기'}
+              className={
+                'h-8 px-2.5 flex items-center gap-1 rounded-lg text-xs font-medium border transition-colors ' +
+                (awardOnly
+                  ? 'bg-amber-500/20 text-amber-200 border-amber-500/60 hover:bg-amber-500/30'
+                  : 'bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700')
+              }
+            >
+              <span aria-hidden>🏆</span>
+              <span>입상덱만</span>
+            </button>
           </div>
           <Link
             to="/"
@@ -175,7 +205,7 @@ export default function BoardPage() {
 
         {!loading && !error && posts.length === 0 && (
           <div className="text-gray-500 text-sm py-12 text-center">
-            {filterCard ? '조건에 맞는 덱이 없습니다.' : '아직 공유된 덱이 없습니다.'}
+            {filterCard || awardOnly ? '조건에 맞는 덱이 없습니다.' : '아직 공유된 덱이 없습니다.'}
           </div>
         )}
 

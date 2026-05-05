@@ -27226,6 +27226,31 @@ export const CARDS: Card[] = [
   },
   // ── hBP08 신규 추가 (정보 미완성) ──
   {
+    id: "hBP08-001",
+    cardNumber: "hBP08-001",
+    setId: "hBP08",
+    name: "IRyS",
+    nameJp: "IRyS",
+    keywords: ["아이리스"],
+    type: "oshi",
+    color: ["white"],
+    life: 5,
+    imageUrl: "/images/hBP08/hBP08-001.png",
+    limit: 1,
+    oshiAbility: {
+      name: "오시 스킬",
+      cost: "홀로 파워 -2",
+      description:
+        "[턴에 1번] 자신의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20. 고른 홀로멤에게 자 옐이 붙어 있다면, 대신, 그 홀로멤의 아츠 +50.",
+    },
+    spAbility: {
+      name: "HOPE and DESPAIR",
+      cost: "홀로 파워 -2",
+      description:
+        "[게임에 1번] 자신의 〈IRyS〉 전원의 옐 1장당, 자신의 덱을 1장 드로우 한다. 그 후, 자신의 〈IRyS〉 전원의 자 옐 1장당, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+    },
+  },
+  {
     id: "hBP08-002",
     cardNumber: "hBP08-002",
     setId: "hBP08",
@@ -27246,6 +27271,30 @@ export const CARDS: Card[] = [
       cost: "홀로 파워 -2",
       description:
         "자신의 옐 덱 위에서 2장을 자신의 오야스미 중인 <세실리아 이머그린>에게 나눠 붙인다. 그 후, 이 효과로 옐을 붙인 휴식 중인 홀로멤 전원을 액티브한다.",
+    },
+  },
+  {
+    id: "hBP08-004",
+    cardNumber: "hBP08-004",
+    setId: "hBP08",
+    name: "미즈미야 스우",
+    nameJp: "水宮枢",
+    type: "oshi",
+    color: ["blue"],
+    life: 5,
+    imageUrl: "/images/hBP08/hBP08-004.png",
+    limit: 1,
+    oshiAbility: {
+      name: "스우만 보고 있으면 되는데 말야",
+      cost: "홀로 파워 -1",
+      description:
+        "[턴에 1번] 상대의 센터 홀로멤 1명을 고른다. 다음 상대의 턴이 종료할 때까지, 고른 홀로멤의 배턴 터치에 필요한 무 +3.",
+    },
+    spAbility: {
+      name: "가라가라 돈돈!",
+      cost: "홀로 파워 -2",
+      description:
+        "[게임에 1번] 상대의 백 홀로멤 1명에게, 상대의 센터 홀로멤이 받고 있는 대미지와 같은 수치의 특수 대미지를 준다.",
     },
   },
   {
@@ -27351,6 +27400,37 @@ export const CARDS: Card[] = [
         description: "",
         damage: 20,
         cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-013",
+    cardNumber: "hBP08-013",
+    setId: "hBP08",
+    name: "IRyS",
+    nameJp: "IRyS",
+    keywords: ["아이리스"],
+    type: "holomem",
+    hp: 200,
+    color: ["white"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#EN", "#Promise", "#노래"],
+    imageUrl: "/images/hBP08/hBP08-013.png",
+    abilities: [
+      {
+        name: "승리의 티타임",
+        description:
+          "이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+        timing: "gift",
+      },
+      {
+        name: "모에모에 큥 했어?",
+        description: "이 홀로멤에게 자 옐이 붙어 있다면, 이 아츠 +50.",
+        damage: 70,
+        specialDamage: { color: "purple", value: 50 },
+        cost: ["white", "colorless"],
       },
     ],
     limit: 4,
@@ -27559,6 +27639,38 @@ export const CARDS: Card[] = [
         description: "자신의 아카이브의 옐 1장을 자신의 홀로멤에게 보낸다.",
         damage: 20,
         cost: ["blue"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-052",
+    cardNumber: "hBP08-052",
+    setId: "hBP08",
+    name: "미즈미야 스우",
+    nameJp: "水宮枢",
+    type: "holomem",
+    hp: 210,
+    color: ["blue"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP08/hBP08-052.png",
+    abilities: [
+      {
+        name: "기운이 나는 구미",
+        description:
+          "상대의 센터 홀로멤의 배턴 터치에 필요한 무가 5개 이상이라면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈미즈미야 스우〉에게 보낸다.",
+        damage: 70,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["blue"],
+      },
+      {
+        name: "구미 맛있어",
+        description: "",
+        damage: 180,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["blue", "colorless", "colorless", "colorless"],
       },
     ],
     limit: 4,
@@ -27861,6 +27973,39 @@ export const CARDS: Card[] = [
     limit: 4,
   },
   {
+    id: "hBP08-060",
+    cardNumber: "hBP08-060",
+    setId: "hBP08",
+    name: "FUWAMOCO",
+    nameJp: "FUWAMOCO",
+    keywords: ["후와모코", "후와와 어비스가드", "모코코 어비스가드", "kawaii"],
+    type: "holomem",
+    hp: 170,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Advent", "#동물귀"],
+    imageUrl: "/images/hBP08/hBP08-060.png",
+    extraRule:
+      "이 홀로멤은 〈후와와 어비스가드〉〈모코코 어비스가드〉로도 취급한다.",
+    abilities: [
+      {
+        name: '"BAU" DOL♡',
+        description:
+          "[콜라보 포지션 한정] 자신의 오시 스킬 「모코쨩!」의 [홀로 파워 -3]을 [홀로 파워 -2]로 변경한다.",
+        timing: "gift",
+      },
+      {
+        name: "평생 함께♡",
+        description:
+          "자신의 오시 홀로멤이 청색인 〈FUWAMOCO〉라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+        damage: 50,
+        cost: ["colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
     id: "hBP08-062",
     cardNumber: "hBP08-062",
     setId: "hBP08",
@@ -27952,6 +28097,23 @@ export const CARDS: Card[] = [
         name: "",
         description:
           "이 카드는, 자신의 스테이지의 홀로멤 전원이 #Myth를 가진 홀로멤이 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 공개한다. 그중에서 2장을 패에 더한다. 그리고 남은 카드를 아카이브 한다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-106",
+    cardNumber: "hBP08-106",
+    setId: "hBP08",
+    name: "GuyRy",
+    type: "support",
+    supportSubtype: "fan",
+    imageUrl: "/images/hBP08/hBP08-106.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬에 붙어 있는 홀로멤의 옐 1장을, 자신의 다른 홀로멤에게 옮겨 붙인다.\n\n이 팬은, 자신의 〈IRyS〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,

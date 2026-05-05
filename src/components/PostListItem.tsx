@@ -93,6 +93,19 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
 
       {open && (
         <>
+          {post.isAward && (
+            <div className="flex items-center gap-2 px-3 py-2 bg-amber-950/40 border-t border-amber-900/40">
+              <span className="text-amber-300 text-sm shrink-0" aria-hidden>🏆</span>
+              <span className="text-[11px] uppercase tracking-wider text-amber-400/80 shrink-0">
+                입상덱
+              </span>
+              {post.tournamentName && (
+                <span className="text-xs sm:text-sm text-amber-100 font-medium truncate">
+                  {post.tournamentName}
+                </span>
+              )}
+            </div>
+          )}
           <PostDeckView
             oshiCardId={post.oshiCardId}
             mainDeck={post.mainDeck}
