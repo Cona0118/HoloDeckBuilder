@@ -81,6 +81,18 @@ alter table deck_posts
 
 신규 프로젝트라면 `2.` 단계에 이 두 컬럼을 추가해서 한 번에 만들어도 무방.
 
-## 5. 검증
+## 5. 마이그레이션: bcrypt 해시 prefix 정규화
+
+`bcryptjs` 3.x는 기본적으로 `$2b$` prefix 해시를 만들지만, Supabase의 `pgcrypto.crypt()`는 `$2a$` prefix만 인식합니다. 이 때문에 비밀번호가 맞아도 `delete_deck_post` RPC가 항상 false를 반환해 삭제가 실패합니다. 이미 저장된 `$2b$`/`$2y$` 해시를 `$2a$`로 한 번 변환하세요 (표준 ASCII 비번에선 알고리즘이 동일하므로 검증 결과가 동일):
+
+```sql
+update deck_posts
+set password_hash = '$2a$' || substring(password_hash from 5)
+where password_hash like '$2b$%' or password_hash like '$2y$%';
+```
+
+신규 게시글은 클라이언트가 자동으로 `$2a$`로 저장하므로 이 마이그레이션은 일회성입니다.
+
+## 6. 검증
 - 개발 서버 재시작 (`npm run dev`)
 - 브라우저 콘솔에 supabase 관련 경고가 없으면 OK

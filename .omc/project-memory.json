@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build 2>&1 | tail -20",
+    "buildCommand": "cd \"c:\\Users\\user\\Desktop\\Holo\" && npx tsc -b 2>&1 | tail -30",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -195,8 +195,8 @@
     },
     {
       "path": "src\\api\\deckPosts.ts",
-      "accessCount": 3,
-      "lastAccessed": 1777999688965,
+      "accessCount": 6,
+      "lastAccessed": 1778003639425,
       "type": "file"
     },
     {
@@ -206,15 +206,39 @@
       "type": "file"
     },
     {
+      "path": "src\\components\\DeletePostDialog.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1778003638892,
+      "type": "file"
+    },
+    {
+      "path": "docs\\SUPABASE_SETUP.md",
+      "accessCount": 3,
+      "lastAccessed": 1778004393378,
+      "type": "file"
+    },
+    {
       "path": "src\\types\\card.ts",
       "accessCount": 2,
       "lastAccessed": 1778000888603,
       "type": "file"
     },
     {
+      "path": "src\\utils\\password.ts",
+      "accessCount": 2,
+      "lastAccessed": 1778004383105,
+      "type": "file"
+    },
+    {
       "path": "src\\components\\PostDeckView.tsx",
       "accessCount": 1,
       "lastAccessed": 1777999975644,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1778003691828,
       "type": "file"
     }
   ],
