@@ -25,6 +25,7 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
   const [open, setOpen] = useState(false);
   const oshi = CARDS.find((c) => c.id === post.oshiCardId);
   const oshiAccent = oshi ? getAccentColor(oshi) : '#6b7280';
+  const oshiThumbUrl = post.oshiImageUrl ?? oshi?.imageUrl;
 
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
@@ -37,8 +38,8 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
           className="w-10 h-14 sm:w-12 sm:h-16 shrink-0 rounded overflow-hidden border bg-gray-800"
           style={{ borderColor: oshiAccent + '88' }}
         >
-          {oshi?.imageUrl ? (
-            <img src={oshi.imageUrl} alt={oshi.name} className="w-full h-full object-cover" draggable={false} />
+          {oshi && oshiThumbUrl ? (
+            <img src={oshiThumbUrl} alt={oshi.name} className="w-full h-full object-cover" draggable={false} />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-[8px] text-gray-500 text-center px-0.5">
               {oshi ? oshi.name : '카드 없음'}
