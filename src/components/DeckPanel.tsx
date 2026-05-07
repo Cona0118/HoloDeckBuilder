@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { useDeckStore } from "../store/deckStore";
+import { useDeckStore, entryKey } from "../store/deckStore";
 import { COLOR_ACCENT, getAccentColor } from "../utils/cardUtils";
 import type { CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
 import { CARDS } from "../data/cards";
@@ -60,6 +60,7 @@ type DragPhase =
 // ──────────────────────────────
 function DeckEntryCard({
   entry,
+  totalCardCount,
   onAdd,
   onRemove,
   overlayVisible,
@@ -71,8 +72,12 @@ function DeckEntryCard({
   onTap,
   editMode,
   isSelected,
+  onSelectImage,
+  onSplitImage,
 }: {
   entry: DeckEntry;
+  /** 같은 cardId의 모든 엔트리 합계 (limit 검사용). */
+  totalCardCount: number;
   onAdd: () => void;
   onRemove: () => void;
   overlayVisible: boolean;
@@ -90,16 +95,20 @@ function DeckEntryCard({
   onTap: () => void;
   editMode: boolean;
   isSelected: boolean;
+  onSelectImage: (imageUrl: string) => void;
+  onSplitImage: (imageUrl: string) => void;
 }) {
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
-  const atLimit = entry.count >= cardLimit;
+  const atLimit = totalCardCount >= cardLimit;
   const isTouch = useRef(false);
   const startPos = useRef<{ x: number; y: number } | null>(null);
   const wasDrag = useRef(false);
   const [previewOpen, setPreviewOpen] = useState(false);
   const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
+  const resolvedImageUrl = entry.imageUrl ?? entry.card.imageUrl;
+  const thisEntryKey = entryKey(entry.card.id, entry.imageUrl);
 
   function cancelLongPress() {
     if (longPressTimer.current) {
@@ -120,7 +129,7 @@ function DeckEntryCard({
       el.setPointerCapture(e.pointerId);
       const rect = el.getBoundingClientRect();
       onDragStart(
-        entry.card.imageUrl,
+        resolvedImageUrl,
         e.clientX,
         e.clientY,
         rect.width,
@@ -130,7 +139,7 @@ function DeckEntryCard({
       cancelLongPress();
       longPressTimer.current = setTimeout(() => {
         didLongPress.current = true;
-        if (entry.card.imageUrl) setPreviewOpen(true);
+        if (resolvedImageUrl) setPreviewOpen(true);
       }, 500);
     }
   }
@@ -163,9 +172,12 @@ function DeckEntryCard({
         <CardPreviewModal
           card={entry.card}
           onClose={() => setPreviewOpen(false)}
+          selectedImageUrl={resolvedImageUrl}
+          onSelectImage={(url) => onSelectImage(url)}
+          onSplitToImage={entry.count > 1 ? (url) => onSplitImage(url) : undefined}
         />
       )}
-      <div className="relative group" data-deck-card-id={entry.card.id}>
+      <div className="relative group" data-deck-card-id={thisEntryKey}>
         <div
           className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? "cursor-pointer" : "cursor-pointer"}`}
           style={{
@@ -209,9 +221,9 @@ function DeckEntryCard({
             onRemove();
           }}
         >
-          {entry.card.imageUrl ? (
+          {resolvedImageUrl ? (
             <img
-              src={entry.card.imageUrl}
+              src={resolvedImageUrl}
               alt={entry.card.name}
               className="w-full h-full object-cover"
               draggable={false}
@@ -628,12 +640,19 @@ async function exportDeckAsImage(
   const holomem = deck.mainDeck.filter((e) => e.card.type === "holomem");
   const support = deck.mainDeck.filter((e) => e.card.type === "support");
   const cheers = deck.cheers ?? {};
+  const oshiImageUrl = deck.oshi
+    ? (deck.oshiImageUrl ?? deck.oshi.imageUrl)
+    : undefined;
+  function entryImage(entry: DeckEntry): string | undefined {
+    return entry.imageUrl ?? entry.card.imageUrl;
+  }
 
   // Preload all images
   const urlSet = new Set<string>();
-  if (deck.oshi?.imageUrl) urlSet.add(deck.oshi.imageUrl);
+  if (oshiImageUrl) urlSet.add(oshiImageUrl);
   deck.mainDeck.forEach((e) => {
-    if (e.card.imageUrl) urlSet.add(e.card.imageUrl);
+    const url = entryImage(e);
+    if (url) urlSet.add(url);
   });
   CHEER_COLORS.forEach((c) => urlSet.add(CHEER_IMAGE[c]));
   const cache = new Map<string, HTMLImageElement>();
@@ -766,7 +785,7 @@ async function exportDeckAsImage(
     const CHEER_START_Y = LEFT_START_Y + OSHI_H + GAP;
 
     drawSlot(
-      deck.oshi?.imageUrl,
+      oshiImageUrl,
       deck.oshi?.name ?? "?",
       PAD,
       LEFT_START_Y,
@@ -784,10 +803,12 @@ async function exportDeckAsImage(
     });
 
     const expanded: { imageUrl?: string; name: string; accent: string }[] = [];
-    [...holomem, ...support].forEach(({ card, count }) => {
+    [...holomem, ...support].forEach((entry) => {
+      const { card, count } = entry;
+      const url = entryImage(entry);
       for (let i = 0; i < count; i++)
         expanded.push({
-          imageUrl: card.imageUrl,
+          imageUrl: url,
           name: card.name,
           accent: getAccentColor(card),
         });
@@ -828,9 +849,10 @@ async function exportDeckAsImage(
       accent: string;
       count: number;
     }[] = [];
-    [...holomem, ...support].forEach(({ card, count }) => {
+    [...holomem, ...support].forEach((entry) => {
+      const { card, count } = entry;
       unique.push({
-        imageUrl: card.imageUrl,
+        imageUrl: entryImage(entry),
         name: card.name,
         accent: getAccentColor(card),
         count,
@@ -851,7 +873,7 @@ async function exportDeckAsImage(
 
     // Oshi
     drawSlot(
-      deck.oshi?.imageUrl,
+      oshiImageUrl,
       deck.oshi?.name ?? "?",
       PAD,
       PAD,
@@ -998,6 +1020,9 @@ export default function DeckPanel() {
     reorderMainDeck,
     swapMainDeckEntries,
     sortMainDeckDefault,
+    setOshiImage,
+    setEntryImage,
+    splitEntryImage,
   } = useDeckStore();
   const deck = getActiveDeck();
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
@@ -1070,10 +1095,10 @@ export default function DeckPanel() {
         // Only allow drop within same card type section
         const currentDeck = deckRef.current;
         const draggedEntry = currentDeck?.mainDeck.find(
-          (e) => e.card.id === d.cardId,
+          (e) => entryKey(e.card.id, e.imageUrl) === d.cardId,
         );
         const targetEntry = currentDeck?.mainDeck.find(
-          (e) => e.card.id === targetId,
+          (e) => entryKey(e.card.id, e.imageUrl) === targetId,
         );
         if (
           draggedEntry &&
@@ -1143,7 +1168,7 @@ export default function DeckPanel() {
     oshiDidLongPress.current = false;
     oshiLongPressTimer.current = setTimeout(() => {
       oshiDidLongPress.current = true;
-      if (deck?.oshi?.imageUrl) setOshiPreviewOpen(true);
+      if (deck?.oshi) setOshiPreviewOpen(true);
     }, 500);
   }
   function cancelOshiLongPress() {
@@ -1185,6 +1210,9 @@ export default function DeckPanel() {
   ];
 
   const oshiAccent = deck.oshi ? getAccentColor(deck.oshi) : "#6b7280";
+  const oshiResolvedImageUrl = deck.oshi
+    ? (deck.oshiImageUrl ?? deck.oshi.imageUrl)
+    : undefined;
   return (
     <div className="flex flex-col h-full overflow-hidden bg-gray-950">
       <DeckSelector />
@@ -1224,6 +1252,8 @@ export default function DeckPanel() {
               <CardPreviewModal
                 card={deck.oshi}
                 onClose={() => setOshiPreviewOpen(false)}
+                selectedImageUrl={oshiResolvedImageUrl}
+                onSelectImage={(url) => setOshiImage(url)}
               />
             )}
             <div
@@ -1238,9 +1268,9 @@ export default function DeckPanel() {
               onPointerCancel={cancelOshiLongPress}
             >
               {deck.oshi ? (
-                deck.oshi.imageUrl ? (
+                oshiResolvedImageUrl ? (
                   <img
-                    src={deck.oshi.imageUrl}
+                    src={oshiResolvedImageUrl}
                     alt={deck.oshi.name}
                     className="w-full h-full object-cover"
                     draggable={false}
@@ -1440,61 +1470,75 @@ export default function DeckPanel() {
                   </span>
                 </p>
                 <div className="grid grid-cols-5 gap-1 px-2">
-                  {section.entries.map((entry) => (
-                    <DeckEntryCard
-                      key={entry.card.id}
-                      entry={entry}
-                      onAdd={() => addCard(entry.card)}
-                      onRemove={() => removeCard(entry.card)}
-                      overlayVisible={activeCardId === entry.card.id}
-                      onShowOverlay={() => setActiveCardId(entry.card.id)}
-                      onHideOverlay={() => setActiveCardId(null)}
-                      isDragging={
-                        dragRender.phase !== "idle" &&
-                        dragRender.cardId === entry.card.id
-                      }
-                      dropIndicator={
-                        dropTarget?.cardId === entry.card.id
-                          ? dropTarget.before
-                            ? "before"
-                            : "after"
-                          : null
-                      }
-                      editMode={editMode}
-                      isSelected={selectedCardId === entry.card.id}
-                      onTap={() => {
-                        if (selectedCardId === null) {
-                          setSelectedCardId(entry.card.id);
-                        } else if (selectedCardId === entry.card.id) {
-                          setSelectedCardId(null);
-                        } else {
-                          const selectedEntry = deck?.mainDeck.find(
-                            (e) => e.card.id === selectedCardId,
-                          );
-                          if (
-                            selectedEntry &&
-                            selectedEntry.card.type === entry.card.type
-                          ) {
-                            swapMainDeckEntries(selectedCardId, entry.card.id);
-                          }
-                          setSelectedCardId(null);
+                  {section.entries.map((entry) => {
+                    const eKey = entryKey(entry.card.id, entry.imageUrl);
+                    const totalForCard = deck.mainDeck
+                      .filter((e) => e.card.id === entry.card.id)
+                      .reduce((s, e) => s + e.count, 0);
+                    return (
+                      <DeckEntryCard
+                        key={eKey}
+                        entry={entry}
+                        totalCardCount={totalForCard}
+                        onSelectImage={(url) =>
+                          setEntryImage(entry.card.id, entry.imageUrl, url)
                         }
-                      }}
-                      onDragStart={(imageUrl, x, y, w, h) => {
-                        const next: DragPhase = {
-                          phase: "potential",
-                          cardId: entry.card.id,
-                          imageUrl,
-                          x,
-                          y,
-                          w,
-                          h,
-                        };
-                        dragRef.current = next;
-                        setDragRender({ ...next });
-                      }}
-                    />
-                  ))}
+                        onSplitImage={(url) =>
+                          splitEntryImage(entry.card.id, entry.imageUrl, url)
+                        }
+                        onAdd={() => addCard(entry.card, entry.imageUrl)}
+                        onRemove={() => removeCard(entry.card, entry.imageUrl)}
+                        overlayVisible={activeCardId === eKey}
+                        onShowOverlay={() => setActiveCardId(eKey)}
+                        onHideOverlay={() => setActiveCardId(null)}
+                        isDragging={
+                          dragRender.phase !== "idle" &&
+                          dragRender.cardId === eKey
+                        }
+                        dropIndicator={
+                          dropTarget?.cardId === eKey
+                            ? dropTarget.before
+                              ? "before"
+                              : "after"
+                            : null
+                        }
+                        editMode={editMode}
+                        isSelected={selectedCardId === eKey}
+                        onTap={() => {
+                          if (selectedCardId === null) {
+                            setSelectedCardId(eKey);
+                          } else if (selectedCardId === eKey) {
+                            setSelectedCardId(null);
+                          } else {
+                            const selectedEntry = deck?.mainDeck.find(
+                              (e) =>
+                                entryKey(e.card.id, e.imageUrl) === selectedCardId,
+                            );
+                            if (
+                              selectedEntry &&
+                              selectedEntry.card.type === entry.card.type
+                            ) {
+                              swapMainDeckEntries(selectedCardId, eKey);
+                            }
+                            setSelectedCardId(null);
+                          }
+                        }}
+                        onDragStart={(imageUrl, x, y, w, h) => {
+                          const next: DragPhase = {
+                            phase: "potential",
+                            cardId: eKey,
+                            imageUrl,
+                            x,
+                            y,
+                            w,
+                            h,
+                          };
+                          dragRef.current = next;
+                          setDragRender({ ...next });
+                        }}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             ),
@@ -1554,13 +1598,17 @@ export default function DeckPanel() {
 // ──────────────────────────────
 // Draw Simulation
 // ──────────────────────────────
+type HandCard = { card: DeckEntry["card"]; imageUrl?: string };
+
 function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
   const INITIAL_HAND = 7;
 
-  function buildPool() {
-    const pool: DeckEntry["card"][] = [];
+  function buildPool(): HandCard[] {
+    const pool: HandCard[] = [];
     for (const entry of deck.mainDeck) {
-      for (let i = 0; i < entry.count; i++) pool.push(entry.card);
+      for (let i = 0; i < entry.count; i++) {
+        pool.push({ card: entry.card, imageUrl: entry.imageUrl });
+      }
     }
     return pool;
   }
@@ -1642,17 +1690,19 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
         {/* Hand */}
         <div className="flex-1 overflow-y-auto p-4">
           <div className="grid grid-cols-5 sm:grid-cols-7 gap-2">
-            {state.hand.map((card, i) => {
+            {state.hand.map((h, i) => {
+              const card = h.card;
               const accent = getAccentColor(card);
+              const handImageUrl = h.imageUrl ?? card.imageUrl;
               return (
                 <div
                   key={`${card.id}-${i}`}
                   className="relative aspect-2.5/3.5 rounded overflow-hidden border bg-gray-800"
                   style={{ borderColor: accent + "66" }}
                 >
-                  {card.imageUrl ? (
+                  {handImageUrl ? (
                     <img
-                      src={card.imageUrl}
+                      src={handImageUrl}
                       alt={card.name}
                       className="w-full h-full object-cover"
                       draggable={false}

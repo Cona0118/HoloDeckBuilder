@@ -60,6 +60,9 @@ export interface Card {
 export interface DeckEntry {
   card: Card;
   count: number;
+  /** 이 엔트리에 적용된 일러스트 URL. undefined면 card.imageUrl 기본 사용.
+   *  같은 cardId 카드도 imageUrl이 다르면 별개 엔트리로 공존한다. */
+  imageUrl?: string;
 }
 
 export interface Deck {
@@ -68,6 +71,8 @@ export interface Deck {
   oshi: Card | null;
   mainDeck: DeckEntry[];
   cheers: Partial<Record<CardColor, number>>;
+  /** 오시 카드에 적용된 일러스트 URL. undefined면 oshi.imageUrl 기본 사용. */
+  oshiImageUrl?: string;
   createdAt: number;
   updatedAt: number;
 }

@@ -108,6 +108,7 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
           )}
           <PostDeckView
             oshiCardId={post.oshiCardId}
+            oshiImageUrl={post.oshiImageUrl}
             mainDeck={post.mainDeck}
             cheers={post.cheers}
           />

@@ -13,7 +13,8 @@ const CHEER_IMAGE: Record<CardColor, string> = {
 
 interface Props {
   oshiCardId: string;
-  mainDeck: Array<{ cardId: string; count: number }>;
+  oshiImageUrl?: string;
+  mainDeck: Array<{ cardId: string; count: number; imageUrl?: string }>;
   cheers: Partial<Record<CardColor, number>>;
 }
 
@@ -58,9 +59,10 @@ function CardSlot({
   );
 }
 
-export default function PostDeckView({ oshiCardId, mainDeck, cheers }: Props) {
+export default function PostDeckView({ oshiCardId, oshiImageUrl, mainDeck, cheers }: Props) {
   const oshi = getCard(oshiCardId);
   const oshiAccent = oshi ? getAccentColor(oshi) : '#6b7280';
+  const oshiResolvedUrl = oshiImageUrl ?? oshi?.imageUrl;
 
   const cheerEntries = (
     Object.entries(cheers) as Array<[CardColor, number | undefined]>
@@ -75,8 +77,8 @@ export default function PostDeckView({ oshiCardId, mainDeck, cheers }: Props) {
           className="aspect-2.5/3.5 rounded-lg overflow-hidden border-2 max-w-40 md:max-w-none mx-auto md:mx-0"
           style={{ borderColor: oshiAccent + 'aa' }}
         >
-          {oshi?.imageUrl ? (
-            <img src={oshi.imageUrl} alt={oshi.name} className="w-full h-full object-cover" draggable={false} />
+          {oshi && oshiResolvedUrl ? (
+            <img src={oshiResolvedUrl} alt={oshi.name} className="w-full h-full object-cover" draggable={false} />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gray-800">
               <span className="text-xs text-gray-500 text-center px-1">
@@ -110,10 +112,11 @@ export default function PostDeckView({ oshiCardId, mainDeck, cheers }: Props) {
             {mainDeck.map((e, idx) => {
               const card = getCard(e.cardId);
               const accent = card ? getAccentColor(card) : '#6b7280';
+              const imageUrl = e.imageUrl ?? card?.imageUrl;
               return (
                 <CardSlot
-                  key={`${e.cardId}-${idx}`}
-                  imageUrl={card?.imageUrl}
+                  key={`${e.cardId}-${e.imageUrl ?? ''}-${idx}`}
+                  imageUrl={imageUrl}
                   name={card?.name ?? e.cardId}
                   count={e.count}
                   accent={accent}

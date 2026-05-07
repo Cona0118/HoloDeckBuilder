@@ -29,6 +29,21 @@ function getCardCount(entries: DeckEntry[]): number {
   return entries.reduce((sum, e) => sum + e.count, 0);
 }
 
+/** 엔트리 식별자: 같은 cardId라도 imageUrl이 다르면 별개 엔트리로 취급. */
+export function entryKey(cardId: string, imageUrl?: string): string {
+  return `${cardId}::${imageUrl ?? ''}`;
+}
+
+function getEntryKey(entry: DeckEntry): string {
+  return entryKey(entry.card.id, entry.imageUrl);
+}
+
+function totalCardCount(entries: DeckEntry[], cardId: string): number {
+  return entries
+    .filter((e) => e.card.id === cardId)
+    .reduce((s, e) => s + e.count, 0);
+}
+
 const subtypeOrder: Record<string, number> = { debut: 0, '1st': 1, '2nd': 2, spot: 3 };
 const supportOrder: Record<string, number> = { staff: 0, item: 1, event: 2, tool: 3, mascot: 4, fan: 5, '': 6 };
 
@@ -44,7 +59,10 @@ function compareEntries(a: DeckEntry, b: DeckEntry): number {
     const sb = supportOrder[b.card.supportSubtype ?? ''] ?? 9;
     if (sa !== sb) return sa - sb;
   }
-  return a.card.cardNumber.localeCompare(b.card.cardNumber);
+  const numCmp = a.card.cardNumber.localeCompare(b.card.cardNumber);
+  if (numCmp !== 0) return numCmp;
+  // 같은 cardId 내에서 imageUrl 별 엔트리는 url 알파벳 순으로 안정 정렬.
+  return (a.imageUrl ?? '').localeCompare(b.imageUrl ?? '');
 }
 
 interface DeckState {
@@ -57,15 +75,37 @@ interface DeckState {
   /** snapshot으로 새 덱을 만들고 active로 설정. 누락 카드는 호출 측에서 미리 스킵. */
   createDeckFromSnapshot: (
     name: string,
-    resolved: { oshi: Card | null; mainDeck: DeckEntry[]; cheers: Partial<Record<CardColor, number>> },
+    resolved: {
+      oshi: Card | null;
+      oshiImageUrl?: string;
+      mainDeck: DeckEntry[];
+      cheers: Partial<Record<CardColor, number>>;
+    },
   ) => string;
   deleteDeck: (id: string) => void;
   renameDeck: (id: string, name: string) => void;
   setActiveDeck: (id: string) => void;
 
   setOshi: (card: Card) => void;
-  addCard: (card: Card) => void;
-  removeCard: (card: Card) => void;
+  /** card + imageUrl 조합으로 1장 추가. 같은 cardId 내 총합이 limit 이하일 때만. */
+  addCard: (card: Card, imageUrl?: string) => void;
+  /** card + imageUrl 조합 엔트리에서 1장 제거. 0이면 엔트리 삭제. */
+  removeCard: (card: Card, imageUrl?: string) => void;
+  /** 오시 카드의 일러스트 URL 설정. null이면 기본으로 복원. */
+  setOshiImage: (imageUrl: string | null) => void;
+  /** 메인덱 엔트리의 일러스트를 통째로 변경 (모든 사본에 적용).
+   *  대상 imageUrl이 다른 엔트리에 이미 있으면 합쳐진다. */
+  setEntryImage: (
+    cardId: string,
+    fromImageUrl: string | undefined,
+    toImageUrl: string | undefined,
+  ) => void;
+  /** 엔트리에서 1장만 다른 일러스트로 분리. */
+  splitEntryImage: (
+    cardId: string,
+    fromImageUrl: string | undefined,
+    toImageUrl: string | undefined,
+  ) => void;
   addCheer: (color: CardColor) => void;
   removeCheer: (color: CardColor) => void;
   clearDeck: () => void;
@@ -77,8 +117,9 @@ interface DeckState {
 
   setSelectedCard: (card: Card | null) => void;
 
-  reorderMainDeck: (draggedId: string, targetId: string, before: boolean) => void;
-  swapMainDeckEntries: (id1: string, id2: string) => void;
+  /** 엔트리 composite key 기반 (cardId::imageUrl?). */
+  reorderMainDeck: (draggedKey: string, targetKey: string, before: boolean) => void;
+  swapMainDeckEntries: (key1: string, key2: string) => void;
   sortMainDeckDefault: () => void;
 
   exportDeckText: () => string;
@@ -118,6 +159,7 @@ export const useDeckStore = create<DeckState>()(
         const deck: Deck = {
           ...createEmptyDeck(name),
           oshi: resolved.oshi,
+          oshiImageUrl: resolved.oshiImageUrl,
           mainDeck: resolved.mainDeck.map((e) => ({ ...e })),
           cheers: { ...resolved.cheers },
         };
@@ -148,14 +190,22 @@ export const useDeckStore = create<DeckState>()(
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           return {
-            decks: s.decks.map((d) =>
-              d.id === id ? { ...d, oshi: card, updatedAt: Date.now() } : d
-            ),
+            decks: s.decks.map((d) => {
+              if (d.id !== id) return d;
+              // 오시 카드가 바뀌면 이전 오시 일러스트 선택은 무효화.
+              const sameOshi = d.oshi?.id === card.id;
+              return {
+                ...d,
+                oshi: card,
+                oshiImageUrl: sameOshi ? d.oshiImageUrl : undefined,
+                updatedAt: Date.now(),
+              };
+            }),
           };
         });
       },
 
-      addCard: (card) => {
+      addCard: (card, imageUrl) => {
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const activeDeck = s.decks.find((d) => d.id === id);
@@ -163,17 +213,22 @@ export const useDeckStore = create<DeckState>()(
 
           const entries = activeDeck.mainDeck;
           const cardLimit = card.limit ?? 4;
-          const existing = entries.find((e) => e.card.id === card.id);
-          if (existing && existing.count >= cardLimit) return s;
+          // 같은 cardId 모든 엔트리(다른 일러스트 포함)의 합계로 limit 검사
+          if (totalCardCount(entries, card.id) >= cardLimit) return s;
+
+          const targetKey = entryKey(card.id, imageUrl);
+          const existing = entries.find((e) => getEntryKey(e) === targetKey);
 
           let newEntries: DeckEntry[];
           if (existing) {
             newEntries = entries.map((e) =>
-              e.card.id === card.id ? { ...e, count: e.count + 1 } : e
+              getEntryKey(e) === targetKey ? { ...e, count: e.count + 1 } : e
             );
           } else {
-            const newEntry: DeckEntry = { card, count: 1 };
-            const insertIdx = entries.findIndex((e) => compareEntries(newEntry, e) < 0);
+            const newEntry: DeckEntry = { card, count: 1, imageUrl };
+            const insertIdx = entries.findIndex(
+              (e) => compareEntries(newEntry, e) < 0
+            );
             newEntries = [...entries];
             if (insertIdx === -1) {
               newEntries.push(newEntry);
@@ -192,15 +247,16 @@ export const useDeckStore = create<DeckState>()(
         });
       },
 
-      removeCard: (card) => {
+      removeCard: (card, imageUrl) => {
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const activeDeck = s.decks.find((d) => d.id === id);
           if (!activeDeck) return s;
 
+          const targetKey = entryKey(card.id, imageUrl);
           const newEntries = activeDeck.mainDeck
             .map((e) =>
-              e.card.id === card.id ? { ...e, count: e.count - 1 } : e
+              getEntryKey(e) === targetKey ? { ...e, count: e.count - 1 } : e
             )
             .filter((e) => e.count > 0);
 
@@ -209,6 +265,135 @@ export const useDeckStore = create<DeckState>()(
               d.id === id
                 ? { ...d, mainDeck: newEntries, updatedAt: Date.now() }
                 : d
+            ),
+          };
+        });
+      },
+
+      setOshiImage: (imageUrl) => {
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          return {
+            decks: s.decks.map((d) =>
+              d.id === id
+                ? {
+                    ...d,
+                    oshiImageUrl: imageUrl ?? undefined,
+                    updatedAt: Date.now(),
+                  }
+                : d
+            ),
+          };
+        });
+      },
+
+      setEntryImage: (cardId, fromImageUrl, toImageUrl) => {
+        if (fromImageUrl === toImageUrl) return;
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          const deck = s.decks.find((d) => d.id === id);
+          if (!deck) return s;
+          const fromKey = entryKey(cardId, fromImageUrl);
+          const toKey = entryKey(cardId, toImageUrl);
+          const fromIdx = deck.mainDeck.findIndex(
+            (e) => getEntryKey(e) === fromKey
+          );
+          if (fromIdx < 0) return s;
+          const fromEntry = deck.mainDeck[fromIdx];
+          // 이미 toImageUrl 엔트리가 있으면 합치기, 없으면 imageUrl만 변경
+          const existingTo = deck.mainDeck.find(
+            (e) => getEntryKey(e) === toKey
+          );
+          let mainDeck: DeckEntry[];
+          if (existingTo) {
+            // from 제거, to에 count 합산
+            mainDeck = deck.mainDeck
+              .map((e) =>
+                getEntryKey(e) === toKey
+                  ? { ...e, count: e.count + fromEntry.count }
+                  : e
+              )
+              .filter((e) => getEntryKey(e) !== fromKey);
+          } else {
+            mainDeck = deck.mainDeck.map((e, i) =>
+              i === fromIdx ? { ...e, imageUrl: toImageUrl } : e
+            );
+          }
+          return {
+            decks: s.decks.map((d) =>
+              d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d
+            ),
+          };
+        });
+      },
+
+      splitEntryImage: (cardId, fromImageUrl, toImageUrl) => {
+        if (fromImageUrl === toImageUrl) return;
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          const deck = s.decks.find((d) => d.id === id);
+          if (!deck) return s;
+          const fromKey = entryKey(cardId, fromImageUrl);
+          const toKey = entryKey(cardId, toImageUrl);
+          const fromIdx = deck.mainDeck.findIndex(
+            (e) => getEntryKey(e) === fromKey
+          );
+          if (fromIdx < 0) return s;
+          const fromEntry = deck.mainDeck[fromIdx];
+          if (fromEntry.count <= 1) {
+            // 1장만 남았으면 split 대신 통째로 이동 (= setEntryImage 동작)
+            const existingTo = deck.mainDeck.find(
+              (e) => getEntryKey(e) === toKey
+            );
+            const mainDeck = existingTo
+              ? deck.mainDeck
+                  .map((e) =>
+                    getEntryKey(e) === toKey
+                      ? { ...e, count: e.count + 1 }
+                      : e
+                  )
+                  .filter((e) => getEntryKey(e) !== fromKey)
+              : deck.mainDeck.map((e, i) =>
+                  i === fromIdx ? { ...e, imageUrl: toImageUrl } : e
+                );
+            return {
+              decks: s.decks.map((d) =>
+                d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d
+              ),
+            };
+          }
+
+          // count > 1: from에서 1장 빼고 to에 1장 추가
+          const existingTo = deck.mainDeck.find(
+            (e) => getEntryKey(e) === toKey
+          );
+          let mainDeck: DeckEntry[];
+          if (existingTo) {
+            mainDeck = deck.mainDeck.map((e) => {
+              const k = getEntryKey(e);
+              if (k === fromKey) return { ...e, count: e.count - 1 };
+              if (k === toKey) return { ...e, count: e.count + 1 };
+              return e;
+            });
+          } else {
+            const newEntry: DeckEntry = {
+              card: fromEntry.card,
+              count: 1,
+              imageUrl: toImageUrl,
+            };
+            mainDeck = deck.mainDeck.map((e) =>
+              getEntryKey(e) === fromKey ? { ...e, count: e.count - 1 } : e
+            );
+            // 같은 카드 그룹 내에 새 엔트리 삽입 (정렬 기준)
+            const insertIdx = mainDeck.findIndex(
+              (e) => compareEntries(newEntry, e) < 0
+            );
+            if (insertIdx === -1) mainDeck.push(newEntry);
+            else mainDeck.splice(insertIdx, 0, newEntry);
+          }
+          return {
+            decks: s.decks.map((d) =>
+              d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d
             ),
           };
         });
@@ -254,20 +439,29 @@ export const useDeckStore = create<DeckState>()(
           const id = s.activeDeckId ?? s.decks[0]?.id;
           return {
             decks: s.decks.map((d) =>
-              d.id === id ? { ...d, oshi: null, mainDeck: [], cheers: {}, updatedAt: Date.now() } : d
+              d.id === id
+                ? {
+                    ...d,
+                    oshi: null,
+                    oshiImageUrl: undefined,
+                    mainDeck: [],
+                    cheers: {},
+                    updatedAt: Date.now(),
+                  }
+                : d
             ),
           };
         });
       },
 
-      reorderMainDeck: (draggedId, targetId, before) => {
+      reorderMainDeck: (draggedKey, targetKey, before) => {
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const deck = s.decks.find((d) => d.id === id);
           if (!deck) return s;
           const mainDeck = [...deck.mainDeck];
-          const fromIdx = mainDeck.findIndex((e) => e.card.id === draggedId);
-          const toIdx = mainDeck.findIndex((e) => e.card.id === targetId);
+          const fromIdx = mainDeck.findIndex((e) => getEntryKey(e) === draggedKey);
+          const toIdx = mainDeck.findIndex((e) => getEntryKey(e) === targetKey);
           if (fromIdx === -1 || toIdx === -1 || fromIdx === toIdx) return s;
           const [moved] = mainDeck.splice(fromIdx, 1);
           const adjustedToIdx = fromIdx < toIdx ? toIdx - 1 : toIdx;
@@ -280,14 +474,14 @@ export const useDeckStore = create<DeckState>()(
         });
       },
 
-      swapMainDeckEntries: (id1, id2) => {
+      swapMainDeckEntries: (key1, key2) => {
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const deck = s.decks.find((d) => d.id === id);
           if (!deck) return s;
           const mainDeck = [...deck.mainDeck];
-          const i1 = mainDeck.findIndex((e) => e.card.id === id1);
-          const i2 = mainDeck.findIndex((e) => e.card.id === id2);
+          const i1 = mainDeck.findIndex((e) => getEntryKey(e) === key1);
+          const i2 = mainDeck.findIndex((e) => getEntryKey(e) === key2);
           if (i1 === -1 || i2 === -1) return s;
           [mainDeck[i1], mainDeck[i2]] = [mainDeck[i2], mainDeck[i1]];
           return { decks: s.decks.map((d) => d.id === id ? { ...d, mainDeck, updatedAt: Date.now() } : d) };

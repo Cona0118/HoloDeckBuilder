@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"ls public/images/PR/ 2>&1 | head -20; echo '---'; ls scripts/ 2>&1\",\"description\":\"Check PR folder & scripts dir\"}",
+  "error": "Exit code 2\nhBD24-001_P.png\nhBD24-002_P.png\nhBD24-003_P.png\nhBD24-004_P.png\nhBD24-005_P.png\nhBD24-006_P.png\nhBD24-007_P.png\nhBD24-008_P.png\nhBD24-009_P.png\nhBD24-010_P.png\nhBD24-011_P.png\nhBD24-012_P.png\nhBD24-013_P.png\nhBD24-014_P.png\nhBD24-015_P.png\nhBD24-016_P.png\nhBD24-017_P.png\nhBD24-018_P_02.png\nhBD24-019_P.png\nhBD24-020_P.png\n---\nls: cannot access 'scripts/': No such file or directory",
+  "timestamp": "2026-05-07T18:35:09.074Z",
+  "retry_count": 1
+}

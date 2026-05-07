@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import type { Card, CardAbility, OshiAbility } from "../types/card";
 import { isBuzz } from "../utils/cardUtils";
+import { getCardImageVariants } from "../data/cardImageVariants";
 import {
   getAccentColor,
   COLOR_LABELS,
@@ -16,11 +18,63 @@ import {
 interface CardPreviewModalProps {
   card: Card;
   onClose: () => void;
+  /** 일러스트 선택 콜백. 제공되면 다중 일러스트 카드일 때 "이 일러스트로 변경" 버튼 노출. */
+  onSelectImage?: (imageUrl: string) => void;
+  /** 1장만 분리 콜백. 제공되면 "1장만 분리" 버튼이 추가로 노출된다. */
+  onSplitToImage?: (imageUrl: string) => void;
+  /** 현재 활성화된 일러스트 URL. 일치하면 "현재 일러스트" 비활성 상태로 표시. */
+  selectedImageUrl?: string;
 }
 
-export default function CardPreviewModal({ card, onClose }: CardPreviewModalProps) {
+export default function CardPreviewModal({ card, onClose, onSelectImage, onSplitToImage, selectedImageUrl }: CardPreviewModalProps) {
   const accent = getAccentColor(card);
   const navigate = useNavigate();
+
+  const variants = getCardImageVariants(card.id, card.imageUrl);
+  const hasMultiple = variants.length > 1;
+
+  function pickInitialIndex(): number {
+    if (selectedImageUrl) {
+      const sel = variants.indexOf(selectedImageUrl);
+      if (sel >= 0) return sel;
+    }
+    if (card.imageUrl) {
+      const def = variants.indexOf(card.imageUrl);
+      if (def >= 0) return def;
+    }
+    return 0;
+  }
+
+  const [imageIndex, setImageIndex] = useState(pickInitialIndex);
+
+  useEffect(() => {
+    setImageIndex(pickInitialIndex());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [card.id, selectedImageUrl]);
+
+  useEffect(() => {
+    if (!hasMultiple) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        setImageIndex((i) => (i - 1 + variants.length) % variants.length);
+      } else if (e.key === "ArrowRight") {
+        setImageIndex((i) => (i + 1) % variants.length);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [hasMultiple, variants.length]);
+
+  const currentImage = variants[imageIndex] ?? card.imageUrl;
+
+  function handlePrev(e: React.MouseEvent) {
+    e.stopPropagation();
+    setImageIndex((i) => (i - 1 + variants.length) % variants.length);
+  }
+  function handleNext(e: React.MouseEvent) {
+    e.stopPropagation();
+    setImageIndex((i) => (i + 1) % variants.length);
+  }
 
   function handleDeckSearch() {
     const param = card.type === "oshi" ? "oshi" : "card";
@@ -47,12 +101,81 @@ export default function CardPreviewModal({ card, onClose }: CardPreviewModalProp
         onClick={(e) => e.stopPropagation()}
       >
         {/* 확대 카드 이미지 */}
-        <img
-          src={card.imageUrl}
-          alt={card.name}
-          className="max-h-[40vh] md:max-h-[85vh] max-w-full md:max-w-[40vw] w-auto rounded-xl shadow-2xl object-contain shrink-0 self-center"
-          draggable={false}
-        />
+        <div className="shrink-0 self-center flex flex-col items-center gap-2">
+          <div className="relative">
+            <img
+              src={currentImage}
+              alt={card.name}
+              className="max-h-[40vh] md:max-h-[80vh] max-w-full md:max-w-[40vw] w-auto rounded-xl shadow-2xl object-contain block"
+              draggable={false}
+            />
+            {hasMultiple && (
+              <>
+                <button
+                  onClick={handlePrev}
+                  aria-label="이전 일러스트"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/30 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="다음 일러스트"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/30 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/70 border border-white/20 text-[11px] text-white font-medium tabular-nums">
+                  {imageIndex + 1} / {variants.length}
+                </div>
+              </>
+            )}
+          </div>
+          {(onSelectImage || onSplitToImage) && hasMultiple && currentImage && (() => {
+            const effectiveSelected = selectedImageUrl ?? card.imageUrl;
+            const isCurrent = effectiveSelected === currentImage;
+            if (isCurrent) {
+              return (
+                <button
+                  disabled
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium border bg-gray-800 border-gray-700 text-gray-500 cursor-default"
+                >
+                  ✓ 현재 일러스트
+                </button>
+              );
+            }
+            return (
+              <div className="flex gap-2 flex-wrap justify-center">
+                {onSelectImage && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectImage(currentImage);
+                    }}
+                    className="px-3 py-1.5 rounded-lg text-xs font-medium border bg-emerald-700 hover:bg-emerald-600 border-emerald-600 text-white transition-colors"
+                  >
+                    이 일러스트로 변경
+                  </button>
+                )}
+                {onSplitToImage && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSplitToImage(currentImage);
+                    }}
+                    className="px-3 py-1.5 rounded-lg text-xs font-medium border bg-indigo-700 hover:bg-indigo-600 border-indigo-600 text-white transition-colors"
+                  >
+                    1장 분리
+                  </button>
+                )}
+              </div>
+            );
+          })()}
+        </div>
 
         {/* 카드 정보 패널 */}
         <div

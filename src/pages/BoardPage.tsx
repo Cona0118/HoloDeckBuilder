@@ -104,12 +104,14 @@ export default function BoardPage() {
 
     const resolved = resolveSnapshot({
       oshiCardId: post.oshiCardId,
+      oshiImageUrl: post.oshiImageUrl,
       mainDeck: post.mainDeck,
       cheers: post.cheers,
     });
 
     createDeckFromSnapshot(post.title, {
       oshi: resolved.oshi,
+      oshiImageUrl: resolved.oshiImageUrl,
       mainDeck: resolved.mainDeck,
       cheers: resolved.cheers,
     });

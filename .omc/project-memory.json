@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1777999383123,
+  "lastScanned": 1778172612393,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "cd \"c:\\Users\\user\\Desktop\\Holo\" && npx tsc -b 2>&1 | tail -20",
+    "buildCommand": "cd c:/Users/user/Desktop/Holo && npm run build 2>&1 | tail -30",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -75,7 +75,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 2,
-      "lastAccessed": 1777999382983,
+      "lastAccessed": 1778172612263,
       "keyFiles": [
         "index.html",
         "vite.svg"
@@ -85,7 +85,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1777999382984,
+      "lastAccessed": 1778172612287,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -94,7 +94,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 1,
-      "lastAccessed": 1777999382992,
+      "lastAccessed": 1778172612287,
       "keyFiles": [
         "vite.svg"
       ]
@@ -103,7 +103,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1777999382993,
+      "lastAccessed": 1778172612289,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -116,17 +116,17 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1777999382994,
+      "lastAccessed": 1778172612290,
       "keyFiles": [
-        "index-B2MUuJEn.css",
-        "index-D4uE1OTY.js"
+        "index-BPqxfdCQ.js",
+        "index-Tm14KFfD.css"
       ]
     },
     "src\\api": {
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1777999382996,
+      "lastAccessed": 1778172612293,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -135,7 +135,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1777999382997,
+      "lastAccessed": 1778172612294,
       "keyFiles": [
         "react.svg"
       ]
@@ -144,7 +144,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 14,
-      "lastAccessed": 1777999382997,
+      "lastAccessed": 1778172612296,
       "keyFiles": [
         "CardDetail.tsx",
         "CardGrid.tsx",
@@ -155,7 +155,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 1,
-      "lastAccessed": 1777999382998,
+      "lastAccessed": 1778172612297,
       "keyFiles": [
         "cards.ts"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1777999382999,
+      "lastAccessed": 1778172612297,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -173,7 +173,7 @@
       "path": "src\\pages",
       "purpose": "Page components",
       "fileCount": 2,
-      "lastAccessed": 1777999382999,
+      "lastAccessed": 1778172612298,
       "keyFiles": [
         "BoardPage.tsx",
         "BuilderPage.tsx"
@@ -182,21 +182,57 @@
   },
   "hotPaths": [
     {
+      "path": "src\\components\\DeckPanel.tsx",
+      "accessCount": 35,
+      "lastAccessed": 1778176009820,
+      "type": "file"
+    },
+    {
       "path": "src\\data\\cards.ts",
       "accessCount": 15,
       "lastAccessed": 1778001110579,
       "type": "directory"
     },
     {
-      "path": "src\\pages\\BoardPage.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1777999725327,
+      "path": "src\\store\\deckStore.ts",
+      "accessCount": 15,
+      "lastAccessed": 1778175638110,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PostDeckView.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1778175760157,
       "type": "file"
     },
     {
       "path": "src\\api\\deckPosts.ts",
+      "accessCount": 11,
+      "lastAccessed": 1778175708593,
+      "type": "file"
+    },
+    {
+      "path": "src\\pages\\BoardPage.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1778175725452,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\CardPreviewModal.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1778175816214,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\card.ts",
       "accessCount": 6,
-      "lastAccessed": 1778003639425,
+      "lastAccessed": 1778175497476,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PostListItem.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1778175766935,
       "type": "file"
     },
     {
@@ -206,21 +242,51 @@
       "type": "file"
     },
     {
+      "path": "vite.config.ts",
+      "accessCount": 5,
+      "lastAccessed": 1778173440532,
+      "type": "file"
+    },
+    {
       "path": "src\\components\\DeletePostDialog.tsx",
       "accessCount": 4,
       "lastAccessed": 1778005472007,
       "type": "file"
     },
     {
-      "path": "src\\components\\PostListItem.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1778000006201,
+      "path": "src\\utils\\deckSnapshot.ts",
+      "accessCount": 4,
+      "lastAccessed": 1778175687831,
       "type": "file"
     },
     {
-      "path": "src\\types\\card.ts",
-      "accessCount": 2,
-      "lastAccessed": 1778000888603,
+      "path": "src",
+      "accessCount": 4,
+      "lastAccessed": 1778176015680,
+      "type": "directory"
+    },
+    {
+      "path": "src\\data\\cardImageVariants.ts",
+      "accessCount": 4,
+      "lastAccessed": 1778178961246,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 4,
+      "lastAccessed": 1778178977310,
+      "type": "file"
+    },
+    {
+      "path": "index.html",
+      "accessCount": 3,
+      "lastAccessed": 1778173433292,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\deckPost.ts",
+      "accessCount": 3,
+      "lastAccessed": 1778175510413,
       "type": "file"
     },
     {
@@ -230,15 +296,27 @@
       "type": "file"
     },
     {
-      "path": "src\\components\\PostDeckView.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1777999975644,
+      "path": "db_migration_image_overrides.sql",
+      "accessCount": 2,
+      "lastAccessed": 1778175717694,
       "type": "file"
     },
     {
-      "path": "package.json",
+      "path": "scripts\\genCardImageVariants.mjs",
+      "accessCount": 2,
+      "lastAccessed": 1778179096819,
+      "type": "file"
+    },
+    {
+      "path": "public\\pwa-icon.svg",
       "accessCount": 1,
-      "lastAccessed": 1778003691828,
+      "lastAccessed": 1778172792549,
+      "type": "file"
+    },
+    {
+      "path": "public\\logo.png",
+      "accessCount": 1,
+      "lastAccessed": 1778173253184,
       "type": "file"
     }
   ],

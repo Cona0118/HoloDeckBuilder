@@ -9,7 +9,8 @@ interface DbDeckPost {
   title: string;
   author: string;
   oshi_card_id: string;
-  main_deck: Array<{ cardId: string; count: number }>;
+  oshi_image_url: string | null;
+  main_deck: Array<{ cardId: string; count: number; imageUrl?: string }>;
   cheers: Record<string, number>;
   is_award: boolean | null;
   tournament_name: string | null;
@@ -17,7 +18,7 @@ interface DbDeckPost {
 }
 
 const SELECT_COLUMNS =
-  'id, title, author, oshi_card_id, main_deck, cheers, is_award, tournament_name, created_at';
+  'id, title, author, oshi_card_id, oshi_image_url, main_deck, cheers, is_award, tournament_name, created_at';
 
 function toDeckPost(row: DbDeckPost): DeckPost {
   return {
@@ -25,6 +26,7 @@ function toDeckPost(row: DbDeckPost): DeckPost {
     title: row.title,
     author: row.author,
     oshiCardId: row.oshi_card_id,
+    oshiImageUrl: row.oshi_image_url ?? undefined,
     mainDeck: row.main_deck ?? [],
     cheers: (row.cheers ?? {}) as DeckPost['cheers'],
     isAward: row.is_award ?? false,
@@ -100,6 +102,7 @@ export async function createDeckPost(input: CreatePostInput): Promise<DeckPost> 
       author: input.author,
       password_hash: passwordHash,
       oshi_card_id: input.snapshot.oshiCardId,
+      oshi_image_url: input.snapshot.oshiImageUrl ?? null,
       main_deck: input.snapshot.mainDeck,
       cheers: input.snapshot.cheers,
       is_award: input.isAward,
