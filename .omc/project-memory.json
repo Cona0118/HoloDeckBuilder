@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1778172612393,
+  "lastScanned": 1779626879875,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,12 +42,15 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "cd c:/Users/user/Desktop/Holo && npm run build 2>&1 | tail -10",
+    "buildCommand": "cd \"c:/Users/user/Desktop/Holo\" && npx tsc --noEmit 2>&1 | tail -10",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
     "scripts": {
       "dev": "vite",
+      "gen:variants": "node scripts/genCardImageVariants.mjs",
+      "predev": "node scripts/genCardImageVariants.mjs",
+      "prebuild": "node scripts/genCardImageVariants.mjs",
       "build": "tsc -b && vite build",
       "lint": "eslint .",
       "preview": "vite preview"
@@ -65,6 +68,7 @@
     "mainDirectories": [
       "docs",
       "public",
+      "scripts",
       "src"
     ],
     "gitBranches": null
@@ -74,18 +78,21 @@
     "dist": {
       "path": "dist",
       "purpose": "Distribution/build output",
-      "fileCount": 2,
-      "lastAccessed": 1778172612263,
+      "fileCount": 11,
+      "lastAccessed": 1779626879789,
       "keyFiles": [
+        "apple-touch-icon.png",
         "index.html",
-        "vite.svg"
+        "logo.png",
+        "manifest.webmanifest",
+        "pwa-192.png"
       ]
     },
     "docs": {
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1778172612287,
+      "lastAccessed": 1779626879801,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -93,17 +100,30 @@
     "public": {
       "path": "public",
       "purpose": "Public files",
-      "fileCount": 1,
-      "lastAccessed": 1778172612287,
+      "fileCount": 6,
+      "lastAccessed": 1779626879803,
       "keyFiles": [
-        "vite.svg"
+        "apple-touch-icon.png",
+        "logo.png",
+        "pwa-192.png",
+        "pwa-512-maskable.png",
+        "pwa-512.png"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 1,
+      "lastAccessed": 1779626879805,
+      "keyFiles": [
+        "genCardImageVariants.mjs"
       ]
     },
     "src": {
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1778172612289,
+      "lastAccessed": 1779626879810,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -116,17 +136,17 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1778172612290,
+      "lastAccessed": 1779626879812,
       "keyFiles": [
-        "index-BPqxfdCQ.js",
-        "index-Tm14KFfD.css"
+        "index-BO8F1l6C.css",
+        "index-CmZuJ-iq.js"
       ]
     },
     "src\\api": {
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1778172612293,
+      "lastAccessed": 1779626879814,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -135,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1778172612294,
+      "lastAccessed": 1779626879815,
       "keyFiles": [
         "react.svg"
       ]
@@ -144,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 14,
-      "lastAccessed": 1778172612296,
+      "lastAccessed": 1779626879815,
       "keyFiles": [
         "CardDetail.tsx",
         "CardGrid.tsx",
@@ -154,9 +174,11 @@
     "src\\data": {
       "path": "src\\data",
       "purpose": "Data files",
-      "fileCount": 1,
-      "lastAccessed": 1778172612297,
+      "fileCount": 3,
+      "lastAccessed": 1779626879816,
       "keyFiles": [
+        "cardImageVariants.ts",
+        "cardImageVariantsMap.generated.ts",
         "cards.ts"
       ]
     },
@@ -164,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1778172612297,
+      "lastAccessed": 1779626879817,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -173,7 +195,7 @@
       "path": "src\\pages",
       "purpose": "Page components",
       "fileCount": 2,
-      "lastAccessed": 1778172612298,
+      "lastAccessed": 1779626879818,
       "keyFiles": [
         "BoardPage.tsx",
         "BuilderPage.tsx"
@@ -182,142 +204,10 @@
   },
   "hotPaths": [
     {
-      "path": "src\\components\\DeckPanel.tsx",
-      "accessCount": 35,
-      "lastAccessed": 1778176009820,
-      "type": "file"
-    },
-    {
       "path": "src\\data\\cards.ts",
-      "accessCount": 15,
-      "lastAccessed": 1778001110579,
+      "accessCount": 56,
+      "lastAccessed": 1779630683223,
       "type": "directory"
-    },
-    {
-      "path": "src\\store\\deckStore.ts",
-      "accessCount": 15,
-      "lastAccessed": 1778175638110,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\PostDeckView.tsx",
-      "accessCount": 12,
-      "lastAccessed": 1778175760157,
-      "type": "file"
-    },
-    {
-      "path": "src\\api\\deckPosts.ts",
-      "accessCount": 11,
-      "lastAccessed": 1778175708593,
-      "type": "file"
-    },
-    {
-      "path": "src\\pages\\BoardPage.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1778179781697,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\PostListItem.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1778179799864,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\CardPreviewModal.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1778175816214,
-      "type": "file"
-    },
-    {
-      "path": "src\\types\\card.ts",
-      "accessCount": 6,
-      "lastAccessed": 1778175497476,
-      "type": "file"
-    },
-    {
-      "path": "docs\\SUPABASE_SETUP.md",
-      "accessCount": 5,
-      "lastAccessed": 1778005653086,
-      "type": "file"
-    },
-    {
-      "path": "vite.config.ts",
-      "accessCount": 5,
-      "lastAccessed": 1778173440532,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\DeletePostDialog.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1778005472007,
-      "type": "file"
-    },
-    {
-      "path": "src\\utils\\deckSnapshot.ts",
-      "accessCount": 4,
-      "lastAccessed": 1778175687831,
-      "type": "file"
-    },
-    {
-      "path": "src",
-      "accessCount": 4,
-      "lastAccessed": 1778176015680,
-      "type": "directory"
-    },
-    {
-      "path": "src\\data\\cardImageVariants.ts",
-      "accessCount": 4,
-      "lastAccessed": 1778178961246,
-      "type": "file"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 4,
-      "lastAccessed": 1778178977310,
-      "type": "file"
-    },
-    {
-      "path": "index.html",
-      "accessCount": 3,
-      "lastAccessed": 1778173433292,
-      "type": "file"
-    },
-    {
-      "path": "src\\types\\deckPost.ts",
-      "accessCount": 3,
-      "lastAccessed": 1778175510413,
-      "type": "file"
-    },
-    {
-      "path": "src\\utils\\password.ts",
-      "accessCount": 2,
-      "lastAccessed": 1778004383105,
-      "type": "file"
-    },
-    {
-      "path": "db_migration_image_overrides.sql",
-      "accessCount": 2,
-      "lastAccessed": 1778175717694,
-      "type": "file"
-    },
-    {
-      "path": "scripts\\genCardImageVariants.mjs",
-      "accessCount": 2,
-      "lastAccessed": 1778179096819,
-      "type": "file"
-    },
-    {
-      "path": "public\\pwa-icon.svg",
-      "accessCount": 1,
-      "lastAccessed": 1778172792549,
-      "type": "file"
-    },
-    {
-      "path": "public\\logo.png",
-      "accessCount": 1,
-      "lastAccessed": 1778173253184,
-      "type": "file"
     }
   ],
   "userDirectives": []
