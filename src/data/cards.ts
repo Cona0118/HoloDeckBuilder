@@ -11646,7 +11646,7 @@ export const CARDS: Card[] = [
           "자신의 스테이지의 이 홀로멤 이외의 #ID 2기생을 가진 2nd 홀로멤 1명당, 이 아츠 +20.",
         damage: 80,
         specialDamage: { color: "green", value: 50 },
-        cost: ["purple", "colorless", "colorless"],
+        cost: ["purple", "colorless"],
       },
     ],
     limit: 4,

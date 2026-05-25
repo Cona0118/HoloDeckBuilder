@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1779626879875,
+  "lastScanned": 1779726487697,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "cd \"c:/Users/user/Desktop/Holo\" && npx tsc --noEmit 2>&1 | tail -10",
+    "buildCommand": "npm run build 2>&1 | tail -10 ; echo \"---\" ; git log --oneline -5",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1779626879789,
+      "lastAccessed": 1779726487593,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1779626879801,
+      "lastAccessed": 1779726487594,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1779626879803,
+      "lastAccessed": 1779726487606,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1779626879805,
+      "lastAccessed": 1779726487607,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1779626879810,
+      "lastAccessed": 1779726487608,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,7 +136,7 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1779626879812,
+      "lastAccessed": 1779726487609,
       "keyFiles": [
         "index-BO8F1l6C.css",
         "index-CmZuJ-iq.js"
@@ -146,7 +146,7 @@
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1779626879814,
+      "lastAccessed": 1779726487612,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1779626879815,
+      "lastAccessed": 1779726487616,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 14,
-      "lastAccessed": 1779626879815,
+      "lastAccessed": 1779726487619,
       "keyFiles": [
         "CardDetail.tsx",
         "CardGrid.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1779626879816,
+      "lastAccessed": 1779726487636,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1779626879817,
+      "lastAccessed": 1779726487643,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -195,7 +195,7 @@
       "path": "src\\pages",
       "purpose": "Page components",
       "fileCount": 2,
-      "lastAccessed": 1779626879818,
+      "lastAccessed": 1779726487649,
       "keyFiles": [
         "BoardPage.tsx",
         "BuilderPage.tsx"
@@ -204,10 +204,70 @@
   },
   "hotPaths": [
     {
-      "path": "src\\data\\cards.ts",
-      "accessCount": 56,
-      "lastAccessed": 1779630683223,
+      "path": "src\\api\\deckPosts.ts",
+      "accessCount": 6,
+      "lastAccessed": 1779728174438,
+      "type": "file"
+    },
+    {
+      "path": "src\\pages\\BoardPage.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1779728253935,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PostListItem.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1779728328914,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PostDeckView.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1779726795170,
+      "type": "file"
+    },
+    {
+      "path": "docs\\superpowers\\specs\\2026-05-26-deck-board-recommend-design.md",
+      "accessCount": 2,
+      "lastAccessed": 1779727613770,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\deckPost.ts",
+      "accessCount": 2,
+      "lastAccessed": 1779728106279,
+      "type": "file"
+    },
+    {
+      "path": "src",
+      "accessCount": 2,
+      "lastAccessed": 1779728306148,
       "type": "directory"
+    },
+    {
+      "path": "src\\router.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1779726786188,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1779727788978,
+      "type": "directory"
+    },
+    {
+      "path": "docs\\superpowers\\plans\\2026-05-26-deck-board-recommend.md",
+      "accessCount": 1,
+      "lastAccessed": 1779727904973,
+      "type": "file"
+    },
+    {
+      "path": "src\\utils\\recommendStorage.ts",
+      "accessCount": 1,
+      "lastAccessed": 1779728125011,
+      "type": "file"
     }
   ],
   "userDirectives": []
