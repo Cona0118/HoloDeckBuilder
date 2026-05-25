@@ -14,11 +14,12 @@ interface DbDeckPost {
   cheers: Record<string, number>;
   is_award: boolean | null;
   tournament_name: string | null;
+  recommend_count: number | null;
   created_at: string;
 }
 
 const SELECT_COLUMNS =
-  'id, title, author, oshi_card_id, oshi_image_url, main_deck, cheers, is_award, tournament_name, created_at';
+  'id, title, author, oshi_card_id, oshi_image_url, main_deck, cheers, is_award, tournament_name, recommend_count, created_at';
 
 function toDeckPost(row: DbDeckPost): DeckPost {
   return {
@@ -31,6 +32,7 @@ function toDeckPost(row: DbDeckPost): DeckPost {
     cheers: (row.cheers ?? {}) as DeckPost['cheers'],
     isAward: row.is_award ?? false,
     tournamentName: row.tournament_name ?? null,
+    recommendCount: row.recommend_count ?? 0,
     createdAt: row.created_at,
   };
 }
@@ -42,6 +44,8 @@ export interface ListPostsFilter {
   containsCardId?: string;
   /** 입상덱만 표시 */
   awardOnly?: boolean;
+  /** 정렬 기준 (기본: recent) */
+  sort?: 'recent' | 'popular';
 }
 
 export interface ListPostsResult {
@@ -79,9 +83,14 @@ export async function listDeckPosts(
     query = query.eq('is_award', true);
   }
 
-  const { data, count, error } = await query
-    .order('created_at', { ascending: false })
-    .range(from, to);
+  const sort = filter?.sort === 'popular' ? 'popular' : 'recent';
+  let ordered = query;
+  if (sort === 'popular') {
+    ordered = ordered.order('recommend_count', { ascending: false });
+  }
+  ordered = ordered.order('created_at', { ascending: false });
+
+  const { data, count, error } = await ordered.range(from, to);
 
   if (error) throw error;
 
@@ -129,6 +138,26 @@ export async function deleteDeckPost(
   });
   if (error) throw error;
   return data === true;
+}
+
+/** 추천 +1, 새 카운트 반환. */
+export async function recommendDeckPost(postId: string): Promise<number> {
+  const { data, error } = await supabase.rpc(
+    'increment_deck_post_recommends',
+    { post_id: postId },
+  );
+  if (error) throw error;
+  return typeof data === 'number' ? data : 0;
+}
+
+/** 추천 -1 (0 이하로 내려가지 않음), 새 카운트 반환. */
+export async function unrecommendDeckPost(postId: string): Promise<number> {
+  const { data, error } = await supabase.rpc(
+    'decrement_deck_post_recommends',
+    { post_id: postId },
+  );
+  if (error) throw error;
+  return typeof data === 'number' ? data : 0;
 }
 
 export { PAGE_SIZE };

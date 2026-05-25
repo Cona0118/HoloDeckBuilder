@@ -22,6 +22,7 @@ export interface DeckPost {
   cheers: Partial<Record<CardColor, number>>;
   isAward: boolean;
   tournamentName: string | null;
+  recommendCount: number;
   createdAt: string;
 }
 
