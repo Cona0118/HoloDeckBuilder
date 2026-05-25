@@ -17,6 +17,8 @@ export default function BoardPage() {
   const oshiFilter = params.get('oshi') ?? '';
   const containsFilter = params.get('card') ?? '';
   const awardOnly = params.get('award') === '1';
+  const sort: 'recent' | 'popular' =
+    params.get('sort') === 'popular' ? 'popular' : 'recent';
   const navigate = useNavigate();
   const createDeckFromSnapshot = useDeckStore((s) => s.createDeckFromSnapshot);
 
@@ -33,8 +35,9 @@ export default function BoardPage() {
     if (oshiFilter) f.oshiCardId = oshiFilter;
     else if (containsFilter) f.containsCardId = containsFilter;
     if (awardOnly) f.awardOnly = true;
+    f.sort = sort;
     return f;
-  }, [oshiFilter, containsFilter, awardOnly]);
+  }, [oshiFilter, containsFilter, awardOnly, sort]);
 
   const filterCard = useMemo(() => {
     const id = oshiFilter || containsFilter;
@@ -94,6 +97,15 @@ export default function BoardPage() {
     next.delete('page');
     if (awardOnly) next.delete('award');
     else next.set('award', '1');
+    setParams(next, { replace: false });
+    window.scrollTo({ top: 0 });
+  }
+
+  function toggleSort() {
+    const next = new URLSearchParams(params);
+    next.delete('page');
+    if (sort === 'popular') next.delete('sort');
+    else next.set('sort', 'popular');
     setParams(next, { replace: false });
     window.scrollTo({ top: 0 });
   }
@@ -160,6 +172,20 @@ export default function BoardPage() {
             >
               <span aria-hidden>🏆</span>
               <span>입상덱만</span>
+            </button>
+            <button
+              onClick={toggleSort}
+              aria-pressed={sort === 'popular'}
+              title={sort === 'popular' ? '최신순으로 정렬' : '추천순으로 정렬'}
+              className={
+                'h-8 px-2.5 flex items-center gap-1 rounded-lg text-xs font-medium border transition-colors ' +
+                (sort === 'popular'
+                  ? 'bg-pink-500/20 text-pink-200 border-pink-500/60 hover:bg-pink-500/30'
+                  : 'bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700')
+              }
+            >
+              <span aria-hidden>{sort === 'popular' ? '👍' : '🕒'}</span>
+              <span>{sort === 'popular' ? '추천순' : '최신순'}</span>
             </button>
           </div>
           <Link
