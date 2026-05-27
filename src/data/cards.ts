@@ -28894,6 +28894,143 @@ export const CARDS: Card[] = [
     ],
     limit: 4,
   },
+  {
+    id: "hBP08-010",
+    cardNumber: "hBP08-010",
+    setId: "hBP08",
+    name: "IRyS",
+    nameJp: "IRyS",
+    keywords: ["아이리스"],
+    type: "holomem",
+    holomemSubtype: "1st",
+    color: ["white"],
+    hp: 130,
+    batonPass: 1,
+    tags: ["#EN", "#Promise", "#노래"],
+    imageUrl: "/images/hBP08/hBP08-010.png",
+    abilities: [
+      {
+        name: "Race with Me!!",
+        timing: "bloom",
+        description:
+          "자신의 덱에서, [〈Bloom&Gloom〉이나 〈GuyRys〉] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+      },
+      {
+        name: "I am Lightning Speed",
+        description: "",
+        damage: 40,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-035",
+    cardNumber: "hBP08-035",
+    setId: "hBP08",
+    name: "모코코 어비스가드",
+    nameJp: "モココ・アビスガード",
+    keywords: ["kawaii"],
+    type: "holomem",
+    holomemSubtype: "debut",
+    color: ["red"],
+    hp: 130,
+    batonPass: 1,
+    tags: ["#EN", "#Advent", "#동물귀"],
+    imageUrl: "/images/hBP08/hBP08-035.png",
+    abilities: [
+      {
+        name: "아싸 대승리야!!",
+        description:
+          "이 홀로멤에게 홀로아츠 B이 붙어 있다면, 이 아츠 +30.",
+        damage: 10,
+        cost: ["red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-068",
+    cardNumber: "hBP08-068",
+    setId: "hBP08",
+    name: "니노마에 이나니스",
+    nameJp: "一伊那尓栖",
+    type: "holomem",
+    holomemSubtype: "debut",
+    color: ["purple"],
+    hp: 140,
+    batonPass: 1,
+    tags: ["#EN", "#Myth", "#그림", "#바다"],
+    imageUrl: "/images/hBP08/hBP08-068.png",
+    abilities: [
+      {
+        name: "키타코레!",
+        timing: "collab",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 이 턴 동안, 상대의 스테이지의 홀로멤 전원은, 모든 색을 가진 홀로멤으로 취급한다.",
+      },
+      {
+        name: "히키코모리 소녀는 외출의 꿈을 꾼다",
+        description:
+          "상대의 오시 홀로멤과 서로 다른 색을 가진 상대의 센터 홀로멤과 콜라보 홀로멤에게 특수 대미지 20을 준다.",
+        damage: 10,
+        cost: ["purple"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-099",
+    cardNumber: "hBP08-099",
+    setId: "hBP08",
+    name: "HOLOTORI",
+    type: "support",
+    supportSubtype: "event",
+    imageUrl: "/images/hBP08/hBP08-099.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이하의 능력에서 1개를 골라 사용한다.\n\n■자신의 #새를 가진 홀로멤의 옐 1장을 아카이브 한다. 아카이브 했다면, 자신의 덱을 2장 드로우 한 후, 패 1장을 덱의 아래로 되돌린다.\n■자신의 아카이브의 옐 1장을 자신의 #새를 가진 홀로멤에게 보낸다.\n\n자신의 〈HOLOTORI〉는 턴에 1번밖에 사용할 수 없다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-101",
+    cardNumber: "hBP08-101",
+    setId: "hBP08",
+    name: "We are ReGLOSS",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP08/hBP08-101.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는 자신의 스테이지의 홀로멤 전원이 #ReGLOSS를 가진 홀로멤이 아니라면 사용할 수 없다.\n\n자신의 덱에서, #ReGLOSS를 가진 홀로멤 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 스테이지의 홀로멤이 상대보다 적다면, 자신의 덱을 1장 드로우 한 후, 패 1장을 아카이브 한다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP08-104",
+    cardNumber: "hBP08-104",
+    setId: "hBP08",
+    name: "기척",
+    type: "support",
+    supportSubtype: "tool",
+    imageUrl: "/images/hBP08/hBP08-104.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "◆〈미즈미야 스우〉에게 붙어 있다면 능력 추가\n■[센터 포지션・콜라보 포지션 한정] 상대의 센터 홀로멤의 배턴 터치에 필요한 무 +1.\n■이 홀로멤의 Bloom 레벨이 올랐을 때, 자신의 덱을 1장 드로우 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
 ];
 
 export const SETS = [

@@ -94,38 +94,37 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
           )}
         </div>
 
-        {/* 제목 + 입상덱 마크 */}
-        <div className="flex-1 min-w-0 flex items-center gap-2">
-          <p className="min-w-0 text-base sm:text-lg font-semibold text-white truncate">
-            {post.title}
-          </p>
-          {post.isAward && (
-            <span className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-900/60 text-amber-300 border border-amber-700/50">
-              <span>🏆</span>
-              {post.tournamentName && (
-                <span className="hidden sm:inline truncate max-w-[140px]">
-                  {post.tournamentName}
-                </span>
-              )}
-            </span>
-          )}
-        </div>
-
-        {recommendCount > 0 && (
-          <div
-            className="shrink-0 flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[11px] font-medium bg-pink-900/40 text-pink-200 border border-pink-800/40"
-            aria-label={`추천 ${recommendCount}`}
-            title={`추천 ${recommendCount}`}
-          >
-            <span aria-hidden>👍</span>
-            <span>{recommendCount}</span>
+        {/* 제목 + 입상덱 마크 + 메타 (모바일: 세로 스택) */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 min-w-0">
+            <p className="min-w-0 text-sm sm:text-lg font-semibold text-white truncate">
+              {post.title}
+            </p>
+            {post.isAward && (
+              <span className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-900/60 text-amber-300 border border-amber-700/50">
+                <span>🏆</span>
+                {post.tournamentName && (
+                  <span className="hidden sm:inline truncate max-w-[140px]">
+                    {post.tournamentName}
+                  </span>
+                )}
+              </span>
+            )}
           </div>
-        )}
-
-        {/* 작성자 / 날짜 (오른쪽) */}
-        <div className="flex flex-col items-end shrink-0 text-[10px] sm:text-[11px] text-gray-400 leading-tight">
-          <span className="truncate max-w-[100px] sm:max-w-none">by {post.author}</span>
-          <span className="text-gray-500">{formatDate(post.createdAt)}</span>
+          <div className="flex items-center gap-x-2 gap-y-0.5 flex-wrap mt-0.5 text-[10px] sm:text-[11px] text-gray-400 leading-tight">
+            {recommendCount > 0 && (
+              <span
+                className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-medium bg-pink-900/40 text-pink-200 border border-pink-800/40"
+                aria-label={`추천 ${recommendCount}`}
+                title={`추천 ${recommendCount}`}
+              >
+                <span aria-hidden>👍</span>
+                <span>{recommendCount}</span>
+              </span>
+            )}
+            <span className="truncate min-w-0 max-w-[140px] sm:max-w-none">by {post.author}</span>
+            <span className="text-gray-500 shrink-0">{formatDate(post.createdAt)}</span>
+          </div>
         </div>
 
         {/* 우측 액션 */}
@@ -171,7 +170,7 @@ export default function PostListItem({ post, onLoadIntoDeck, onDeleteRequest }: 
             mainDeck={post.mainDeck}
             cheers={post.cheers}
           />
-          <div className="flex items-center justify-between gap-2 px-3 py-2 border-t border-gray-800 bg-gray-950">
+          <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 border-t border-gray-800 bg-gray-950">
             <button
               onClick={handleToggleRecommend}
               disabled={pending}

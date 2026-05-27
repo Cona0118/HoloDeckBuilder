@@ -146,9 +146,9 @@ export default function BoardPage() {
     <div className="min-h-dvh flex flex-col" style={{ background: '#0f0f1a' }}>
       <div className="flex-1">
       <div className="max-w-4xl mx-auto px-3 sm:px-4 py-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl md:text-2xl font-bold text-white">덱 공유 게시판</h1>
+        <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap min-w-0">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white">덱 공유 게시판</h1>
             <button
               onClick={() => setPickerOpen(true)}
               aria-label="오시 카드로 검색"
