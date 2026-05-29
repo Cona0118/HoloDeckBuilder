@@ -1,0 +1,30 @@
+﻿LINE32|    nameJp: "?끿쇋?쇈걼??,
+LINE33|    type: "oshi",
+LINE34|    life: 5,
+LINE35|    color: ["green"],
+LINE36|    imageUrl: "/images/PR/hBD24-002_P.png",
+LINE37|    oshiAbility: {
+LINE38|      name: "洹몃┛ ?명빖??,
+LINE39|      cost: "?濡??뚯썙 -2",
+LINE40|      description: "[?댁뿉 1踰? ?????숈븞, ?먯떊???뱀깋 ?濡쒕ħ 1紐낆쓽 ?꾩툩 +20.",
+LINE41|    },
+LINE42|    spAbility: {
+LINE43|      name: "Birthday Gift ~Green~",
+LINE44|      cost: "?濡??뚯썙 -2",
+LINE45|      description:
+LINE46|        "[寃뚯엫??1踰? ?먯떊???깆뿉?? ?뱀깋 ?濡쒕ħ 1?μ쓣 怨듦컻?섍퀬, ?⑥뿉 ?뷀븳?? 洹몃━怨??깆쓣 ?뷀뵆 ?쒕떎.",
+LINE47|    },
+LINE48|    limit: 1,
+LINE49|  },
+LINE50|  {
+LINE51|    id: "hBD24-003",
+LINE52|    cardNumber: "hBD24-003",
+LINE53|    setId: "hBD24",
+LINE54|    name: "?대늻媛誘?肄붾줈??,
+LINE55|    nameJp: "?뚨쪥?볝굧??,
+LINE56|    type: "oshi",
+LINE57|    life: 5,
+LINE58|    color: ["yellow"],
+LINE59|    imageUrl: "/images/PR/hBD24-003_P.png",
+LINE60|    oshiAbility: {
+

@@ -1,0 +1,4 @@
+﻿HEAD lines: 29069
+예filler in HEAD: 0
+literal-dotdotdot lines in HEAD: 0
+blank lines in HEAD: 3

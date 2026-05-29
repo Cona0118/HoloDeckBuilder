@@ -1,0 +1,138 @@
+﻿diff --git a/src/data/cards.ts b/src/data/cards.ts
+index 4b4baed..63044d5 100644
+--- a/src/data/cards.ts
++++ b/src/data/cards.ts
+@@ -28941,8 +28941,7 @@ export const CARDS: Card[] = [
+     abilities: [
+       {
+         name: "아싸 대승리야!!",
+-        description:
+-          "이 홀로멤에게 홀로아츠 B이 붙어 있다면, 이 아츠 +30.",
++        description: "이 홀로멤에게 홀로아츠 B이 붙어 있다면, 이 아츠 +30.",
+         damage: 10,
+         cost: ["red"],
+       },
+@@ -29031,6 +29030,123 @@ export const CARDS: Card[] = [
+     ],
+     limit: 4,
+   },
++  {
++    id: "hBP08-086",
++    cardNumber: "hBP08-086",
++    setId: "hBP08",
++    name: "시라누이 후레아",
++    nameJp: "不知火フレア",
++    type: "holomem",
++    holomemSubtype: "1st",
++    color: ["yellow"],
++    hp: 160,
++    batonPass: 1,
++    tags: ["#JP", "#3기생", "#하프엘프"],
++    imageUrl: "/images/hBP08/hBP08-086.png",
++    abilities: [
++      {
++        name: "오레노 이나—!",
++        timing: "bloom",
++        description:
++          "자신의 옐 덱의 위에서부터 1장을 자신위 [〈시라누이 후레아〉나 #EN을 가진 홀로멤]에게 보낸다.",
++      },
++      {
++        name: "최고의 친구",
++        description: "자신의 센터 홀로멤이 2nd 홀로멤이라면, 이 아츠 +30.",
++        damage: 20,
++        cost: ["colorless"],
++      },
++    ],
++    limit: 4,
++  },
++  {
++    id: "hBP08-029",
++    cardNumber: "hBP08-029",
++    setId: "hBP08",
++    name: "카자마 이로하",
++    nameJp: "風真いろは",
++    type: "holomem",
++    holomemSubtype: "debut",
++    color: ["green"],
++    hp: 120,
++    batonPass: 1,
++    tags: ["#JP", "#비밀 결사 holoX"],
++    imageUrl: "/images/hBP08/hBP08-029.png",
++    abilities: [
++      {
++        name: "Secret Love -Iroha-",
++        timing: "gift",
++        description:
++          "[콜라보 포지션 한정][턴에 1번] 상대의 턴에서, 자신의 #비밀 결사 holoX를 가진 센터 홀로멤이 아츠 대미지를 받았을 때, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
++      },
++      {
++        name: "극비임무 수행중이오",
++        description: "",
++        damage: 20,
++        cost: ["green"],
++      },
++    ],
++    limit: 4,
++  },
++  {
++    id: "hBP08-020",
++    cardNumber: "hBP08-020",
++    setId: "hBP08",
++    name: "이사키 리오나",
++    nameJp: "響咲リオナ",
++    type: "holomem",
++    holomemSubtype: "2nd",
++    color: ["white"],
++    hp: 180,
++    batonPass: 2,
++    tags: ["#DEV_IS", "#FLOW GLOW"],
++    imageUrl: "/images/hBP08/hBP08-020.png",
++    abilities: [
++      {
++        name: "섹시 댄스 퀸",
++        timing: "collab",
++        description:
++          "자신의 덱의 위에서부터 1~2장을 아카이브 한다 : 아카이브 한 카드 1장당, 자신의 덱을 1장 드로우 한다.",
++      },
++      {
++        name: "도전의 눈빛",
++        description:
++          "이 턴에 자신의 덱에서 카드를 3장 이상 아카이브 하고 있다면, 이 아츠 +40.",
++        damage: 110,
++        cost: ["white", "colorless"],
++      },
++    ],
++    limit: 4,
++  },
++  {
++    id: "hBP08-042",
++    cardNumber: "hBP08-042",
++    setId: "hBP08",
++    name: "타카나시 키아라",
++    nameJp: "小鳥遊キアラ",
++    type: "holomem",
++    holomemSubtype: "1st",
++    color: ["red"],
++    hp: 170,
++    batonPass: 1,
++    tags: ["#EN", "#Myth", "#새"],
++    imageUrl: "/images/hBP08/hBP08-042.png",
++    abilities: [
++      {
++        name: "구텐 모르겐 -상쾌한 아침-",
++        timing: "bloom",
++        description:
++          "자신의 패 1~3장을 아카이브 할 수 있다 : 자신의 스테이지의 홀로멤 1명을 고른다. 이 능력으로 아카이브 한 카드 1장당, 이 턴 동안, 고른 홀로멤의 아츠 +10",
++      },
++      {
++        name: "키와와와 촌카즈&스무디",
++        description: "",
++        damage: 50,
++        cost: ["red"],
++      },
++    ],
++    limit: 4,
++  },
+ ];
+ 
+ export const SETS = [

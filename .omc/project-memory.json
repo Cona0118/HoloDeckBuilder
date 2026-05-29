@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1779891929614,
+  "lastScanned": 1780025648268,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build 2>&1 | tail -20",
+    "buildCommand": "cd \"/c/Users/user/Desktop/Holo\"; npm run build > _b2.log 2>&1; echo \"BUILD_EXIT=$?\" >> _b2.log; tail -6 _b2.log",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1779891929504,
+      "lastAccessed": 1780025648175,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1779891929506,
+      "lastAccessed": 1780025648194,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1779891929518,
+      "lastAccessed": 1780025648196,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1779891929520,
+      "lastAccessed": 1780025648197,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1779891929521,
+      "lastAccessed": 1780025648200,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,17 +136,17 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1779891929522,
+      "lastAccessed": 1780025648202,
       "keyFiles": [
-        "index-DCuqAuXU.js",
-        "index-N1nuTVb5.css"
+        "index-BFWmPdai.js",
+        "index-BJP6unJ9.css"
       ]
     },
     "src\\api": {
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1779891929525,
+      "lastAccessed": 1780025648206,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1779891929526,
+      "lastAccessed": 1780025648208,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 14,
-      "lastAccessed": 1779891929528,
+      "lastAccessed": 1780025648209,
       "keyFiles": [
         "CardDetail.tsx",
         "CardGrid.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1779891929529,
+      "lastAccessed": 1780025648211,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1779891929531,
+      "lastAccessed": 1780025648211,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -195,7 +195,7 @@
       "path": "src\\pages",
       "purpose": "Page components",
       "fileCount": 2,
-      "lastAccessed": 1779891929532,
+      "lastAccessed": 1780025648212,
       "keyFiles": [
         "BoardPage.tsx",
         "BuilderPage.tsx"
@@ -203,6 +203,12 @@
     }
   },
   "hotPaths": [
+    {
+      "path": "src\\data\\cards.ts",
+      "accessCount": 40,
+      "lastAccessed": 1780077822034,
+      "type": "file"
+    },
     {
       "path": "src\\components\\PostListItem.tsx",
       "accessCount": 10,
@@ -222,15 +228,21 @@
       "type": "file"
     },
     {
-      "path": "src\\data\\cards.ts",
-      "accessCount": 6,
-      "lastAccessed": 1779894943684,
-      "type": "file"
-    },
-    {
       "path": "src\\components\\PostDeckView.tsx",
       "accessCount": 4,
       "lastAccessed": 1779892070296,
+      "type": "file"
+    },
+    {
+      "path": "_sort_hbp08.cjs",
+      "accessCount": 4,
+      "lastAccessed": 1780076630571,
+      "type": "file"
+    },
+    {
+      "path": "_sortout.txt",
+      "accessCount": 3,
+      "lastAccessed": 1780076689156,
       "type": "file"
     },
     {
@@ -250,6 +262,18 @@
       "accessCount": 2,
       "lastAccessed": 1779728306148,
       "type": "directory"
+    },
+    {
+      "path": "src\\types\\card.ts",
+      "accessCount": 2,
+      "lastAccessed": 1780076976729,
+      "type": "file"
+    },
+    {
+      "path": "_b2.log",
+      "accessCount": 2,
+      "lastAccessed": 1780077122054,
+      "type": "file"
     },
     {
       "path": "src\\router.tsx",
@@ -273,6 +297,18 @@
       "path": "src\\utils\\recommendStorage.ts",
       "accessCount": 1,
       "lastAccessed": 1779728125011,
+      "type": "file"
+    },
+    {
+      "path": "_run.log",
+      "accessCount": 1,
+      "lastAccessed": 1780076646655,
+      "type": "file"
+    },
+    {
+      "path": "_fill_blanks.cjs",
+      "accessCount": 1,
+      "lastAccessed": 1780077084713,
       "type": "file"
     }
   ],
