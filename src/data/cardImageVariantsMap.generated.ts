@@ -953,6 +953,14 @@ export const CARD_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/hBP04/hBP04-086_SR.png",
     "/images/hBP04/hBP04-086_UR.png",
   ],
+  "hBP04-091": [
+    "/images/hBP04/hBP04-091_S.png",
+    "/images/hBP04/hBP04-091_U.png",
+  ],
+  "hBP04-105": [
+    "/images/hBP04/hBP04-105_S.png",
+    "/images/hBP04/hBP04-105_U.png",
+  ],
   "hBP05-001": [
     "/images/hBP05/hBP05-001_OSR.png",
     "/images/hBP05/hBP05-001_OUR.png",
