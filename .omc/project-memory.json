@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build 2>&1 | tail -n 20",
+    "buildCommand": "npx tsc --noEmit 2>&1 | head -n 20",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -216,6 +216,18 @@
       "type": "file"
     },
     {
+      "path": "src\\types\\card.ts",
+      "accessCount": 10,
+      "lastAccessed": 1780240400683,
+      "type": "file"
+    },
+    {
+      "path": "src\\store\\deckStore.ts",
+      "accessCount": 10,
+      "lastAccessed": 1780240433234,
+      "type": "file"
+    },
+    {
       "path": "src\\pages\\BoardPage.tsx",
       "accessCount": 9,
       "lastAccessed": 1779892130286,
@@ -228,21 +240,9 @@
       "type": "file"
     },
     {
-      "path": "src\\types\\card.ts",
-      "accessCount": 8,
-      "lastAccessed": 1780239886482,
-      "type": "file"
-    },
-    {
       "path": "src\\api\\deckPosts.ts",
       "accessCount": 6,
       "lastAccessed": 1779728174438,
-      "type": "file"
-    },
-    {
-      "path": "src\\store\\deckStore.ts",
-      "accessCount": 6,
-      "lastAccessed": 1780232501777,
       "type": "file"
     },
     {

@@ -593,7 +593,21 @@ export const useDeckStore = create<DeckState>()(
     }),
     {
       name: 'holo-deck-store',
-      partialize: (s) => ({ decks: s.decks, activeDeckId: s.activeDeckId }),
+      // filter도 저장해 새로고침 후 검색/필터 상태 유지. selectedCard는 일시적 상태라 제외.
+      partialize: (s) => ({
+        decks: s.decks,
+        activeDeckId: s.activeDeckId,
+        filter: s.filter,
+      }),
+      // 저장된 filter에 누락 필드가 있어도(추후 스키마 확장 대비) defaultFilter로 채운다.
+      merge: (persisted, current) => {
+        const p = (persisted ?? {}) as Partial<DeckState>;
+        return {
+          ...current,
+          ...p,
+          filter: { ...defaultFilter, ...(p.filter ?? {}) },
+        };
+      },
     }
   )
 );
