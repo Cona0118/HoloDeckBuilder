@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npx tsc --noEmit 2>&1 | head -n 20",
+    "buildCommand": "npx tsc --noEmit 2>&1 | head -n 20; npx eslint src/components/DeckPanel.tsx 2>&1 | tail -n 20",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -205,8 +205,20 @@
   "hotPaths": [
     {
       "path": "src\\data\\cards.ts",
-      "accessCount": 53,
-      "lastAccessed": 1780240087187,
+      "accessCount": 54,
+      "lastAccessed": 1780241185925,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\card.ts",
+      "accessCount": 12,
+      "lastAccessed": 1780241193284,
+      "type": "file"
+    },
+    {
+      "path": "src\\store\\deckStore.ts",
+      "accessCount": 11,
+      "lastAccessed": 1780241154509,
       "type": "file"
     },
     {
@@ -216,21 +228,15 @@
       "type": "file"
     },
     {
-      "path": "src\\types\\card.ts",
-      "accessCount": 10,
-      "lastAccessed": 1780240400683,
-      "type": "file"
-    },
-    {
-      "path": "src\\store\\deckStore.ts",
-      "accessCount": 10,
-      "lastAccessed": 1780240433234,
-      "type": "file"
-    },
-    {
       "path": "src\\pages\\BoardPage.tsx",
-      "accessCount": 9,
-      "lastAccessed": 1779892130286,
+      "accessCount": 10,
+      "lastAccessed": 1780241193712,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\DeckPanel.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1780241751612,
       "type": "file"
     },
     {
@@ -261,6 +267,12 @@
       "path": "_sort_hbp08.cjs",
       "accessCount": 4,
       "lastAccessed": 1780076630571,
+      "type": "file"
+    },
+    {
+      "path": "src\\utils\\deckSnapshot.ts",
+      "accessCount": 4,
+      "lastAccessed": 1780241305430,
       "type": "file"
     },
     {

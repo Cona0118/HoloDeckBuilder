@@ -7,6 +7,7 @@ import { CARDS } from "../data/cards";
 import { Link } from "react-router-dom";
 import CardPreviewModal from "./CardPreviewModal";
 import SharePostDialog from "./SharePostDialog";
+import { parseDeckText } from "../utils/deckSnapshot";
 
 const CHEER_MAX = 20;
 
@@ -311,6 +312,7 @@ function DeckSelector() {
     activeDeckId,
     setActiveDeck,
     createDeck,
+    createDeckFromSnapshot,
     deleteDeck,
     renameDeck,
     getActiveDeck,
@@ -318,6 +320,8 @@ function DeckSelector() {
   } = useDeckStore();
   const [renaming, setRenaming] = useState(false);
   const [newName, setNewName] = useState("");
+  const [importing, setImporting] = useState(false);
+  const [imported, setImported] = useState(false);
   const activeDeck = getActiveDeck();
 
   function startRename() {
@@ -327,6 +331,52 @@ function DeckSelector() {
   function confirmRename() {
     if (activeDeck && newName.trim()) renameDeck(activeDeck.id, newName.trim());
     setRenaming(false);
+  }
+
+  /** 클립보드의 덱리스트 텍스트를 읽어 새 덱으로 추가. */
+  async function importFromClipboard() {
+    setImporting(true);
+    try {
+      let text = "";
+      try {
+        text = await navigator.clipboard.readText();
+      } catch {
+        alert(
+          "클립보드를 읽을 수 없습니다. 브라우저 권한을 확인하거나, 덱리스트 텍스트를 직접 붙여넣어 주세요.",
+        );
+        return;
+      }
+      if (!text.trim()) {
+        alert("클립보드가 비어 있습니다. 덱리스트 텍스트를 먼저 복사해주세요.");
+        return;
+      }
+
+      const parsed = parseDeckText(text);
+      if (!parsed.recognizedAny) {
+        alert(
+          "덱리스트 형식을 인식하지 못했습니다.\n'텍스트 복사'로 내보낸 형식의 텍스트를 붙여넣어 주세요.",
+        );
+        return;
+      }
+
+      const name = parsed.deckName?.trim() || "가져온 덱";
+      createDeckFromSnapshot(name, {
+        oshi: parsed.oshi,
+        mainDeck: parsed.mainDeck,
+        cheers: parsed.cheers,
+      });
+
+      if (parsed.missingCardCount > 0) {
+        alert(
+          `"${name}" 덱을 가져왔습니다. (${parsed.missingCardCount}장은 카드를 찾지 못해 제외되었습니다.)`,
+        );
+      } else {
+        setImported(true);
+        setTimeout(() => setImported(false), 2000);
+      }
+    } finally {
+      setImporting(false);
+    }
   }
 
   return (
@@ -413,6 +463,31 @@ function DeckSelector() {
                 삭제
               </button>
             )}
+            <button
+              onClick={importFromClipboard}
+              disabled={importing}
+              title="클립보드에 복사된 덱리스트 텍스트로 새 덱을 만듭니다"
+              className="ml-auto flex items-center gap-1 px-2 py-1 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 text-gray-300 hover:text-white text-xs rounded border border-gray-700 transition-colors whitespace-nowrap"
+            >
+              <svg
+                className="w-3.5 h-3.5 shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                />
+              </svg>
+              {importing
+                ? "불러오는 중…"
+                : imported
+                  ? "✓ 불러왔습니다"
+                  : "텍스트로 덱 불러오기"}
+            </button>
           </>
         )}
       </div>
