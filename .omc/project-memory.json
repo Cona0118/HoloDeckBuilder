@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780025648268,
+  "lastScanned": 1780197884352,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "cd \"/c/Users/user/Desktop/Holo\"; npm run build > _b2.log 2>&1; echo \"BUILD_EXIT=$?\" >> _b2.log; tail -6 _b2.log",
+    "buildCommand": "npm run build",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1780025648175,
+      "lastAccessed": 1780197884083,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1780025648194,
+      "lastAccessed": 1780197884094,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1780025648196,
+      "lastAccessed": 1780197884096,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1780025648197,
+      "lastAccessed": 1780197884097,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1780025648200,
+      "lastAccessed": 1780197884097,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,17 +136,17 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1780025648202,
+      "lastAccessed": 1780197884098,
       "keyFiles": [
-        "index-BFWmPdai.js",
-        "index-BJP6unJ9.css"
+        "index-BJP6unJ9.css",
+        "index-NFLDxZJj.js"
       ]
     },
     "src\\api": {
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1780025648206,
+      "lastAccessed": 1780197884107,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1780025648208,
+      "lastAccessed": 1780197884133,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 14,
-      "lastAccessed": 1780025648209,
+      "lastAccessed": 1780197884138,
       "keyFiles": [
         "CardDetail.tsx",
         "CardGrid.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1780025648211,
+      "lastAccessed": 1780197884143,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1780025648211,
+      "lastAccessed": 1780197884144,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -195,7 +195,7 @@
       "path": "src\\pages",
       "purpose": "Page components",
       "fileCount": 2,
-      "lastAccessed": 1780025648212,
+      "lastAccessed": 1780197884149,
       "keyFiles": [
         "BoardPage.tsx",
         "BuilderPage.tsx"

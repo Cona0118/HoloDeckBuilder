@@ -27836,8 +27836,32 @@ export const CARDS: Card[] = [
     id: "hBP08-038",
     cardNumber: "hBP08-038",
     setId: "hBP08",
-    name: "",
+    name: "모코코 어비스가드",
+    nameJp: "モココ・アビスガード",
+    keywords: ["kawaii"],
     type: "holomem",
+    hp: 190,
+    color: ["red"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#EN", "#Advent", "#동물귀"],
+    imageUrl: "/images/hBP08/hBP08-038.png",
+    abilities: [
+      {
+        name: "마법 무기인걸!",
+        description:
+          "자신의 오시 홀로멤이 청색인 〈FUWAMOCO〉라면, 자신의 아카이브의 #Advent를 가진 홀로멤 1장을 패로 되돌린다.",
+        timing: "collab",
+      },
+      {
+        name: "이기는 건 모코코야!",
+        description: "",
+        damage: 100,
+        specialDamage: { color: "green", value: 50 },
+        cost: ["colorless", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-039",
