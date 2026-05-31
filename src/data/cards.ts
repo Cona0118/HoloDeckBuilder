@@ -28238,8 +28238,32 @@ export const CARDS: Card[] = [
     id: "hBP08-053",
     cardNumber: "hBP08-053",
     setId: "hBP08",
-    name: "",
+    name: "미즈미야 스우",
+    nameJp: "水宮枢",
     type: "holomem",
+    hp: 160,
+    color: ["blue"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP08/hBP08-053.png",
+    abilities: [
+      {
+        name: "슈피슈와~~!!!!",
+        description:
+          "[센터 포지션 한정] 상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N 이 5개 이상이라면, 상대의 센터 홀로멤의 아츠에 필요한 홀로아츠 N +2.",
+        timing: "gift",
+      },
+      {
+        name: "닿아라, 이 사랑",
+        description:
+          "상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N 이 5개 이상이라면, 상대의 Debut 이외의 홀로멤 1명에게 특수 대미지 100을 준다.",
+        damage: 50,
+        specialDamage: { color: "white", value: 50 },
+        cost: ["blue", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-054",
@@ -29054,8 +29078,31 @@ export const CARDS: Card[] = [
     id: "hBP08-088",
     cardNumber: "hBP08-088",
     setId: "hBP08",
-    name: "",
+    name: "시라누이 후레아",
+    nameJp: "不知火フレア",
     type: "holomem",
+    holomemSubtype: "2nd",
+    color: ["yellow"],
+    hp: 200,
+    imageUrl: "/images/hBP08/hBP08-088.png",
+    tags: ["#JP", "#3기생", "#하프엘프"],
+    batonPass: 2,
+    abilities: [
+      {
+        name: "멜로우・플라워리",
+        timing: "gift",
+        description:
+          "[턴에 1번] 자신의 턴에서, 이 홀로멤이 콜라보 포지션으로 이동했을 때, 상대의 센터 홀로멤과 콜라보 홀로멤에게 특수 대미지 20을 준다.",
+      },
+      {
+        name: "릴레이션 판타지",
+        cost: ["yellow", "colorless", "colorless"],
+        damage: 140,
+        specialDamage: { color: "white", value: 50 },
+        description:
+          "[콜라보 포지션 한정] 자신의 센터 홀로멤이 #3기생을 가진 홀로멤이라면, 이 아츠 +30.",
+      },
+    ],
   },
   {
     id: "hBP08-089",
