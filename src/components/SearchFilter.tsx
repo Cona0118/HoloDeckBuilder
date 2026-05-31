@@ -6,12 +6,15 @@ import {
   TYPE_LABELS,
   HOLOMEM_SUBTYPE_LABELS,
   SUPPORT_SUBTYPE_LABELS,
+  ABILITY_TIMING_LABELS,
 } from "../utils/cardUtils";
 import type {
   CardColor,
   CardType,
   HolomemSubtype,
   SupportSubtype,
+  SearchScope,
+  AbilityTiming,
 } from "../types/card";
 
 const TYPES: CardType[] = ["oshi", "holomem", "support"];
@@ -24,6 +27,19 @@ const COLORS: CardColor[] = [
   "yellow",
 ];
 const HOLOMEM_SUBTYPES: HolomemSubtype[] = ["debut", "1st", "2nd", "spot"];
+const ABILITY_TIMINGS: AbilityTiming[] = ["gift", "collab", "bloom"];
+const SEARCH_SCOPES: { value: SearchScope; label: string }[] = [
+  { value: "all", label: "모두" },
+  { value: "name", label: "카드명" },
+  { value: "tag", label: "태그" },
+  { value: "effect", label: "효과" },
+];
+const SCOPE_PLACEHOLDER: Record<SearchScope, string> = {
+  all: "카드명, 효과, 태그 검색...",
+  name: "카드 이름, 번호 검색...",
+  tag: "태그 검색...",
+  effect: "효과 텍스트 검색...",
+};
 const SUPPORT_SUBTYPES: SupportSubtype[] = [
   "staff",
   "item",
@@ -104,6 +120,7 @@ export default function SearchFilter() {
       setFilter({
         types: newTypes,
         holomemSubtypes: [],
+        holomemAbilities: [],
         buzzOnly: false,
         ...extra,
       });
@@ -148,6 +165,14 @@ export default function SearchFilter() {
       setFilter({ buzzOnly: false, holomemSubtypes: subs });
     }
   }
+  function toggleHolomemAbility(t: AbilityTiming) {
+    const has = filter.holomemAbilities.includes(t);
+    setFilter({
+      holomemAbilities: has
+        ? filter.holomemAbilities.filter((x) => x !== t)
+        : [...filter.holomemAbilities, t],
+    });
+  }
   function toggleSupportSubtype(s: SupportSubtype) {
     const has = filter.supportSubtypes.includes(s);
     setFilter({
@@ -182,6 +207,7 @@ export default function SearchFilter() {
     filter.types.length ||
     filter.colors.length ||
     filter.holomemSubtypes.length ||
+    filter.holomemAbilities.length ||
     filter.supportSubtypes.length ||
     filter.limitedFilter !== null ||
     filter.tags.length ||
@@ -191,6 +217,7 @@ export default function SearchFilter() {
     filter.types.length +
     filter.colors.length +
     filter.holomemSubtypes.length +
+    filter.holomemAbilities.length +
     filter.supportSubtypes.length +
     filter.tags.length +
     filter.sets.length +
@@ -200,6 +227,21 @@ export default function SearchFilter() {
     <div className="flex flex-col bg-gray-900 border-b border-gray-800">
       {/* Search row */}
       <div className="flex gap-2 p-3">
+        {/* 검색 범위 드롭다운 */}
+        <select
+          value={filter.searchScope}
+          onChange={(e) =>
+            setFilter({ searchScope: e.target.value as SearchScope })
+          }
+          className="shrink-0 px-2.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-gray-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
+          title="검색 범위"
+        >
+          {SEARCH_SCOPES.map((s) => (
+            <option key={s.value} value={s.value}>
+              {s.label}
+            </option>
+          ))}
+        </select>
         <div className="relative flex-1">
           <svg
             className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
@@ -216,7 +258,7 @@ export default function SearchFilter() {
           </svg>
           <input
             type="text"
-            placeholder="카드 이름, 번호 검색..."
+            placeholder={SCOPE_PLACEHOLDER[filter.searchScope]}
             value={filter.searchText}
             onChange={(e) => setFilter({ searchText: e.target.value })}
             className="w-full pl-9 pr-3 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
@@ -297,27 +339,42 @@ export default function SearchFilter() {
 
           {/* 홀로멤 세부 분류 */}
           {filter.types.includes("holomem") && (
-            <div className="flex flex-wrap gap-1.5 items-center pl-2 border-l-2 border-emerald-700">
-              <span className="text-xs text-gray-500 shrink-0">세부:</span>
-              {HOLOMEM_SUBTYPES.map((s) => (
-                <span key={s} className="contents">
-                  <ToggleChip
-                    value={s}
-                    label={HOLOMEM_SUBTYPE_LABELS[s]}
-                    active={filter.holomemSubtypes.includes(s)}
-                    onToggle={toggleHolomemSubtype}
-                    disabled={s === "1st" && filter.buzzOnly}
-                  />
-                  {s === "1st" && (
+            <div className="flex flex-col gap-2 pl-2 border-l-2 border-emerald-700">
+              <div className="flex flex-wrap gap-1.5 items-center">
+                <span className="text-xs text-gray-500 shrink-0">세부:</span>
+                {HOLOMEM_SUBTYPES.map((s) => (
+                  <span key={s} className="contents">
                     <ToggleChip
-                      value="buzz"
-                      label="Buzz"
-                      active={filter.buzzOnly}
-                      onToggle={toggleBuzz}
+                      value={s}
+                      label={HOLOMEM_SUBTYPE_LABELS[s]}
+                      active={filter.holomemSubtypes.includes(s)}
+                      onToggle={toggleHolomemSubtype}
+                      disabled={s === "1st" && filter.buzzOnly}
                     />
-                  )}
-                </span>
-              ))}
+                    {s === "1st" && (
+                      <ToggleChip
+                        value="buzz"
+                        label="Buzz"
+                        active={filter.buzzOnly}
+                        onToggle={toggleBuzz}
+                      />
+                    )}
+                  </span>
+                ))}
+              </div>
+              {/* 효과(어빌리티) 필터: 기프트 / 콜라보 / 블룸 */}
+              <div className="flex flex-wrap gap-1.5 items-center">
+                <span className="text-xs text-gray-500 shrink-0">효과:</span>
+                {ABILITY_TIMINGS.map((t) => (
+                  <ToggleChip
+                    key={t}
+                    value={t}
+                    label={ABILITY_TIMING_LABELS[t]}
+                    active={filter.holomemAbilities.includes(t)}
+                    onToggle={toggleHolomemAbility}
+                  />
+                ))}
+              </div>
             </div>
           )}
 

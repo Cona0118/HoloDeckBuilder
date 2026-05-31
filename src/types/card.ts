@@ -9,6 +9,12 @@ export type SupportSubtype = 'event' | 'fan' | 'mascot' | 'tool' | 'item' | 'sta
 
 export type CostColor = 'white' | 'green' | 'red' | 'blue' | 'purple' | 'yellow' | 'colorless';
 
+// 검색 범위
+export type SearchScope = 'all' | 'name' | 'tag' | 'effect';
+
+// 홀로멤 효과(어빌리티) 타이밍 분류
+export type AbilityTiming = 'gift' | 'collab' | 'bloom';
+
 export interface CardAbility {
   name: string;
   cost?: CostColor[];     // 코스트 색상 배열 (이미지로 표시)
@@ -79,9 +85,11 @@ export interface Deck {
 
 export interface FilterState {
   searchText: string;
+  searchScope: SearchScope;          // 검색 범위 (모두/카드명/태그/효과)
   types: CardType[];
   colors: CardColor[];
   holomemSubtypes: HolomemSubtype[];
+  holomemAbilities: AbilityTiming[]; // 홀로멤 효과 필터 (기프트/콜라보/블룸)
   buzzOnly: boolean;                 // true=버즈(1st)만 필터
   supportSubtypes: SupportSubtype[];
   limitedFilter: boolean | null;  // null=전체, true=리미티드만, false=일반만

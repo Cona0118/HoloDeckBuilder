@@ -131,9 +131,11 @@ interface DeckState {
 
 const defaultFilter: FilterState = {
   searchText: '',
+  searchScope: 'all',
   types: [],
   colors: [],
   holomemSubtypes: [],
+  holomemAbilities: [],
   buzzOnly: false,
   supportSubtypes: [],
   limitedFilter: null,

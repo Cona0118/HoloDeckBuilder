@@ -205,8 +205,8 @@
   "hotPaths": [
     {
       "path": "src\\data\\cards.ts",
-      "accessCount": 40,
-      "lastAccessed": 1780077822034,
+      "accessCount": 42,
+      "lastAccessed": 1780232415000,
       "type": "file"
     },
     {
@@ -222,9 +222,33 @@
       "type": "file"
     },
     {
+      "path": "src\\components\\SearchFilter.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1780232605598,
+      "type": "file"
+    },
+    {
       "path": "src\\api\\deckPosts.ts",
       "accessCount": 6,
       "lastAccessed": 1779728174438,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\card.ts",
+      "accessCount": 6,
+      "lastAccessed": 1780232496309,
+      "type": "file"
+    },
+    {
+      "path": "src\\store\\deckStore.ts",
+      "accessCount": 6,
+      "lastAccessed": 1780232501777,
+      "type": "file"
+    },
+    {
+      "path": "src\\utils\\cardUtils.ts",
+      "accessCount": 5,
+      "lastAccessed": 1780232536435,
       "type": "file"
     },
     {
@@ -262,12 +286,6 @@
       "accessCount": 2,
       "lastAccessed": 1779728306148,
       "type": "directory"
-    },
-    {
-      "path": "src\\types\\card.ts",
-      "accessCount": 2,
-      "lastAccessed": 1780076976729,
-      "type": "file"
     },
     {
       "path": "_b2.log",

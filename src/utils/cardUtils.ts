@@ -1,4 +1,4 @@
-import type { Card, CardColor, CardType, HolomemSubtype, SupportSubtype, FilterState } from '../types/card';
+import type { Card, CardColor, CardType, HolomemSubtype, SupportSubtype, FilterState, SearchScope, AbilityTiming } from '../types/card';
 
 export const COLOR_LABELS: Record<CardColor, string> = {
   white:  '백',
@@ -66,21 +66,58 @@ export const SUPPORT_SUBTYPE_BG: Record<SupportSubtype, string> = {
   '':      'bg-gray-600 text-white',
 };
 
+export const ABILITY_TIMING_LABELS: Record<AbilityTiming, string> = {
+  gift:   '기프트',
+  collab: '콜라보',
+  bloom:  '블룸',
+};
+
 export function isBuzz(card: Card): boolean {
   return card.type === 'holomem' && card.holomemSubtype === '1st' && !!card.extraRule?.includes('라이프 -2');
+}
+
+/** 카드의 효과/룰 텍스트를 한 문자열로 합쳐 소문자로 반환 (효과 검색용). */
+export function getCardEffectText(card: Card): string {
+  const parts: string[] = [];
+  (card.abilities ?? []).forEach((a) => {
+    if (a.name) parts.push(a.name);
+    if (a.description) parts.push(a.description);
+  });
+  [card.oshiStageAbility, card.oshiAbility, card.spAbility].forEach((ab) => {
+    if (ab) {
+      if (ab.name) parts.push(ab.name);
+      if (ab.description) parts.push(ab.description);
+    }
+  });
+  if (card.extraRule) parts.push(card.extraRule);
+  return parts.join(' ').toLowerCase();
+}
+
+/** 검색어 q가 주어진 검색 범위(scope)에서 카드와 매치되는지 판정. */
+function matchesQuery(card: Card, q: string, scope: SearchScope): boolean {
+  const inName = () =>
+    card.name.toLowerCase().includes(q) ||
+    (card.nameJp ?? '').toLowerCase().includes(q) ||
+    card.cardNumber.toLowerCase().includes(q) ||
+    (card.keywords ?? []).some((kw) => kw.toLowerCase().includes(q));
+  const inTag = () => (card.tags ?? []).some((tag) => tag.toLowerCase().includes(q));
+  const inEffect = () => getCardEffectText(card).includes(q);
+
+  switch (scope) {
+    case 'name':   return inName();
+    case 'tag':    return inTag();
+    case 'effect': return inEffect();
+    case 'all':
+    default:       return inName() || inTag() || inEffect();
+  }
 }
 
 export function filterCards(cards: Card[], filter: FilterState): Card[] {
   return cards.filter((card) => {
     if (filter.searchText) {
       const queries = filter.searchText.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
-      const match = queries.some(q =>
-        card.name.toLowerCase().includes(q) ||
-        (card.nameJp ?? '').toLowerCase().includes(q) ||
-        card.cardNumber.toLowerCase().includes(q) ||
-        (card.tags ?? []).some((tag) => tag.toLowerCase().includes(q)) ||
-        (card.keywords ?? []).some((kw) => kw.toLowerCase().includes(q))
-      );
+      const scope = filter.searchScope ?? 'all';
+      const match = queries.some((q) => matchesQuery(card, q, scope));
       if (!match) return false;
     }
     if (filter.types.length > 0 && !filter.types.includes(card.type)) return false;
@@ -92,6 +129,12 @@ export function filterCards(cards: Card[], filter: FilterState): Card[] {
     }
     if (filter.buzzOnly) {
       if (card.type !== 'holomem' || card.holomemSubtype !== '1st' || !isBuzz(card)) return false;
+    }
+    if (filter.holomemAbilities && filter.holomemAbilities.length > 0) {
+      if (card.type !== 'holomem') return false;
+      const timings = new Set((card.abilities ?? []).map((a) => a.timing).filter(Boolean));
+      // OR 로직: 선택한 효과 타이밍 중 하나라도 보유하면 통과
+      if (!filter.holomemAbilities.some((t) => timings.has(t))) return false;
     }
     if (filter.supportSubtypes.length > 0) {
       if (card.type !== 'support' || !filter.supportSubtypes.includes(card.supportSubtype ?? '')) return false;
