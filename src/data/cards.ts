@@ -28794,8 +28794,32 @@ export const CARDS: Card[] = [
     id: "hBP08-076",
     cardNumber: "hBP08-076",
     setId: "hBP08",
-    name: "",
+    name: "유즈키 초코",
+    nameJp: "癒月ちょこ",
     type: "holomem",
+    hp: 200,
+    color: ["purple"],
+    holomemSubtype: "2nd",
+    batonPass: 1,
+    tags: ["#JP", "#2기생", "#요리"],
+    imageUrl: "/images/hBP08/hBP08-076.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 덱의 위에서부터 3장을 본다. 그 중에서, [#요리를 가진 홀로멤과 #음식을 가진 이벤트] 1장씩을 공개하고, 패에 더한다. 그리고 남은 카드를 덱의 아래로 되돌린다.",
+        timing: "collab",
+      },
+      {
+        name: "",
+        description:
+          "자신의 아카이브에 #음식을 가진 이벤트가 3장 이상 있다면, 이 홀로멤의 HP 100 회복한다.",
+        damage: 120,
+        specialDamage: { color: "blue", value: 50 },
+        cost: ["purple", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-077",
@@ -29158,8 +29182,19 @@ export const CARDS: Card[] = [
     id: "hBP08-093",
     cardNumber: "hBP08-093",
     setId: "hBP08",
-    name: "",
+    name: "초코의 가지육회",
     type: "support",
+    supportSubtype: "event",
+    tags: ["#음식"],
+    imageUrl: "/images/hBP08/hBP08-093.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 스테이지의 홀로멤 전원이 〈유즈키 초코〉이고, 자신의 라이프가 3 이하가 아니라면 사용할 수 없다.\n\n이 턴 동안, 자신의 스테이지의 [Debut 홀로멤과 1st 홀로멤] 전원의 아츠 +20. 그 후, 자신의 스테이지의 2nd 홀로멤 전원의 아츠 +60.\n\n자신의 〈초코의 가지육회〉는 턴에 1번밖에 사용할 수 없다.",
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-094",
@@ -29218,8 +29253,19 @@ export const CARDS: Card[] = [
     id: "hBP08-097",
     cardNumber: "hBP08-097",
     setId: "hBP08",
-    name: "",
+    name: "릿치 쇼콜라의 햄버그",
     type: "support",
+    supportSubtype: "event",
+    tags: ["#음식"],
+    imageUrl: "/images/hBP08/hBP08-097.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 스테이지의 홀로멤 1명을 고른다. 고른 홀로멤의 HP 20 회복. 그 후, 자신의 아카이브에 #음식을 가진 이벤트가 2장 이상 있다면, 자신의 아카이브의 옐 1장을 그 홀로멤에게 보낸다.\n\n자신의 〈릿치 쇼콜라의 햄버그〉는 턴에 1번밖에 사용할 수 없다.",
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-098",

@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build",
+    "buildCommand": "npm run build 2>&1 | tail -n 20",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -205,8 +205,8 @@
   "hotPaths": [
     {
       "path": "src\\data\\cards.ts",
-      "accessCount": 42,
-      "lastAccessed": 1780232415000,
+      "accessCount": 53,
+      "lastAccessed": 1780240087187,
       "type": "file"
     },
     {
@@ -228,15 +228,15 @@
       "type": "file"
     },
     {
-      "path": "src\\api\\deckPosts.ts",
-      "accessCount": 6,
-      "lastAccessed": 1779728174438,
+      "path": "src\\types\\card.ts",
+      "accessCount": 8,
+      "lastAccessed": 1780239886482,
       "type": "file"
     },
     {
-      "path": "src\\types\\card.ts",
+      "path": "src\\api\\deckPosts.ts",
       "accessCount": 6,
-      "lastAccessed": 1780232496309,
+      "lastAccessed": 1779728174438,
       "type": "file"
     },
     {
