@@ -6,7 +6,7 @@ import SetupOverlay from '../components/game/SetupOverlay';
 import CardDetailPanel, { type SelectedCard } from '../components/CardDetailPanel';
 import { useGameStore } from '../store/gameStore';
 import { useDeckStore } from '../store/deckStore';
-import { canConfirmReady } from '../game/setup';
+import { canConfirmReady, isDebut } from '../game/setup';
 import type { CardInstance, PlayerId, Slot } from '../game/types';
 
 export default function GamePage() {
@@ -20,6 +20,7 @@ export default function GamePage() {
   const [selectedCard, setSelectedCard] = useState<SelectedCard | null>(null);
   const [selectedUid, setSelectedUid] = useState<string | null>(null); // 배치용 단일 선택
   const [penaltyUids, setPenaltyUids] = useState<string[]>([]);
+  const [nonDebutWarn, setNonDebutWarn] = useState(false); // 비데뷔 카드 배치 시도 안내
 
   // ---- 마운트 시 게임 init (mode별) ----
   useEffect(() => {
@@ -35,7 +36,10 @@ export default function GamePage() {
     } else {
       // dev/online(임시): 활성 덱을 양쪽에 사용
       const d = decks.find((x) => x.id === activeDeckId) ?? decks[0];
-      if (!d) return;
+      if (!d) {
+        navigate('/');
+        return;
+      }
       useGameStore.getState().initGame(d, d, { mode: code ? 'online' : 'dev' });
     }
     return () => useGameStore.getState().reset();
@@ -46,6 +50,7 @@ export default function GamePage() {
   useEffect(() => {
     setSelectedUid(null);
     setPenaltyUids([]);
+    setNonDebutWarn(false);
   }, [g.phase, g.activeActor]);
 
   if (g.phase === 'idle') {
@@ -77,7 +82,13 @@ export default function GamePage() {
             : prev,
       );
     } else if (g.phase === 'placeDebut') {
-      setSelectedUid((prev) => (prev === ci.uid ? null : ci.uid));
+      if (isDebut(ci.card)) {
+        setNonDebutWarn(false);
+        setSelectedUid((prev) => (prev === ci.uid ? null : ci.uid));
+      } else {
+        // 데뷔가 아닌 카드는 배치 불가 — 선택하지 않고 안내만 표시
+        setNonDebutWarn(true);
+      }
     }
   }
 
@@ -166,6 +177,9 @@ export default function GamePage() {
               />
               <span className="ml-1 text-[10px] font-medium text-indigo-400/70">
                 {actor === 'p1' ? 'P1' : 'P2'} 패 <span className="text-gray-600">{actorState.hand.length}</span>
+                {nonDebutWarn && (
+                  <span className="ml-2 text-rose-400">데뷔 카드만 배치할 수 있습니다</span>
+                )}
               </span>
             </div>
           </div>
