@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDeckStore } from "../store/deckStore";
 import { SETS, CARDS } from "../data/cards";
 import {
@@ -102,6 +103,23 @@ export default function SearchFilter() {
   const [tagsOpen, setTagsOpen] = useState(false);
   const [setsOpen, setSetsOpen] = useState(false);
   const had1stBeforeBuzz = useRef(false);
+
+  // 로고를 1.5초 내 5번 연속 클릭하면 대기실(/lobby)로 이동 (이스터에그).
+  const navigate = useNavigate();
+  const logoClicks = useRef(0);
+  const logoTimer = useRef<number | null>(null);
+  function handleLogoClick() {
+    logoClicks.current += 1;
+    if (logoTimer.current) window.clearTimeout(logoTimer.current);
+    if (logoClicks.current >= 5) {
+      logoClicks.current = 0;
+      navigate("/lobby");
+      return;
+    }
+    logoTimer.current = window.setTimeout(() => {
+      logoClicks.current = 0;
+    }, 1500);
+  }
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
@@ -227,6 +245,19 @@ export default function SearchFilter() {
     <div className="flex flex-col bg-gray-900 border-b border-gray-800">
       {/* Search row */}
       <div className="flex gap-2 p-3">
+        {/* 로고 (5번 클릭 시 대기실 이동) */}
+        <button
+          type="button"
+          onClick={handleLogoClick}
+          title="홀로 덱빌더"
+          className="shrink-0 flex items-center"
+        >
+          <img
+            src="/logo.png"
+            alt="홀로 덱빌더"
+            className="h-10 w-10 rounded-lg shadow-sm"
+          />
+        </button>
         {/* 검색 범위 드롭다운 */}
         <select
           value={filter.searchScope}

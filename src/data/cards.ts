@@ -27405,8 +27405,30 @@ export const CARDS: Card[] = [
     id: "hBP08-021",
     cardNumber: "hBP08-021",
     setId: "hBP08",
-    name: "",
+    name: "세실리아 이머그린",
+    nameJp: "セシリア・イマーグリーン",
     type: "holomem",
+    hp: 120,
+    color: ["green"],
+    holomemSubtype: "debut",
+    batonPass: 0,
+    tags: ["#EN", "#Justice", "#어학"],
+    imageUrl: "/images/hBP08/hBP08-021.png",
+    abilities: [
+      {
+        name: "Automaton, Roll Out!",
+        description:
+          "자신이 후공이고, 최초의 턴이라면, 자신의 덱에서 <OTOMO> 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-022",
@@ -28366,8 +28388,35 @@ export const CARDS: Card[] = [
     id: "hBP08-058",
     cardNumber: "hBP08-058",
     setId: "hBP08",
-    name: "",
+    name: "후와와 어비스가드",
+    nameJp: "フワワ・アビスガード",
+    keywords: ["kawaii"],
     type: "holomem",
+    hp: 200,
+    color: ["blue"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#EN", "#Advent", "#동물귀"],
+    imageUrl: "/images/hBP08/hBP08-058.png",
+    abilities: [
+      {
+        name: "이길리 없잖아!",
+        description:
+          "자신의 아카이브의 홀로아츠 B 1~2장을 골라, 자신의 #Advent를 가진 홀로멤에게 나눠 보낸다.",
+        damage: 100,
+        specialDamage: { color: "white", value: 50 },
+        cost: ["blue", "colorless"],
+      },
+      {
+        name: "폭신폭신 비운더리 스패너",
+        description:
+          "자신의 오시 홀로멤이 청색인 〈FUWAMOCO〉라면, 이 홀로멤의 옐 2장을 아카이브 할 수 있다 : 상대의 Debut 이외의 홀로멤 1명에게 특수 대미지 50을 준다.",
+        damage: 160,
+        specialDamage: { color: "white", value: 50 },
+        cost: ["blue", "blue", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-059",
@@ -29008,8 +29057,31 @@ export const CARDS: Card[] = [
     id: "hBP08-084",
     cardNumber: "hBP08-084",
     setId: "hBP08",
-    name: "",
+    name: "나츠이로 마츠리",
+    nameJp: "夏色まつり",
     type: "holomem",
+    hp: 190,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#1기생", "#슈터"],
+    imageUrl: "/images/hBP08/hBP08-084.png",
+    abilities: [
+      {
+        name: "우아한 티 타임!",
+        description:
+          "자신의 라이프가 3 이하라면, 이 턴 동안, 자신의 스테이지의 #1기생을 가진 홀로멤 전원의 아츠 +20.",
+        timing: "collab",
+      },
+      {
+        name: "마츄도 공주님♡",
+        description:
+          "자신의 스테이지의 #1기생을 가진 2nd 홀로멤이 있다면, 이 아츠 +30.",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-085",
@@ -29452,8 +29524,19 @@ export const CARDS: Card[] = [
     id: "hBP08-109",
     cardNumber: "hBP08-109",
     setId: "hBP08",
-    name: "",
+    name: "루이토모",
+    nameJp: "ルイ友",
     type: "support",
+    supportSubtype: "fan",
+    imageUrl: "/images/hBP08/hBP08-109.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 팬이 붙어 있는 홀로멤의 아츠 +10.\n\n상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤의 [홀로아츠 R이나 홀로아츠 P] 1장을 자신의 다른 홀로멤에게 바꿔 붙인다.\n\n이 팬은, 자신의 〈타카네 루이〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-110",

@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* 모바일 가로모드(가로 + 낮은 높이)만 타깃하는 변형. 데스크톱(가로지만 높이 큼)/세로모드는 제외. */
+@custom-variant mobile-landscape (@media (orientation: landscape) and (max-height: 600px));
+
+/* 게임 화면 강제 가로모드: 모바일이 세로일 때 컨텐츠를 90° 회전시켜 가로로 보이게 함.
+   (iOS Safari 등은 Screen Orientation lock 미지원이라 CSS 회전이 가장 확실한 방법) */
+.force-landscape {
+  width: 100%;
+  height: 100dvh;
+}
+@media (orientation: portrait) and (max-width: 767px) {
+  .force-landscape {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vw;
+    transform: translate(100vw, 0) rotate(90deg);
+    transform-origin: top left;
+    overflow: hidden;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
