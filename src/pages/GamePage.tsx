@@ -106,6 +106,8 @@ export default function GamePage() {
 
   const penaltyRemaining = g.phase === 'penalty' ? actorState.forcedMulligans - penaltyUids.length : 0;
   const selectedUidsForHand = g.phase === 'penalty' ? penaltyUids : selectedUid ? [selectedUid] : [];
+  // 선후공 결정 전 / 게임 종료 시에는 패를 숨긴다.
+  const showHand = g.phase !== 'firstPlayer' && g.phase !== 'gameover';
 
   // P1 하단 / P2 상단(mirrored). activeActor 보드 강조.
   const renderBoard = (pid: PlayerId, mirrored: boolean) => (
@@ -137,6 +139,7 @@ export default function GamePage() {
         activeActor={actor}
         actorState={actorState}
         randomlyPicked={g.randomlyPicked}
+        winner={g.winner}
         penaltyRemaining={penaltyRemaining}
         canPlaceConfirm={canConfirmReady(actorState)}
         onDecideFirst={g.decideFirstPlayer}
@@ -166,7 +169,8 @@ export default function GamePage() {
               {renderBoard('p1', false)}
             </div>
 
-            {/* 패: activeActor의 패 (클릭) */}
+            {/* 패: activeActor의 패 (클릭). 선후공 전/게임 종료 시 숨김. */}
+            {showHand && (
             <div className="shrink-0 flex flex-col gap-0.5">
               <HandArea
                 hand={actorState.hand}
@@ -182,6 +186,7 @@ export default function GamePage() {
                 )}
               </span>
             </div>
+            )}
           </div>
         </div>
       </div>

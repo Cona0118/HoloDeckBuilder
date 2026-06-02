@@ -13,15 +13,6 @@ interface GameBoardProps {
   onSlotClick?: (slot: Slot) => void;
 }
 
-const COLOR_BG: Record<CardColor, string> = {
-  white: 'bg-gray-200',
-  green: 'bg-green-500',
-  red: 'bg-red-500',
-  blue: 'bg-blue-500',
-  purple: 'bg-purple-500',
-  yellow: 'bg-yellow-400',
-};
-
 function slotEq(a: Slot, b: Slot): boolean {
   if (a.zone !== b.zone) return false;
   return a.zone === 'center' || a.index === (b as { index: number }).index;
@@ -83,7 +74,7 @@ function CardSlot({
   );
 }
 
-/** 라이프 zone(가로) + 라이프 색상 스택. */
+/** 라이프 zone(가로) + 라이프 뒷면 스택(색상 비공개). */
 function LifeZone({ life, mirrored }: { life: CardColor[]; mirrored: boolean }) {
   return (
     <div className="flex flex-col items-center gap-[calc(var(--cw)*0.06)]">
@@ -93,10 +84,10 @@ function LifeZone({ life, mirrored }: { life: CardColor[]; mirrored: boolean }) 
         </span>
       </div>
       <div className="flex flex-col gap-[calc(var(--cw)*0.04)] w-[calc(var(--cw)*1.4)]">
-        {life.map((color, i) => (
+        {life.map((_, i) => (
           <div
             key={i}
-            className={`h-[calc(var(--cw)*0.1)] rounded-sm border border-black/20 ${COLOR_BG[color]} opacity-80`}
+            className="h-[calc(var(--cw)*0.1)] rounded-sm border border-rose-300/15 bg-gradient-to-br from-rose-900/40 to-purple-900/30"
           />
         ))}
       </div>

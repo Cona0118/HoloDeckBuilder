@@ -34,6 +34,7 @@ const EMPTY: GameState = {
   randomlyPicked: null,
   firstPlayer: null,
   activeActor: 'p1',
+  winner: null,
   seed: 0,
 };
 
@@ -95,6 +96,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
       randomlyPicked: picked,
       firstPlayer: null,
       activeActor: picked,
+      winner: null,
       seed,
     });
   },
@@ -120,6 +122,11 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const rng = mulberry32(s.seed + 100 + s.players[pid].forcedMulligans);
     const updated = rules.forcedRedraw(s.players[pid], rng);
     const next: GameState = { ...s, players: { ...s.players, [pid]: updated } };
+    // 강제 멀리건 6회 → 해당 플레이어 패배
+    if (updated.forcedMulligans >= 6) {
+      set({ players: next.players, phase: 'gameover', winner: OTHER[pid] });
+      return;
+    }
     if (!rules.handHasDebut(updated.hand)) {
       set({ players: next.players, phase: 'debutCheck' });
       return;

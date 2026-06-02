@@ -143,3 +143,25 @@ export function unplaceDebut(p: PlayerState, slot: Slot): PlayerState {
 export function canConfirmReady(p: PlayerState): boolean {
   return p.center !== null && isDebut(p.center.card);
 }
+
+export const REQUIRED_MAIN = 50;
+export const REQUIRED_CHEER = 20;
+
+export interface DeckValidation {
+  valid: boolean;
+  reasons: string[];
+}
+
+/** 게임 진입 가능한 올바른 덱인지 검사: 메인 50 / 옐 20 / 오시 1 / 데뷔 ≥1. */
+export function validateDeck(deck: Deck | null | undefined): DeckValidation {
+  if (!deck) return { valid: false, reasons: ['덱이 없습니다.'] };
+  const reasons: string[] = [];
+  const mainCount = deck.mainDeck.reduce((s, e) => s + e.count, 0);
+  const cheerCount = Object.values(deck.cheers).reduce((s: number, v) => s + (v ?? 0), 0);
+  const debutCount = deck.mainDeck.reduce((s, e) => s + (isDebut(e.card) ? e.count : 0), 0);
+  if (!deck.oshi) reasons.push('오시 카드가 없습니다.');
+  if (mainCount !== REQUIRED_MAIN) reasons.push(`메인 덱은 ${REQUIRED_MAIN}장이어야 합니다 (현재 ${mainCount}장).`);
+  if (cheerCount !== REQUIRED_CHEER) reasons.push(`옐 덱은 ${REQUIRED_CHEER}장이어야 합니다 (현재 ${cheerCount}장).`);
+  if (debutCount < 1) reasons.push('데뷔 홀로멤이 최소 1장 필요합니다.');
+  return { valid: reasons.length === 0, reasons };
+}

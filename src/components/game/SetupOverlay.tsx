@@ -1,10 +1,12 @@
 import type { PlayerId, PlayerState, Phase } from '../../game/types';
+import { handHasDebut } from '../../game/setup';
 
 interface SetupOverlayProps {
   phase: Phase;
   activeActor: PlayerId;
   actorState: PlayerState;
   randomlyPicked: PlayerId | null;
+  winner: PlayerId | null; // gameover 시 승자
   penaltyRemaining: number; // 페널티에서 더 골라야 하는 수
   canPlaceConfirm: boolean; // 센터에 데뷔 배치됨
   onDecideFirst: (first: PlayerId) => void;
@@ -22,8 +24,9 @@ const btn =
   'px-3 py-1.5 rounded-md text-xs font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed';
 
 export default function SetupOverlay(props: SetupOverlayProps) {
-  const { phase, activeActor, actorState, randomlyPicked, penaltyRemaining, canPlaceConfirm } = props;
+  const { phase, activeActor, actorState, randomlyPicked, penaltyRemaining, canPlaceConfirm, winner } = props;
   const who = actorLabel(activeActor);
+  const hasDebut = handHasDebut(actorState.hand);
 
   return (
     <div className="shrink-0 flex items-center justify-center gap-3 px-3 py-2 bg-gray-900/80 border-b border-gray-800 min-h-[44px] flex-wrap">
@@ -44,8 +47,9 @@ export default function SetupOverlay(props: SetupOverlayProps) {
       {phase === 'mulligan' && (
         <>
           <span className="text-xs text-gray-300"><b className="text-amber-300">{who}</b>: 멀리건 (7장 다시 뽑기)?</span>
-          <button className={`${btn} bg-gray-700 hover:bg-gray-600 text-white`} onClick={() => props.onMulligan(false)}>그대로</button>
+          <button className={`${btn} bg-gray-700 hover:bg-gray-600 text-white`} onClick={() => props.onMulligan(false)} disabled={!hasDebut}>그대로</button>
           <button className={`${btn} bg-indigo-600 hover:bg-indigo-500 text-white`} onClick={() => props.onMulligan(true)} disabled={actorState.mulliganUsed}>다시 뽑기</button>
+          {!hasDebut && <span className="text-[11px] text-rose-400">데뷔가 없어 '다시 뽑기'만 선택할 수 있습니다.</span>}
         </>
       )}
 
@@ -53,6 +57,9 @@ export default function SetupOverlay(props: SetupOverlayProps) {
         <>
           <span className="text-xs text-rose-300"><b>{who}</b>: 패에 데뷔가 없습니다. 패를 공개하고 다시 뽑습니다. (강제 {actorState.forcedMulligans}회)</span>
           <button className={`${btn} bg-rose-600 hover:bg-rose-500 text-white`} onClick={props.onForcedMulligan}>패 공개 후 다시 뽑기</button>
+          {actorState.forcedMulligans >= 5 && (
+            <span className="text-[11px] font-bold text-rose-400">다시 뽑으면 6회째 — 패배합니다!</span>
+          )}
         </>
       )}
 
@@ -71,6 +78,12 @@ export default function SetupOverlay(props: SetupOverlayProps) {
       )}
 
       {phase === 'ready' && <span className="text-sm text-emerald-300 font-bold">셋업 완료! (턴 진행은 다음 단계)</span>}
+
+      {phase === 'gameover' && (
+        <span className="text-sm font-bold text-amber-300">
+          게임 종료 — {actorLabel(winner ?? 'p1')} 승리! (상대가 강제 멀리건 6회로 패배)
+        </span>
+      )}
     </div>
   );
 }

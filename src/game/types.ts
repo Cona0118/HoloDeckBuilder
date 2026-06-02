@@ -36,7 +36,8 @@ export type Phase =
   | 'debutCheck' // activeActor 데뷔 없으면 공개 + 강제 재멀리건 반복
   | 'penalty' // activeActor 강제 멀리건 횟수만큼 패 → 덱 맨 아래
   | 'placeDebut' // activeActor 센터(필수) + 백(선택) 데뷔 배치
-  | 'ready'; // 셋업 완료
+  | 'ready' // 셋업 완료
+  | 'gameover'; // 승패 결정 (현재: 강제 멀리건 6회 패배)
 
 export type GameMode = 'solo' | 'dev' | 'online';
 
@@ -47,6 +48,7 @@ export interface GameState {
   randomlyPicked: PlayerId | null; // 선후공 결정권자 (시스템 무작위)
   firstPlayer: PlayerId | null; // 선공 확정
   activeActor: PlayerId; // 핫시트: 지금 조작 대상
+  winner: PlayerId | null; // 승자 (gameover phase에서 설정)
   seed: number;
 }
 

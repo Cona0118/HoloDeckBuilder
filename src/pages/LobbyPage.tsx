@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLobbyStore } from '../store/lobbyStore';
 import { useDeckStore } from '../store/deckStore';
+import { validateDeck } from '../game/setup';
 
 // 헷갈리는 문자(0/O/1/I) 제외한 방코드 문자셋.
 const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
@@ -33,8 +34,14 @@ export default function LobbyPage() {
       setError('P1/P2 덱을 모두 선택하세요.');
       return;
     }
-    if (!p1.oshi || !p2.oshi) {
-      setError('오시 카드가 없는 덱은 사용할 수 없습니다.');
+    const v1 = validateDeck(p1);
+    if (!v1.valid) {
+      setError(`P1 덱이 올바르지 않습니다: ${v1.reasons[0]}`);
+      return;
+    }
+    const v2 = validateDeck(p2);
+    if (!v2.valid) {
+      setError(`P2 덱이 올바르지 않습니다: ${v2.reasons[0]}`);
       return;
     }
     setError('');
@@ -139,7 +146,7 @@ export default function LobbyPage() {
               >
                 <option value="">P1 덱 선택</option>
                 {decks.map((d) => (
-                  <option key={d.id} value={d.id}>{d.name}{d.oshi ? '' : ' (오시 없음)'}</option>
+                  <option key={d.id} value={d.id}>{d.name}{validateDeck(d).valid ? '' : ' (사용 불가)'}</option>
                 ))}
               </select>
               <select
@@ -149,7 +156,7 @@ export default function LobbyPage() {
               >
                 <option value="">P2 덱 선택</option>
                 {decks.map((d) => (
-                  <option key={d.id} value={d.id}>{d.name}{d.oshi ? '' : ' (오시 없음)'}</option>
+                  <option key={d.id} value={d.id}>{d.name}{validateDeck(d).valid ? '' : ' (사용 불가)'}</option>
                 ))}
               </select>
             </div>
