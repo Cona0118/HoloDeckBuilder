@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780334034773,
-  "projectRoot": "C:\\Users\\user\\Desktop\\Holo",
+  "lastScanned": 1780760245515,
+  "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
       {
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "echo \"=== BUILD ===\" && npm run build 2>&1 | tail -4 && echo \"=== ESLINT (changed files) ===\" && npx eslint src/game/setup.ts src/game/types.ts src/store/gameStore.ts src/components/GameBoard.tsx src/components/game/SetupOverlay.tsx src/pages/GamePage.tsx src/pages/LobbyPage.tsx src/pages/RoomPage.tsx 2>&1 && echo \"eslint-exit:$?\"",
+    "buildCommand": "npm run build",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1780334034705,
+      "lastAccessed": 1780760245349,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1780334034724,
+      "lastAccessed": 1780760245362,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1780334034724,
+      "lastAccessed": 1780760245363,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1780334034725,
+      "lastAccessed": 1780760245365,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1780334034727,
+      "lastAccessed": 1780760245368,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,17 +136,17 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1780334034728,
+      "lastAccessed": 1780760245371,
       "keyFiles": [
-        "index-BJP6unJ9.css",
-        "index-DQYHqGTZ.js"
+        "index-BbHYFmmw.css",
+        "index-Bm-CZLOx.js"
       ]
     },
     "src\\api": {
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1780334034732,
+      "lastAccessed": 1780760245379,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1780334034735,
+      "lastAccessed": 1780760245381,
       "keyFiles": [
         "react.svg"
       ]
@@ -163,19 +163,19 @@
     "src\\components": {
       "path": "src\\components",
       "purpose": "UI components",
-      "fileCount": 14,
-      "lastAccessed": 1780334034736,
+      "fileCount": 16,
+      "lastAccessed": 1780760245382,
       "keyFiles": [
         "CardDetail.tsx",
-        "CardGrid.tsx",
-        "CardItem.tsx"
+        "CardDetailPanel.tsx",
+        "CardGrid.tsx"
       ]
     },
     "src\\data": {
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1780334034737,
+      "lastAccessed": 1780760245383,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,27 +186,17 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1780334034737,
+      "lastAccessed": 1780760245384,
       "keyFiles": [
         "supabase.ts"
-      ]
-    },
-    "src\\pages": {
-      "path": "src\\pages",
-      "purpose": "Page components",
-      "fileCount": 2,
-      "lastAccessed": 1780334034738,
-      "keyFiles": [
-        "BoardPage.tsx",
-        "BuilderPage.tsx"
       ]
     }
   },
   "hotPaths": [
     {
       "path": "src\\data\\cards.ts",
-      "accessCount": 54,
-      "lastAccessed": 1780241185925,
+      "accessCount": 78,
+      "lastAccessed": 1780761217976,
       "type": "file"
     },
     {
@@ -217,8 +207,8 @@
     },
     {
       "path": "src\\types\\card.ts",
-      "accessCount": 22,
-      "lastAccessed": 1780411726653,
+      "accessCount": 23,
+      "lastAccessed": 1780760770938,
       "type": "file"
     },
     {
@@ -366,6 +356,12 @@
       "type": "file"
     },
     {
+      "path": "package.json",
+      "accessCount": 3,
+      "lastAccessed": 1780761368609,
+      "type": "directory"
+    },
+    {
       "path": "docs\\superpowers\\specs\\2026-05-26-deck-board-recommend-design.md",
       "accessCount": 2,
       "lastAccessed": 1779727613770,
@@ -382,12 +378,6 @@
       "accessCount": 2,
       "lastAccessed": 1780077122054,
       "type": "file"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 2,
-      "lastAccessed": 1780334995727,
-      "type": "directory"
     },
     {
       "path": "src\\store\\lobbyStore.ts",

@@ -9439,7 +9439,7 @@ export const CARDS: Card[] = [
     type: "holomem",
     hp: 250,
     color: ["yellow"],
-    holomemSubtype: "debut",
+    holomemSubtype: "1st",
     batonPass: 2,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
     imageUrl: "/images/hBP03/hBP03-083_R.png",
@@ -27225,7 +27225,7 @@ export const CARDS: Card[] = [
     id: "hBP08-012",
     cardNumber: "hBP08-012",
     setId: "hBP08",
-    name: "",
+    name: "IRyS",
     type: "holomem",
   },
   {
@@ -27263,22 +27263,45 @@ export const CARDS: Card[] = [
     id: "hBP08-014",
     cardNumber: "hBP08-014",
     setId: "hBP08",
-    name: "",
+    name: "IRyS",
     type: "holomem",
   },
   {
     id: "hBP08-015",
     cardNumber: "hBP08-015",
     setId: "hBP08",
-    name: "",
+    name: "토키노 소라",
     type: "holomem",
   },
   {
     id: "hBP08-016",
     cardNumber: "hBP08-016",
     setId: "hBP08",
-    name: "",
+    name: "토키노 소라",
+    nameJp: "ときのそら",
     type: "holomem",
+    hp: 180,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#0기생", "#노래"],
+    imageUrl: "/images/hBP08/hBP08-016.png",
+    abilities: [
+      {
+        name: "Stairway to the Stars",
+        description:
+          "자신의 스테이지에 〈토키노 소라〉가 3명 이상 있다면, 자신의 덱을 1장 드로우 한다.",
+        damage: 30,
+        cost: ["colorless"],
+      },
+      {
+        name: "그 때의 하늘로…",
+        description: "",
+        damage: 90,
+        cost: ["white", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-017",
@@ -27759,8 +27782,32 @@ export const CARDS: Card[] = [
     id: "hBP08-033",
     cardNumber: "hBP08-033",
     setId: "hBP08",
-    name: "",
+    name: "파볼리아 레이네",
+    nameJp: "パヴォリア・レイネ",
     type: "holomem",
+    hp: 190,
+    color: ["green"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#ID", "#ID 2기생", "#새", "#그림"],
+    imageUrl: "/images/hBP08/hBP08-033.png",
+    abilities: [
+      {
+        name: "감시자의 눈빛",
+        description:
+          "자신의 옐 덱에서, 옐 1장을 자신의 #ID를 가진 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "녹아웃・트위스트",
+        description:
+          "자신의 아카이브의 옐 1~2장을 자신의 〈파볼리아 레이네〉 1명에게 보낸다.",
+        damage: 140,
+        specialDamage: { color: "blue", value: 50 },
+        cost: ["green", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-034",
@@ -27820,7 +27867,9 @@ export const CARDS: Card[] = [
     id: "hBP08-036",
     cardNumber: "hBP08-036",
     setId: "hBP08",
-    name: "",
+    name: "모코코 어비스가드",
+    nameJp: "モココ・アビスガード",
+    keywords: ["kawaii"],
     type: "holomem",
   },
   {
@@ -28009,8 +28058,32 @@ export const CARDS: Card[] = [
     id: "hBP08-043",
     cardNumber: "hBP08-043",
     setId: "hBP08",
-    name: "",
+    name: "타카나시 키아라",
+    nameJp: "小鳥遊キアラ",
     type: "holomem",
+    color: ["red"],
+    hp: 240,
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#EN", "#Myth", "#새"],
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
+    imageUrl: "/images/hBP08/hBP08-043.png",
+    abilities: [
+      {
+        name: "불새 검무",
+        description:
+          "자신의 아카이브의 홀로멤이 10장 이상 있다면, 이 턴 동안, 이 홀로멤의 아츠에 필요한 적 -2.",
+        timing: "collab",
+      },
+      {
+        name: "살아나갈 각오",
+        description:
+          "자신의 스테이지의 홀로멤 전원이 #Myth를 가진 홀로멤이라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+        damage: 50,
+        cost: ["red", "red"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-044",
@@ -28119,7 +28192,7 @@ export const CARDS: Card[] = [
       {
         name: "자, 천재!",
         description:
-          "자신이 후공이고 최초의 턴이라면, 자신의 덱을 1장 드로우 하고, 상대의 센터 홀로멤의 배턴 터치에 필요한 무 1개당, 자신의 덱을 1장 드로우 한다.",
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱을 1장 드로우 하고, 상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N 1개당, 자신의 덱을 1장 드로우 한다.",
         timing: "collab",
       },
       {
@@ -28221,8 +28294,31 @@ export const CARDS: Card[] = [
     id: "hBP08-051",
     cardNumber: "hBP08-051",
     setId: "hBP08",
-    name: "",
+    name: "미즈미야 스우",
+    nameJp: "水宮枢",
     type: "holomem",
+    hp: 170,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP08/hBP08-051.png",
+    abilities: [
+      {
+        name: "사랑의 에고 서치",
+        description:
+          "[센터 포지션 한정] 자신의 〈미즈미야 스우〉가 콜라보 했을 때, 상대의 센터 홀로멤을 고른다. 다음 상대의 턴이 종료할 때까지, 고른 홀로멤의 배턴 터치에 필요한 홀로아츠 N +1.",
+        timing: "gift",
+      },
+      {
+        name: "8시간 35분",
+        description:
+          "자신의 옐 덱의 위에서부터 1장을 자신의 〈미즈미야 스우〉에게 보낸다.",
+        damage: 40,
+        cost: ["blue", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-052",
@@ -28381,7 +28477,9 @@ export const CARDS: Card[] = [
     id: "hBP08-057",
     cardNumber: "hBP08-057",
     setId: "hBP08",
-    name: "",
+    name: "후와와 어비스가드",
+    nameJp: "フワワ・アビスガード",
+    keywords: ["kawaii"],
     type: "holomem",
   },
   {
@@ -28545,8 +28643,30 @@ export const CARDS: Card[] = [
     id: "hBP08-063",
     cardNumber: "hBP08-063",
     setId: "hBP08",
-    name: "",
+    name: "타카네 루이",
+    nameJp: "鷹嶺ルイ",
     type: "holomem",
+    hp: 150,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#비밀 결사 holoX", "#새"],
+    imageUrl: "/images/hBP08/hBP08-063.png",
+    abilities: [
+      {
+        name: "홀록스・딜",
+        description:
+          "자신의 덱의 위에서부터 3장을 본다. 그중에서 #비밀 결사 holoX를 가진 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+        timing: "collab",
+      },
+      {
+        name: "자 어때 어울려???",
+        description: "",
+        damage: 40,
+        cost: ["purple"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-064",
@@ -28582,7 +28702,7 @@ export const CARDS: Card[] = [
     id: "hBP08-065",
     cardNumber: "hBP08-065",
     setId: "hBP08",
-    name: "",
+    name: "타카네 루이",
     type: "holomem",
   },
   {
@@ -28620,7 +28740,7 @@ export const CARDS: Card[] = [
     id: "hBP08-067",
     cardNumber: "hBP08-067",
     setId: "hBP08",
-    name: "",
+    name: "타카네 루이",
     type: "holomem",
   },
   {
@@ -28686,7 +28806,7 @@ export const CARDS: Card[] = [
     id: "hBP08-070",
     cardNumber: "hBP08-070",
     setId: "hBP08",
-    name: "",
+    name: "니노마에 이나니스",
     type: "holomem",
   },
   {
@@ -29050,8 +29170,32 @@ export const CARDS: Card[] = [
     id: "hBP08-083",
     cardNumber: "hBP08-083",
     setId: "hBP08",
-    name: "",
+    name: "오토노세 카나데",
+    nameJp: "音乃瀬奏",
     type: "holomem",
+    hp: 190,
+    color: ["yellow"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
+    imageUrl: "/images/hBP08/hBP08-083.png",
+    abilities: [
+      {
+        name: "텐션 초 업!",
+        description:
+          "자신의 스테이지의 옐의 매수가 상대 이하라면, 자신의 아카이브의 옐 1~2장을 이 홀로멤에게 보낸다.",
+        timing: "bloom",
+      },
+      {
+        name: "카나데 온 스테이지",
+        description:
+          "자신의 스테이지의 옐의 매수가 상대보다 많다면, 많은 매수 1장당, 이 아츠 +20.",
+        damage: 120,
+        specialDamage: { color: "blue", value: 50 },
+        cost: ["yellow", "yellow", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-084",
@@ -29204,7 +29348,7 @@ export const CARDS: Card[] = [
     id: "hBP08-089",
     cardNumber: "hBP08-089",
     setId: "hBP08",
-    name: "",
+    name: "지지 무린",
     type: "holomem",
   },
   {
@@ -29382,8 +29526,19 @@ export const CARDS: Card[] = [
     id: "hBP08-100",
     cardNumber: "hBP08-100",
     setId: "hBP08",
-    name: "",
+    name: "Myth",
     type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP08/hBP08-100.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 6장 이하가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 본다. 그중에서, #Myth를 가진 홀로멤을 원하는 매수 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-101",
@@ -29517,8 +29672,18 @@ export const CARDS: Card[] = [
     id: "hBP08-108",
     cardNumber: "hBP08-108",
     setId: "hBP08",
-    name: "",
+    name: "장난스런 Ruffians",
     type: "support",
+    supportSubtype: "fan",
+    imageUrl: "/images/hBP08/hBP08-108.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤에게 적 옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.\n\n이 팬은, 자신의 〈후와와 어비스가드〉나 〈모코코 어비스가드〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-109",
