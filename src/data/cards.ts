@@ -9504,6 +9504,7 @@ export const CARDS: Card[] = [
     setId: "hBP03",
     name: "듀얼 모니터 컴퓨터",
     nameJp: "デュアルモニターバソコン",
+    keywords: ["kawaii"],
     type: "support",
     supportSubtype: "item",
     limited: true,
@@ -27264,7 +27265,32 @@ export const CARDS: Card[] = [
     cardNumber: "hBP08-014",
     setId: "hBP08",
     name: "IRyS",
+    nameJp: "IRyS",
+    keywords: ["아이리스"],
     type: "holomem",
+    hp: 200,
+    color: ["white"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#EN", "#Promise", "#노래"],
+    imageUrl: "/images/hBP08/hBP08-014.png",
+    abilities: [
+      {
+        name: "절망에 남은 빛",
+        description:
+          "상대의 센터 홀로멤에게 특수 대미지 30을 준다. 다시, 이 홀로멤에게 홀로아츠 P 이 붙어 있다면, 상대의 콜라보 홀로멤에게 특수 대미지 30을 준다.",
+        timing: "bloom",
+      },
+      {
+        name: "프리즈마틱・앤섬",
+        description:
+          "이 턴 동안, 이 홀로멤의 홀로아츠 P 1장당, 자신의 스테이지의 홀로멤 전원의 아츠 +20.",
+        damage: 130,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["white", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-015",
@@ -29391,8 +29417,21 @@ export const CARDS: Card[] = [
     id: "hBP08-092",
     cardNumber: "hBP08-092",
     setId: "hBP08",
-    name: "",
+    name: "추억의 도넛 가게",
+    nameJp: "思い出のドーナツショップ",
+    keywords: ["kawaii"], // easteregg
     type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP08/hBP08-092.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 덱에서, [〈후와와 어비스가드〉와 〈모코코 어비스가드〉] 1장씩을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 라이프가 상대보다 적다면, 상대의 홀로멤 1명에게 특수 대미지 20을 준다.",
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-093",

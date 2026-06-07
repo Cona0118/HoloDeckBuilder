@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780760245515,
+  "lastScanned": 1780848329165,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build",
+    "buildCommand": "npx tsc --noEmit -p tsconfig.app.json 2>&1 | head -30",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1780760245349,
+      "lastAccessed": 1780848329082,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1780760245362,
+      "lastAccessed": 1780848329093,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1780760245363,
+      "lastAccessed": 1780848329093,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1780760245365,
+      "lastAccessed": 1780848329094,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1780760245368,
+      "lastAccessed": 1780848329094,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,7 +136,7 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1780760245371,
+      "lastAccessed": 1780848329095,
       "keyFiles": [
         "index-BbHYFmmw.css",
         "index-Bm-CZLOx.js"
@@ -146,7 +146,7 @@
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1780760245379,
+      "lastAccessed": 1780848329097,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1780760245381,
+      "lastAccessed": 1780848329097,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 16,
-      "lastAccessed": 1780760245382,
+      "lastAccessed": 1780848329098,
       "keyFiles": [
         "CardDetail.tsx",
         "CardDetailPanel.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1780760245383,
+      "lastAccessed": 1780848329099,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1780760245384,
+      "lastAccessed": 1780848329099,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -195,296 +195,26 @@
   "hotPaths": [
     {
       "path": "src\\data\\cards.ts",
-      "accessCount": 78,
-      "lastAccessed": 1780761217976,
-      "type": "file"
-    },
-    {
-      "path": "src\\pages\\GamePage.tsx",
-      "accessCount": 36,
-      "lastAccessed": 1780414843431,
-      "type": "file"
+      "accessCount": 11,
+      "lastAccessed": 1780848604380,
+      "type": "directory"
     },
     {
       "path": "src\\types\\card.ts",
-      "accessCount": 23,
-      "lastAccessed": 1780760770938,
-      "type": "file"
-    },
-    {
-      "path": "docs\\superpowers\\plans\\2026-06-02-game-setup-phase.md",
-      "accessCount": 19,
-      "lastAccessed": 1780412727394,
-      "type": "file"
-    },
-    {
-      "path": "src\\pages\\LobbyPage.tsx",
-      "accessCount": 19,
-      "lastAccessed": 1780414831165,
-      "type": "file"
-    },
-    {
-      "path": "src\\pages\\RoomPage.tsx",
-      "accessCount": 19,
-      "lastAccessed": 1780414857969,
-      "type": "file"
-    },
-    {
-      "path": "src\\store\\deckStore.ts",
-      "accessCount": 17,
-      "lastAccessed": 1780410755473,
-      "type": "file"
-    },
-    {
-      "path": "src\\game\\types.ts",
-      "accessCount": 15,
-      "lastAccessed": 1780414817399,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\SearchFilter.tsx",
-      "accessCount": 14,
-      "lastAccessed": 1780335360506,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\GameBoard.tsx",
-      "accessCount": 14,
-      "lastAccessed": 1780414837477,
-      "type": "file"
-    },
-    {
-      "path": "src\\game\\setup.ts",
-      "accessCount": 13,
-      "lastAccessed": 1780414816614,
-      "type": "file"
-    },
-    {
-      "path": "src\\pages\\BoardPage.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1780334201766,
-      "type": "file"
-    },
-    {
-      "path": "src\\store\\gameStore.ts",
-      "accessCount": 11,
-      "lastAccessed": 1780414844466,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\PostListItem.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1779892157403,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\DeckPanel.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1780241751612,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\game\\SetupOverlay.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1780414851146,
-      "type": "file"
-    },
-    {
-      "path": "src\\hooks\\useRoom.ts",
-      "accessCount": 9,
-      "lastAccessed": 1780409957557,
-      "type": "file"
-    },
-    {
-      "path": "src\\api\\deckPosts.ts",
-      "accessCount": 7,
-      "lastAccessed": 1780334650847,
-      "type": "file"
-    },
-    {
-      "path": "src\\router.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1780410702886,
-      "type": "file"
-    },
-    {
-      "path": "src\\utils\\cardUtils.ts",
-      "accessCount": 5,
-      "lastAccessed": 1780232536435,
-      "type": "file"
-    },
-    {
-      "path": "src\\index.css",
-      "accessCount": 5,
-      "lastAccessed": 1780409406466,
-      "type": "file"
-    },
-    {
-      "path": "src",
-      "accessCount": 5,
-      "lastAccessed": 1780414838329,
-      "type": "directory"
-    },
-    {
-      "path": "src\\components\\PostDeckView.tsx",
-      "accessCount": 4,
-      "lastAccessed": 1779892070296,
-      "type": "file"
-    },
-    {
-      "path": "_sort_hbp08.cjs",
-      "accessCount": 4,
-      "lastAccessed": 1780076630571,
-      "type": "file"
-    },
-    {
-      "path": "src\\utils\\deckSnapshot.ts",
-      "accessCount": 4,
-      "lastAccessed": 1780241305430,
-      "type": "file"
-    },
-    {
-      "path": "_sortout.txt",
-      "accessCount": 3,
-      "lastAccessed": 1780076689156,
-      "type": "file"
-    },
-    {
-      "path": "src\\game\\rng.ts",
-      "accessCount": 3,
-      "lastAccessed": 1780411859315,
-      "type": "file"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 3,
-      "lastAccessed": 1780761368609,
-      "type": "directory"
-    },
-    {
-      "path": "docs\\superpowers\\specs\\2026-05-26-deck-board-recommend-design.md",
       "accessCount": 2,
-      "lastAccessed": 1779727613770,
+      "lastAccessed": 1780848439168,
       "type": "file"
     },
     {
-      "path": "src\\types\\deckPost.ts",
-      "accessCount": 2,
-      "lastAccessed": 1779728106279,
-      "type": "file"
-    },
-    {
-      "path": "_b2.log",
-      "accessCount": 2,
-      "lastAccessed": 1780077122054,
-      "type": "file"
-    },
-    {
-      "path": "src\\store\\lobbyStore.ts",
-      "accessCount": 2,
-      "lastAccessed": 1780409947987,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\game\\HandArea.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1780412687905,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 2,
-      "lastAccessed": 1780412693710,
-      "type": "directory"
-    },
-    {
-      "path": "docs\\superpowers\\specs\\2026-06-02-game-setup-phase-design.md",
-      "accessCount": 2,
-      "lastAccessed": 1780412720239,
-      "type": "file"
-    },
-    {
-      "path": "docs\\superpowers\\plans\\2026-05-26-deck-board-recommend.md",
+      "path": "public\\images\\hBP08\\hBP08-014.png",
       "accessCount": 1,
-      "lastAccessed": 1779727904973,
+      "lastAccessed": 1780848511136,
       "type": "file"
     },
     {
-      "path": "src\\utils\\recommendStorage.ts",
+      "path": "public\\images\\hBP08\\hBP08-092.png",
       "accessCount": 1,
-      "lastAccessed": 1779728125011,
-      "type": "file"
-    },
-    {
-      "path": "_run.log",
-      "accessCount": 1,
-      "lastAccessed": 1780076646655,
-      "type": "file"
-    },
-    {
-      "path": "_fill_blanks.cjs",
-      "accessCount": 1,
-      "lastAccessed": 1780077084713,
-      "type": "file"
-    },
-    {
-      "path": "src\\App.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780334192006,
-      "type": "file"
-    },
-    {
-      "path": "src\\pages\\BuilderPage.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780334201401,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\CardGrid.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780334216064,
-      "type": "file"
-    },
-    {
-      "path": "public\\logo.png",
-      "accessCount": 1,
-      "lastAccessed": 1780334247639,
-      "type": "file"
-    },
-    {
-      "path": "src\\lib\\supabase.ts",
-      "accessCount": 1,
-      "lastAccessed": 1780334650299,
-      "type": "file"
-    },
-    {
-      "path": ".env.local.example",
-      "accessCount": 1,
-      "lastAccessed": 1780334651120,
-      "type": "file"
-    },
-    {
-      "path": "src\\main.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780336091205,
-      "type": "file"
-    },
-    {
-      "path": "1.png",
-      "accessCount": 1,
-      "lastAccessed": 1780337816000,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\CardPreviewModal.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780338980515,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\CardDetailPanel.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1780339190297,
+      "lastAccessed": 1780848511235,
       "type": "file"
     }
   ],
