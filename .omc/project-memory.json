@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780848329165,
+  "lastScanned": 1780940929383,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npx tsc --noEmit -p tsconfig.app.json 2>&1 | head -30",
+    "buildCommand": "npm run build",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1780848329082,
+      "lastAccessed": 1780940929299,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1780848329093,
+      "lastAccessed": 1780940929313,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1780848329093,
+      "lastAccessed": 1780940929316,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1780848329094,
+      "lastAccessed": 1780940929321,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1780848329094,
+      "lastAccessed": 1780940929324,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,7 +136,7 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1780848329095,
+      "lastAccessed": 1780940929325,
       "keyFiles": [
         "index-BbHYFmmw.css",
         "index-Bm-CZLOx.js"
@@ -146,7 +146,7 @@
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1780848329097,
+      "lastAccessed": 1780940929334,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1780848329097,
+      "lastAccessed": 1780940929339,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 16,
-      "lastAccessed": 1780848329098,
+      "lastAccessed": 1780940929342,
       "keyFiles": [
         "CardDetail.tsx",
         "CardDetailPanel.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1780848329099,
+      "lastAccessed": 1780940929345,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1780848329099,
+      "lastAccessed": 1780940929354,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -195,14 +195,20 @@
   "hotPaths": [
     {
       "path": "src\\data\\cards.ts",
-      "accessCount": 11,
-      "lastAccessed": 1780848604380,
+      "accessCount": 17,
+      "lastAccessed": 1780941973472,
       "type": "directory"
     },
     {
       "path": "src\\types\\card.ts",
+      "accessCount": 5,
+      "lastAccessed": 1780940996924,
+      "type": "file"
+    },
+    {
+      "path": "public\\images\\hBP08\\hBP08-070.png",
       "accessCount": 2,
-      "lastAccessed": 1780848439168,
+      "lastAccessed": 1780941032528,
       "type": "file"
     },
     {
@@ -215,6 +221,96 @@
       "path": "public\\images\\hBP08\\hBP08-092.png",
       "accessCount": 1,
       "lastAccessed": 1780848511235,
+      "type": "file"
+    },
+    {
+      "path": "public\\images\\hBP08\\hBP08-089.png",
+      "accessCount": 1,
+      "lastAccessed": 1780940972114,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-070-top.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941692758,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-070-bottom.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941693091,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-089-top.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941711440,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-089-bottom.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941711750,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-070-arts.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941782279,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-089-baton.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941782386,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-089-arts.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941782446,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-070-baton.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941782483,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-070-cost.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941822433,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-089-cost.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941822708,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-070-costrow.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941869460,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-089-costrow.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941869781,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-070-tags.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941920526,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-089-tags.png",
+      "accessCount": 1,
+      "lastAccessed": 1780941920780,
       "type": "file"
     }
   ],

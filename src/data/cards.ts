@@ -28833,7 +28833,30 @@ export const CARDS: Card[] = [
     cardNumber: "hBP08-070",
     setId: "hBP08",
     name: "니노마에 이나니스",
+    nameJp: "一伊那尓栖",
     type: "holomem",
+    hp: 180,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#EN", "#Myth", "#그림", "#바다"],
+    imageUrl: "/images/hBP08/hBP08-070.png",
+    abilities: [
+      {
+        name: "이나・이매지네이션",
+        description:
+          "자신의 덱에서, 〈Takodachi〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "내 일생의 친구",
+        description:
+          "상대의 오시 홀로멤과 서로 다른 색을 가진 상대의 스테이지의 홀로멤 1명당, 자신의 #Myth를 가진 홀로멤 1명의 HP 10 회복.",
+        damage: 30,
+        cost: ["purple"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-071",
@@ -29375,7 +29398,30 @@ export const CARDS: Card[] = [
     cardNumber: "hBP08-089",
     setId: "hBP08",
     name: "지지 무린",
+    nameJp: "ジジ・ムリン",
     type: "holomem",
+    hp: 170,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Justice"],
+    imageUrl: "/images/hBP08/hBP08-089.png",
+    abilities: [
+      {
+        name: "래피드 파이어・위트",
+        description:
+          "이 홀로멤에 겹쳐져 있는 홀로멤 1장을 아카이브 할 수 있다 : 자신의 덱에서, 〈Popo〉 1장을 자신의 홀로멤에게 붙인다. 그리고 덱을 셔플 한다.",
+        timing: "bloom",
+      },
+      {
+        name: "아이 엠 어 게이머",
+        description:
+          "자신의 아카이브의 옐 1장을, 자신의 #Justice를 가진 홀로멤에게 보낸다.",
+        damage: 30,
+        cost: ["yellow"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-090",
