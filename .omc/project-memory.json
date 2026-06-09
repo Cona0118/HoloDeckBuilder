@@ -195,8 +195,8 @@
   "hotPaths": [
     {
       "path": "src\\data\\cards.ts",
-      "accessCount": 17,
-      "lastAccessed": 1780941973472,
+      "accessCount": 22,
+      "lastAccessed": 1781022185200,
       "type": "directory"
     },
     {
@@ -311,6 +311,48 @@
       "path": ".crop\\hBP08-089-tags.png",
       "accessCount": 1,
       "lastAccessed": 1780941920780,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-012-top.png",
+      "accessCount": 1,
+      "lastAccessed": 1781022081621,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-012-low.png",
+      "accessCount": 1,
+      "lastAccessed": 1781022082379,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-057-top.png",
+      "accessCount": 1,
+      "lastAccessed": 1781022083221,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\hBP08-057-low.png",
+      "accessCount": 1,
+      "lastAccessed": 1781022083896,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\c12-cost.png",
+      "accessCount": 1,
+      "lastAccessed": 1781022112317,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\c57-cost.png",
+      "accessCount": 1,
+      "lastAccessed": 1781022112464,
+      "type": "file"
+    },
+    {
+      "path": ".crop\\c57-cost2.png",
+      "accessCount": 1,
+      "lastAccessed": 1781022147445,
       "type": "file"
     }
   ],

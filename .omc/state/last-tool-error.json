@@ -1,7 +1,0 @@
-{
-  "tool_name": "mcp__wmux__browser_screenshot",
-  "tool_input_preview": "{}",
-  "error": "RPC timeout: browser.screenshot (10000ms)",
-  "timestamp": "2026-06-08T17:59:31.446Z",
-  "retry_count": 2
-}

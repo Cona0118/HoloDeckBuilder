@@ -27227,7 +27227,31 @@ export const CARDS: Card[] = [
     cardNumber: "hBP08-012",
     setId: "hBP08",
     name: "IRyS",
+    nameJp: "IRyS",
+    keywords: ["아이리스"],
     type: "holomem",
+    hp: 160,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Promise", "#노래"],
+    imageUrl: "/images/hBP08/hBP08-012.png",
+    abilities: [
+      {
+        name: "희망이 비추는 궤적",
+        description:
+          "자신의 스테이지의 옐 1장을 옐 덱의 아래로 되돌릴 수 있다 : 자신의 옐 덱의 위에서부터 1장을 자신의 〈IRyS〉에게 보낸다.",
+        timing: "bloom",
+      },
+      {
+        name: "한쪽은 천사 한쪽은 악마",
+        description:
+          "이 홀로멤에게 홀로아츠 P이 붙어 있다면, 상대의 센터 홀로멤에게 특수 대미지 20을 준다.",
+        damage: 50,
+        cost: ["white", "colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-013",
@@ -28507,6 +28531,27 @@ export const CARDS: Card[] = [
     nameJp: "フワワ・アビスガード",
     keywords: ["kawaii"],
     type: "holomem",
+    hp: 180,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Advent", "#동물귀"],
+    imageUrl: "/images/hBP08/hBP08-057.png",
+    abilities: [
+      {
+        name: "나무 사이로 비치는 햇빛 속의 그네",
+        description:
+          "자신의 스테이지의 옐을 원하는 매수 골라, 자신의 〈모코코 어비스가드〉 1명에게 바꿔 붙일 수 있다. 그 후, 자신의 스테이지에 옐이 8장 이상 있다면, 이 턴 동안, 이 홀로멤의 아츠 +40.",
+        timing: "collab",
+      },
+      {
+        name: "가까이 기대는 두 사람",
+        description: "이 홀로멤에게 홀로아츠 R이 붙어 있다면, 이 아츠 +20.",
+        damage: 30,
+        cost: ["blue"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-058",
