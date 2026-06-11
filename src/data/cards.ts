@@ -27321,7 +27321,28 @@ export const CARDS: Card[] = [
     cardNumber: "hBP08-015",
     setId: "hBP08",
     name: "토키노 소라",
+    nameJp: "ときのそら",
     type: "holomem",
+    hp: 120,
+    color: ["white"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#0기생", "#노래"],
+    imageUrl: "/images/hBP08/hBP08-015.png",
+    abilities: [
+      {
+        name: "나한테 이길 수 있을려나?",
+        description: "이 홀로멤이 상대의 홀로멤에게서 받는 아츠 대미지 -10.",
+        timing: "gift",
+      },
+      {
+        name: "나인 다츠",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-016",
@@ -27921,6 +27942,27 @@ export const CARDS: Card[] = [
     nameJp: "モココ・アビスガード",
     keywords: ["kawaii"],
     type: "holomem",
+    hp: 140,
+    color: ["red"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Advent", "#동물귀"],
+    imageUrl: "/images/hBP08/hBP08-036.png",
+    abilities: [
+      {
+        name: "두근두근 Doggy -Mococo-",
+        description:
+          "자신의 덱에서, [〈페로〉나 〈Ruffians〉나 〈장난스런 Ruffians〉] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "bloom",
+      },
+      {
+        name: "두 사람은 “BAU” DOL☆★",
+        description: "",
+        damage: 40,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-037",
@@ -28812,7 +28854,31 @@ export const CARDS: Card[] = [
     cardNumber: "hBP08-067",
     setId: "hBP08",
     name: "타카네 루이",
+    nameJp: "鷹嶺ルイ",
     type: "holomem",
+    hp: 200,
+    color: ["purple"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
+    imageUrl: "/images/hBP08/hBP08-067.png",
+    abilities: [
+      {
+        name: "바이올렛 도미네이션",
+        description:
+          "[센터 포지션 한정] 자신의 패 2장을 아카이브 할 수 있다 : 상대의 스테이지의 옐 1장을, 상대의 홀로멤에게 바꿔 붙인다.",
+        timing: "bloom",
+      },
+      {
+        name: "역전의 한 수",
+        description:
+          "자신의 패가 2장 이하라면, 이 아츠 +50. 자신의 패가 0장 이라면, 대신, 이 아츠 +70",
+        damage: 130,
+        specialDamage: { color: "green", value: 50 },
+        cost: ["purple", "purple", "purple"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-068",

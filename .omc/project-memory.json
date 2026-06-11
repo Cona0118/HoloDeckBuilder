@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780940929383,
+  "lastScanned": 1781191091308,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1780940929299,
+      "lastAccessed": 1781191091210,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1780940929313,
+      "lastAccessed": 1781191091222,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1780940929316,
+      "lastAccessed": 1781191091224,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1780940929321,
+      "lastAccessed": 1781191091227,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1780940929324,
+      "lastAccessed": 1781191091229,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,7 +136,7 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1780940929325,
+      "lastAccessed": 1781191091230,
       "keyFiles": [
         "index-BbHYFmmw.css",
         "index-Bm-CZLOx.js"
@@ -146,7 +146,7 @@
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1780940929334,
+      "lastAccessed": 1781191091232,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1780940929339,
+      "lastAccessed": 1781191091234,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 16,
-      "lastAccessed": 1780940929342,
+      "lastAccessed": 1781191091237,
       "keyFiles": [
         "CardDetail.tsx",
         "CardDetailPanel.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1780940929345,
+      "lastAccessed": 1781191091238,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1780940929354,
+      "lastAccessed": 1781191091239,
       "keyFiles": [
         "supabase.ts"
       ]
