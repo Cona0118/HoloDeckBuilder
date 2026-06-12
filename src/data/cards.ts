@@ -7042,8 +7042,7 @@ export const CARDS: Card[] = [
           "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈파볼리아 레이네〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤의 HP +30.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
-    limit: 1,
-    restricted: "2025.04.21~",
+    limit: 4,
   },
   {
     id: "hBP02-095",
@@ -20655,7 +20654,8 @@ export const CARDS: Card[] = [
           "◆Buzz 홀로멤에게 붙어 있다면 능력 추가\n이 홀로멤의 아츠에 필요한 홀로아츠 N -1.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
-    limit: 4,
+    limit: 1,
+    restricted: "2025.06.19~",
   },
   {
     id: "hBP07-102",
@@ -28816,7 +28816,29 @@ export const CARDS: Card[] = [
     cardNumber: "hBP08-065",
     setId: "hBP08",
     name: "타카네 루이",
+    nameJp: "鷹嶺ルイ",
     type: "holomem",
+    hp: 180,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
+    imageUrl: "/images/hBP08/hBP08-065.png",
+    abilities: [
+      {
+        name: "역배 떴다———!",
+        description:
+          "[센터 포지션 한정] 자신의 패 1장을 아카이브 할 수 있다 : 주사위를 1번 굴린다. 1이라면, 자신의 덱을 3장 드로우 한다. 1 이외라면, 자신의 덱을 1장을 드로우 한다.",
+        timing: "bloom",
+      },
+      {
+        name: "선입으로 간다!",
+        description: "자신의 패가 2장 이하라면, 이 아츠 +30.",
+        damage: 50,
+        cost: ["purple", "purple"],
+      },
+    ],
+    limit: 4,
   },
   {
     id: "hBP08-066",
