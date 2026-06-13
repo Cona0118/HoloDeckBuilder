@@ -26945,7 +26945,7 @@ export const CARDS: Card[] = [
     type: "oshi",
     color: ["white"],
     life: 5,
-    imageUrl: "/images/hBP08/hBP08-001.png",
+    imageUrl: "/images/hBP08/hBP08-001_OSR.png",
     limit: 1,
     oshiAbility: {
       name: "오시 스킬",
@@ -26969,7 +26969,7 @@ export const CARDS: Card[] = [
     type: "oshi",
     color: ["green"],
     life: 5,
-    imageUrl: "/images/hBP08/hBP08-002.png",
+    imageUrl: "/images/hBP08/hBP08-002_OSR.png",
     limit: 1,
     oshiStageAbility: {
       name: "Justice의 고대 자동 인형",
@@ -26993,7 +26993,7 @@ export const CARDS: Card[] = [
     type: "oshi",
     color: ["red"],
     life: 5,
-    imageUrl: "/images/hBP08/hBP08-003.png",
+    imageUrl: "/images/hBP08/hBP08-003_OSR.png",
     limit: 1,
     oshiStageAbility: {
       name: "준비는 됐지!",
@@ -27016,7 +27016,7 @@ export const CARDS: Card[] = [
     type: "oshi",
     color: ["blue"],
     life: 5,
-    imageUrl: "/images/hBP08/hBP08-004.png",
+    imageUrl: "/images/hBP08/hBP08-004_OSR.png",
     limit: 1,
     oshiAbility: {
       name: "스우만 보고 있으면 되는데 말야",
@@ -27040,7 +27040,7 @@ export const CARDS: Card[] = [
     type: "oshi",
     color: ["purple"],
     life: 5,
-    imageUrl: "/images/hBP08/hBP08-005.png",
+    imageUrl: "/images/hBP08/hBP08-005_OSR.png",
     limit: 1,
     oshiStageAbility: {
       name: "벌써 금요일이네 루이네",
@@ -27063,7 +27063,7 @@ export const CARDS: Card[] = [
     type: "oshi",
     life: 5,
     color: ["purple"],
-    imageUrl: "/images/hBP08/hBP08-006.png",
+    imageUrl: "/images/hBP08/hBP08-006_OSR.png",
     oshiAbility: {
       name: "이나니스의 색채",
       cost: "홀로 파워 -1",
@@ -27087,7 +27087,7 @@ export const CARDS: Card[] = [
     type: "oshi",
     color: ["yellow"],
     life: 5,
-    imageUrl: "/images/hBP08/hBP08-007.png",
+    imageUrl: "/images/hBP08/hBP08-007_OSR.png",
     limit: 1,
     oshiAbility: {
       name: "연주하는 멜로디",
@@ -27115,7 +27115,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#EN", "#Promise", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-008.png",
+    imageUrl: "/images/hBP08/hBP08-008_C.png",
     abilities: [
       {
         name: "Promise of Spring",
@@ -27145,7 +27145,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#EN", "#Promise", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-009.png",
+    imageUrl: "/images/hBP08/hBP08-009_U.png",
     abilities: [
       {
         name: "서로 이해할 날이 올지도 몰라",
@@ -27175,7 +27175,7 @@ export const CARDS: Card[] = [
     hp: 130,
     batonPass: 1,
     tags: ["#EN", "#Promise", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-010.png",
+    imageUrl: "/images/hBP08/hBP08-010_C.png",
     abilities: [
       {
         name: "Race with Me!!",
@@ -27203,7 +27203,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     color: ["white"],
     hp: 170,
-    imageUrl: "/images/hBP08/hBP08-011.png",
+    imageUrl: "/images/hBP08/hBP08-011_C.png",
     tags: ["#EN", "#Promise", "#노래"],
     batonPass: 1,
     abilities: [
@@ -27235,7 +27235,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Promise", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-012.png",
+    imageUrl: "/images/hBP08/hBP08-012_R.png",
     abilities: [
       {
         name: "희망이 비추는 궤적",
@@ -27266,7 +27266,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Promise", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-013.png",
+    imageUrl: "/images/hBP08/hBP08-013_U.png",
     abilities: [
       {
         name: "승리의 티타임",
@@ -27297,7 +27297,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Promise", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-014.png",
+    imageUrl: "/images/hBP08/hBP08-014_RR.png",
     abilities: [
       {
         name: "절망에 남은 빛",
@@ -27328,7 +27328,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#JP", "#0기생", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-015.png",
+    imageUrl: "/images/hBP08/hBP08-015_C.png",
     abilities: [
       {
         name: "나한테 이길 수 있을려나?",
@@ -27356,7 +27356,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 2,
     tags: ["#JP", "#0기생", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-016.png",
+    imageUrl: "/images/hBP08/hBP08-016_U.png",
     abilities: [
       {
         name: "Stairway to the Stars",
@@ -27386,7 +27386,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#JP", "#0기생", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-017.png",
+    imageUrl: "/images/hBP08/hBP08-017_R.png",
     abilities: [
       {
         name: "「바!」",
@@ -27416,7 +27416,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#JP", "#0기생", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-018.png",
+    imageUrl: "/images/hBP08/hBP08-018_RR.png",
     abilities: [
       {
         name: "아이돌이 되고 싶은 나",
@@ -27447,7 +27447,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#EN", "#Justice", "#동물귀", "#그림"],
-    imageUrl: "/images/hBP08/hBP08-019.png",
+    imageUrl: "/images/hBP08/hBP08-019_U.png",
     abilities: [
       {
         name: "부온 아페티토 -즐거운 식사-",
@@ -27477,7 +27477,7 @@ export const CARDS: Card[] = [
     hp: 180,
     batonPass: 2,
     tags: ["#DEV_IS", "#FLOW GLOW"],
-    imageUrl: "/images/hBP08/hBP08-020.png",
+    imageUrl: "/images/hBP08/hBP08-020_R.png",
     abilities: [
       {
         name: "섹시 댄스 퀸",
@@ -27507,7 +27507,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 0,
     tags: ["#EN", "#Justice", "#어학"],
-    imageUrl: "/images/hBP08/hBP08-021.png",
+    imageUrl: "/images/hBP08/hBP08-021_C.png",
     abilities: [
       {
         name: "Automaton, Roll Out!",
@@ -27536,7 +27536,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 0,
     tags: ["#EN", "#Justice", "#어학"],
-    imageUrl: "/images/hBP08/hBP08-022.png",
+    imageUrl: "/images/hBP08/hBP08-022_U.png",
     abilities: [
       {
         name: "에스케이프 멘트",
@@ -27565,7 +27565,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Justice", "#어학"],
-    imageUrl: "/images/hBP08/hBP08-023.png",
+    imageUrl: "/images/hBP08/hBP08-023_C.png",
     abilities: [
       {
         name: "같이 있어 주는 시간",
@@ -27594,7 +27594,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Justice", "#어학"],
-    imageUrl: "/images/hBP08/hBP08-024.png",
+    imageUrl: "/images/hBP08/hBP08-024_C.png",
     abilities: [
       {
         name: "구테・라이제 -좋은 여행을-",
@@ -27623,7 +27623,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Justice", "#어학"],
-    imageUrl: "/images/hBP08/hBP08-025.png",
+    imageUrl: "/images/hBP08/hBP08-025_R.png",
     abilities: [
       {
         name: "차 마시는 시간",
@@ -27652,7 +27652,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Justice", "#어학"],
-    imageUrl: "/images/hBP08/hBP08-026.png",
+    imageUrl: "/images/hBP08/hBP08-026_U.png",
     abilities: [
       {
         name: "기교의 슈트라히",
@@ -27682,7 +27682,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Justice", "#어학"],
-    imageUrl: "/images/hBP08/hBP08-027.png",
+    imageUrl: "/images/hBP08/hBP08-027_RR.png",
     abilities: [
       {
         name: "기계 장치의 랩소디",
@@ -27713,7 +27713,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#JP", "#1기생", "#하프엘프", "#술", "#서머"],
-    imageUrl: "/images/hBP08/hBP08-028.png",
+    imageUrl: "/images/hBP08/hBP08-028_R.png",
     abilities: [
       {
         name: "홀로나츠 곱빼기 파르페",
@@ -27742,7 +27742,7 @@ export const CARDS: Card[] = [
     hp: 120,
     batonPass: 1,
     tags: ["#JP", "#비밀 결사 holoX"],
-    imageUrl: "/images/hBP08/hBP08-029.png",
+    imageUrl: "/images/hBP08/hBP08-029_U.png",
     abilities: [
       {
         name: "Secret Love -Iroha-",
@@ -27771,7 +27771,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#ID", "#ID 2기생", "#새", "#그림"],
-    imageUrl: "/images/hBP08/hBP08-030.png",
+    imageUrl: "/images/hBP08/hBP08-030_C.png",
     abilities: [
       {
         name: "한 걸음 씩",
@@ -27798,7 +27798,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     color: ["green"],
     hp: 250,
-    imageUrl: "/images/hBP08/hBP08-031.png",
+    imageUrl: "/images/hBP08/hBP08-031_R.png",
     tags: ["#ID", "#ID 2기생", "#새", "#그림"],
     batonPass: 2,
     abilities: [
@@ -27830,7 +27830,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#ID", "#ID 2기생", "#새", "#그림"],
-    imageUrl: "/images/hBP08/hBP08-032.png",
+    imageUrl: "/images/hBP08/hBP08-032_U.png",
     abilities: [
       {
         name: "새로운 여행으로",
@@ -27861,7 +27861,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#ID", "#ID 2기생", "#새", "#그림"],
-    imageUrl: "/images/hBP08/hBP08-033.png",
+    imageUrl: "/images/hBP08/hBP08-033_RR.png",
     abilities: [
       {
         name: "감시자의 눈빛",
@@ -27893,7 +27893,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 0,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-034.png",
+    imageUrl: "/images/hBP08/hBP08-034_C.png",
     abilities: [
       {
         name: "FUWAMOCO를 믿어줘!",
@@ -27923,7 +27923,7 @@ export const CARDS: Card[] = [
     hp: 130,
     batonPass: 1,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-035.png",
+    imageUrl: "/images/hBP08/hBP08-035_U.png",
     abilities: [
       {
         name: "아싸 대승리야!!",
@@ -27947,7 +27947,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-036.png",
+    imageUrl: "/images/hBP08/hBP08-036_C.png",
     abilities: [
       {
         name: "두근두근 Doggy -Mococo-",
@@ -27977,7 +27977,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-037.png",
+    imageUrl: "/images/hBP08/hBP08-037_R.png",
     abilities: [
       {
         name: "트윙클・아이돌",
@@ -28008,7 +28008,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-038.png",
+    imageUrl: "/images/hBP08/hBP08-038_R.png",
     abilities: [
       {
         name: "마법 무기인걸!",
@@ -28039,7 +28039,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-039.png",
+    imageUrl: "/images/hBP08/hBP08-039_RR.png",
     abilities: [
       {
         name: "심연에서의 신뢰",
@@ -28071,7 +28071,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 2,
     tags: ["#JP", "#2기생", "#슈터"],
-    imageUrl: "/images/hBP08/hBP08-040.png",
+    imageUrl: "/images/hBP08/hBP08-040_R.png",
     extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
@@ -28099,7 +28099,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     color: ["red"],
     hp: 130,
-    imageUrl: "/images/hBP08/hBP08-041.png",
+    imageUrl: "/images/hBP08/hBP08-041_C.png",
     tags: ["#EN", "#Myth", "#새"],
     batonPass: 1,
     abilities: [
@@ -28129,7 +28129,7 @@ export const CARDS: Card[] = [
     hp: 170,
     batonPass: 1,
     tags: ["#EN", "#Myth", "#새"],
-    imageUrl: "/images/hBP08/hBP08-042.png",
+    imageUrl: "/images/hBP08/hBP08-042_U.png",
     abilities: [
       {
         name: "구텐 모르겐 -상쾌한 아침-",
@@ -28159,7 +28159,7 @@ export const CARDS: Card[] = [
     batonPass: 2,
     tags: ["#EN", "#Myth", "#새"],
     extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
-    imageUrl: "/images/hBP08/hBP08-043.png",
+    imageUrl: "/images/hBP08/hBP08-043_R.png",
     abilities: [
       {
         name: "불새 검무",
@@ -28189,7 +28189,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Myth", "#새"],
-    imageUrl: "/images/hBP08/hBP08-044.png",
+    imageUrl: "/images/hBP08/hBP08-044_RR.png",
     abilities: [
       {
         name: "빛, 다시 켜져",
@@ -28219,7 +28219,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Promise", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-045.png",
+    imageUrl: "/images/hBP08/hBP08-045_R.png",
     abilities: [
       {
         name: "올해는 풍작이 될 것 같네!",
@@ -28250,7 +28250,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Justice", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-046.png",
+    imageUrl: "/images/hBP08/hBP08-046_R.png",
     abilities: [
       {
         name: "마제스틱・디보션",
@@ -28279,7 +28279,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#DEV_IS", "#FLOW GLOW"],
-    imageUrl: "/images/hBP08/hBP08-047.png",
+    imageUrl: "/images/hBP08/hBP08-047_C.png",
     abilities: [
       {
         name: "자, 천재!",
@@ -28306,7 +28306,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     color: ["blue"],
     hp: 110,
-    imageUrl: "/images/hBP08/hBP08-048.png",
+    imageUrl: "/images/hBP08/hBP08-048_U.png",
     tags: ["#DEV_IS", "#FLOW GLOW"],
     batonPass: 1,
     abilities: [
@@ -28336,7 +28336,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#DEV_IS", "#FLOW GLOW"],
-    imageUrl: "/images/hBP08/hBP08-049.png",
+    imageUrl: "/images/hBP08/hBP08-049_C.png",
     abilities: [
       {
         name: "너랑 하는 전화를 독점",
@@ -28365,7 +28365,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#DEV_IS", "#FLOW GLOW"],
-    imageUrl: "/images/hBP08/hBP08-050.png",
+    imageUrl: "/images/hBP08/hBP08-050_C.png",
     abilities: [
       {
         name: "너에게 맡겨 버릴까나?",
@@ -28394,7 +28394,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#DEV_IS", "#FLOW GLOW"],
-    imageUrl: "/images/hBP08/hBP08-051.png",
+    imageUrl: "/images/hBP08/hBP08-051_R.png",
     abilities: [
       {
         name: "사랑의 에고 서치",
@@ -28424,7 +28424,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#DEV_IS", "#FLOW GLOW"],
-    imageUrl: "/images/hBP08/hBP08-052.png",
+    imageUrl: "/images/hBP08/hBP08-052_U.png",
     abilities: [
       {
         name: "기운이 나는 구미",
@@ -28456,7 +28456,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#DEV_IS", "#FLOW GLOW"],
-    imageUrl: "/images/hBP08/hBP08-053.png",
+    imageUrl: "/images/hBP08/hBP08-053_RR.png",
     abilities: [
       {
         name: "슈피슈와~~!!!!",
@@ -28485,7 +28485,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     color: ["blue"],
     hp: 200,
-    imageUrl: "/images/hBP08/hBP08-054.png",
+    imageUrl: "/images/hBP08/hBP08-054_R.png",
     tags: ["#ID", "#ID 1기생", "#노래"],
     batonPass: 1,
     abilities: [
@@ -28516,7 +28516,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     color: ["blue"],
     hp: 110,
-    imageUrl: "/images/hBP08/hBP08-055.png",
+    imageUrl: "/images/hBP08/hBP08-055_C.png",
     tags: ["#EN", "#Advent", "#동물귀"],
     batonPass: 1,
     abilities: [
@@ -28548,7 +28548,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-056.png",
+    imageUrl: "/images/hBP08/hBP08-056_U.png",
     abilities: [
       {
         name: "두근두근 Doggy -Fuwawa-",
@@ -28578,7 +28578,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-057.png",
+    imageUrl: "/images/hBP08/hBP08-057_R.png",
     abilities: [
       {
         name: "나무 사이로 비치는 햇빛 속의 그네",
@@ -28608,7 +28608,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-058.png",
+    imageUrl: "/images/hBP08/hBP08-058_R.png",
     abilities: [
       {
         name: "이길리 없잖아!",
@@ -28642,7 +28642,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-059.png",
+    imageUrl: "/images/hBP08/hBP08-059_RR.png",
     abilities: [
       {
         name: "심연에서의 애정",
@@ -28674,7 +28674,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Advent", "#동물귀"],
-    imageUrl: "/images/hBP08/hBP08-060.png",
+    imageUrl: "/images/hBP08/hBP08-060_R.png",
     extraRule:
       "이 홀로멤은 〈후와와 어비스가드〉〈모코코 어비스가드〉로도 취급한다.",
     abilities: [
@@ -28706,7 +28706,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
-    imageUrl: "/images/hBP08/hBP08-061.png",
+    imageUrl: "/images/hBP08/hBP08-061_C.png",
     abilities: [
       {
         name: "비밀결사의 대접",
@@ -28735,7 +28735,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
-    imageUrl: "/images/hBP08/hBP08-062.png",
+    imageUrl: "/images/hBP08/hBP08-062_U.png",
     abilities: [
       {
         name: "다운 당할 각오",
@@ -28764,7 +28764,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#JP", "#비밀 결사 holoX", "#새"],
-    imageUrl: "/images/hBP08/hBP08-063.png",
+    imageUrl: "/images/hBP08/hBP08-063_C.png",
     abilities: [
       {
         name: "홀록스・딜",
@@ -28793,7 +28793,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
-    imageUrl: "/images/hBP08/hBP08-064.png",
+    imageUrl: "/images/hBP08/hBP08-064_C.png",
     abilities: [
       {
         name: "싸움 환영",
@@ -28823,7 +28823,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 2,
     tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
-    imageUrl: "/images/hBP08/hBP08-065.png",
+    imageUrl: "/images/hBP08/hBP08-065_R.png",
     abilities: [
       {
         name: "역배 떴다———!",
@@ -28852,7 +28852,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
-    imageUrl: "/images/hBP08/hBP08-066.png",
+    imageUrl: "/images/hBP08/hBP08-066_U.png",
     abilities: [
       {
         name: "그렇게나 얼굴이 빨게?",
@@ -28883,7 +28883,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
-    imageUrl: "/images/hBP08/hBP08-067.png",
+    imageUrl: "/images/hBP08/hBP08-067_RR.png",
     abilities: [
       {
         name: "바이올렛 도미네이션",
@@ -28914,7 +28914,7 @@ export const CARDS: Card[] = [
     hp: 140,
     batonPass: 1,
     tags: ["#EN", "#Myth", "#그림", "#바다"],
-    imageUrl: "/images/hBP08/hBP08-068.png",
+    imageUrl: "/images/hBP08/hBP08-068_C.png",
     abilities: [
       {
         name: "키타코레!",
@@ -28944,7 +28944,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#EN", "#Myth", "#그림", "#바다"],
-    imageUrl: "/images/hBP08/hBP08-069.png",
+    imageUrl: "/images/hBP08/hBP08-069_U.png",
     abilities: [
       {
         name: "여름의 방문",
@@ -28973,7 +28973,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 2,
     tags: ["#EN", "#Myth", "#그림", "#바다"],
-    imageUrl: "/images/hBP08/hBP08-070.png",
+    imageUrl: "/images/hBP08/hBP08-070_C.png",
     abilities: [
       {
         name: "이나・이매지네이션",
@@ -29003,7 +29003,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Myth", "#그림", "#바다"],
-    imageUrl: "/images/hBP08/hBP08-071.png",
+    imageUrl: "/images/hBP08/hBP08-071_C.png",
     abilities: [
       {
         name: "TOMORROW!?",
@@ -29032,7 +29032,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Myth", "#그림", "#바다", "#서머"],
-    imageUrl: "/images/hBP08/hBP08-072.png",
+    imageUrl: "/images/hBP08/hBP08-072_R.png",
     abilities: [
       {
         name: "Natsu Ina!!",
@@ -29062,7 +29062,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Myth", "#그림", "#바다"],
-    imageUrl: "/images/hBP08/hBP08-073.png",
+    imageUrl: "/images/hBP08/hBP08-073_U.png",
     abilities: [
       {
         name: "",
@@ -29092,7 +29092,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#EN", "#Myth", "#그림", "#바다"],
-    imageUrl: "/images/hBP08/hBP08-074.png",
+    imageUrl: "/images/hBP08/hBP08-074_RR.png",
     abilities: [
       {
         name: "눈을 떠라, 붉은 눈의 흑룡",
@@ -29123,7 +29123,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#JP", "#0기생", "#슈터"],
-    imageUrl: "/images/hBP08/hBP08-075.png",
+    imageUrl: "/images/hBP08/hBP08-075_R.png",
     abilities: [
       {
         name: "로보코 씨↔로보사",
@@ -29153,7 +29153,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 1,
     tags: ["#JP", "#2기생", "#요리"],
-    imageUrl: "/images/hBP08/hBP08-076.png",
+    imageUrl: "/images/hBP08/hBP08-076_R.png",
     abilities: [
       {
         name: "",
@@ -29184,7 +29184,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-077.png",
+    imageUrl: "/images/hBP08/hBP08-077_C.png",
     abilities: [
       {
         name: "불러보왔다, 들어 주세요",
@@ -29213,7 +29213,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-078.png",
+    imageUrl: "/images/hBP08/hBP08-078_U.png",
     abilities: [
       {
         name: "즐거운 월요일이야!!!!!!!!",
@@ -29240,7 +29240,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     color: ["yellow"],
     hp: 170,
-    imageUrl: "/images/hBP08/hBP08-079.png",
+    imageUrl: "/images/hBP08/hBP08-079_C.png",
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
     batonPass: 1,
     abilities: [
@@ -29271,7 +29271,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-080.png",
+    imageUrl: "/images/hBP08/hBP08-080_C.png",
     abilities: [
       {
         name: "파인딩 옐",
@@ -29300,7 +29300,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-081.png",
+    imageUrl: "/images/hBP08/hBP08-081_R.png",
     abilities: [
       {
         name: "소리의 향연",
@@ -29330,7 +29330,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-082.png",
+    imageUrl: "/images/hBP08/hBP08-082_U.png",
     abilities: [
       {
         name: "경사스러운 날인데……",
@@ -29360,7 +29360,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     batonPass: 2,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
-    imageUrl: "/images/hBP08/hBP08-083.png",
+    imageUrl: "/images/hBP08/hBP08-083_RR.png",
     abilities: [
       {
         name: "텐션 초 업!",
@@ -29391,7 +29391,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 2,
     tags: ["#JP", "#1기생", "#슈터"],
-    imageUrl: "/images/hBP08/hBP08-084.png",
+    imageUrl: "/images/hBP08/hBP08-084_R.png",
     abilities: [
       {
         name: "우아한 티 타임!",
@@ -29421,7 +29421,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "debut",
     batonPass: 1,
     tags: ["#JP", "#3기생", "#하프엘프"],
-    imageUrl: "/images/hBP08/hBP08-085.png",
+    imageUrl: "/images/hBP08/hBP08-085_C.png",
     abilities: [
       {
         name: "손, 잡고 있으면 따듯하네",
@@ -29450,7 +29450,7 @@ export const CARDS: Card[] = [
     hp: 160,
     batonPass: 1,
     tags: ["#JP", "#3기생", "#하프엘프"],
-    imageUrl: "/images/hBP08/hBP08-086.png",
+    imageUrl: "/images/hBP08/hBP08-086_U.png",
     abilities: [
       {
         name: "오레노 이나—!",
@@ -29477,7 +29477,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     color: ["yellow"],
     hp: 200,
-    imageUrl: "/images/hBP08/hBP08-087.png",
+    imageUrl: "/images/hBP08/hBP08-087_R.png",
     tags: ["#JP", "#3기생", "#하프엘프"],
     batonPass: 2,
     abilities: [
@@ -29506,7 +29506,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "2nd",
     color: ["yellow"],
     hp: 200,
-    imageUrl: "/images/hBP08/hBP08-088.png",
+    imageUrl: "/images/hBP08/hBP08-088_RR.png",
     tags: ["#JP", "#3기생", "#하프엘프"],
     batonPass: 2,
     abilities: [
@@ -29538,7 +29538,7 @@ export const CARDS: Card[] = [
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Justice"],
-    imageUrl: "/images/hBP08/hBP08-089.png",
+    imageUrl: "/images/hBP08/hBP08-089_R.png",
     abilities: [
       {
         name: "래피드 파이어・위트",
@@ -29565,7 +29565,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "item",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-090.png",
+    imageUrl: "/images/hBP08/hBP08-090_C.png",
     abilities: [
       {
         name: "",
@@ -29582,7 +29582,7 @@ export const CARDS: Card[] = [
     name: "크리에이터 컴퓨터",
     type: "support",
     supportSubtype: "item",
-    imageUrl: "/images/hBP08/hBP08-091.png",
+    imageUrl: "/images/hBP08/hBP08-091_U.png",
     abilities: [
       {
         name: "",
@@ -29602,7 +29602,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-092.png",
+    imageUrl: "/images/hBP08/hBP08-092_U.png",
     abilities: [
       {
         name: "",
@@ -29620,7 +29620,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     tags: ["#음식"],
-    imageUrl: "/images/hBP08/hBP08-093.png",
+    imageUrl: "/images/hBP08/hBP08-093_U.png",
     abilities: [
       {
         name: "",
@@ -29638,7 +29638,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-094.png",
+    imageUrl: "/images/hBP08/hBP08-094_U.png",
     abilities: [
       {
         name: "",
@@ -29656,7 +29656,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-095.png",
+    imageUrl: "/images/hBP08/hBP08-095_C.png",
     abilities: [
       {
         name: "",
@@ -29673,7 +29673,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-096.png",
+    imageUrl: "/images/hBP08/hBP08-096_U.png",
     abilities: [
       {
         name: "",
@@ -29691,7 +29691,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     tags: ["#음식"],
-    imageUrl: "/images/hBP08/hBP08-097.png",
+    imageUrl: "/images/hBP08/hBP08-097_C.png",
     abilities: [
       {
         name: "",
@@ -29711,7 +29711,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-098.png",
+    imageUrl: "/images/hBP08/hBP08-098_U.png",
     abilities: [
       {
         name: "",
@@ -29730,7 +29730,7 @@ export const CARDS: Card[] = [
     keywords: ["홀로토리"],
     type: "support",
     supportSubtype: "event",
-    imageUrl: "/images/hBP08/hBP08-099.png",
+    imageUrl: "/images/hBP08/hBP08-099_U.png",
     abilities: [
       {
         name: "",
@@ -29748,7 +29748,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-100.png",
+    imageUrl: "/images/hBP08/hBP08-100_U.png",
     abilities: [
       {
         name: "",
@@ -29768,7 +29768,7 @@ export const CARDS: Card[] = [
     type: "support",
     supportSubtype: "event",
     limited: true,
-    imageUrl: "/images/hBP08/hBP08-101.png",
+    imageUrl: "/images/hBP08/hBP08-101_U.png",
     abilities: [
       {
         name: "",
@@ -29786,7 +29786,7 @@ export const CARDS: Card[] = [
     type: "support",
     tags: ["#Buzz 굿즈"],
     supportSubtype: "tool",
-    imageUrl: "/images/hBP08/hBP08-102.png",
+    imageUrl: "/images/hBP08/hBP08-102_C.png",
     abilities: [
       {
         name: "",
@@ -29802,7 +29802,7 @@ export const CARDS: Card[] = [
     name: "홀로 망토",
     type: "support",
     supportSubtype: "tool",
-    imageUrl: "/images/hBP08/hBP08-103.png",
+    imageUrl: "/images/hBP08/hBP08-103_U.png",
     abilities: [
       {
         name: "",
@@ -29819,7 +29819,7 @@ export const CARDS: Card[] = [
     name: "기척",
     type: "support",
     supportSubtype: "tool",
-    imageUrl: "/images/hBP08/hBP08-104.png",
+    imageUrl: "/images/hBP08/hBP08-104_C.png",
     abilities: [
       {
         name: "",
@@ -29838,7 +29838,7 @@ export const CARDS: Card[] = [
     keywords: ["블룸 앤 글룸"],
     type: "support",
     supportSubtype: "mascot",
-    imageUrl: "/images/hBP08/hBP08-105.png",
+    imageUrl: "/images/hBP08/hBP08-105_C.png",
     abilities: [
       {
         name: "",
@@ -29857,7 +29857,7 @@ export const CARDS: Card[] = [
     keywords: ["가이리스"],
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP08/hBP08-106.png",
+    imageUrl: "/images/hBP08/hBP08-106_C.png",
     abilities: [
       {
         name: "",
@@ -29876,7 +29876,7 @@ export const CARDS: Card[] = [
     keywords: ["오토모"],
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP08/hBP08-107.png",
+    imageUrl: "/images/hBP08/hBP08-107_C.png",
     abilities: [
       {
         name: "",
@@ -29893,7 +29893,7 @@ export const CARDS: Card[] = [
     name: "장난스런 Ruffians",
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP08/hBP08-108.png",
+    imageUrl: "/images/hBP08/hBP08-108_C.png",
     abilities: [
       {
         name: "",
@@ -29911,7 +29911,7 @@ export const CARDS: Card[] = [
     nameJp: "ルイ友",
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP08/hBP08-109.png",
+    imageUrl: "/images/hBP08/hBP08-109_C.png",
     abilities: [
       {
         name: "",
@@ -29930,7 +29930,7 @@ export const CARDS: Card[] = [
     keywords: ["타코다치", "타코타치"],
     type: "support",
     supportSubtype: "fan",
-    imageUrl: "/images/hBP08/hBP08-110.png",
+    imageUrl: "/images/hBP08/hBP08-110_C.png",
     abilities: [
       {
         name: "",
