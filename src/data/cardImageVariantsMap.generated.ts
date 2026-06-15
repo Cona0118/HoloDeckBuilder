@@ -1682,6 +1682,42 @@ export const CARD_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/hBP07/hBP07-090_SR.png",
     "/images/hBP07/hBP07-090_UR.png",
   ],
+  "hBP08-003": [
+    "/images/hBP08/hBP08-003_OSR.png",
+    "/images/hBP08/hBP08-003_OUR.png",
+    "/images/hBP08/hBP08-003_SEC.png",
+  ],
+  "hBP08-037": [
+    "/images/hBP08/hBP08-037_R.png",
+    "/images/hBP08/hBP08-037_SR.png",
+  ],
+  "hBP08-038": [
+    "/images/hBP08/hBP08-038_R.png",
+    "/images/hBP08/hBP08-038_SR.png",
+  ],
+  "hBP08-039": [
+    "/images/hBP08/hBP08-039_RR.png",
+    "/images/hBP08/hBP08-039_SR.png",
+    "/images/hBP08/hBP08-039_UR.png",
+  ],
+  "hBP08-057": [
+    "/images/hBP08/hBP08-057_R.png",
+    "/images/hBP08/hBP08-057_SR.png",
+  ],
+  "hBP08-058": [
+    "/images/hBP08/hBP08-058_R.png",
+    "/images/hBP08/hBP08-058_SR.png",
+  ],
+  "hBP08-059": [
+    "/images/hBP08/hBP08-059_RR.png",
+    "/images/hBP08/hBP08-059_SR.png",
+    "/images/hBP08/hBP08-059_UR.png",
+  ],
+  "hBP08-060": [
+    "/images/hBP08/hBP08-060_P.png",
+    "/images/hBP08/hBP08-060_R.png",
+    "/images/hBP08/hBP08-060_SR.png",
+  ],
   "hSD01-004": [
     "/images/hSD01/hSD01-004_P.png",
     "/images/hSD01/hSD01-004_R.png",
@@ -1829,6 +1865,14 @@ export const CARD_IMAGE_VARIANTS: Record<string, string[]> = {
   "hSD12-011": [
     "/images/hSD12/hSD12-011_P.png",
     "/images/hSD12/hSD12-011_RR.png",
+  ],
+  "hSD12-013": [
+    "/images/hSD12/hSD12-013_C.png",
+    "/images/hSD12/hSD12-013_P.png",
+  ],
+  "hSD12-014": [
+    "/images/hSD12/hSD12-014_C.png",
+    "/images/hSD12/hSD12-014_P.png",
   ],
   "hSD13-007": [
     "/images/hSD13/hSD13-007_P.png",

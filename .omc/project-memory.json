@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1781370979816,
+  "lastScanned": 1781539111293,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build 2>&1 | tail -15; echo \"=== build exit: ${PIPESTATUS[0]} ===\"",
+    "buildCommand": "npm run build",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1781370979735,
+      "lastAccessed": 1781539111198,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1781370979746,
+      "lastAccessed": 1781539111212,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1781370979747,
+      "lastAccessed": 1781539111213,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1781370979749,
+      "lastAccessed": 1781539111214,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1781370979750,
+      "lastAccessed": 1781539111216,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,17 +136,17 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1781370979750,
+      "lastAccessed": 1781539111217,
       "keyFiles": [
-        "index-BbHYFmmw.css",
-        "index-Bm-CZLOx.js"
+        "index-54GxqpRV.js",
+        "index-CMJYTP1u.css"
       ]
     },
     "src\\api": {
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1781370979752,
+      "lastAccessed": 1781539111220,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1781370979753,
+      "lastAccessed": 1781539111221,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 16,
-      "lastAccessed": 1781370979754,
+      "lastAccessed": 1781539111222,
       "keyFiles": [
         "CardDetail.tsx",
         "CardDetailPanel.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1781370979756,
+      "lastAccessed": 1781539111223,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1781370979757,
+      "lastAccessed": 1781539111223,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -194,196 +194,40 @@
   },
   "hotPaths": [
     {
-      "path": "src\\data\\cards.ts",
-      "accessCount": 22,
-      "lastAccessed": 1781022185200,
+      "path": "src\\data\\cardImageVariantsMap.generated.ts",
+      "accessCount": 3,
+      "lastAccessed": 1781539375401,
       "type": "directory"
     },
     {
       "path": "src\\types\\card.ts",
-      "accessCount": 7,
-      "lastAccessed": 1781371281737,
-      "type": "file"
-    },
-    {
-      "path": "src\\components\\DeckPanel.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1781371436625,
-      "type": "file"
-    },
-    {
-      "path": "src\\store\\deckStore.ts",
-      "accessCount": 3,
-      "lastAccessed": 1781371446448,
-      "type": "file"
-    },
-    {
-      "path": "public\\images\\hBP08\\hBP08-070.png",
       "accessCount": 2,
-      "lastAccessed": 1780941032528,
+      "lastAccessed": 1781539216649,
       "type": "file"
     },
     {
-      "path": "src/data/cards.ts",
-      "accessCount": 2,
-      "lastAccessed": 1781371309281,
+      "path": "src\\data\\cards.ts",
+      "accessCount": 1,
+      "lastAccessed": 1781539198241,
+      "type": "file"
+    },
+    {
+      "path": "src\\data\\cardImageVariants.ts",
+      "accessCount": 1,
+      "lastAccessed": 1781539226886,
+      "type": "file"
+    },
+    {
+      "path": "scripts\\genCardImageVariants.mjs",
+      "accessCount": 1,
+      "lastAccessed": 1781539227537,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 1,
+      "lastAccessed": 1781539240679,
       "type": "directory"
-    },
-    {
-      "path": "src/store/deckStore.ts",
-      "accessCount": 2,
-      "lastAccessed": 1781371335685,
-      "type": "directory"
-    },
-    {
-      "path": "src/components/DeckPanel.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1781371407503,
-      "type": "directory"
-    },
-    {
-      "path": "public\\images\\hBP08\\hBP08-014.png",
-      "accessCount": 1,
-      "lastAccessed": 1780848511136,
-      "type": "file"
-    },
-    {
-      "path": "public\\images\\hBP08\\hBP08-092.png",
-      "accessCount": 1,
-      "lastAccessed": 1780848511235,
-      "type": "file"
-    },
-    {
-      "path": "public\\images\\hBP08\\hBP08-089.png",
-      "accessCount": 1,
-      "lastAccessed": 1780940972114,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-070-top.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941692758,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-070-bottom.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941693091,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-089-top.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941711440,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-089-bottom.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941711750,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-070-arts.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941782279,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-089-baton.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941782386,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-089-arts.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941782446,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-070-baton.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941782483,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-070-cost.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941822433,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-089-cost.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941822708,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-070-costrow.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941869460,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-089-costrow.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941869781,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-070-tags.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941920526,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-089-tags.png",
-      "accessCount": 1,
-      "lastAccessed": 1780941920780,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-012-top.png",
-      "accessCount": 1,
-      "lastAccessed": 1781022081621,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-012-low.png",
-      "accessCount": 1,
-      "lastAccessed": 1781022082379,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-057-top.png",
-      "accessCount": 1,
-      "lastAccessed": 1781022083221,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\hBP08-057-low.png",
-      "accessCount": 1,
-      "lastAccessed": 1781022083896,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\c12-cost.png",
-      "accessCount": 1,
-      "lastAccessed": 1781022112317,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\c57-cost.png",
-      "accessCount": 1,
-      "lastAccessed": 1781022112464,
-      "type": "file"
-    },
-    {
-      "path": ".crop\\c57-cost2.png",
-      "accessCount": 1,
-      "lastAccessed": 1781022147445,
-      "type": "file"
     }
   ],
   "userDirectives": []
