@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build",
+    "buildCommand": "npm run build 2>&1 | tail -15; echo \"=== build exit: ${PIPESTATUS[0]} ===\"",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -201,8 +201,20 @@
     },
     {
       "path": "src\\types\\card.ts",
-      "accessCount": 5,
-      "lastAccessed": 1780940996924,
+      "accessCount": 7,
+      "lastAccessed": 1781371281737,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\DeckPanel.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1781371436625,
+      "type": "file"
+    },
+    {
+      "path": "src\\store\\deckStore.ts",
+      "accessCount": 3,
+      "lastAccessed": 1781371446448,
       "type": "file"
     },
     {
@@ -210,6 +222,24 @@
       "accessCount": 2,
       "lastAccessed": 1780941032528,
       "type": "file"
+    },
+    {
+      "path": "src/data/cards.ts",
+      "accessCount": 2,
+      "lastAccessed": 1781371309281,
+      "type": "directory"
+    },
+    {
+      "path": "src/store/deckStore.ts",
+      "accessCount": 2,
+      "lastAccessed": 1781371335685,
+      "type": "directory"
+    },
+    {
+      "path": "src/components/DeckPanel.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1781371407503,
+      "type": "directory"
     },
     {
       "path": "public\\images\\hBP08\\hBP08-014.png",
@@ -354,12 +384,6 @@
       "accessCount": 1,
       "lastAccessed": 1781022147445,
       "type": "file"
-    },
-    {
-      "path": "src/data/cards.ts",
-      "accessCount": 1,
-      "lastAccessed": 1781371020053,
-      "type": "directory"
     }
   ],
   "userDirectives": []

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Card, CardColor, Deck, DeckEntry, FilterState } from '../types/card';
+import { CARDS } from '../data/cards';
 
 const MAIN_DECK_MAX = 50;
 const CHEER_MAX = 20;
@@ -588,6 +589,20 @@ export const useDeckStore = create<DeckState>()(
         if (main > MAIN_DECK_MAX) errors.push(`메인 덱 초과: ${main}/${MAIN_DECK_MAX}장`);
         const cheerTotal = getCheerTotal(deck.cheers ?? {});
         if (cheerTotal > CHEER_MAX) errors.push(`엘 덱 초과: ${cheerTotal}/${CHEER_MAX}장`);
+        // 금지/제한 규칙: 같은 카드 합계가 해당 카드 limit를 초과하면 위반
+        const countByCard = new Map<string, { count: number; fallback?: number }>();
+        for (const e of deck.mainDeck) {
+          const prev = countByCard.get(e.card.id);
+          countByCard.set(e.card.id, {
+            count: (prev?.count ?? 0) + e.count,
+            fallback: prev?.fallback ?? e.card.limit,
+          });
+        }
+        const hasLimitViolation = [...countByCard.entries()].some(([id, info]) => {
+          const lim = CARDS.find((c) => c.id === id)?.limit ?? info.fallback ?? 4;
+          return info.count > lim;
+        });
+        if (hasLimitViolation) errors.push('금지/제한 규칙에 적합하지 않습니다');
         return errors;
       },
     }),

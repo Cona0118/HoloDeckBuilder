@@ -102,6 +102,8 @@ function DeckEntryCard({
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
   const atLimit = totalCardCount >= cardLimit;
+  // 금지/제한 규칙 위반: 같은 카드 합계가 limit를 초과 (제한 1장→2장+, 금지 0장→1장+)
+  const overLimit = totalCardCount > cardLimit;
   const isTouch = useRef(false);
   const startPos = useRef<{ x: number; y: number } | null>(null);
   const wasDrag = useRef(false);
@@ -241,8 +243,12 @@ function DeckEntryCard({
             </div>
           )}
 
-          {/* Count badge */}
-          <span className="absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600/90 text-white text-[10px] font-bold flex items-center justify-center shadow">
+          {/* Count badge — 금지/제한 위반 시 빨간색 */}
+          <span
+            className={`absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full text-white text-[10px] font-bold flex items-center justify-center shadow ${
+              overLimit ? "bg-red-600/90" : "bg-indigo-600/90"
+            }`}
+          >
             ×{entry.count}
           </span>
 
