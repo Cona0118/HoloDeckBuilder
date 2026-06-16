@@ -194,6 +194,12 @@
   },
   "hotPaths": [
     {
+      "path": "src\\components\\CardPreviewModal.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1781624580560,
+      "type": "file"
+    },
+    {
       "path": "src\\types\\card.ts",
       "accessCount": 4,
       "lastAccessed": 1781623814386,
@@ -212,10 +218,10 @@
       "type": "file"
     },
     {
-      "path": "src\\components\\CardPreviewModal.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1781623844283,
-      "type": "file"
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1781624454673,
+      "type": "directory"
     },
     {
       "path": "src\\data\\cardImageVariants.ts",
@@ -230,10 +236,10 @@
       "type": "file"
     },
     {
-      "path": "package.json",
+      "path": "vite.config.ts",
       "accessCount": 1,
-      "lastAccessed": 1781539240679,
-      "type": "directory"
+      "lastAccessed": 1781624464633,
+      "type": "file"
     }
   ],
   "userDirectives": []
