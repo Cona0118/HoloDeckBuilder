@@ -27064,17 +27064,16 @@ export const CARDS: Card[] = [
     life: 5,
     color: ["purple"],
     imageUrl: "/images/hBP08/hBP08-006_OSR.png",
+    oshiStageAbility: {
+      name: "WORLD DOMINATION",
+      description:
+        "상대의 스테이지의 홀로멤 전원이 오시 홀로멤과 다른 색을 가진다면, 자신의 니노마에 이나니스 전원의 아츠는 엘을 필요로 하지 않는다",
+    },
     oshiAbility: {
       name: "이나니스의 색채",
-      cost: "홀로 파워 -1",
+      cost: "홀로 파워 -X",
       description:
-        "이 능력으로 아카이브한 홀로파워 1장당, 상대의 스테이지의 홀로멤을 1명 고른다. 고른 홀로멤은 모든 색을 가진 홀로멤으로 취급한다.",
-    },
-    spAbility: {
-      name: "WORLD DOMINATION",
-      cost: "홀로 파워 -3",
-      description:
-        "상대의 스테이지의 홀로멤 전원이 오시 홀로멤과 다른 색을 가진다면, 자신의 〈니노마에 이나니스〉 전원의 아츠는 옐을 필요로 하지 않는다.",
+        "이 능력으로 아카이브한 홀로파워 1장당 상대 스테이지의 홀로멤을 1명 고른다. 고른 홀로멤은 모든 색을 가진 것으로 취급한다",
     },
     limit: 1,
   },

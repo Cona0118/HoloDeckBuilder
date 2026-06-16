@@ -194,21 +194,27 @@
   },
   "hotPaths": [
     {
+      "path": "src\\types\\card.ts",
+      "accessCount": 4,
+      "lastAccessed": 1781623814386,
+      "type": "file"
+    },
+    {
       "path": "src\\data\\cardImageVariantsMap.generated.ts",
       "accessCount": 3,
       "lastAccessed": 1781539375401,
       "type": "directory"
     },
     {
-      "path": "src\\types\\card.ts",
-      "accessCount": 2,
-      "lastAccessed": 1781539216649,
+      "path": "src\\data\\cards.ts",
+      "accessCount": 3,
+      "lastAccessed": 1781623815320,
       "type": "file"
     },
     {
-      "path": "src\\data\\cards.ts",
-      "accessCount": 1,
-      "lastAccessed": 1781539198241,
+      "path": "src\\components\\CardPreviewModal.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1781623844283,
       "type": "file"
     },
     {

@@ -82,6 +82,11 @@ export default function CardPreviewModal({ card, onClose, onSelectImage, onSplit
     navigate(`/board?${param}=${encodeURIComponent(card.id)}`);
   }
 
+  function handleQnaSearch() {
+    const url = `https://hololive-official-cardgame.com/rules/question/search/?keyword=${encodeURIComponent(card.cardNumber)}&keyword_type%5B%5D=all&search_type=and&expansion=`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
   return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
@@ -303,8 +308,17 @@ export default function CardPreviewModal({ card, onClose, onSelectImage, onSplit
             )}
           </div>
 
-          {/* 덱 레시피 검색 (sticky 하단) */}
-          <div className="shrink-0 px-4 py-2 border-t border-gray-800 flex justify-end">
+          {/* 하단 액션 (sticky 하단) */}
+          <div className="shrink-0 px-4 py-2 border-t border-gray-800 flex justify-between items-center gap-2">
+            <button
+              onClick={handleQnaSearch}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded-lg border border-gray-600 transition-colors"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              QnA 검색하기
+            </button>
             <button
               onClick={handleDeckSearch}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-indigo-700 hover:bg-indigo-600 text-white rounded-lg border border-indigo-600 transition-colors"
