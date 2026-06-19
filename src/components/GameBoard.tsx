@@ -1,6 +1,12 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, SyntheticEvent } from 'react';
 import type { CardColor } from '../types/card';
 import type { CardInstance, PlayerState, Slot } from '../game/types';
+import { resolveStoredImage } from '../data/cardImageVariants';
+
+/** 이미지 로드 실패(파일명 변경/삭제) 시 깨진 아이콘 대신 숨김 처리 */
+function hideBrokenImg(e: SyntheticEvent<HTMLImageElement>) {
+  e.currentTarget.style.visibility = 'hidden';
+}
 
 type Orientation = 'portrait' | 'landscape';
 
@@ -40,7 +46,9 @@ function CardSlot({
     orientation === 'landscape'
       ? 'w-[calc(var(--cw)*1.4)] aspect-[7/5]'
       : 'w-[var(--cw)] aspect-[5/7]';
-  const img = card?.imageUrl ?? card?.card.imageUrl;
+  const img = card
+    ? resolveStoredImage(card.card.id, card.imageUrl, card.card.imageUrl)
+    : undefined;
   const clickable = !!onClick;
   return (
     <div
@@ -55,7 +63,7 @@ function CardSlot({
     >
       {card ? (
         img ? (
-          <img src={img} alt={card.card.name} className="w-full h-full object-cover" draggable={false} />
+          <img src={img} alt={card.card.name} className="w-full h-full object-cover" draggable={false} onError={hideBrokenImg} />
         ) : (
           <span className={`text-[8px] text-gray-300 p-0.5 text-center leading-tight ${mirrored ? 'rotate-180' : ''}`}>
             {card.card.name}

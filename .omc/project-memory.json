@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1781539111293,
+  "lastScanned": 1781887874849,
   "projectRoot": "c:\\Users\\user\\Desktop\\Holo",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build",
+    "buildCommand": "npx tsc --noEmit 2>&1 | tail -20; echo \"TSC_EXIT: ${PIPESTATUS[0]}\"; echo \"=== build ===\"; npm run build 2>&1 | tail -20; echo \"BUILD_EXIT: ${PIPESTATUS[0]}\"",
     "testCommand": null,
     "lintCommand": "npm run lint",
     "devCommand": "npm run dev",
@@ -79,7 +79,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 11,
-      "lastAccessed": 1781539111198,
+      "lastAccessed": 1781887874732,
       "keyFiles": [
         "apple-touch-icon.png",
         "index.html",
@@ -92,7 +92,7 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 1,
-      "lastAccessed": 1781539111212,
+      "lastAccessed": 1781887874734,
       "keyFiles": [
         "SUPABASE_SETUP.md"
       ]
@@ -101,7 +101,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1781539111213,
+      "lastAccessed": 1781887874747,
       "keyFiles": [
         "apple-touch-icon.png",
         "logo.png",
@@ -114,7 +114,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1781539111214,
+      "lastAccessed": 1781887874749,
       "keyFiles": [
         "genCardImageVariants.mjs"
       ]
@@ -123,7 +123,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1781539111216,
+      "lastAccessed": 1781887874751,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -136,7 +136,7 @@
       "path": "dist\\assets",
       "purpose": "Static assets",
       "fileCount": 2,
-      "lastAccessed": 1781539111217,
+      "lastAccessed": 1781887874754,
       "keyFiles": [
         "index-54GxqpRV.js",
         "index-CMJYTP1u.css"
@@ -146,7 +146,7 @@
       "path": "src\\api",
       "purpose": "API routes",
       "fileCount": 1,
-      "lastAccessed": 1781539111220,
+      "lastAccessed": 1781887874758,
       "keyFiles": [
         "deckPosts.ts"
       ]
@@ -155,7 +155,7 @@
       "path": "src\\assets",
       "purpose": "Static assets",
       "fileCount": 1,
-      "lastAccessed": 1781539111221,
+      "lastAccessed": 1781887874760,
       "keyFiles": [
         "react.svg"
       ]
@@ -164,7 +164,7 @@
       "path": "src\\components",
       "purpose": "UI components",
       "fileCount": 16,
-      "lastAccessed": 1781539111222,
+      "lastAccessed": 1781887874761,
       "keyFiles": [
         "CardDetail.tsx",
         "CardDetailPanel.tsx",
@@ -175,7 +175,7 @@
       "path": "src\\data",
       "purpose": "Data files",
       "fileCount": 3,
-      "lastAccessed": 1781539111223,
+      "lastAccessed": 1781887874763,
       "keyFiles": [
         "cardImageVariants.ts",
         "cardImageVariantsMap.generated.ts",
@@ -186,7 +186,7 @@
       "path": "src\\lib",
       "purpose": "Library code",
       "fileCount": 1,
-      "lastAccessed": 1781539111223,
+      "lastAccessed": 1781887874768,
       "keyFiles": [
         "supabase.ts"
       ]
@@ -194,22 +194,58 @@
   },
   "hotPaths": [
     {
+      "path": "src\\components\\DeckPanel.tsx",
+      "accessCount": 18,
+      "lastAccessed": 1781889426233,
+      "type": "file"
+    },
+    {
+      "path": "src\\store\\deckStore.ts",
+      "accessCount": 8,
+      "lastAccessed": 1781889218887,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PostDeckView.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1781889325755,
+      "type": "file"
+    },
+    {
+      "path": "src\\types\\card.ts",
+      "accessCount": 6,
+      "lastAccessed": 1781888893756,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\GameBoard.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1781889389220,
+      "type": "file"
+    },
+    {
       "path": "src\\components\\CardPreviewModal.tsx",
       "accessCount": 5,
       "lastAccessed": 1781624580560,
       "type": "file"
     },
     {
-      "path": "src\\types\\card.ts",
-      "accessCount": 4,
-      "lastAccessed": 1781623814386,
+      "path": "src\\data\\cardImageVariantsMap.generated.ts",
+      "accessCount": 5,
+      "lastAccessed": 1781888485758,
+      "type": "directory"
+    },
+    {
+      "path": "src\\components\\game\\HandArea.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1781889406957,
       "type": "file"
     },
     {
-      "path": "src\\data\\cardImageVariantsMap.generated.ts",
-      "accessCount": 3,
-      "lastAccessed": 1781539375401,
-      "type": "directory"
+      "path": "scripts\\genCardImageVariants.mjs",
+      "accessCount": 4,
+      "lastAccessed": 1781888664966,
+      "type": "file"
     },
     {
       "path": "src\\data\\cards.ts",
@@ -218,22 +254,16 @@
       "type": "file"
     },
     {
+      "path": "src\\data\\cardImageVariants.ts",
+      "accessCount": 3,
+      "lastAccessed": 1781889197395,
+      "type": "file"
+    },
+    {
       "path": "package.json",
       "accessCount": 2,
       "lastAccessed": 1781624454673,
       "type": "directory"
-    },
-    {
-      "path": "src\\data\\cardImageVariants.ts",
-      "accessCount": 1,
-      "lastAccessed": 1781539226886,
-      "type": "file"
-    },
-    {
-      "path": "scripts\\genCardImageVariants.mjs",
-      "accessCount": 1,
-      "lastAccessed": 1781539227537,
-      "type": "file"
     },
     {
       "path": "vite.config.ts",

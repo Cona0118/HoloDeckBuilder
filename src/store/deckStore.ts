@@ -2,6 +2,47 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Card, CardColor, Deck, DeckEntry, FilterState } from '../types/card';
 import { CARDS } from '../data/cards';
+import { getCardImageVariants } from '../data/cardImageVariants';
+
+/** 카드 데이터를 최신 CARDS로 교체 (없으면 저장본 유지). */
+function freshCard(card: Card): Card {
+  return CARDS.find((c) => c.id === card.id) ?? card;
+}
+
+/** 저장된 일러스트 URL이 현재 변형 목록에 있으면 유지, 아니면 undefined(=기본 사용). */
+function validImageUrl(
+  cardId: string,
+  url: string | undefined,
+  defaultUrl: string | undefined,
+): string | undefined {
+  if (url && getCardImageVariants(cardId, defaultUrl).includes(url)) return url;
+  return undefined;
+}
+
+/**
+ * persist 복원 시 덱을 보정한다.
+ *  - 각 카드 데이터를 최신 CARDS로 다시 매핑(기본 이미지명/효과/limit 등 최신화)
+ *  - 파일명이 바뀌거나 삭제된 일러스트 URL은 기본 일러스트로 되돌림
+ *  - 폴백으로 같은 키가 된 엔트리는 합산
+ */
+function rehydrateDeck(deck: Deck): Deck {
+  const oshi = deck.oshi ? freshCard(deck.oshi) : null;
+  const oshiImageUrl = oshi
+    ? validImageUrl(oshi.id, deck.oshiImageUrl, oshi.imageUrl)
+    : undefined;
+
+  const byKey = new Map<string, DeckEntry>();
+  for (const e of deck.mainDeck ?? []) {
+    const card = freshCard(e.card);
+    const imageUrl = validImageUrl(card.id, e.imageUrl, card.imageUrl);
+    const key = entryKey(card.id, imageUrl);
+    const prev = byKey.get(key);
+    if (prev) prev.count += e.count;
+    else byKey.set(key, { card, count: e.count, imageUrl });
+  }
+
+  return { ...deck, oshi, oshiImageUrl, mainDeck: [...byKey.values()] };
+}
 
 const MAIN_DECK_MAX = 50;
 const CHEER_MAX = 20;
@@ -620,6 +661,8 @@ export const useDeckStore = create<DeckState>()(
         return {
           ...current,
           ...p,
+          // 저장된 덱의 카드/일러스트를 최신 자산 기준으로 보정 (이미지 깨짐 방지).
+          decks: (p.decks ?? current.decks).map(rehydrateDeck),
           filter: { ...defaultFilter, ...(p.filter ?? {}) },
         };
       },

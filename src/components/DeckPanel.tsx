@@ -4,12 +4,18 @@ import { useDeckStore, entryKey } from "../store/deckStore";
 import { COLOR_ACCENT, getAccentColor } from "../utils/cardUtils";
 import type { CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
 import { CARDS } from "../data/cards";
+import { resolveStoredImage } from "../data/cardImageVariants";
 import { Link } from "react-router-dom";
 import CardPreviewModal from "./CardPreviewModal";
 import SharePostDialog from "./SharePostDialog";
 import { parseDeckText } from "../utils/deckSnapshot";
 
 const CHEER_MAX = 20;
+
+/** 이미지 로드 실패(파일명 변경/삭제) 시 깨진 아이콘 대신 숨김 처리하는 안전망 */
+function hideBrokenImg(e: React.SyntheticEvent<HTMLImageElement>) {
+  e.currentTarget.style.visibility = "hidden";
+}
 
 /** 저장된 카드 객체가 구버전일 수 있으므로 CARDS에서 최신 limit를 조회 */
 function getLiveLimit(cardId: string, fallbackLimit?: number): number {
@@ -110,7 +116,11 @@ function DeckEntryCard({
   const [previewOpen, setPreviewOpen] = useState(false);
   const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
-  const resolvedImageUrl = entry.imageUrl ?? entry.card.imageUrl;
+  const resolvedImageUrl = resolveStoredImage(
+    entry.card.id,
+    entry.imageUrl,
+    entry.card.imageUrl,
+  );
   const thisEntryKey = entryKey(entry.card.id, entry.imageUrl);
 
   function cancelLongPress() {
@@ -231,6 +241,7 @@ function DeckEntryCard({
               className="w-full h-full object-cover"
               draggable={false}
               style={{ pointerEvents: "none" }}
+              onError={hideBrokenImg}
             />
           ) : (
             <div
@@ -722,10 +733,14 @@ async function exportDeckAsImage(
   const support = deck.mainDeck.filter((e) => e.card.type === "support");
   const cheers = deck.cheers ?? {};
   const oshiImageUrl = deck.oshi
-    ? (deck.oshiImageUrl ?? deck.oshi.imageUrl)
+    ? resolveStoredImage(deck.oshi.id, deck.oshiImageUrl, deck.oshi.imageUrl)
     : undefined;
   function entryImage(entry: DeckEntry): string | undefined {
-    return entry.imageUrl ?? entry.card.imageUrl;
+    return resolveStoredImage(
+      entry.card.id,
+      entry.imageUrl,
+      entry.card.imageUrl,
+    );
   }
 
   // Preload all images
@@ -1292,7 +1307,7 @@ export default function DeckPanel() {
 
   const oshiAccent = deck.oshi ? getAccentColor(deck.oshi) : "#6b7280";
   const oshiResolvedImageUrl = deck.oshi
-    ? (deck.oshiImageUrl ?? deck.oshi.imageUrl)
+    ? resolveStoredImage(deck.oshi.id, deck.oshiImageUrl, deck.oshi.imageUrl)
     : undefined;
   return (
     <div className="flex flex-col h-full overflow-hidden bg-gray-950">
@@ -1356,6 +1371,7 @@ export default function DeckPanel() {
                     className="w-full h-full object-cover"
                     draggable={false}
                     style={{ pointerEvents: "none" }}
+                    onError={hideBrokenImg}
                   />
                 ) : (
                   <div
@@ -1774,7 +1790,11 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
             {state.hand.map((h, i) => {
               const card = h.card;
               const accent = getAccentColor(card);
-              const handImageUrl = h.imageUrl ?? card.imageUrl;
+              const handImageUrl = resolveStoredImage(
+                card.id,
+                h.imageUrl,
+                card.imageUrl,
+              );
               return (
                 <div
                   key={`${card.id}-${i}`}
@@ -1787,6 +1807,7 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
                       alt={card.name}
                       className="w-full h-full object-cover"
                       draggable={false}
+                      onError={hideBrokenImg}
                     />
                   ) : (
                     <div

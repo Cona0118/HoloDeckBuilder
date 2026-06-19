@@ -1,6 +1,12 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, SyntheticEvent } from 'react';
 import type { CardInstance } from '../../game/types';
 import { isDebut } from '../../game/setup';
+import { resolveStoredImage } from '../../data/cardImageVariants';
+
+/** 이미지 로드 실패(파일명 변경/삭제) 시 깨진 아이콘 대신 숨김 처리 */
+function hideBrokenImg(e: SyntheticEvent<HTMLImageElement>) {
+  e.currentTarget.style.visibility = 'hidden';
+}
 
 interface HandAreaProps {
   hand: CardInstance[];
@@ -28,7 +34,7 @@ export default function HandArea({
         <p className="text-[11px] text-gray-600 px-1">{emptyText}</p>
       ) : (
         hand.map((ci) => {
-          const img = ci.imageUrl ?? ci.card.imageUrl;
+          const img = resolveStoredImage(ci.card.id, ci.imageUrl, ci.card.imageUrl);
           const selected = selectedUids.includes(ci.uid);
           const dimmed = debutOnly && !isDebut(ci.card);
           return (
@@ -42,7 +48,7 @@ export default function HandArea({
               } ${dimmed ? 'opacity-40' : ''}`}
             >
               {img ? (
-                <img src={img} alt={ci.card.name} className="w-full block" draggable={false} />
+                <img src={img} alt={ci.card.name} className="w-full block" draggable={false} onError={hideBrokenImg} />
               ) : (
                 <div className="w-full aspect-[5/7] flex items-center justify-center text-[8px] text-gray-500 p-0.5 text-center leading-tight">
                   {ci.card.name}

@@ -1,6 +1,12 @@
 import { CARDS } from '../data/cards';
+import { resolveStoredImage } from '../data/cardImageVariants';
 import type { CardColor } from '../types/card';
 import { COLOR_ACCENT, COLOR_LABELS, getAccentColor } from '../utils/cardUtils';
+
+/** 이미지 로드 실패(파일명 변경/삭제) 시 깨진 아이콘 대신 숨김 처리 */
+function hideBrokenImg(e: React.SyntheticEvent<HTMLImageElement>) {
+  e.currentTarget.style.visibility = 'hidden';
+}
 
 const CHEER_IMAGE: Record<CardColor, string> = {
   white: '/images/hY/hY01.png',
@@ -41,7 +47,7 @@ function CardSlot({
       style={{ borderColor: accent + '66' }}
     >
       {imageUrl ? (
-        <img src={imageUrl} alt={name} className="w-full h-full object-cover" draggable={false} />
+        <img src={imageUrl} alt={name} className="w-full h-full object-cover" draggable={false} onError={hideBrokenImg} />
       ) : (
         <div
           className="w-full h-full flex items-center justify-center p-1"
@@ -62,7 +68,9 @@ function CardSlot({
 export default function PostDeckView({ oshiCardId, oshiImageUrl, mainDeck, cheers }: Props) {
   const oshi = getCard(oshiCardId);
   const oshiAccent = oshi ? getAccentColor(oshi) : '#6b7280';
-  const oshiResolvedUrl = oshiImageUrl ?? oshi?.imageUrl;
+  const oshiResolvedUrl = oshi
+    ? resolveStoredImage(oshi.id, oshiImageUrl, oshi.imageUrl)
+    : oshiImageUrl;
 
   const cheerEntries = (
     Object.entries(cheers) as Array<[CardColor, number | undefined]>
@@ -78,7 +86,7 @@ export default function PostDeckView({ oshiCardId, oshiImageUrl, mainDeck, cheer
           style={{ borderColor: oshiAccent + 'aa' }}
         >
           {oshi && oshiResolvedUrl ? (
-            <img src={oshiResolvedUrl} alt={oshi.name} className="w-full h-full object-cover" draggable={false} />
+            <img src={oshiResolvedUrl} alt={oshi.name} className="w-full h-full object-cover" draggable={false} onError={hideBrokenImg} />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gray-800">
               <span className="text-xs text-gray-500 text-center px-1">
@@ -112,7 +120,9 @@ export default function PostDeckView({ oshiCardId, oshiImageUrl, mainDeck, cheer
             {mainDeck.map((e, idx) => {
               const card = getCard(e.cardId);
               const accent = card ? getAccentColor(card) : '#6b7280';
-              const imageUrl = e.imageUrl ?? card?.imageUrl;
+              const imageUrl = card
+                ? resolveStoredImage(card.id, e.imageUrl, card.imageUrl)
+                : e.imageUrl;
               return (
                 <CardSlot
                   key={`${e.cardId}-${e.imageUrl ?? ''}-${idx}`}

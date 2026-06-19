@@ -30,14 +30,46 @@ for (const dir of readdirSync(ROOT).sort()) {
   }
 }
 
-// SEC(시크릿 레어) 변형은 항상 마지막에 오도록 정렬.
-// 같은 SEC 그룹/비-SEC 그룹 안에서는 알파벳 순.
-const isSec = (url) => /_SEC(?:[_.]|$)/i.test(url);
+// 카드넘버 뒤 희귀도 글자로 일러스트 순서를 정한다 (작을수록 앞).
+//   1번: OSR, C, U, R, RR / 2번: S / 3번: SR / 4번: UR / 5번: OUR
+//   6번: SEC / (SEC와 P 사이) HR / 7번: P
+// 같은 글자끼리는 그 뒤의 번호 순서대로 배치한다.
+const RARITY_ORDER = [
+  "OSR", "C", "U", "R", "RR", // 1번 그룹 (나열 순)
+  "S",                        // 2번
+  "SR",                       // 3번
+  "UR",                       // 4번
+  "OUR",                      // 5번
+  "SEC",                      // 6번
+  "HR",                       // SEC와 P 사이
+  "P",                        // 7번
+];
+const RARITY_RANK = new Map(RARITY_ORDER.map((code, i) => [code, i]));
+const UNKNOWN_RANK = RARITY_ORDER.length; // 미정의 코드(SY 등)는 맨 끝
+
+// 파일 URL에서 [희귀도 랭크, 같은 글자 내 번호]를 뽑아낸다.
+function variantSortKey(url) {
+  const file = url.split("/").pop() ?? "";
+  const m = file.match(/^[a-zA-Z]+\d+-\d+(?:_(.+))?\.png$/i);
+  const rest = m?.[1];
+  if (!rest) return { rank: -1, num: 0 }; // 접미사 없는 기본 일러스트 → 맨 앞
+  let rank = UNKNOWN_RANK;
+  let num = 0;
+  for (const seg of rest.split("_")) {
+    if (/^\d+$/.test(seg)) num = parseInt(seg, 10);
+    else if (RARITY_RANK.has(seg.toUpperCase())) {
+      rank = RARITY_RANK.get(seg.toUpperCase());
+    }
+  }
+  return { rank, num };
+}
+
 for (const arr of groups.values()) {
   arr.sort((a, b) => {
-    const sa = isSec(a) ? 1 : 0;
-    const sb = isSec(b) ? 1 : 0;
-    if (sa !== sb) return sa - sb;
+    const ka = variantSortKey(a);
+    const kb = variantSortKey(b);
+    if (ka.rank !== kb.rank) return ka.rank - kb.rank;
+    if (ka.num !== kb.num) return ka.num - kb.num;
     return a.localeCompare(b);
   });
 }
