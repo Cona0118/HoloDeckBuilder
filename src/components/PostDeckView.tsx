@@ -1,5 +1,6 @@
 import { CARDS } from '../data/cards';
 import { resolveStoredImage } from '../data/cardImageVariants';
+import { CHEER_IMAGE } from '../data/cheerImages';
 import type { CardColor } from '../types/card';
 import { COLOR_ACCENT, COLOR_LABELS, getAccentColor } from '../utils/cardUtils';
 
@@ -7,15 +8,6 @@ import { COLOR_ACCENT, COLOR_LABELS, getAccentColor } from '../utils/cardUtils';
 function hideBrokenImg(e: React.SyntheticEvent<HTMLImageElement>) {
   e.currentTarget.style.visibility = 'hidden';
 }
-
-const CHEER_IMAGE: Record<CardColor, string> = {
-  white: '/images/hY/hY01.png',
-  green: '/images/hY/hY02.png',
-  red: '/images/hY/hY03.png',
-  blue: '/images/hY/hY04.png',
-  purple: '/images/hY/hY05.png',
-  yellow: '/images/hY/hY06.png',
-};
 
 interface Props {
   oshiCardId: string;

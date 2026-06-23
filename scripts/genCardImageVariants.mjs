@@ -8,8 +8,8 @@ import { readdirSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT = "public/images";
-// 카드가 아닌 보조 이미지 폴더 — 스킵
-const SKIP_DIRS = new Set(["cost", "hY"]);
+// 카드가 아닌 보조 이미지 폴더 — 스킵 (hY·SY 는 옐 전용, gen:cheer 가 처리)
+const SKIP_DIRS = new Set(["cost", "hY", "SY"]);
 
 const groups = new Map(); // cardId -> string[]
 

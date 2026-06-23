@@ -5,8 +5,14 @@ import { COLOR_ACCENT, getAccentColor } from "../utils/cardUtils";
 import type { CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
 import { CARDS } from "../data/cards";
 import { resolveStoredImage } from "../data/cardImageVariants";
+import {
+  CHEER_COLORS,
+  CHEER_VARIANTS,
+  resolveCheerImage,
+} from "../data/cheerImages";
 import { Link } from "react-router-dom";
 import CardPreviewModal from "./CardPreviewModal";
+import CheerPreviewModal from "./CheerPreviewModal";
 import SharePostDialog from "./SharePostDialog";
 import { parseDeckText } from "../utils/deckSnapshot";
 
@@ -21,23 +27,6 @@ function hideBrokenImg(e: React.SyntheticEvent<HTMLImageElement>) {
 function getLiveLimit(cardId: string, fallbackLimit?: number): number {
   return CARDS.find((c) => c.id === cardId)?.limit ?? fallbackLimit ?? 4;
 }
-const CHEER_COLORS: CardColor[] = [
-  "white",
-  "green",
-  "red",
-  "blue",
-  "purple",
-  "yellow",
-];
-const CHEER_IMAGE: Record<CardColor, string> = {
-  white: "/images/hY/hY01.png",
-  green: "/images/hY/hY02.png",
-  red: "/images/hY/hY03.png",
-  blue: "/images/hY/hY04.png",
-  purple: "/images/hY/hY05.png",
-  yellow: "/images/hY/hY06.png",
-};
-
 // ──────────────────────────────
 // Drag types
 // ──────────────────────────────
@@ -518,6 +507,10 @@ function DeckSelector() {
 function CheerCard({
   color,
   count,
+  imageUrl,
+  variants,
+  selectedImageUrl,
+  onSelectImage,
   onAdd,
   onRemove,
   overlayVisible,
@@ -526,21 +519,80 @@ function CheerCard({
 }: {
   color: CardColor;
   count: number;
+  /** 현재 표시할 옐 이미지(선택 반영). */
+  imageUrl: string;
+  /** 선택 가능한 옐 일러스트 목록. */
+  variants: string[];
+  /** 현재 선택된 옐 이미지 URL. */
+  selectedImageUrl: string;
+  onSelectImage: (imageUrl: string) => void;
   onAdd: () => void;
   onRemove: () => void;
   overlayVisible: boolean;
   onShowOverlay: () => void;
   onHideOverlay: () => void;
 }) {
+  const isTouch = useRef(false);
+  const startPos = useRef<{ x: number; y: number } | null>(null);
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const didLongPress = useRef(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
+
+  function cancelLongPress() {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  }
+
+  function handlePointerDown(e: React.PointerEvent) {
+    isTouch.current = e.pointerType === "touch";
+    startPos.current = { x: e.clientX, y: e.clientY };
+    didLongPress.current = false;
+    cancelLongPress();
+    longPressTimer.current = setTimeout(() => {
+      didLongPress.current = true;
+      setPreviewOpen(true);
+    }, 500);
+  }
+
+  function handlePointerMove(e: React.PointerEvent) {
+    if (!startPos.current) return;
+    const dx = e.clientX - startPos.current.x;
+    const dy = e.clientY - startPos.current.y;
+    if (Math.sqrt(dx * dx + dy * dy) > 8) cancelLongPress();
+  }
+
   return (
     <div className="relative group">
+      {previewOpen && (
+        <CheerPreviewModal
+          color={color}
+          variants={variants}
+          selectedImageUrl={selectedImageUrl}
+          onSelectImage={onSelectImage}
+          onClose={() => setPreviewOpen(false)}
+        />
+      )}
       <div
-        className="relative w-full aspect-2.5/3.5 rounded overflow-hidden border cursor-pointer"
-        style={{ borderColor: COLOR_ACCENT[color] + "66" }}
+        className="relative w-full aspect-2.5/3.5 rounded overflow-hidden border cursor-pointer select-none"
+        style={{
+          borderColor: COLOR_ACCENT[color] + "66",
+          WebkitTouchCallout: "none",
+        }}
+        onPointerDown={handlePointerDown}
+        onPointerUp={cancelLongPress}
+        onPointerLeave={cancelLongPress}
+        onPointerCancel={cancelLongPress}
+        onPointerMove={handlePointerMove}
         onClick={(e) => {
-          const isTouch =
+          if (didLongPress.current) {
+            didLongPress.current = false;
+            return;
+          }
+          const touch =
             (e.nativeEvent as PointerEvent).pointerType === "touch";
-          if (isTouch) {
+          if (touch) {
             e.stopPropagation();
             onShowOverlay();
           } else {
@@ -549,14 +601,16 @@ function CheerCard({
         }}
         onContextMenu={(e) => {
           e.preventDefault();
+          if (isTouch.current) return;
           onRemove();
         }}
       >
         <img
-          src={CHEER_IMAGE[color]}
+          src={imageUrl}
           alt={color}
           className="w-full h-full object-cover"
           draggable={false}
+          style={{ pointerEvents: "none" }}
         />
         {count > 0 && (
           <span className="absolute top-0.5 right-0.5 min-w-4 h-4 px-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">
@@ -597,8 +651,14 @@ function CheerCard({
 }
 
 function CheerSection() {
-  const { getActiveDeck, addCheer, removeCheer, clearCheers, fillCheers } =
-    useDeckStore();
+  const {
+    getActiveDeck,
+    addCheer,
+    removeCheer,
+    clearCheers,
+    fillCheers,
+    setCheerImage,
+  } = useDeckStore();
   const [open, setOpen] = useState(true);
   const [activeColor, setActiveColor] = useState<CardColor | null>(null);
   const deck = getActiveDeck();
@@ -673,18 +733,28 @@ function CheerSection() {
       </div>
       {open && (
         <div className="grid grid-cols-6 gap-1 px-3 pb-3">
-          {CHEER_COLORS.map((color) => (
-            <CheerCard
-              key={color}
-              color={color}
-              count={cheers[color] ?? 0}
-              onAdd={() => addCheer(color)}
-              onRemove={() => removeCheer(color)}
-              overlayVisible={activeColor === color}
-              onShowOverlay={() => setActiveColor(color)}
-              onHideOverlay={() => setActiveColor(null)}
-            />
-          ))}
+          {CHEER_COLORS.map((color) => {
+            const selectedImageUrl = resolveCheerImage(
+              color,
+              deck.cheerImages?.[color],
+            );
+            return (
+              <CheerCard
+                key={color}
+                color={color}
+                count={cheers[color] ?? 0}
+                imageUrl={selectedImageUrl}
+                variants={CHEER_VARIANTS[color]}
+                selectedImageUrl={selectedImageUrl}
+                onSelectImage={(url) => setCheerImage(color, url)}
+                onAdd={() => addCheer(color)}
+                onRemove={() => removeCheer(color)}
+                overlayVisible={activeColor === color}
+                onShowOverlay={() => setActiveColor(color)}
+                onHideOverlay={() => setActiveColor(null)}
+              />
+            );
+          })}
         </div>
       )}
     </div>
@@ -742,6 +812,8 @@ async function exportDeckAsImage(
       entry.card.imageUrl,
     );
   }
+  const cheerImageFor = (c: CardColor) =>
+    resolveCheerImage(c, deck.cheerImages?.[c]);
 
   // Preload all images
   const urlSet = new Set<string>();
@@ -750,7 +822,7 @@ async function exportDeckAsImage(
     const url = entryImage(e);
     if (url) urlSet.add(url);
   });
-  CHEER_COLORS.forEach((c) => urlSet.add(CHEER_IMAGE[c]));
+  CHEER_COLORS.forEach((c) => urlSet.add(cheerImageFor(c)));
   const cache = new Map<string, HTMLImageElement>();
   await Promise.all(
     [...urlSet].map(async (url) => {
@@ -894,7 +966,7 @@ async function exportDeckAsImage(
       const row = Math.floor(i / CHEER_COLS);
       const cx = PAD + col * (CHEER_W + CHEER_GAP);
       const cy = CHEER_START_Y + row * (CHEER_H + CHEER_GAP);
-      drawSlot(CHEER_IMAGE[c], c, cx, cy, CHEER_W, CHEER_H, COLOR_ACCENT[c]);
+      drawSlot(cheerImageFor(c), c, cx, cy, CHEER_W, CHEER_H, COLOR_ACCENT[c]);
       drawBadge(cx, cy, CHEER_W, cheers[c]!);
     });
 
@@ -990,10 +1062,10 @@ async function exportDeckAsImage(
       if (cnt === 0) {
         ctx.save();
         ctx.globalAlpha = 0.25;
-        drawSlot(CHEER_IMAGE[c], c, cx, cy, CARD_W, CARD_H, COLOR_ACCENT[c]);
+        drawSlot(cheerImageFor(c), c, cx, cy, CARD_W, CARD_H, COLOR_ACCENT[c]);
         ctx.restore();
       } else {
-        drawSlot(CHEER_IMAGE[c], c, cx, cy, CARD_W, CARD_H, COLOR_ACCENT[c]);
+        drawSlot(cheerImageFor(c), c, cx, cy, CARD_W, CARD_H, COLOR_ACCENT[c]);
         drawBadge(cx, cy, CARD_W, cnt);
       }
     });

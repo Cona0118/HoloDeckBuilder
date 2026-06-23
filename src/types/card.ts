@@ -79,6 +79,8 @@ export interface Deck {
   cheers: Partial<Record<CardColor, number>>;
   /** 오시 카드에 적용된 일러스트 URL. undefined면 oshi.imageUrl 기본 사용. */
   oshiImageUrl?: string;
+  /** 색상별 옐 일러스트 선택. 없는 색상은 기본 옐 이미지 사용. */
+  cheerImages?: Partial<Record<CardColor, string>>;
   createdAt: number;
   updatedAt: number;
 }

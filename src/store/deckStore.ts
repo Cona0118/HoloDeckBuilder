@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 import type { Card, CardColor, Deck, DeckEntry, FilterState } from '../types/card';
 import { CARDS } from '../data/cards';
 import { getCardImageVariants } from '../data/cardImageVariants';
+import { CHEER_VARIANTS } from '../data/cheerImages';
 
 /** 카드 데이터를 최신 CARDS로 교체 (없으면 저장본 유지). */
 function freshCard(card: Card): Card {
@@ -25,6 +26,19 @@ function validImageUrl(
  *  - 파일명이 바뀌거나 삭제된 일러스트 URL은 기본 일러스트로 되돌림
  *  - 폴백으로 같은 키가 된 엔트리는 합산
  */
+/** 저장된 옐 이미지 선택 중 현재 변형 목록에 없는 값은 버린다(기본 폴백). */
+function validCheerImages(
+  cheerImages: Partial<Record<CardColor, string>> | undefined,
+): Partial<Record<CardColor, string>> | undefined {
+  if (!cheerImages) return undefined;
+  const out: Partial<Record<CardColor, string>> = {};
+  for (const [color, url] of Object.entries(cheerImages)) {
+    const c = color as CardColor;
+    if (url && CHEER_VARIANTS[c]?.includes(url)) out[c] = url;
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
 function rehydrateDeck(deck: Deck): Deck {
   const oshi = deck.oshi ? freshCard(deck.oshi) : null;
   const oshiImageUrl = oshi
@@ -41,7 +55,13 @@ function rehydrateDeck(deck: Deck): Deck {
     else byKey.set(key, { card, count: e.count, imageUrl });
   }
 
-  return { ...deck, oshi, oshiImageUrl, mainDeck: [...byKey.values()] };
+  return {
+    ...deck,
+    oshi,
+    oshiImageUrl,
+    cheerImages: validCheerImages(deck.cheerImages),
+    mainDeck: [...byKey.values()],
+  };
 }
 
 const MAIN_DECK_MAX = 50;
@@ -150,6 +170,8 @@ interface DeckState {
   ) => void;
   addCheer: (color: CardColor) => void;
   removeCheer: (color: CardColor) => void;
+  /** 색상별 옐 일러스트 선택. null이면 기본 이미지로 복원. */
+  setCheerImage: (color: CardColor, imageUrl: string | null) => void;
   clearDeck: () => void;
   clearCheers: () => void;
   fillCheers: () => void;
@@ -478,6 +500,21 @@ export const useDeckStore = create<DeckState>()(
         });
       },
 
+      setCheerImage: (color, imageUrl) => {
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          return {
+            decks: s.decks.map((d) => {
+              if (d.id !== id) return d;
+              const cheerImages = { ...(d.cheerImages ?? {}) };
+              if (imageUrl == null) delete cheerImages[color];
+              else cheerImages[color] = imageUrl;
+              return { ...d, cheerImages, updatedAt: Date.now() };
+            }),
+          };
+        });
+      },
+
       clearDeck: () => {
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
@@ -490,6 +527,7 @@ export const useDeckStore = create<DeckState>()(
                     oshiImageUrl: undefined,
                     mainDeck: [],
                     cheers: {},
+                    cheerImages: undefined,
                     updatedAt: Date.now(),
                   }
                 : d

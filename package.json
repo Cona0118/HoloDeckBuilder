@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "gen:variants": "node scripts/genCardImageVariants.mjs",
-    "predev": "node scripts/genCardImageVariants.mjs",
-    "prebuild": "node scripts/genCardImageVariants.mjs",
+    "gen:variants": "node scripts/genCardImageVariants.mjs && node scripts/genCheerImageVariants.mjs",
+    "predev": "npm run gen:variants",
+    "prebuild": "npm run gen:variants",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
