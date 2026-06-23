@@ -15,6 +15,7 @@ import CardPreviewModal from "./CardPreviewModal";
 import CheerPreviewModal from "./CheerPreviewModal";
 import SharePostDialog from "./SharePostDialog";
 import { parseDeckText } from "../utils/deckSnapshot";
+import { publishToDeckLog } from "../utils/decklogPublish";
 
 const CHEER_MAX = 20;
 
@@ -1102,6 +1103,25 @@ function ExportPanel({
   const { exportDeckText, getActiveDeck } = useDeckStore();
   const [copied, setCopied] = useState(false);
   const [exporting, setExporting] = useState(false);
+  const [publishing, setPublishing] = useState(false);
+  const [publishUrl, setPublishUrl] = useState<string | null>(null);
+  const [publishError, setPublishError] = useState<string | null>(null);
+
+  async function handlePublish() {
+    const deck = getActiveDeck();
+    if (!deck) return;
+    setPublishing(true);
+    setPublishError(null);
+    setPublishUrl(null);
+    try {
+      const { url } = await publishToDeckLog(deck);
+      setPublishUrl(url);
+    } catch (e) {
+      setPublishError(e instanceof Error ? e.message : 'Deck Log 업로드에 실패했습니다.');
+    } finally {
+      setPublishing(false);
+    }
+  }
 
   async function handleCopy() {
     await navigator.clipboard.writeText(exportDeckText());
@@ -1171,6 +1191,37 @@ function ExportPanel({
         >
           게시판 →
         </Link>
+      </div>
+
+      {/* Deck Log 업로드 */}
+      <div className="flex flex-col gap-1 pt-1">
+        <button
+          onClick={handlePublish}
+          disabled={shareDisabled || publishing}
+          title={shareDisabled ? '덱 검증 오류를 먼저 해결해주세요' : 'Deck Log에 업로드하고 공유 링크를 받습니다 (기본 일러스트로 발행)'}
+          className="w-full py-2 rounded-lg text-sm font-medium bg-emerald-700 hover:bg-emerald-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-emerald-600 disabled:border-gray-700 transition-colors"
+        >
+          {publishing ? '업로드 중…' : 'Deck Log에 업로드'}
+        </button>
+        <p className="text-[10px] text-gray-500 text-center">
+          아트 변형은 반영되지 않고 기본 일러스트로 발행됩니다.
+        </p>
+        {publishUrl && (
+          <div className="flex items-center gap-1 text-[11px]">
+            <a href={publishUrl} target="_blank" rel="noreferrer" className="flex-1 truncate text-emerald-300 hover:underline">
+              {publishUrl}
+            </a>
+            <button
+              onClick={() => navigator.clipboard.writeText(publishUrl)}
+              className="px-2 py-0.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded border border-gray-700"
+            >
+              링크 복사
+            </button>
+          </div>
+        )}
+        {publishError && (
+          <p className="text-[11px] text-amber-400 break-words">{publishError}</p>
+        )}
       </div>
     </div>
   );
