@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OMC / Supabase CLI / SDD 작업 스크래치 (로컬 전용 — 커밋/푸시 금지)
+.omc/sessions/
+.omc/state/
+supabase/.temp/
+.superpowers/
