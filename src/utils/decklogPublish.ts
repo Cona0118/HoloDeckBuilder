@@ -1,4 +1,5 @@
-import type { CardColor } from '../types/card';
+import type { CardColor, Deck } from '../types/card';
+import { DECKLOG_GAME_TITLE_ID_JP } from './decklogApi';
 
 export interface DeckLogCard {
   game_title_id: number;
@@ -64,4 +65,58 @@ export function buildManageIdIndex(cards: RawCard[]): ManageIdIndex {
   }
 
   return { byCardNumber, yellByColor };
+}
+
+const TITLE_MAX = 25;
+
+export function buildDeckLogPayload(
+  deck: Deck,
+  index: ManageIdIndex,
+): { payload: DeckLogPayload; unpublishable: string[] } {
+  const gid = DECKLOG_GAME_TITLE_ID_JP;
+  const unpublishable: string[] = [];
+
+  const toCard = (cardNumber: string, num: number): DeckLogCard | null => {
+    const manageId = index.byCardNumber.get(cardNumber);
+    if (!manageId) {
+      unpublishable.push(cardNumber);
+      return null;
+    }
+    return { game_title_id: gid, card_number: cardNumber, num, manage_id: manageId };
+  };
+
+  const p_list: DeckLogCard[] = [];
+  if (deck.oshi) {
+    const c = toCard(deck.oshi.cardNumber, 1);
+    if (c) p_list.push(c);
+  }
+
+  const list: DeckLogCard[] = [];
+  for (const e of deck.mainDeck) {
+    const c = toCard(e.card.cardNumber, e.count);
+    if (c) list.push(c);
+  }
+
+  const sub_list: DeckLogCard[] = [];
+  const cheers = deck.cheers ?? {};
+  for (const color of Object.keys(cheers) as CardColor[]) {
+    const num = cheers[color] ?? 0;
+    if (num <= 0) continue;
+    const yell = index.yellByColor[color];
+    if (!yell) {
+      unpublishable.push(`(옐:${color})`);
+      continue;
+    }
+    sub_list.push({ game_title_id: gid, card_number: yell.cardNumber, num, manage_id: yell.manageId });
+  }
+
+  const payload: DeckLogPayload = {
+    game_title_id: gid,
+    deck_id: '',
+    title: (deck.name ?? '').slice(0, TITLE_MAX),
+    p_list,
+    list,
+    sub_list,
+  };
+  return { payload, unpublishable };
 }
