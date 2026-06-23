@@ -80,7 +80,7 @@ function makeDeck(over: Partial<Deck>): Deck {
 }
 
 describe('buildDeckLogPayload', () => {
-  it('오시/메인/옐을 manage_id로 변환', () => {
+  it('오시/메인/옐을 manage_id 평행배열로 변환', () => {
     const deck = makeDeck({
       oshi: card('hBD24-001'),
       mainDeck: [{ card: card('hBP08-001'), count: 4 }],
@@ -88,14 +88,33 @@ describe('buildDeckLogPayload', () => {
     });
     const { payload, unpublishable } = buildDeckLogPayload(deck, idx);
     expect(unpublishable).toEqual([]);
-    expect(payload.game_title_id).toBe(9);
+    expect(payload.id).toBe('');
     expect(payload.deck_id).toBe('');
-    expect(payload.p_list).toEqual([{ game_title_id: 9, card_number: 'hBD24-001', num: 1, manage_id: '199' }]);
-    expect(payload.list).toEqual([{ game_title_id: 9, card_number: 'hBP08-001', num: 4, manage_id: '501' }]);
-    expect(payload.sub_list).toEqual([
-      { game_title_id: 9, card_number: 'hY01-001', num: 10, manage_id: '10' },
-      { game_title_id: 9, card_number: 'hY03-001', num: 10, manage_id: '30' },
-    ]);
+    expect(payload.post_deckrecipe).toBe(1);
+    expect(payload.has_session).toBe(false);
+    // 오시
+    expect(payload.p_no).toEqual(['199']);
+    expect(payload.p_num).toEqual([1]);
+    expect(payload.p_slot).toEqual([null]);
+    // 메인
+    expect(payload.no).toEqual(['501']);
+    expect(payload.num).toEqual([4]);
+    // 옐 (white→hY01-001=10, red→hY03-001=30)
+    expect(payload.sub_no).toEqual(['10', '30']);
+    expect(payload.sub_num).toEqual([10, 10]);
+  });
+
+  it('같은 카드번호의 여러 엔트리(아트 변형)는 매수 합산', () => {
+    const deck = makeDeck({
+      oshi: card('hBD24-001'),
+      mainDeck: [
+        { card: card('hBP08-001'), count: 2, imageUrl: 'a.png' },
+        { card: card('hBP08-001'), count: 1, imageUrl: 'b.png' },
+      ],
+    });
+    const { payload } = buildDeckLogPayload(deck, idx);
+    expect(payload.no).toEqual(['501']);
+    expect(payload.num).toEqual([3]);
   });
 
   it('제목은 25자로 절단', () => {
@@ -106,8 +125,9 @@ describe('buildDeckLogPayload', () => {
 
   it('manage_id 없는 카드는 unpublishable에 수집', () => {
     const deck = makeDeck({ oshi: card('hBD24-001'), mainDeck: [{ card: card('hZZ00-000'), count: 1 }] });
-    const { unpublishable } = buildDeckLogPayload(deck, idx);
+    const { payload, unpublishable } = buildDeckLogPayload(deck, idx);
     expect(unpublishable).toContain('hZZ00-000');
+    expect(payload.no).toEqual([]); // 발행 가능한 메인덱 카드 없음
   });
 
   it('대표 옐카드 없는 색상은 unpublishable', () => {

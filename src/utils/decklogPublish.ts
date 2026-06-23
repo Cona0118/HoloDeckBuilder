@@ -1,21 +1,30 @@
 import type { CardColor, Deck } from '../types/card';
-import { DECKLOG_GAME_TITLE_ID_JP, DECKLOG_VIEW_BASE_JP, DECKLOG_RESPONSE_CODE_FIELD } from './decklogApi';
+import { DECKLOG_VIEW_BASE_JP, DECKLOG_RESPONSE_CODE_FIELD } from './decklogApi';
 import { supabase } from '../lib/supabase';
 
-export interface DeckLogCard {
-  game_title_id: number;
-  card_number: string;
-  num: number;
-  manage_id: string;
-}
-
+/**
+ * Deck Log `/publish/9` 가 받는 덱 레시피 바디.
+ * 카드 객체 배열이 아니라 manage_id의 **평행 배열**이다(num은 같은 인덱스의 매수).
+ * token_id/token 은 Edge Function이 `/create/` 에서 받아 주입하므로 여기엔 없다.
+ */
 export interface DeckLogPayload {
-  game_title_id: number;
-  deck_id: string;
+  id: string; // '' (신규 발행)
+  deck_id: string; // '' (신규 발행)
   title: string;
-  p_list: DeckLogCard[];
-  list: DeckLogCard[];
-  sub_list: DeckLogCard[];
+  post_deckrecipe: number; // 1
+  memo: string; // ''
+  deck_param1: string; // 'S' (hOCG Standard)
+  deck_param2: string; // ''
+  add_param1: string; // ''
+  add_param2: string; // ''
+  no: string[]; // 메인덱 manage_id
+  num: number[]; // 메인덱 매수 (no와 같은 인덱스)
+  sub_no: string[]; // 옐덱 manage_id
+  sub_num: number[]; // 옐덱 매수 (sub_no와 같은 인덱스)
+  p_no: string[]; // 오시 manage_id
+  p_num: number[]; // [1]
+  p_slot: (number | null)[]; // [null]
+  has_session: boolean; // false
 }
 
 export interface RawCard {
@@ -81,55 +90,83 @@ export function parseCardsJson(json: unknown): RawCard[] {
 }
 
 const TITLE_MAX = 25;
+const DECK_PARAM1 = 'S'; // hOCG는 Standard 포맷 고정(관측값)
 
 export function buildDeckLogPayload(
   deck: Deck,
   index: ManageIdIndex,
 ): { payload: DeckLogPayload; unpublishable: string[] } {
-  const gid = DECKLOG_GAME_TITLE_ID_JP;
   const unpublishable: string[] = [];
 
-  const toCard = (cardNumber: string, num: number): DeckLogCard | null => {
+  // 오시
+  const p_no: string[] = [];
+  const p_num: number[] = [];
+  const p_slot: (number | null)[] = [];
+  if (deck.oshi) {
+    const oshiId = index.byCardNumber.get(deck.oshi.cardNumber);
+    if (oshiId) {
+      p_no.push(oshiId);
+      p_num.push(1);
+      p_slot.push(null);
+    } else {
+      unpublishable.push(deck.oshi.cardNumber);
+    }
+  }
+
+  // 메인덱: 같은 카드번호는 매수 합산(아트 변형은 무시하고 기본 인쇄로 발행)
+  const mainCounts = new Map<string, number>();
+  for (const e of deck.mainDeck) {
+    mainCounts.set(
+      e.card.cardNumber,
+      (mainCounts.get(e.card.cardNumber) ?? 0) + e.count,
+    );
+  }
+  const no: string[] = [];
+  const num: number[] = [];
+  for (const [cardNumber, count] of mainCounts) {
     const manageId = index.byCardNumber.get(cardNumber);
     if (!manageId) {
       unpublishable.push(cardNumber);
-      return null;
+      continue;
     }
-    return { game_title_id: gid, card_number: cardNumber, num, manage_id: manageId };
-  };
-
-  const p_list: DeckLogCard[] = [];
-  if (deck.oshi) {
-    const c = toCard(deck.oshi.cardNumber, 1);
-    if (c) p_list.push(c);
+    no.push(manageId);
+    num.push(count);
   }
 
-  const list: DeckLogCard[] = [];
-  for (const e of deck.mainDeck) {
-    const c = toCard(e.card.cardNumber, e.count);
-    if (c) list.push(c);
-  }
-
-  const sub_list: DeckLogCard[] = [];
+  // 옐덱: 색상별 대표 옐카드의 manage_id로 발행
+  const sub_no: string[] = [];
+  const sub_num: number[] = [];
   const cheers = deck.cheers ?? {};
   for (const color of Object.keys(cheers) as CardColor[]) {
-    const num = cheers[color] ?? 0;
-    if (num <= 0) continue;
+    const count = cheers[color] ?? 0;
+    if (count <= 0) continue;
     const yell = index.yellByColor[color];
     if (!yell) {
       unpublishable.push(`(옐:${color})`);
       continue;
     }
-    sub_list.push({ game_title_id: gid, card_number: yell.cardNumber, num, manage_id: yell.manageId });
+    sub_no.push(yell.manageId);
+    sub_num.push(count);
   }
 
   const payload: DeckLogPayload = {
-    game_title_id: gid,
+    id: '',
     deck_id: '',
     title: (deck.name ?? '').slice(0, TITLE_MAX),
-    p_list,
-    list,
-    sub_list,
+    post_deckrecipe: 1,
+    memo: '',
+    deck_param1: DECK_PARAM1,
+    deck_param2: '',
+    add_param1: '',
+    add_param2: '',
+    no,
+    num,
+    sub_no,
+    sub_num,
+    p_no,
+    p_num,
+    p_slot,
+    has_session: false,
   };
   return { payload, unpublishable };
 }

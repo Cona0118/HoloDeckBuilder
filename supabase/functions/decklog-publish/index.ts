@@ -1,49 +1,97 @@
-// Deck Log JP publish 프록시. Referer/Origin을 부착해 브라우저 CORS/검증을 우회한다.
-const DECKLOG_PUBLISH_URL = 'https://decklog.bushiroad.com/system/app/api/publish/9'; // Task 1 확정값
-const CONTENT_TYPE: 'json' | 'form' = 'json'; // Task 1 확정값
+// Deck Log JP 발행 프록시.
+// 브라우저는 CORS/Referer 검증 때문에 Deck Log를 직접 호출할 수 없어 서버에서 대행한다.
+//
+// 흐름(실제 캡처로 확정):
+//   (1) POST /system/app/api/create/  → { token_id, token } + Set-Cookie: CAKEPHP=...
+//   (2) 그 토큰/쿠키로 POST /system/app/api/publish/9 (클라가 만든 덱 레시피 + token)
+//       → { "status":"OK", "id":..., "deck_id":"XXXXX" }
+//
+// 클라이언트는 token 없이 덱 레시피만 보낸다. token_id/token은 여기서 주입한다.
 
-const corsHeaders = {
+const CREATE_URL = 'https://decklog.bushiroad.com/system/app/api/create/';
+const PUBLISH_URL = 'https://decklog.bushiroad.com/system/app/api/publish/9';
+
+const UPSTREAM_HEADERS: Record<string, string> = {
+  'Content-Type': 'application/json;charset=UTF-8',
+  Accept: 'application/json, text/plain, */*',
+  Origin: 'https://decklog.bushiroad.com',
+  Referer: 'https://decklog.bushiroad.com/create?c=9',
+  'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
+};
+
+const corsHeaders: Record<string, string> = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers':
+    'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
-function encodeBody(payload: unknown): { body: string; contentType: string } {
-  if (CONTENT_TYPE === 'form') {
-    const params = new URLSearchParams();
-    params.set('deck', JSON.stringify(payload));
-    return { body: params.toString(), contentType: 'application/x-www-form-urlencoded' };
-  }
-  return { body: JSON.stringify(payload), contentType: 'application/json' };
+function json(body: unknown, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  });
 }
 
-Deno.serve(async (req) => {
-  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
-  if (req.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405, headers: corsHeaders });
+/** 응답의 Set-Cookie들에서 CAKEPHP 세션 쿠키 한 줄(`CAKEPHP=...`)을 뽑는다. */
+function extractCakephp(res: Response): string | null {
+  const h = res.headers as Headers & { getSetCookie?: () => string[] };
+  const cookies =
+    typeof h.getSetCookie === 'function'
+      ? h.getSetCookie()
+      : [res.headers.get('set-cookie') ?? ''];
+  for (const c of cookies) {
+    const m = /CAKEPHP=[^;]+/.exec(c);
+    if (m) return m[0];
   }
+  return null;
+}
+
+Deno.serve(async (req: Request) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders });
+  }
+  if (req.method !== 'POST') {
+    return json({ error: 'Method Not Allowed' }, 405);
+  }
+
+  let recipe: Record<string, unknown>;
   try {
-    const payload = await req.json();
-    const { body, contentType } = encodeBody(payload);
-    const upstream = await fetch(DECKLOG_PUBLISH_URL, {
+    recipe = await req.json();
+  } catch {
+    return json({ error: 'invalid body' }, 400);
+  }
+
+  try {
+    // (1) 토큰 + 세션 발급
+    const createRes = await fetch(CREATE_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': contentType,
-        Referer: 'https://decklog.bushiroad.com/',
-        Origin: 'https://decklog.bushiroad.com',
-        'X-Requested-With': 'XMLHttpRequest',
-      },
-      body,
+      headers: UPSTREAM_HEADERS,
+      body: JSON.stringify({}),
     });
-    const text = await upstream.text();
+    const cakephp = extractCakephp(createRes);
+    const createData = (await createRes.json().catch(() => null)) as
+      | { token_id?: string; token?: string }
+      | null;
+    const tokenId = createData?.token_id;
+    const token = createData?.token;
+    if (!cakephp || !tokenId || !token) {
+      return json({ error: 'Deck Log 토큰 발급에 실패했습니다.' }, 502);
+    }
+
+    // (2) 발행 (레시피 + 토큰, 세션 쿠키 동봉)
+    const pubRes = await fetch(PUBLISH_URL, {
+      method: 'POST',
+      headers: { ...UPSTREAM_HEADERS, Cookie: cakephp },
+      body: JSON.stringify({ ...recipe, token_id: tokenId, token }),
+    });
+    const text = await pubRes.text();
     return new Response(text, {
-      status: upstream.status,
+      status: pubRes.status,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (e) {
-    return new Response(JSON.stringify({ error: String(e) }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    return json({ error: String(e) }, 500);
   }
 });
