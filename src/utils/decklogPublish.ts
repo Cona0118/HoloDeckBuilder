@@ -1,5 +1,6 @@
 import type { CardColor, Deck } from '../types/card';
-import { DECKLOG_GAME_TITLE_ID_JP } from './decklogApi';
+import { DECKLOG_GAME_TITLE_ID_JP, DECKLOG_VIEW_BASE_JP, DECKLOG_RESPONSE_CODE_FIELD } from './decklogApi';
+import { supabase } from '../lib/supabase';
 
 export interface DeckLogCard {
   game_title_id: number;
@@ -119,4 +120,32 @@ export function buildDeckLogPayload(
     sub_list,
   };
   return { payload, unpublishable };
+}
+
+const CARDS_JSON_URL = 'https://qrimpuff.github.io/hocg-fan-sim-assets/hocg_cards.json';
+
+let cachedIndex: ManageIdIndex | null = null;
+
+export async function loadManageIdIndex(): Promise<ManageIdIndex> {
+  if (cachedIndex) return cachedIndex;
+  const res = await fetch(CARDS_JSON_URL);
+  if (!res.ok) throw new Error('카드 정보를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.');
+  const json = (await res.json()) as RawCard[];
+  cachedIndex = buildManageIdIndex(json);
+  return cachedIndex;
+}
+
+export async function publishToDeckLog(deck: Deck): Promise<{ url: string }> {
+  const index = await loadManageIdIndex();
+  const { payload, unpublishable } = buildDeckLogPayload(deck, index);
+  if (unpublishable.length > 0) {
+    throw new Error('다음 카드는 Deck Log에 발행할 수 없습니다: ' + unpublishable.join(', '));
+  }
+  const { data, error } = await supabase.functions.invoke('decklog-publish', { body: payload });
+  if (error) throw new Error('Deck Log 업로드에 실패했습니다. 잠시 후 다시 시도해주세요.');
+  const code = (data as Record<string, unknown> | null)?.[DECKLOG_RESPONSE_CODE_FIELD];
+  if (!code || typeof code !== 'string') {
+    throw new Error('Deck Log 응답을 인식하지 못했습니다.');
+  }
+  return { url: `${DECKLOG_VIEW_BASE_JP}${code}` };
 }
