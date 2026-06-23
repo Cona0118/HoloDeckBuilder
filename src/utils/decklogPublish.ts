@@ -68,6 +68,18 @@ export function buildManageIdIndex(cards: RawCard[]): ManageIdIndex {
   return { byCardNumber, yellByColor };
 }
 
+/**
+ * hocg_cards.json은 `card_number → 카드객체` 맵 형태다(배열 아님).
+ * 맵이면 값 배열로, 이미 배열이면 그대로, 그 외엔 빈 배열로 정규화한다.
+ */
+export function parseCardsJson(json: unknown): RawCard[] {
+  if (Array.isArray(json)) return json as RawCard[];
+  if (json && typeof json === 'object') {
+    return Object.values(json as Record<string, RawCard>);
+  }
+  return [];
+}
+
 const TITLE_MAX = 25;
 
 export function buildDeckLogPayload(
@@ -130,8 +142,8 @@ export async function loadManageIdIndex(): Promise<ManageIdIndex> {
   if (cachedIndex) return cachedIndex;
   const res = await fetch(CARDS_JSON_URL);
   if (!res.ok) throw new Error('카드 정보를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.');
-  const json = (await res.json()) as RawCard[];
-  cachedIndex = buildManageIdIndex(json);
+  const json: unknown = await res.json();
+  cachedIndex = buildManageIdIndex(parseCardsJson(json));
   return cachedIndex;
 }
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildManageIdIndex, buildDeckLogPayload } from './decklogPublish';
+import { buildManageIdIndex, buildDeckLogPayload, parseCardsJson } from './decklogPublish';
 import type { Card, Deck } from '../types/card';
 
 const RAW = [
@@ -13,6 +13,38 @@ const RAW = [
   { card_number: 'hY03-001', illustrations: [{ card_number: 'hY03-001', manage_id: { jp: [30] } }] },
   { card_number: 'hBP99-XXX', illustrations: [{ card_number: 'hBP99-XXX', manage_id: {} }] }, // jp 없음
 ];
+
+describe('parseCardsJson', () => {
+  it('객체 맵(card_number→카드)을 카드 배열로 변환', () => {
+    const map = {
+      'hBD24-001': { card_number: 'hBD24-001', illustrations: [{ card_number: 'hBD24-001', manage_id: { jp: [199] } }] },
+      'hY01-001': { card_number: 'hY01-001', illustrations: [{ card_number: 'hY01-001', manage_id: { jp: [10] } }] },
+    };
+    const cards = parseCardsJson(map);
+    expect(cards).toHaveLength(2);
+    expect(cards.map((c) => c.card_number).sort()).toEqual(['hBD24-001', 'hY01-001']);
+  });
+
+  it('이미 배열이면 그대로 통과', () => {
+    expect(parseCardsJson(RAW)).toHaveLength(RAW.length);
+  });
+
+  it('객체/배열이 아니면 빈 배열', () => {
+    expect(parseCardsJson(null)).toEqual([]);
+    expect(parseCardsJson('oops')).toEqual([]);
+    expect(parseCardsJson(undefined)).toEqual([]);
+  });
+
+  it('맵을 변환해 인덱스를 만들면 정상 동작', () => {
+    const map = {
+      'hBD24-001': { card_number: 'hBD24-001', illustrations: [{ card_number: 'hBD24-001', manage_id: { jp: [199] } }] },
+      'hY02-001': { card_number: 'hY02-001', illustrations: [{ card_number: 'hY02-001', manage_id: { jp: [20] } }] },
+    };
+    const idx = buildManageIdIndex(parseCardsJson(map));
+    expect(idx.byCardNumber.get('hBD24-001')).toBe('199');
+    expect(idx.yellByColor.green).toEqual({ cardNumber: 'hY02-001', manageId: '20' });
+  });
+});
 
 describe('buildManageIdIndex', () => {
   it('카드번호→첫 JP manage_id(문자열) 매핑', () => {
