@@ -1,9 +1,9 @@
 import type { CardColor, Deck } from '../types/card';
-import { DECKLOG_VIEW_BASE_JP, DECKLOG_RESPONSE_CODE_FIELD } from './decklogApi';
+import { DECKLOG_VIEW_BASE, DECKLOG_RESPONSE_CODE_FIELD } from './decklogApi';
 import { supabase } from '../lib/supabase';
 
 /**
- * Deck Log `/publish/9` 가 받는 덱 레시피 바디.
+ * Deck Log `/publish/108` (decklog-en /ja) 가 받는 덱 레시피 바디.
  * 카드 객체 배열이 아니라 manage_id의 **평행 배열**이다(num은 같은 인덱스의 매수).
  * token_id/token 은 Edge Function이 `/create/` 에서 받아 주입하므로 여기엔 없다.
  */
@@ -11,7 +11,7 @@ export interface DeckLogPayload {
   id: string; // '' (신규 발행)
   deck_id: string; // '' (신규 발행)
   title: string;
-  post_deckrecipe: number; // 1
+  post_deckrecipe: boolean; // false (링크 공유용 — 공개 레시피 목록 등재 안 함). 실측 발행 캡처값.
   memo: string; // ''
   deck_param1: string; // 'S' (hOCG Standard)
   deck_param2: string; // ''
@@ -24,7 +24,7 @@ export interface DeckLogPayload {
   p_no: string[]; // 오시 manage_id
   p_num: number[]; // [1]
   p_slot: (number | null)[]; // [null]
-  has_session: boolean; // false
+  has_session: boolean; // false (익명 발행 — 세션 없음. 익명인데 true면 NG)
 }
 
 export interface RawCard {
@@ -49,9 +49,16 @@ const YELL_PREFIX_TO_COLOR: Record<string, CardColor> = {
   hY06: 'yellow',
 };
 
+/**
+ * decklog-en /ja 는 JP 카드 세트(manage_id.jp)를 쓴다.
+ * 일러스트 중 처음으로 JP manage_id가 있는 것을 대표로 쓴다.
+ */
 function firstJpManageId(card: RawCard): string | undefined {
-  const id = card.illustrations?.[0]?.manage_id?.jp?.[0];
-  return id === undefined ? undefined : String(id);
+  for (const ill of card.illustrations ?? []) {
+    const id = ill.manage_id?.jp?.[0];
+    if (id !== undefined) return String(id);
+  }
+  return undefined;
 }
 
 export function buildManageIdIndex(cards: RawCard[]): ManageIdIndex {
@@ -153,7 +160,7 @@ export function buildDeckLogPayload(
     id: '',
     deck_id: '',
     title: (deck.name ?? '').slice(0, TITLE_MAX),
-    post_deckrecipe: 1,
+    post_deckrecipe: false,
     memo: '',
     deck_param1: DECK_PARAM1,
     deck_param2: '',
@@ -192,9 +199,14 @@ export async function publishToDeckLog(deck: Deck): Promise<{ url: string }> {
   }
   const { data, error } = await supabase.functions.invoke('decklog-publish', { body: payload });
   if (error) throw new Error('Deck Log 업로드에 실패했습니다. 잠시 후 다시 시도해주세요.');
-  const code = (data as Record<string, unknown> | null)?.[DECKLOG_RESPONSE_CODE_FIELD];
+  const res = data as Record<string, unknown> | null;
+  const code = res?.[DECKLOG_RESPONSE_CODE_FIELD];
   if (!code || typeof code !== 'string') {
+    // status:NG = 보통 덱이 Deck Log 규칙상 유효하지 않음(매수/색상 등).
+    if (res?.status === 'NG') {
+      throw new Error('Deck Log 발행에 실패했습니다. 덱 구성이 유효한지 확인해주세요.');
+    }
     throw new Error('Deck Log 응답을 인식하지 못했습니다.');
   }
-  return { url: `${DECKLOG_VIEW_BASE_JP}${code}` };
+  return { url: `${DECKLOG_VIEW_BASE}${code}` };
 }

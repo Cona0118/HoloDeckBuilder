@@ -1142,13 +1142,25 @@ function ExportPanel({
 
   return (
     <div className="px-3 py-2 border-t border-gray-800 flex flex-col gap-1.5">
-      {/* 주요 액션: 시뮬 + 공유 */}
+      {/* 주요 액션: 시뮬 + 덱로그 + 공유 */}
       <div className="flex gap-1.5">
         <button
           onClick={onOpenDrawSim}
           className="flex-1 py-2 rounded-lg text-sm font-medium bg-indigo-700 hover:bg-indigo-600 text-white border border-indigo-600 transition-colors"
         >
-          드로우 시뮬레이션
+          드로우 시뮬
+        </button>
+        <button
+          onClick={handlePublish}
+          disabled={shareDisabled || publishing}
+          title={
+            shareDisabled
+              ? "덱 검증 오류를 먼저 해결해주세요"
+              : "Deck Log에 업로드하고 공유 링크를 받습니다 (아트 변형은 반영되지 않고 기본 일러스트로 발행)"
+          }
+          className="shrink-0 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap bg-emerald-700 hover:bg-emerald-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-emerald-600 disabled:border-gray-700 transition-colors"
+        >
+          {publishing ? "업로드 중…" : "덱로그 업로드"}
         </button>
         <button
           onClick={onShare}
@@ -1156,7 +1168,7 @@ function ExportPanel({
           title={shareDisabled ? "덱 검증 오류를 먼저 해결해주세요" : undefined}
           className="flex-1 py-2 rounded-lg text-sm font-medium bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700 transition-colors"
         >
-          덱 공유하기
+          덱 공유
         </button>
       </div>
 
@@ -1193,36 +1205,27 @@ function ExportPanel({
         </Link>
       </div>
 
-      {/* Deck Log 업로드 */}
-      <div className="flex flex-col gap-1 pt-1">
-        <button
-          onClick={handlePublish}
-          disabled={shareDisabled || publishing}
-          title={shareDisabled ? '덱 검증 오류를 먼저 해결해주세요' : 'Deck Log에 업로드하고 공유 링크를 받습니다 (기본 일러스트로 발행)'}
-          className="w-full py-2 rounded-lg text-sm font-medium bg-emerald-700 hover:bg-emerald-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-emerald-600 disabled:border-gray-700 transition-colors"
-        >
-          {publishing ? '업로드 중…' : 'Deck Log에 업로드'}
-        </button>
-        <p className="text-[10px] text-gray-500 text-center">
-          아트 변형은 반영되지 않고 기본 일러스트로 발행됩니다.
-        </p>
-        {publishUrl && (
-          <div className="flex items-center gap-1 text-[11px]">
-            <a href={publishUrl} target="_blank" rel="noreferrer" className="flex-1 truncate text-emerald-300 hover:underline">
-              {publishUrl}
-            </a>
-            <button
-              onClick={() => navigator.clipboard.writeText(publishUrl)}
-              className="px-2 py-0.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded border border-gray-700"
-            >
-              링크 복사
-            </button>
-          </div>
-        )}
-        {publishError && (
-          <p className="text-[11px] text-amber-400 break-words">{publishError}</p>
-        )}
-      </div>
+      {/* Deck Log 발행 결과 */}
+      {(publishUrl || publishError) && (
+        <div className="flex flex-col gap-1">
+          {publishUrl && (
+            <div className="flex items-center gap-1 text-[11px]">
+              <a href={publishUrl} target="_blank" rel="noreferrer" className="flex-1 truncate text-emerald-300 hover:underline">
+                {publishUrl}
+              </a>
+              <button
+                onClick={() => navigator.clipboard.writeText(publishUrl)}
+                className="px-2 py-0.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded border border-gray-700"
+              >
+                링크 복사
+              </button>
+            </div>
+          )}
+          {publishError && (
+            <p className="text-[11px] text-amber-400 break-words">{publishError}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

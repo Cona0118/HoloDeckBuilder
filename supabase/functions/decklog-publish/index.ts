@@ -1,21 +1,25 @@
-// Deck Log JP 발행 프록시.
+// Deck Log 발행 프록시 (decklog-en 도메인의 /ja 로케일 = JP 카드 세트, hololive 타이틀 108).
 // 브라우저는 CORS/Referer 검증 때문에 Deck Log를 직접 호출할 수 없어 서버에서 대행한다.
 //
-// 흐름(실제 캡처로 확정):
-//   (1) POST /system/app/api/create/  → { token_id, token } + Set-Cookie: CAKEPHP=...
-//   (2) 그 토큰/쿠키로 POST /system/app/api/publish/9 (클라가 만든 덱 레시피 + token)
+// 로그인 불필요(실측 확정 2026-06-26, 익명 발행 성공 deck 4BMBR).
+//   익명으로도 발행되며, 계정/세션 쿠키가 필요 없다. 단 페이로드는
+//   has_session:false 여야 하고(익명이므로), 덱이 데클로그 규칙상 유효해야 한다.
+//
+// 흐름(/ja 로케일이라 app-ja 프리픽스):
+//   (1) POST /system/app-ja/api/create/  → { token_id, token } + Set-Cookie: CAKEPHP=...
+//   (2) 그 토큰/쿠키로 POST /system/app-ja/api/publish/108 (덱 레시피 + token)
 //       → { "status":"OK", "id":..., "deck_id":"XXXXX" }
 //
 // 클라이언트는 token 없이 덱 레시피만 보낸다. token_id/token은 여기서 주입한다.
 
-const CREATE_URL = 'https://decklog.bushiroad.com/system/app/api/create/';
-const PUBLISH_URL = 'https://decklog.bushiroad.com/system/app/api/publish/9';
+const CREATE_URL = 'https://decklog-en.bushiroad.com/system/app-ja/api/create/';
+const PUBLISH_URL = 'https://decklog-en.bushiroad.com/system/app-ja/api/publish/108';
 
 const UPSTREAM_HEADERS: Record<string, string> = {
   'Content-Type': 'application/json;charset=UTF-8',
   Accept: 'application/json, text/plain, */*',
-  Origin: 'https://decklog.bushiroad.com',
-  Referer: 'https://decklog.bushiroad.com/create?c=9',
+  Origin: 'https://decklog-en.bushiroad.com',
+  Referer: 'https://decklog-en.bushiroad.com/ja/create?c=108',
   'User-Agent':
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
 };
@@ -64,7 +68,7 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    // (1) 토큰 + 세션 발급
+    // (1) 토큰 + 세션 발급(익명)
     const createRes = await fetch(CREATE_URL, {
       method: 'POST',
       headers: UPSTREAM_HEADERS,

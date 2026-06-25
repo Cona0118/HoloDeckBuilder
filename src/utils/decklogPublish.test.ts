@@ -90,7 +90,7 @@ describe('buildDeckLogPayload', () => {
     expect(unpublishable).toEqual([]);
     expect(payload.id).toBe('');
     expect(payload.deck_id).toBe('');
-    expect(payload.post_deckrecipe).toBe(1);
+    expect(payload.post_deckrecipe).toBe(false);
     expect(payload.has_session).toBe(false);
     // 오시
     expect(payload.p_no).toEqual(['199']);
