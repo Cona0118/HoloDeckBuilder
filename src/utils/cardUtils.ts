@@ -1,4 +1,5 @@
 import type { Card, CardColor, CardType, HolomemSubtype, SupportSubtype, FilterState, SearchScope, AbilityTiming } from '../types/card';
+import { getEventPool, isCardInPool } from '../data/eventPools';
 
 export const COLOR_LABELS: Record<CardColor, string> = {
   white:  '백',
@@ -153,6 +154,11 @@ export function filterCards(cards: Card[], filter: FilterState): Card[] {
     if (filter.sets.length > 0) {
       const normalizedSetId = /^hBD\d/.test(card.setId) ? 'hBD' : card.setId;
       if (!filter.sets.includes(normalizedSetId)) return false;
+    }
+    if (filter.eventPool) {
+      // 이벤트컵 카드풀: 세트 전체 허용 + 개별 허용 카드만 통과.
+      const pool = getEventPool(filter.eventPool);
+      if (pool && !isCardInPool(card, pool)) return false;
     }
     return true;
   });

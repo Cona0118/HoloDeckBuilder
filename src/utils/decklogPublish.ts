@@ -191,7 +191,7 @@ export async function loadManageIdIndex(): Promise<ManageIdIndex> {
   return cachedIndex;
 }
 
-export async function publishToDeckLog(deck: Deck): Promise<{ url: string }> {
+export async function publishToDeckLog(deck: Deck): Promise<{ url: string; code: string }> {
   const index = await loadManageIdIndex();
   const { payload, unpublishable } = buildDeckLogPayload(deck, index);
   if (unpublishable.length > 0) {
@@ -208,5 +208,6 @@ export async function publishToDeckLog(deck: Deck): Promise<{ url: string }> {
     }
     throw new Error('Deck Log 응답을 인식하지 못했습니다.');
   }
-  return { url: `${DECKLOG_VIEW_BASE}${code}` };
+  // code = 새 덱 코드(예: '7D9QB'). 공유 URL 뒤쪽 식별자이자 클립보드 복사 대상.
+  return { url: `${DECKLOG_VIEW_BASE}${code}`, code };
 }

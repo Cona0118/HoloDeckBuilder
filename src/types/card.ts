@@ -98,4 +98,5 @@ export interface FilterState {
   tags: string[];
   tagFilterMode: 'and' | 'or';
   sets: string[];
+  eventPool: string | null;          // 이벤트컵(대회) 카드풀 id. null=제한 없음. (eventPools.ts)
 }

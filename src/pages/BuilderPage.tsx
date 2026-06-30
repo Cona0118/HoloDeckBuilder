@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CardGrid from '../components/CardGrid';
-import DeckPanel from '../components/DeckPanel';
+import DeckPanel, { DeckMobileFab } from '../components/DeckPanel';
 import Footer from '../components/Footer';
 import { useDeckStore } from '../store/deckStore';
 
@@ -45,6 +45,9 @@ export default function BuilderPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
             </svg>
           </button>
+
+          {/* 좌측 하단 + FAB: 평소엔 보이고, 덱 시트를 올리면 숨긴다 */}
+          {!deckOpen && <DeckMobileFab />}
         </div>
 
         {deckOpen && (

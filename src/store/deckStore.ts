@@ -206,6 +206,7 @@ const defaultFilter: FilterState = {
   tags: [],
   tagFilterMode: 'or',
   sets: [],
+  eventPool: null,
 };
 
 export const useDeckStore = create<DeckState>()(

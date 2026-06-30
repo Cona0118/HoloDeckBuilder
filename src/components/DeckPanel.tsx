@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useDeckStore, entryKey } from "../store/deckStore";
 import { COLOR_ACCENT, getAccentColor } from "../utils/cardUtils";
-import type { CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
+import type { Card, CardColor, Deck, DeckEntry, HolomemSubtype } from "../types/card";
 import { CARDS } from "../data/cards";
 import { resolveStoredImage } from "../data/cardImageVariants";
 import {
@@ -16,6 +16,7 @@ import CheerPreviewModal from "./CheerPreviewModal";
 import SharePostDialog from "./SharePostDialog";
 import { parseDeckText } from "../utils/deckSnapshot";
 import { publishToDeckLog } from "../utils/decklogPublish";
+import { getEventPool, getOutOfPoolCards, isCardInPool } from "../data/eventPools";
 
 const CHEER_MAX = 20;
 
@@ -69,6 +70,11 @@ function DeckEntryCard({
   onTap,
   editMode,
   isSelected,
+  outOfPool,
+  canMoveLeft,
+  canMoveRight,
+  onMoveLeft,
+  onMoveRight,
   onSelectImage,
   onSplitImage,
 }: {
@@ -92,6 +98,13 @@ function DeckEntryCard({
   onTap: () => void;
   editMode: boolean;
   isSelected: boolean;
+  /** 선택된 이벤트컵 풀 밖 카드(=대회 사용 불가). 빨간 테두리 표시. */
+  outOfPool: boolean;
+  /** 순서편집(◀▶): 좌/우로 이동 가능 여부 + 핸들러. */
+  canMoveLeft: boolean;
+  canMoveRight: boolean;
+  onMoveLeft: () => void;
+  onMoveRight: () => void;
   onSelectImage: (imageUrl: string) => void;
   onSplitImage: (imageUrl: string) => void;
 }) {
@@ -167,7 +180,9 @@ function DeckEntryCard({
       ? "-3px 0 0 0 #6366f1"
       : dropIndicator === "after"
         ? "3px 0 0 0 #6366f1"
-        : undefined;
+        : outOfPool
+          ? "0 0 0 2px #ef4444"
+          : undefined;
 
   return (
     <>
@@ -184,11 +199,13 @@ function DeckEntryCard({
         <div
           className={`relative w-full aspect-2.5/3.5 rounded overflow-hidden bg-gray-900 border ${editMode ? "cursor-pointer" : "cursor-pointer"}`}
           style={{
-            borderColor: isSelected
-              ? "#22c55e"
-              : editMode
-                ? "#6366f1aa"
-                : accent + "66",
+            borderColor: outOfPool
+              ? "#ef4444"
+              : isSelected
+                ? "#22c55e"
+                : editMode
+                  ? "#6366f1aa"
+                  : accent + "66",
             WebkitTouchCallout: "none",
             opacity: isDragging ? 0.3 : 1,
             boxShadow,
@@ -305,6 +322,34 @@ function DeckEntryCard({
             </div>
           )}
         </div>
+
+        {/* 순서편집(editMode): 카드 아래 ◀▶ 로 좌우 순서 이동 */}
+        {editMode && (
+          <div className="flex items-stretch gap-1 mt-1">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onMoveLeft();
+              }}
+              disabled={!canMoveLeft}
+              aria-label="왼쪽으로 이동"
+              className="flex-1 h-5 rounded bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:hover:bg-gray-800 text-gray-200 text-xs leading-none flex items-center justify-center"
+            >
+              ◀
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onMoveRight();
+              }}
+              disabled={!canMoveRight}
+              aria-label="오른쪽으로 이동"
+              className="flex-1 h-5 rounded bg-gray-800 hover:bg-gray-700 disabled:opacity-30 disabled:hover:bg-gray-800 text-gray-200 text-xs leading-none flex items-center justify-center"
+            >
+              ▶
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
@@ -1091,20 +1136,18 @@ async function exportDeckAsImage(
 // ──────────────────────────────
 // Export
 // ──────────────────────────────
-function ExportPanel({
-  onOpenDrawSim,
-  onShare,
-  shareDisabled,
-}: {
-  onOpenDrawSim: () => void;
-  onShare: () => void;
-  shareDisabled: boolean;
-}) {
+/**
+ * 덱 액션(발행/텍스트복사/이미지내보내기) 상태와 핸들러.
+ * 데스크톱 인라인 바(ExportPanel)와 모바일 FAB(DeckMobileFab)가 공유한다.
+ */
+function useDeckActions() {
   const { exportDeckText, getActiveDeck } = useDeckStore();
   const [copied, setCopied] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [publishUrl, setPublishUrl] = useState<string | null>(null);
+  const [publishCode, setPublishCode] = useState<string | null>(null);
+  const [codeCopied, setCodeCopied] = useState(false);
   const [publishError, setPublishError] = useState<string | null>(null);
 
   async function handlePublish() {
@@ -1113,13 +1156,34 @@ function ExportPanel({
     setPublishing(true);
     setPublishError(null);
     setPublishUrl(null);
+    setPublishCode(null);
+    setCodeCopied(false);
     try {
-      const { url } = await publishToDeckLog(deck);
+      const { url, code } = await publishToDeckLog(deck);
       setPublishUrl(url);
+      setPublishCode(code);
+      // 발행 성공 시 덱 코드(예: 7D9QB)를 자동으로 클립보드에 복사.
+      // 클립보드 권한/비보안 컨텍스트로 실패해도 발행 결과는 그대로 보여준다.
+      try {
+        await navigator.clipboard.writeText(code);
+        setCodeCopied(true);
+      } catch {
+        setCodeCopied(false);
+      }
     } catch (e) {
       setPublishError(e instanceof Error ? e.message : 'Deck Log 업로드에 실패했습니다.');
     } finally {
       setPublishing(false);
+    }
+  }
+
+  async function handleCopyCode() {
+    if (!publishCode) return;
+    try {
+      await navigator.clipboard.writeText(publishCode);
+      setCodeCopied(true);
+    } catch {
+      /* 무시 — 사용자가 수동 선택할 수 있도록 코드 자체는 화면에 노출됨 */
     }
   }
 
@@ -1140,8 +1204,99 @@ function ExportPanel({
     }
   }
 
+  return {
+    copied,
+    exporting,
+    publishing,
+    publishUrl,
+    publishCode,
+    codeCopied,
+    publishError,
+    handlePublish,
+    handleCopyCode,
+    handleCopy,
+    handleImageExport,
+  };
+}
+
+/** 발행 결과(덱 코드 자동복사 + 공유 링크 + 에러). 데스크톱 바와 모바일 메뉴 공용. */
+function PublishResult({
+  publishUrl,
+  publishCode,
+  codeCopied,
+  publishError,
+  onCopyCode,
+}: {
+  publishUrl: string | null;
+  publishCode: string | null;
+  codeCopied: boolean;
+  publishError: string | null;
+  onCopyCode: () => void;
+}) {
+  if (!publishUrl && !publishError) return null;
   return (
-    <div className="px-3 py-2 border-t border-gray-800 flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1">
+      {publishUrl && (
+        <>
+          {/* 덱 코드 (발행 성공 시 자동 복사됨) */}
+          <div className="flex items-center gap-1.5 text-[11px]">
+            <span className="text-gray-400">덱 코드</span>
+            <code className="font-mono font-semibold text-emerald-300">{publishCode}</code>
+            <span className="text-emerald-400">{codeCopied ? "✓ 복사됨" : ""}</span>
+            <button
+              onClick={onCopyCode}
+              className="ml-auto px-2 py-0.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded border border-gray-700"
+            >
+              코드 복사
+            </button>
+          </div>
+          {/* 공유 링크 */}
+          <div className="flex items-center gap-1 text-[11px]">
+            <a href={publishUrl} target="_blank" rel="noreferrer" className="flex-1 truncate text-emerald-300 hover:underline">
+              {publishUrl}
+            </a>
+            <button
+              onClick={() => navigator.clipboard.writeText(publishUrl)}
+              className="px-2 py-0.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded border border-gray-700"
+            >
+              링크 복사
+            </button>
+          </div>
+        </>
+      )}
+      {publishError && (
+        <p className="text-[11px] text-amber-400 break-words">{publishError}</p>
+      )}
+    </div>
+  );
+}
+
+/** 데스크톱(md+) 전용: 덱 패널 하단 인라인 액션 바. */
+function ExportPanel({
+  onOpenDrawSim,
+  onShare,
+  shareDisabled,
+}: {
+  onOpenDrawSim: () => void;
+  onShare: () => void;
+  shareDisabled: boolean;
+}) {
+  const {
+    copied,
+    exporting,
+    publishing,
+    publishUrl,
+    publishCode,
+    codeCopied,
+    publishError,
+    handlePublish,
+    handleCopyCode,
+    handleCopy,
+    handleImageExport,
+  } = useDeckActions();
+
+  return (
+    <div className="hidden md:flex flex-col gap-1.5 px-3 py-2 border-t border-gray-800">
       {/* 주요 액션: 시뮬 + 덱로그 + 공유 */}
       <div className="flex gap-1.5">
         <button
@@ -1174,59 +1329,175 @@ function ExportPanel({
 
       {/* 보조 액션: 텍스트 링크 형태 */}
       <div className="flex items-center justify-center flex-wrap gap-x-1 gap-y-0.5 text-[11px] text-gray-400 pt-0.5">
-        <button
-          onClick={handleCopy}
-          className="hover:text-white px-1.5 py-0.5 transition-colors"
-        >
+        <button onClick={handleCopy} className="hover:text-white px-1.5 py-0.5 transition-colors">
           {copied ? "✓ 복사됨" : "텍스트 복사"}
         </button>
         <span className="text-gray-700">·</span>
-        <button
-          onClick={() => handleImageExport("expanded")}
-          disabled={exporting}
-          className="hover:text-white px-1.5 py-0.5 transition-colors disabled:opacity-50"
-        >
+        <button onClick={() => handleImageExport("expanded")} disabled={exporting} className="hover:text-white px-1.5 py-0.5 transition-colors disabled:opacity-50">
           이미지(전체)
         </button>
         <span className="text-gray-700">·</span>
-        <button
-          onClick={() => handleImageExport("compact")}
-          disabled={exporting}
-          className="hover:text-white px-1.5 py-0.5 transition-colors disabled:opacity-50"
-        >
+        <button onClick={() => handleImageExport("compact")} disabled={exporting} className="hover:text-white px-1.5 py-0.5 transition-colors disabled:opacity-50">
           이미지(요약)
         </button>
         <span className="text-gray-700">·</span>
-        <Link
-          to="/board"
-          className="hover:text-white px-1.5 py-0.5 transition-colors"
-        >
+        <Link to="/board" className="hover:text-white px-1.5 py-0.5 transition-colors">
           게시판 →
         </Link>
       </div>
 
-      {/* Deck Log 발행 결과 */}
-      {(publishUrl || publishError) && (
-        <div className="flex flex-col gap-1">
-          {publishUrl && (
-            <div className="flex items-center gap-1 text-[11px]">
-              <a href={publishUrl} target="_blank" rel="noreferrer" className="flex-1 truncate text-emerald-300 hover:underline">
-                {publishUrl}
-              </a>
-              <button
-                onClick={() => navigator.clipboard.writeText(publishUrl)}
-                className="px-2 py-0.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded border border-gray-700"
-              >
-                링크 복사
-              </button>
-            </div>
-          )}
-          {publishError && (
-            <p className="text-[11px] text-amber-400 break-words">{publishError}</p>
-          )}
+      <PublishResult
+        publishUrl={publishUrl}
+        publishCode={publishCode}
+        codeCopied={codeCopied}
+        publishError={publishError}
+        onCopyCode={handleCopyCode}
+      />
+    </div>
+  );
+}
+
+/**
+ * 모바일(<md) 전용: 화면 좌측 하단에 고정된 + FAB와 펼침 메뉴.
+ * BuilderPage가 덱 시트가 "닫혀 있을 때만" 렌더한다(평소엔 보이고, 시트를 올리면 사라짐).
+ * 드로우 시뮬/공유 모달을 자체적으로 소유하므로 덱 패널 없이도 단독 동작한다.
+ */
+export function DeckMobileFab() {
+  const { getActiveDeck, getDeckErrors } = useDeckStore();
+  const {
+    copied,
+    exporting,
+    publishing,
+    publishUrl,
+    publishCode,
+    codeCopied,
+    publishError,
+    handlePublish,
+    handleCopyCode,
+    handleCopy,
+    handleImageExport,
+  } = useDeckActions();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [drawSimOpen, setDrawSimOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
+
+  const deck = getActiveDeck();
+  const shareDisabled = getDeckErrors().length > 0;
+
+  return (
+    <>
+      {/* 바깥 영역 탭으로 닫기 */}
+      {menuOpen && (
+        <button
+          aria-label="메뉴 닫기"
+          onClick={() => setMenuOpen(false)}
+          className="fixed inset-0 z-40 bg-black/30"
+        />
+      )}
+
+      {/* 펼침 메뉴 (FAB 위로 펼쳐짐) */}
+      {menuOpen && (
+        <div className="fixed bottom-36 left-4 z-40 w-60 max-w-[calc(100vw-2rem)] max-h-[60vh] overflow-y-auto flex flex-col gap-1.5 p-2 rounded-2xl bg-gray-900 border border-gray-700 shadow-2xl">
+          <button
+            onClick={() => {
+              setMenuOpen(false);
+              setDrawSimOpen(true);
+            }}
+            className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-700 hover:bg-indigo-600 text-white border border-indigo-600 transition-colors"
+          >
+            드로우 시뮬
+          </button>
+          <button
+            onClick={handlePublish}
+            disabled={shareDisabled || publishing}
+            className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium bg-emerald-700 hover:bg-emerald-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-emerald-600 disabled:border-gray-700 transition-colors"
+          >
+            {publishing ? "업로드 중…" : "덱로그 업로드"}
+          </button>
+          <button
+            onClick={() => {
+              setMenuOpen(false);
+              setShareOpen(true);
+            }}
+            disabled={shareDisabled}
+            className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium bg-purple-700 hover:bg-purple-600 disabled:bg-gray-800 disabled:text-gray-500 text-white border border-purple-600 disabled:border-gray-700 transition-colors"
+          >
+            덱 공유
+          </button>
+
+          <div className="h-px bg-gray-800 my-0.5" />
+
+          <button
+            onClick={handleCopy}
+            className="w-full text-left px-3 py-2 rounded-lg text-sm bg-gray-800/60 hover:bg-gray-800 text-gray-200 border border-gray-700 transition-colors"
+          >
+            {copied ? "✓ 복사됨" : "텍스트 복사"}
+          </button>
+          <button
+            onClick={() => handleImageExport("expanded")}
+            disabled={exporting}
+            className="w-full text-left px-3 py-2 rounded-lg text-sm bg-gray-800/60 hover:bg-gray-800 text-gray-200 border border-gray-700 transition-colors disabled:opacity-50"
+          >
+            이미지(전체)
+          </button>
+          <button
+            onClick={() => handleImageExport("compact")}
+            disabled={exporting}
+            className="w-full text-left px-3 py-2 rounded-lg text-sm bg-gray-800/60 hover:bg-gray-800 text-gray-200 border border-gray-700 transition-colors disabled:opacity-50"
+          >
+            이미지(요약)
+          </button>
+          <Link
+            to="/board"
+            className="w-full text-left px-3 py-2 rounded-lg text-sm bg-gray-800/60 hover:bg-gray-800 text-gray-200 border border-gray-700 transition-colors"
+          >
+            게시판 →
+          </Link>
+
+          <div className="pt-1.5 mt-0.5 border-t border-gray-800 empty:hidden">
+            <PublishResult
+              publishUrl={publishUrl}
+              publishCode={publishCode}
+              codeCopied={codeCopied}
+              publishError={publishError}
+              onCopyCode={handleCopyCode}
+            />
+          </div>
         </div>
       )}
-    </div>
+
+      {/* + FAB (스크롤해도 화면 좌측 하단에 고정. 하단 '덱 열기' 바 위에 띄움) */}
+      <button
+        onClick={() => setMenuOpen((v) => !v)}
+        aria-label={menuOpen ? "덱 메뉴 닫기" : "덱 메뉴 열기"}
+        aria-expanded={menuOpen}
+        className="fixed bottom-20 left-4 z-40 w-14 h-14 flex items-center justify-center rounded-full bg-indigo-600 hover:bg-indigo-500 text-white shadow-2xl border border-indigo-400/60 transition-colors"
+      >
+        <svg
+          className={`w-7 h-7 transition-transform duration-200 ${menuOpen ? "rotate-45" : ""}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v14M5 12h14" />
+        </svg>
+      </button>
+
+      {/* 모달 — FAB가 단독으로 소유(덱 시트와 무관하게 동작) */}
+      {shareOpen && deck && (
+        <SharePostDialog
+          deck={deck}
+          onClose={() => setShareOpen(false)}
+          onSuccess={() => {
+            setShareOpen(false);
+            alert("게시판에 업로드되었습니다.");
+          }}
+        />
+      )}
+      {drawSimOpen && deck && (
+        <DrawSimModal deck={deck} onClose={() => setDrawSimOpen(false)} />
+      )}
+    </>
   );
 }
 
@@ -1245,6 +1516,7 @@ export default function DeckPanel() {
     setOshiImage,
     setEntryImage,
     splitEntryImage,
+    filter,
   } = useDeckStore();
   const deck = getActiveDeck();
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
@@ -1404,6 +1676,13 @@ export default function DeckPanel() {
 
   const mainCount = deck.mainDeck.reduce((s, e) => s + e.count, 0);
   const errors = getDeckErrors();
+
+  // 이벤트컵(대회) 풀 합법성: 필터에서 대회를 고른 경우에만 표시.
+  const eventPool = getEventPool(filter.eventPool);
+  const outOfPoolCards = eventPool ? getOutOfPoolCards(deck, eventPool) : [];
+  const poolLegal = outOfPoolCards.length === 0;
+  const cardOutOfPool = (card: Card): boolean =>
+    eventPool ? !isCardInPool(card, eventPool) : false;
   const holomemCount = deck.mainDeck
     .filter((e) => e.card.type === "holomem")
     .reduce((s, e) => s + e.count, 0);
@@ -1481,7 +1760,10 @@ export default function DeckPanel() {
             <div
               className="w-10 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2 select-none"
               style={{
-                borderColor: oshiAccent + "aa",
+                borderColor:
+                  deck.oshi && cardOutOfPool(deck.oshi)
+                    ? "#ef4444"
+                    : oshiAccent + "aa",
                 WebkitTouchCallout: "none",
               }}
               onPointerDown={deck.oshi ? startOshiLongPress : undefined}
@@ -1518,14 +1800,35 @@ export default function DeckPanel() {
 
             {/* Right: oshi info + stats */}
             <div className="flex-1 min-w-0 flex flex-col gap-1 md:gap-2">
-              {deck.oshi && (
-                <div>
-                  <p className="text-xs md:text-sm font-semibold text-amber-200 truncate">
-                    {deck.oshi.name}
-                  </p>
-                  <p className="text-[10px] md:text-xs text-gray-400">
-                    {deck.oshi.cardNumber}
-                  </p>
+              {(deck.oshi || eventPool) && (
+                <div className="flex items-start justify-between gap-2">
+                  {deck.oshi && (
+                    <div className="min-w-0">
+                      <p className="text-xs md:text-sm font-semibold text-amber-200 truncate">
+                        {deck.oshi.name}
+                      </p>
+                      <p className="text-[10px] md:text-xs text-gray-400">
+                        {deck.oshi.cardNumber}
+                      </p>
+                    </div>
+                  )}
+                  {/* 이벤트컵 사용 가능/불가 배지 (오시 이름·코드 옆) */}
+                  {eventPool && (
+                    <span
+                      title={
+                        poolLegal
+                          ? undefined
+                          : `풀 외 ${outOfPoolCards.length}종: ${outOfPoolCards.map((c) => c.cardNumber).join(", ")}`
+                      }
+                      className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium border ${
+                        poolLegal
+                          ? "bg-emerald-900/50 border-emerald-700 text-emerald-300"
+                          : "bg-rose-900/70 border-rose-500 text-rose-200"
+                      }`}
+                    >
+                      {eventPool.name} {poolLegal ? "사용 가능" : "사용 불가"}
+                    </span>
+                  )}
                 </div>
               )}
 
@@ -1693,11 +1996,14 @@ export default function DeckPanel() {
                   </span>
                 </p>
                 <div className="grid grid-cols-5 gap-1 px-2">
-                  {section.entries.map((entry) => {
+                  {section.entries.map((entry, idx) => {
                     const eKey = entryKey(entry.card.id, entry.imageUrl);
                     const totalForCard = deck.mainDeck
                       .filter((e) => e.card.id === entry.card.id)
                       .reduce((s, e) => s + e.count, 0);
+                    // 좌우 이동: 같은 섹션의 인접 엔트리와 위치 교환
+                    const prevEntry = section.entries[idx - 1];
+                    const nextEntry = section.entries[idx + 1];
                     return (
                       <DeckEntryCard
                         key={eKey}
@@ -1727,6 +2033,25 @@ export default function DeckPanel() {
                         }
                         editMode={editMode}
                         isSelected={selectedCardId === eKey}
+                        outOfPool={cardOutOfPool(entry.card)}
+                        canMoveLeft={idx > 0}
+                        canMoveRight={idx < section.entries.length - 1}
+                        onMoveLeft={() => {
+                          if (prevEntry) {
+                            swapMainDeckEntries(
+                              eKey,
+                              entryKey(prevEntry.card.id, prevEntry.imageUrl),
+                            );
+                          }
+                        }}
+                        onMoveRight={() => {
+                          if (nextEntry) {
+                            swapMainDeckEntries(
+                              eKey,
+                              entryKey(nextEntry.card.id, nextEntry.imageUrl),
+                            );
+                          }
+                        }}
                         onTap={() => {
                           if (selectedCardId === null) {
                             setSelectedCardId(eKey);
