@@ -1,0 +1,16 @@
+{
+  // Supabase Edge Functions(Deno) 전용 TS 설정.
+  // 루트 tsconfig(include: ["src"])와 분리되어 `tsc -b` 빌드에는 포함되지 않고,
+  // 에디터(VSCode TS 서버)가 이 폴더 파일을 검사할 때 사용된다.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": []
+  },
+  "include": ["./**/*.ts"]
+}
