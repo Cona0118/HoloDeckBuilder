@@ -26762,12 +26762,17 @@ export const CARDS: Card[] = [
     batonPass: 1,
     tags: ["#JP", "#2기생", "#새"],
     imageUrl: "/images/hSD19/hSD19-007_U.png",
+
     abilities: [
       {
-        name: "모에모에 귱",
-        description:
-          "[콜라보 포지션 한정] 상대의 스테이지에 2nd 홀로멤이 있다면, 이 아츠 +20.",
-        damage: 20,
+        name: "청춘 옐",
+        description: "자신의 아카이브의 옐 1장을 이 홀로멤에게 보낸다.",
+        timing: "bloom",
+      },
+      {
+        name: "잊어버릴까 보냐",
+        description: "이 홀로멤에게 옐이 2장 이상 붙어 있다면, 이 아츠 +20.",
+        damage: 30,
         cost: ["colorless"],
       },
     ],
@@ -26788,14 +26793,10 @@ export const CARDS: Card[] = [
     imageUrl: "/images/hSD19/hSD19-008_R.png",
     abilities: [
       {
-        name: "청춘 옐",
-        description: "자신의 아카이브의 옐 1장을 이 홀로멤에게 보낸다.",
-        timing: "bloom",
-      },
-      {
-        name: "잊어버릴까 보냐",
-        description: "이 홀로멤에게 옐이 2장 이상 붙어 있다면, 이 아츠 +20.",
-        damage: 30,
+        name: "모에모에 귱",
+        description:
+          "[콜라보 포지션 한정] 상대의 스테이지에 2nd 홀로멤이 있다면, 이 아츠 +20.",
+        damage: 20,
         cost: ["colorless"],
       },
     ],
