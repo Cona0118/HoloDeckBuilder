@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDeckStore } from "../store/deckStore";
 import { SETS, CARDS } from "../data/cards";
@@ -18,6 +18,9 @@ import type {
   SearchScope,
   AbilityTiming,
 } from "../types/card";
+
+// 이벤트컵 필터 UI 노출 여부 — true로 바꾸면 다시 표시된다.
+const SHOW_EVENT_POOL_FILTER = false;
 
 const TYPES: CardType[] = ["oshi", "holomem", "support"];
 const COLORS: CardColor[] = [
@@ -223,6 +226,13 @@ export default function SearchFilter() {
 
   const activeEventPool = getEventPool(filter.eventPool);
 
+  // UI가 숨겨진 동안 저장된 이벤트컵 필터가 몰래 적용되지 않도록 해제한다.
+  useEffect(() => {
+    if (!SHOW_EVENT_POOL_FILTER && filter.eventPool) {
+      setFilter({ eventPool: null });
+    }
+  }, [filter.eventPool]);
+
   const hasAnyFilter =
     filter.searchText ||
     filter.types.length ||
@@ -343,30 +353,34 @@ export default function SearchFilter() {
       {filtersOpen && (
         <div className="flex flex-col gap-2.5 px-3 pb-3">
           {/* 이벤트컵(대회) 카드풀 — eventPools.ts에서 정의 */}
-          <div className="flex flex-wrap gap-1.5 items-center">
-            <span className="text-xs text-gray-500 shrink-0">이벤트컵:</span>
-            <select
-              value={filter.eventPool ?? ""}
-              onChange={(e) => setFilter({ eventPool: e.target.value || null })}
-              className="px-2.5 py-1 bg-gray-800 border border-gray-700 rounded-lg text-xs text-gray-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
-              title="대회 카드풀로 제한"
-            >
-              <option value="">없음</option>
-              {EVENT_POOLS.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.name}
-                </option>
-              ))}
-            </select>
-            {activeEventPool && (
-              <span className="text-[10px] text-gray-500 break-all">
-                {activeEventPool.sets.join(", ")}
-                {activeEventPool.cards?.length
-                  ? ` + 개별 ${activeEventPool.cards.length}장`
-                  : ""}
-              </span>
-            )}
-          </div>
+          {SHOW_EVENT_POOL_FILTER && (
+            <div className="flex flex-wrap gap-1.5 items-center">
+              <span className="text-xs text-gray-500 shrink-0">이벤트컵:</span>
+              <select
+                value={filter.eventPool ?? ""}
+                onChange={(e) =>
+                  setFilter({ eventPool: e.target.value || null })
+                }
+                className="px-2.5 py-1 bg-gray-800 border border-gray-700 rounded-lg text-xs text-gray-200 focus:outline-none focus:border-indigo-500 cursor-pointer"
+                title="대회 카드풀로 제한"
+              >
+                <option value="">없음</option>
+                {EVENT_POOLS.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+              {activeEventPool && (
+                <span className="text-[10px] text-gray-500 break-all">
+                  {activeEventPool.sets.join(", ")}
+                  {activeEventPool.cards?.length
+                    ? ` + 개별 ${activeEventPool.cards.length}장`
+                    : ""}
+                </span>
+              )}
+            </div>
+          )}
 
           {/* 카드 타입 */}
           <div className="flex flex-wrap gap-1.5 items-center">
