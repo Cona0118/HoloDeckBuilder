@@ -120,13 +120,13 @@ export default function CardDetailPanel({ selected }: { selected: SelectedCard |
 
         {/* 효과 */}
         {card.oshiStageAbility && (
-          <AbilityText label="스테이지" name={card.oshiStageAbility.name} desc={card.oshiStageAbility.description} />
+          <AbilityText label="오시스테이지 스킬" name={card.oshiStageAbility.name} desc={card.oshiStageAbility.description} />
         )}
         {card.oshiAbility && (
-          <AbilityText label="오시 효과" name={card.oshiAbility.name} desc={card.oshiAbility.description} />
+          <AbilityText label="오시 스킬" name={card.oshiAbility.name} desc={card.oshiAbility.description} />
         )}
         {card.spAbility && (
-          <AbilityText label="SP 효과" name={card.spAbility.name} desc={card.spAbility.description} />
+          <AbilityText label="SP오시 스킬" name={card.spAbility.name} desc={card.spAbility.description} />
         )}
         {card.abilities?.map((ab, i) => (
           <AbilityText

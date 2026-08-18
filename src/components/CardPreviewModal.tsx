@@ -108,7 +108,7 @@ export default function CardPreviewModal({ card, onClose, onSelectImage, onSplit
             <img
               src={currentImage}
               alt={card.name}
-              className="max-h-[40vh] md:max-h-[80vh] max-w-full md:max-w-[40vw] w-auto rounded-xl shadow-2xl object-contain block"
+              className="h-[40vh] md:h-[80vh] aspect-[63/88] max-w-full md:max-w-[40vw] rounded-xl shadow-2xl object-contain block"
               draggable={false}
             />
             {hasMultiple && (
@@ -245,13 +245,13 @@ export default function CardPreviewModal({ card, onClose, onSelectImage, onSplit
 
             {/* 효과 */}
             {card.oshiStageAbility && (
-              <PreviewOshiAbility label="스테이지 효과" ability={card.oshiStageAbility} color={accent} />
+              <PreviewOshiAbility label="오시스테이지 스킬" ability={card.oshiStageAbility} color={accent} />
             )}
             {card.oshiAbility && (
-              <PreviewOshiAbility label="오시 효과" ability={card.oshiAbility} color={accent} />
+              <PreviewOshiAbility label="오시 스킬" ability={card.oshiAbility} color={accent} />
             )}
             {card.spAbility && (
-              <PreviewOshiAbility label="SP 효과" ability={card.spAbility} color="#f59e0b" />
+              <PreviewOshiAbility label="SP오시 스킬" ability={card.spAbility} color="#f59e0b" />
             )}
             {card.type === "support" && card.limited && (
               <div className="rounded-lg bg-red-900 px-3 py-1.5">
