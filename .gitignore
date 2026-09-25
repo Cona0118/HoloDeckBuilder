@@ -32,3 +32,5 @@ cdn/
 .omc/state/
 supabase/.temp/
 .superpowers/
+.vercel
+.env*
