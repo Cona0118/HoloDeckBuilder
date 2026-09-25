@@ -1,5 +1,11 @@
 import type { CardColor } from "../types/card";
-import { CHEER_IMAGE_VARIANTS } from "./cheerImageVariantsMap.generated";
+import { CHEER_IMAGE_VARIANTS as RAW_CHEER_VARIANTS } from "./cheerImageVariantsMap.generated";
+import { toImagePath, toImageSrc } from "../utils/imageCdn";
+
+// 표시용 URL로 변환된 옐 변형 맵 — CDN 베이스 설정 시 .webp CDN URL이 된다.
+const CHEER_IMAGE_VARIANTS: Partial<Record<CardColor, string[]>> = Object.fromEntries(
+  Object.entries(RAW_CHEER_VARIANTS).map(([color, urls]) => [color, urls.map(toImageSrc)]),
+);
 
 /** 옐(엘) 덱 색상 순서. */
 export const CHEER_COLORS: CardColor[] = [
@@ -13,12 +19,12 @@ export const CHEER_COLORS: CardColor[] = [
 
 /** 색상별 기본 옐 이미지(생성 매니페스트가 비어 있을 때의 안전 폴백). */
 const DEFAULT_CHEER_IMAGE: Record<CardColor, string> = {
-  white: "/images/hY/hY01.png",
-  green: "/images/hY/hY02.png",
-  red: "/images/hY/hY03.png",
-  blue: "/images/hY/hY04.png",
-  purple: "/images/hY/hY05.png",
-  yellow: "/images/hY/hY06.png",
+  white: toImageSrc("/images/hY/hY01.png"),
+  green: toImageSrc("/images/hY/hY02.png"),
+  red: toImageSrc("/images/hY/hY03.png"),
+  blue: toImageSrc("/images/hY/hY04.png"),
+  purple: toImageSrc("/images/hY/hY05.png"),
+  yellow: toImageSrc("/images/hY/hY06.png"),
 };
 
 /**
@@ -50,6 +56,11 @@ export const CHEER_IMAGE: Record<CardColor, string> = CHEER_COLORS.reduce(
  * 현재 변형 목록에 있으면 그대로, 없으면(파일명 변경/삭제) 기본 이미지로 폴백.
  */
 export function resolveCheerImage(color: CardColor, stored?: string): string {
-  if (stored && CHEER_VARIANTS[color].includes(stored)) return stored;
+  if (stored) {
+    // 저장 시점의 URL 형태(로컬 경로·구/신 CDN URL)와 무관하게 경로 공간으로 비교
+    const storedPath = toImagePath(stored);
+    const hit = CHEER_VARIANTS[color].find((v) => toImagePath(v) === storedPath);
+    if (hit) return hit;
+  }
   return CHEER_VARIANTS[color][0];
 }

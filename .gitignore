@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+# 카드 이미지 CDN 파이프라인 산출물·자격 증명 (로컬 전용)
+cdn/
+.env.r2
+
 # OMC / Supabase CLI / SDD 작업 스크래치 (로컬 전용 — 커밋/푸시 금지)
 .omc/sessions/
 .omc/state/

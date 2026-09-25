@@ -1,6 +1,7 @@
 import type { Card } from "../types/card";
+import { toImageSrc } from "../utils/imageCdn";
 
-export const CARDS: Card[] = [
+const RAW_CARDS: Card[] = [
   {
     id: "hBD24-001",
     cardNumber: "hBD24-001",
@@ -30798,6 +30799,11 @@ export const CARDS: Card[] = [
     limit: 4,
   },
 ];
+
+// 표시용 이미지 URL 적용 — CDN 베이스(VITE_IMAGE_BASE_URL) 설정 시 .webp CDN URL로 변환된다.
+export const CARDS: Card[] = RAW_CARDS.map((c) =>
+  c.imageUrl ? { ...c, imageUrl: toImageSrc(c.imageUrl) } : c,
+);
 
 export const SETS = [
   { id: "hEB01", name: "섬머 홀로그램" },

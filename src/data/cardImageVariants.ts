@@ -2,7 +2,13 @@
 // CARD_IMAGE_VARIANTS 매핑은 빌드 전 scripts/genCardImageVariants.mjs 가
 // public/images/ 폴더를 스캔해 자동 생성한다 (cardImageVariantsMap.generated.ts).
 // 새 일러스트 이미지를 폴더에 추가했다면 `npm run gen:variants` 또는 빌드 시 자동 갱신된다.
-import { CARD_IMAGE_VARIANTS } from "./cardImageVariantsMap.generated";
+import { CARD_IMAGE_VARIANTS as RAW_VARIANTS } from "./cardImageVariantsMap.generated";
+import { toImagePath, toImageSrc } from "../utils/imageCdn";
+
+// 표시용 URL로 변환된 변형 맵 — CDN 베이스 설정 시 .webp CDN URL이 된다.
+const CARD_IMAGE_VARIANTS: Record<string, string[]> = Object.fromEntries(
+  Object.entries(RAW_VARIANTS).map(([id, urls]) => [id, urls.map(toImageSrc)]),
+);
 
 export { CARD_IMAGE_VARIANTS };
 
@@ -28,7 +34,10 @@ export function resolveStoredImage(
 ): string | undefined {
   if (storedUrl) {
     const variants = getCardImageVariants(cardId, defaultImageUrl);
-    if (variants.includes(storedUrl)) return storedUrl;
+    // 저장 시점의 URL 형태(로컬 경로·구/신 CDN URL)와 무관하게 경로 공간으로 비교
+    const stored = toImagePath(storedUrl);
+    const hit = variants.find((v) => toImagePath(v) === stored);
+    if (hit) return hit;
   }
   return defaultImageUrl;
 }
@@ -42,5 +51,6 @@ export function resolveCardImage(
   const override = overrides?.[cardId];
   if (!override) return defaultImageUrl;
   const variants = getCardImageVariants(cardId, defaultImageUrl);
-  return variants.includes(override) ? override : defaultImageUrl;
+  const overridePath = toImagePath(override);
+  return variants.find((v) => toImagePath(v) === overridePath) ?? defaultImageUrl;
 }

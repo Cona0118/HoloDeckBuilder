@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import type { Card, CardAbility, OshiAbility } from "../types/card";
 import { isBuzz } from "../utils/cardUtils";
+import { toImageSrc } from "../utils/imageCdn";
 import { getCardImageVariants } from "../data/cardImageVariants";
 import {
   getAccentColor,
@@ -290,7 +291,7 @@ export default function CardPreviewModal({ card, onClose, onSelectImage, onSplit
                     <span className="text-xs text-gray-500">-</span>
                   ) : (
                     Array.from({ length: card.batonPass }, (_, i) => (
-                      <img key={i} src="/images/cost/cost.png" alt="코스트" className="w-5 h-5" draggable={false} />
+                      <img key={i} src={COST_IMAGE.colorless} alt="코스트" className="w-5 h-5" draggable={false} />
                     ))
                   )}
                 </div>
@@ -345,23 +346,23 @@ const TIMING_COLOR: Record<string, string> = {
 };
 
 const COST_IMAGE: Record<string, string> = {
-  white: '/images/cost/cost_w.png',
-  green: '/images/cost/cost_g.png',
-  red: '/images/cost/cost_r.png',
-  blue: '/images/cost/cost_b.png',
-  purple: '/images/cost/cost_p.png',
-  yellow: '/images/cost/cost_y.png',
-  colorless: '/images/cost/cost.png',
+  white: toImageSrc('/images/cost/cost_w.png'),
+  green: toImageSrc('/images/cost/cost_g.png'),
+  red: toImageSrc('/images/cost/cost_r.png'),
+  blue: toImageSrc('/images/cost/cost_b.png'),
+  purple: toImageSrc('/images/cost/cost_p.png'),
+  yellow: toImageSrc('/images/cost/cost_y.png'),
+  colorless: toImageSrc('/images/cost/cost.png'),
 };
 
 const HOLO_ARTS_MAP: Record<string, string> = {
-  W: '/images/cost/cost_w.png',
-  G: '/images/cost/cost_g.png',
-  R: '/images/cost/cost_r.png',
-  B: '/images/cost/cost_b.png',
-  P: '/images/cost/cost_p.png',
-  Y: '/images/cost/cost_y.png',
-  N: '/images/cost/cost.png',
+  W: COST_IMAGE.white,
+  G: COST_IMAGE.green,
+  R: COST_IMAGE.red,
+  B: COST_IMAGE.blue,
+  P: COST_IMAGE.purple,
+  Y: COST_IMAGE.yellow,
+  N: COST_IMAGE.colorless,
 };
 
 function RichText({ text }: { text: string }) {
