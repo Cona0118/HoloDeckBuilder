@@ -15,13 +15,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "그린 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 녹색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 녹색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Green~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 녹색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 녹색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -130,13 +130,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 + 20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -245,13 +245,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -291,13 +291,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -366,7 +366,7 @@ const RAW_CARDS: Card[] = [
       name: "Anniversary Gift ~Blue~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 청색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+        "[게임에 1번] 자신의 덱에서, 청색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -523,13 +523,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -552,7 +552,7 @@ const RAW_CARDS: Card[] = [
       name: "Birthday Gift ~Blue~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 청색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+        "[게임에 1번] 자신의 덱에서, 청색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -621,7 +621,7 @@ const RAW_CARDS: Card[] = [
       name: "Birthday Gift ~Blue~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 청색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+        "[게임에 1번] 자신의 덱에서, 청색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -638,13 +638,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "레드 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 적색 홀로멤 1명의 아츠 + 20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 적색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Red~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 적색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+        "[게임에 1번] 자신의 덱에서, 적색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -684,13 +684,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "옐로 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 황색 홀로멤 1명의 아츠 + 20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 황색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Yellow~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 황색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+        "[게임에 1번] 자신의 덱에서, 황색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -846,13 +846,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -861,7 +861,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBD24-038",
     setId: "hBD24",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "oshi",
     life: 5,
     color: ["purple"],
@@ -869,13 +869,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -1053,13 +1053,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -1076,13 +1076,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -1091,7 +1091,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBD24-048",
     setId: "hBD24",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     type: "oshi",
     life: 5,
     color: ["purple"],
@@ -1099,13 +1099,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -1276,7 +1276,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBD24-056",
     setId: "hBD24",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     type: "oshi",
     life: 5,
     color: ["yellow"],
@@ -1422,13 +1422,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -1491,13 +1491,13 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "퍼플 인핸스",
       cost: "홀로 파워 -2",
-      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1장의 아츠 +20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 자색 홀로멤 1명의 아츠 +20.",
     },
     spAbility: {
       name: "Birthday Gift ~Purple~",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1명을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[게임에 1번] 자신의 덱에서, 자색 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -1567,7 +1567,7 @@ const RAW_CARDS: Card[] = [
       name: "어메이징 드로잉",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 덱에서, 이벤트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+        "[게임에 1번] 자신의 덱에서, 이벤트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -1608,7 +1608,7 @@ const RAW_CARDS: Card[] = [
       name: "노우사기들~",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 상대의 턴에서, 자신의 홀로멤이 다운했을 때 사용할 수 있다 : 자신의 다운한 홀로멤 1명의 홀로아츠 G 옐 전부를, 자신의 다른 홀로멤에게 나눠서 바꿔 붙인다.",
+        "[턴에 1번] 상대의 턴에서, 자신의 홀로멤이 다운 했을 때 사용할 수 있다 : 자신의 다운 한 홀로멤 1명의 홀로아츠 G 옐 전부를, 자신의 다른 홀로멤에게 나눠서 바꿔 붙인다.",
     },
     spAbility: {
       name: "행운 토끼",
@@ -1632,7 +1632,7 @@ const RAW_CARDS: Card[] = [
       name: "여간부의 지휘",
       cost: "홀로 파워 -X",
       description:
-        "[턴에 1번] 자신의 적색 홀로멤의 능력으로 패를 아카이브할 때 사용할 수 있다 : 아카이브할 패 1장 당 자신의 홀로 파워 1장을, 대신 아카이브할 수 있다.",
+        "[턴에 1번] 자신의 적색 홀로멤의 능력으로 패를 아카이브 할 때 사용할 수 있다 : 아카이브 할 패 1장당 자신의 홀로 파워 1장을, 대신 아카이브 할 수 있다.",
     },
     spAbility: {
       name: "호크 아이",
@@ -1661,7 +1661,7 @@ const RAW_CARDS: Card[] = [
       name: "Rise from the ashes",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 상대의 턴에서, 자신의 적색 홀로멤이 다운했을 때 사용할 수 있다 : 자신의 줄어들 라이프 -1. 다시, 다운한 1명을 골라, 그 홀로멤을 포함해 겹쳐져 있던 홀로멤 전부를 패로 되돌린다.",
+        "[게임에 1번] 상대의 턴에서, 자신의 적색 홀로멤이 다운 했을 때 사용할 수 있다 : 자신의 줄어들 라이프 -1. 다시, 다운 한 1명을 골라, 그 홀로멤을 포함해 겹쳐져 있던 홀로멤 전부를 패로 되돌린다.",
     },
     limit: 1,
   },
@@ -1919,10 +1919,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "하얀 캔버스",
         description:
-          "자신의 센터 홀로멤이 #Promise를 가질 때, 자신의 덱을 1장 드로우한다.",
+          "자신의 센터 홀로멤이 #Promise를 가질 때, 자신의 덱을 1장 드로우 한다.",
         timing: "collab",
       },
-      { name: "릴렉스 타임", description: "", damage: 10, cost: ["colorless"] },
+      {
+        name: "릴렉스 타임",
+        description: "",
+        damage: 10,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -1991,7 +1996,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "모두와 노래하고 춤추고 싶어!",
         description:
-          "Debut에서 Bloom했을 때, 자신의 덱에서 #Promise를 가진 Buzz 이외의 [Debut 홀로멤이나 1st 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+          "Debut에서 Bloom 했을 때, 자신의 덱에서 #Promise를 가진 Buzz 이외의 [Debut 홀로멤이나 1st 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
       },
       {
@@ -2020,13 +2025,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "그 날의 약속",
         description:
-          "자신의 덱에서 #Promise를 가진 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+          "자신의 덱에서 #Promise를 가진 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
       {
         name: "모두 함께",
         description:
-          "이 턴 동안, 자신의 백 홀로멤 1명 당, 자신의 센터 홀로멤과 콜라보 홀로멤의 아츠 +10.",
+          "이 턴 동안, 자신의 백 홀로멤 1명당, 자신의 센터 홀로멤과 콜라보 홀로멤의 아츠 +10.",
         damage: 70,
         specialDamage: { color: "purple", value: 50 },
         cost: ["white", "colorless", "colorless"],
@@ -2317,7 +2322,7 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "약속의 힘",
-        description: "자신의 #Promise를 가진 홀로멤 1명 당, 이 아츠 +20.",
+        description: "자신의 #Promise를 가진 홀로멤 1명당, 이 아츠 +20.",
         damage: 50,
         specialDamage: { color: "red", value: 50 },
         cost: ["white", "colorless", "colorless"],
@@ -2467,7 +2472,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "고딕 돌",
         description:
-          "자신의 옐 덱의 위에서부터 1장을, 자신의 홀로멤에게 보낸다. 그 후, 이 홀로멤에 툴이 붙어 있을 때, 이 홀로멤의 HP 40 회복.",
+          "자신의 옐 덱의 위에서부터 1장을, 자신의 홀로멤에게 보낸다. 그 후, 이 홀로멤에게 툴이 붙어 있을 때, 이 홀로멤의 HP 40 회복.",
         timing: "bloom",
       },
       {
@@ -2496,8 +2501,8 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP01/hBP01-038_C.png",
     abilities: [
       {
-        name: "콘페코ー!",
-        description: "주사위를 1번 굴릴 수 있다 : 짝수일 때 이 아츠 +20.",
+        name: "콘페코~!",
+        description: "주사위를 1번 굴릴 수 있다 : 짝수일 때, 이 아츠 +20.",
         damage: 20,
         cost: ["green"],
       },
@@ -2521,7 +2526,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "갤럭시 아이돌",
         description:
-          "자신의 오시 홀로멤이 〈우사다 페코라〉일 때, 주시위를 1번 굴릴 수 있다 : 짝수일 때, 자신의 옐 덱의 위에서부터 1장을, 자신의 홀로멤에게 보낸다.",
+          "자신의 오시 홀로멤이 〈우사다 페코라〉일 때, 주사위를 1번 굴릴 수 있다 : 짝수일 때, 자신의 옐 덱의 위에서부터 1장을, 자신의 홀로멤에게 보낸다.",
         timing: "collab",
       },
       {
@@ -2608,7 +2613,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "키t라아아아",
         description:
-          "주사위를 1번 굴릴 수 있다 : 나온 눈의 수 1개 당, 이 아츠 +10.",
+          "주사위를 1번 굴릴 수 있다 : 나온 눈의 수 1개당, 이 아츠 +10.",
         damage: 50,
         cost: ["green", "green"],
       },
@@ -2637,7 +2642,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "전인류 토끼화 계획",
         description:
-          "주사위를 3번 굴릴 수 있다 : 나온 눈의 합계 수 1개 당, 이 아츠 +10.",
+          "주사위를 3번 굴릴 수 있다 : 나온 눈의 합계 수 1개당, 이 아츠 +10.",
         damage: 60,
         specialDamage: { color: "blue", value: 50 },
         cost: ["green", "green", "green", "colorless"],
@@ -2741,9 +2746,9 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP01/hBP01-047_RR.png",
     abilities: [
       {
-        name: "생명의 기적",
+        name: "생명의 궤적",
         description:
-          "이 홀로멤의 HP 40 회복. 그 후, 주사위를 1번 굴릴 수 있다 : 홀수일 때, 자신의 아카이브의 홀로아츠 G 1~3장을 이 홀로멤에게 보낼 수 있다.",
+          "이 홀로멤의 HP 40 회복. 그 후, 주사위를 1번 굴릴 수 있다 : 홀수일 때, 자신의 아카이브의 홀로아츠 G 옐 1~3장을 이 홀로멤에게 보낼 수 있다.",
         timing: "bloom",
       },
       {
@@ -2821,7 +2826,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "경호원",
         description:
-          "[콜라보 포지션 한정] 상대의 홀로멤의 아츠는, 자신의 콜라보 호로멤밖에 대상으로 할 수 없다(특수 대미지는 제외).",
+          "[콜라보 포지션 한정] 상대의 홀로멤의 아츠는, 자신의 콜라보 홀로멤밖에 대상으로 할 수 없다. 단, 특수 대미지는 제외한다.",
         timing: "gift",
       },
       {
@@ -2879,6 +2884,7 @@ const RAW_CARDS: Card[] = [
     batonPass: 1,
     tags: ["#ID", "#ID 1기생", "#그림"],
     imageUrl: "/images/hBP01/hBP01-052_C.png",
+    extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
       {
         name: "스라맛파기!",
@@ -2965,7 +2971,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "릴레이션 스카이",
         description:
-          "자신의 스테이지의 〈아이라니 이오피프틴〉 이외의 #ID를 가진 홀로멤이 있을 때, 이 아츠 +50.",
+          "자신의 스테이지에 〈아이라니 이오피프틴〉 이외의 #ID를 가진 홀로멤이 있을 때, 이 아츠 +50.",
         damage: 100,
         specialDamage: { color: "blue", value: 50 },
         cost: ["green", "colorless", "colorless"],
@@ -3072,7 +3078,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Lui's Party",
         description:
-          "자신의 패 1장을 아카이브할 수 있다 : 자신의 덱에서, Buzz 이외의 1st 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+          "자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱에서, Buzz 이외의 1st 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         damage: 50,
         cost: ["red", "red"],
       },
@@ -3096,7 +3102,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "정말로 모두의 덕분!!",
         description:
-          "Debut에서 Bloom했을 때, 자신의 패 1장을 아카이브할 수 있다 : 자신의 덱을 2장 드로우한다.",
+          "Debut에서 Bloom 했을 때, 자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱을 2장 드로우 한다.",
         timing: "bloom",
       },
       {
@@ -3131,7 +3137,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "호크 레이브",
         description:
-          "자신의 패 1~5장을 아카이브할 수 있다 : 상대의 센터 홀로멤이나 콜라보 홀로멤 어느 쪽에, 아카이브한 카드 1장 당 특수 데미지 20을 준다.",
+          "자신의 패 1~5장을 아카이브 할 수 있다 : 상대의 센터 홀로멤이나 콜라보 홀로멤 어느 쪽에, 아카이브 한 카드 1장당 특수 대미지 20을 준다.",
         damage: 60,
         specialDamage: { color: "yellow", value: 50 },
         cost: ["red", "red", "colorless"],
@@ -3155,8 +3161,8 @@ const RAW_CARDS: Card[] = [
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
       {
-        name: "킷케리키ー!",
-        description: "자신의 패 1장을 아카이브할 수 있다 : 이 아츠 +20.",
+        name: "킷케리키-!",
+        description: "자신의 패 1장을 아카이브 할 수 있다 : 이 아츠 +20.",
         damage: 20,
         cost: ["colorless"],
       },
@@ -3180,10 +3186,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "키와와의 마법",
         description:
-          "자신의 센터 홀로멤이 #새를 가질 때, 자신의 패 1장을 아카이브할 수 있다 : 자신의 덱에서, 마스코트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+          "자신의 센터 홀로멤이 #새를 가질 때, 자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱에서, 마스코트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
-      { name: "푹신푹신 타임", description: "", damage: 20, cost: ["red"] },
+      {
+        name: "푹신푹신 타임",
+        description: "",
+        damage: 20,
+        cost: ["red"],
+      },
     ],
     limit: 4,
   },
@@ -3197,10 +3208,16 @@ const RAW_CARDS: Card[] = [
     hp: 130,
     color: ["red"],
     holomemSubtype: "1st",
+    batonPass: 0,
     tags: ["#EN", "#Myth", "#새"],
     imageUrl: "/images/hBP01/hBP01-064_C.png",
     abilities: [
-      { name: "auf Wiedersehen!", description: "", damage: 20, cost: ["red"] },
+      {
+        name: "auf Wiedersehen!",
+        description: "",
+        damage: 20,
+        cost: ["red"],
+      },
     ],
     limit: 4,
   },
@@ -3221,7 +3238,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Let's do this!!!!",
         description:
-          "자신의 덱의 위에서부터 3장을 본다. 그 중에서, 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 아카이브한다.",
+          "자신의 덱의 위에서부터 3장을 본다. 그중에서, 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 아카이브 한다.",
         timing: "bloom",
       },
       {
@@ -3247,11 +3264,16 @@ const RAW_CARDS: Card[] = [
     tags: ["#EN", "#Myth", "#새"],
     imageUrl: "/images/hBP01/hBP01-066_R.png",
     abilities: [
-      { name: "불사조 검희", description: "", damage: 50, cost: ["red"] },
+      {
+        name: "불사조 검희",
+        description: "",
+        damage: 50,
+        cost: ["red"],
+      },
       {
         name: "무릎 꿇거라.",
         description:
-          "이 홀로멤에게 겹쳐져 있는 홀로멤 1장을 아카이브할 수 있다 : 상대의 콜라보 홀로멤에게 특수 대미지 40을 준다.",
+          "이 홀로멤에게 겹쳐져 있는 홀로멤 1장을 아카이브 할 수 있다 : 상대의 콜라보 홀로멤에게 특수 대미지 40을 준다.",
         damage: 40,
         cost: ["red", "red"],
       },
@@ -3282,7 +3304,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "마제스틱 피닉스",
         description:
-          "자신의 아카이브의 홀로멤 1명 당, 이 아츠 +10. 그리고 자신의 아카이브의 홀로멤 6장을 덱으로 되돌리고 셔플한다.",
+          "자신의 아카이브의 홀로멤 1장당, 이 아츠 +10. 그리고 자신의 아카이브의 홀로멤 6장을 덱으로 되돌리고 셔플 한다.",
         damage: 80,
         specialDamage: { color: "green", value: 50 },
         cost: ["red", "red", "red"],
@@ -3323,9 +3345,14 @@ const RAW_CARDS: Card[] = [
     holomemSubtype: "1st",
     imageUrl: "/images/hBP01/hBP01-069_C.png",
     abilities: [
-      { name: "오하포루", description: "", damage: 20, cost: ["red"] },
       {
-        name: "오츠포루",
+        name: "오하포루",
+        description: "",
+        damage: 20,
+        cost: ["red"],
+      },
+      {
+        name: "오소포루",
         description: "",
         damage: 40,
         cost: ["red", "colorless"],
@@ -3409,7 +3436,7 @@ const RAW_CARDS: Card[] = [
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
       {
-        name: "WAZZUP!",
+        name: "WAZZUP!!",
         description:
           "이 홀로멤에게 홀로아츠 R 옐이 붙어 있을 때, 주사위를 1번 굴릴 수 있다 : 홀수일 때, 상대의 콜라보 홀로멤에게 특수 대미지 20을 준다.",
         damage: 20,
@@ -3458,7 +3485,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "쥐 아이돌이 드디어 등장!",
         description:
-          "Debut에서 Bloom했을 때, 자신의 아카이브의 [Debut 홀로멤이나 1st 홀로멤] 1장을 패로 되돌릴 수 있다 : 되돌린 카드가 #EN을 가졌을 때, 상대의 콜라보 홀로멤에게 특수 대미지 20을 준다.",
+          "Debut에서 Bloom 했을 때, 자신의 아카이브의 [Debut 홀로멤이나 1st 홀로멤] 1장을 패로 되돌릴 수 있다 : 되돌린 카드가 #EN을 가졌을 때, 상대의 콜라보 홀로멤에게 특수 대미지 20을 준다.",
         timing: "bloom",
       },
       {
@@ -3487,7 +3514,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "카오스 셔플",
         description:
-          "서로, 패 전부를 원하는 순서로 덱 아래로 되돌린다. 다음으로, 서로, 덱으로 되돌린 카드 1장 당 각각의 덱을 1장 드로우 한다.",
+          "서로, 패 전부를 원하는 순서로 덱 아래로 되돌린다. 다음으로, 서로, 덱으로 되돌린 카드 1장당 각각의 덱을 1장 드로우 한다.",
         timing: "collab",
       },
       {
@@ -3654,7 +3681,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "빛나는 혜성",
         description:
-          "이 홀로멤의 홀로아츠 B 옐 2장을 아카이브 할 수 있다. 이 홀로멤에게 겹쳐져 있는 홀로멤 1장당, 이 아츠 +60(이 아츠는 상대의 백 홀로멤도 대상으로 할 수 있다).",
+          "이 홀로멤의 홀로아츠 B 옐 2장을 아카이브 할 수 있다 : 이 홀로멤에게 겹쳐져 있는 홀로멤 1장당, 이 아츠 +60(이 아츠는 상대의 백 홀로멤도 대상으로 할 수 있다).",
         damage: 60,
         specialDamage: { color: "red", value: 50 },
         cost: ["blue", "blue", "blue", "colorless"],
@@ -3799,7 +3826,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "비의 만트라",
         description:
-          "이 홀로멤의 옐 1장을 아카이브 할 수 있다 : 상대의 백 홀로멤 전원에게 특수 대미지 20을 준다(다운해도 상대의 라이프는 줄지 않는다).",
+          "이 홀로멤의 옐 1장을 아카이브 할 수 있다 : 상대의 백 홀로멤 전원에게 특수 대미지 20을 준다(다운 해도 상대의 라이프는 줄지 않는다).",
         damage: 40,
         specialDamage: { color: "purple", value: 50 },
         cost: ["blue", "colorless"],
@@ -3828,7 +3855,7 @@ const RAW_CARDS: Card[] = [
     batonPass: 1,
     tags: ["#ID", "#ID 1기생", "#노래"],
     imageUrl: "/images/hBP01/hBP01-088_C.png",
-    extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다",
+    extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
       {
         name: "문 문 무나야!",
@@ -3878,7 +3905,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP01/hBP01-090_U.png",
     abilities: [
       {
-        name: "라피스 라즐리",
+        name: "라피스 라줄리",
         description:
           "자신의 옐 덱에서 [홀로아츠 G 옐이나 홀로아츠 B 옐] 1장을 공개하고, 자신의 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다.",
         timing: "bloom",
@@ -3917,7 +3944,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "문 나이트 디바",
         description:
-          "이 홀로멤의 [홀로아츠 G 옐이나 홀로아츠 B 옐] 1장을 아카이브할 수 있다 : 상대의 백 홀로멤 1명에게 특수 대미지 30을 준다.",
+          "이 홀로멤의 [홀로아츠 G 옐이나 홀로아츠 B 옐] 1장을 아카이브 할 수 있다 : 상대의 백 홀로멤 1명에게 특수 대미지 30을 준다.",
         damage: 80,
         cost: ["blue", "colorless", "colorless"],
       },
@@ -4019,7 +4046,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "되감기",
         description:
-          "상대의 백 홀로멤 1명을 Debut 홀로멤으로 되돌린다(대미지를 없엔 후, Debut 홀로멤 1명과 옐 전부를 남기고, 다른 카드를 전부 패로 되돌린다).",
+          "상대의 백 홀로멤 1명을 Debut 홀로멤으로 되돌린다(대미지를 없앤 후, Debut 홀로멤 1장과 옐 전부를 남기고, 다른 카드를 전부 패로 되돌린다).",
         timing: "collab",
       },
       {
@@ -4044,7 +4071,7 @@ const RAW_CARDS: Card[] = [
     hp: 80,
     holomemSubtype: "spot",
     batonPass: 1,
-    extraRule: "이 홀로멤은 Bloom할 수 없다.",
+    extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     imageUrl: "/images/hBP01/hBP01-096_R.png",
     abilities: [
       {
@@ -4105,7 +4132,7 @@ const RAW_CARDS: Card[] = [
     holomemSubtype: "spot",
     imageUrl: "/images/hBP01/hBP01-098_R.png",
     batonPass: 1,
-    extraRule: "이 홀로멤은 Bloom할 수 없다.",
+    extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     abilities: [
       {
         name: "그것은 「나」",
@@ -4138,7 +4165,7 @@ const RAW_CARDS: Card[] = [
     extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     abilities: [
       {
-        name: "그것은 「애든버러 성」",
+        name: "그것은 「에든버러 성」",
         description:
           "주사위를 1번 굴릴 수 있다 : 홀수일 때, 상대의 센터 홀로멤과 백 홀로멤 1명을 교대시킨다.",
         timing: "collab",
@@ -4188,9 +4215,9 @@ const RAW_CARDS: Card[] = [
     color: [],
     holomemSubtype: "spot",
     batonPass: 1,
-    tags: ["#EN", "#Myth", "#노래"],
+    tags: ["#EN", "#Myth"],
     imageUrl: "/images/hBP01/hBP01-101_C.png",
-    extraRule: "이 홀로멤은 Bloom할 수 없다.",
+    extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     abilities: [
       {
         name: "단서 발견",
@@ -4213,7 +4240,7 @@ const RAW_CARDS: Card[] = [
     name: "아이돌 마이크",
     nameJp: "アイドルマイク",
     type: "support",
-    supportSubtype: "event",
+    supportSubtype: "item",
     limited: true,
     imageUrl: "/images/hBP01/hBP01-102_U.png",
     abilities: [
@@ -4239,7 +4266,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 홀로 파워 1장을 아카이브하지 않으면 사용할 수 없다.\n\n자신의 덱에서, 자신의 오시 홀로멤과 같은 색의 Buzz 이외의 [Debut 홀로멤이나 1st 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "이 카드는, 자신의 홀로 파워 1장을 아카이브 하지 않으면 사용할 수 없다.\n\n자신의 덱에서, 자신의 오시 홀로멤과 같은 색의 Buzz 이외의 [Debut 홀로멤이나 1st 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
       },
     ],
     limit: 4,
@@ -4276,7 +4303,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 홀로 파워 1장을 아카이브하지 않으면 사용할 수 없다.\n\n자신의 옐 덱에서, 자신의 홀로멤 1명과 같은 색의 옐 1장을 공개하고, 자신의 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다.",
+          "이 카드는, 자신의 홀로 파워 1장을 아카이브 하지 않으면 사용할 수 없다.\n\n자신의 옐 덱에서, 자신의 홀로멤 1명과 같은 색의 옐 1장을 공개하고, 자신의 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다.",
       },
     ],
     limit: 4,
@@ -4360,7 +4387,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP01-110",
     setId: "hBP01",
     name: "모두 박살 내주겠어!",
-    nameJp: "純器でぶっ叩くわよ！",
+    nameJp: "鈍器でぶっ叩くわよ！",
     type: "support",
     supportSubtype: "event",
     limited: true,
@@ -4481,7 +4508,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈아마네 카나타〉에게 붙어 있다면 능력 추가\n[턴에 1회] 상대의 턴에서, 이 마스코트가 붙어 있는 홀로멤이 대미지를 받았을 때, 상대의 센터 홀로멤에게 특수 대미지 20을 준다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈아마네 카나타〉에게 붙어 있다면 능력 추가\n[턴에 1번] 상대의 턴에서, 이 마스코트가 붙어 있는 홀로멤이 대미지를 받았을 때, 상대의 센터 홀로멤에게 특수 대미지 20을 준다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -4572,7 +4599,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤이 센터 포지션이나 콜라보 포지션에서 받는 대미지 -10\n\n◆〈타카나시 키아라〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤의 Bloom 레벨이 올랐을 때, 자신의 덱을 1장 드로우한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤이 센터 포지션이나 콜라보 포지션에서 받는 대미지 -10.\n\n◆〈타카나시 키아라〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤의 Bloom 레벨이 올랐을 때, 자신의 덱을 1장 드로우 한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -4608,7 +4635,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어있는 홀로멤이 주사위를 굴렸을 때, 이 팬을 아카이브 할 수 있다 : 주사위를 1번 다시 굴린다.\n\n이 팬은, 자신의 〈우사다 페코라〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤이 능력으로 주사위를 굴렸을 때, 이 팬을 아카이브 할 수 있다 : 그 주사위의 결과를 전부 없애고, 처음부터 주사위를 다시 굴린다.\n\n이 팬은, 자신의 〈우사다 페코라〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -4645,7 +4672,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬을 홀로멤에게 패에서부터 붙였을 때, 자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱을 1장 드로우한다.\n\n이 팬은, 자신의 〈타카나시 키아라〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+          "이 팬을 홀로멤에게 패에서부터 붙였을 때, 자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱을 1장 드로우 한다.\n\n이 팬은, 자신의 〈타카나시 키아라〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -4727,7 +4754,7 @@ const RAW_CARDS: Card[] = [
     color: ["red"],
     imageUrl: "/images/hBP02/hBP02-003_OSR.png",
     oshiAbility: {
-      name: "Ahoy!!",
+      name: "Ahoy!",
       cost: "홀로 파워 -3",
       description:
         "[턴에 1번] 자신의 이 턴에 Bloom 한 #3기생을 가진 홀로멤 1명을, 자신의 패의 홀로멤을 사용해 다시 1번 Bloom 시킨다.",
@@ -4736,7 +4763,7 @@ const RAW_CARDS: Card[] = [
       name: "출항~!",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 상대의 센터 홀로멤이나 콜로보 홀로멤 어느 한 쪽에, 자신의 센터 홀로멤인 〈호쇼 마린〉에게 겹쳐져 있는 홀로멤 1장당, 특수 대미지 50을 준다.",
+        "[게임에 1번] 상대의 센터 홀로멤이나 콜라보 홀로멤 어느 한 쪽에, 자신의 센터 홀로멤인 〈호쇼 마린〉에게 겹쳐져 있는 홀로멤 1장당, 특수 대미지 50을 준다.",
     },
     limit: 1,
   },
@@ -4754,13 +4781,13 @@ const RAW_CARDS: Card[] = [
       name: "포에포에포에~",
       cost: "홀로 파워 -1",
       description:
-        "[턴에 1번] 자신의 센터 홀로멤이 〈사카마타 클로에〉일 때 사용할 수 있다 : 자신의 덱의 위에서부터 3장을 본다. 그 카드 전부를, 아카이브하거나, 원하는 순으로 덱의 위로 되돌린다.",
+        "[턴에 1번] 자신의 센터 홀로멤이 〈사카마타 클로에〉일 때 사용할 수 있다 : 자신의 덱의 위에서부터 3장을 본다. 그 카드 전부를, 아카이브 하거나, 원하는 순서로 덱의 위로 되돌린다.",
     },
     spAbility: {
       name: "인생 리셋 버튼",
       cost: "홀로 파워 -3",
       description:
-        "[게임에 1번] 자신의 패를 세고, 자신의 [패 전부와 아카이브의 홀로멤 전부]를 덱으로 되돌리고 셔플한다. 그리고 패에서 덱으로 되돌린 카드 1장당, 자신의 덱을 1장 드로우한다.",
+        "[게임에 1번] 자신의 패를 세고, 자신의 [패 전부와 아카이브의 홀로멤 전부]를 덱으로 되돌리고 셔플 한다. 그리고 패에서 덱으로 되돌린 카드 1장당, 자신의 덱을 1장 드로우 한다.",
     },
     limit: 1,
   },
@@ -5062,7 +5089,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "노에쨩의 용감한 모습……",
         description:
-          "Debut에서 Bloom했을 때, 자신의 덱에서, #3기생을 가진 [Debut 홀로멤이나 1st 홀로멤이나 Spot 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "Debut에서 Bloom 했을 때, 자신의 덱에서, #3기생을 가진 [Debut 홀로멤이나 1st 홀로멤이나 Spot 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
       },
       {
@@ -5099,7 +5126,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "3기생 파워",
         description:
-          "[콜리보 포지션 한정] 자신의 스테이지에 이 홀로멤 이외의 #3기생을 가진 홀로멤 1명당, 이 아츠 +20. 단, 세는 인수는 4명까지.",
+          "[콜라보 포지션 한정] 자신의 스테이지에 이 홀로멤 이외의 #3기생을 가진 홀로멤 1명당, 이 아츠 +20. 단, 세는 인수는 4명까지.",
         damage: 60,
         cost: ["white", "colorless", "colorless"],
       },
@@ -5219,12 +5246,12 @@ const RAW_CARDS: Card[] = [
       {
         name: "What Are You Waiting For?",
         description:
-          "자신의 덱에서,〈Tatang〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "자신의 덱에서, 〈Tatang〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
       },
       {
         name: "Spicy Night",
-        description: "자신의 스테이지에 옐이 2색 이상있을 때, 이 아츠 +20.",
+        description: "자신의 스테이지에 옐이 2색 이상 있을 때, 이 아츠 +20.",
         damage: 40,
         cost: ["green", "colorless"],
       },
@@ -5358,7 +5385,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "타로의 인도",
         description:
-          "자신의 덱의 위에서부터 1장을 아카이브 할 수 있다 : 아카이브한 카드가, 홀로멤일 때, 이 아츠 +20. 서포트 카드일 때, 이 아츠 +50.",
+          "자신의 덱의 위에서부터 1장을 아카이브 할 수 있다 : 아카이브 한 카드가, 홀로멤일 때, 이 아츠 +20. 서포트 카드일 때, 이 아츠 +50.",
         damage: 60,
         cost: ["green", "colorless"],
       },
@@ -5381,7 +5408,7 @@ const RAW_CARDS: Card[] = [
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
       {
-        name: "호쇼 해적단 선장 호쇼 마린입니다ー!",
+        name: "호쇼 해적단 선장 호쇼 마린입니다—!",
         description: "",
         damage: 30,
         cost: ["colorless"],
@@ -5432,10 +5459,10 @@ const RAW_CARDS: Card[] = [
     batonPass: 1,
     abilities: [
       {
-        name: "선장, 뭘 당하는 걸려나?",
+        name: "선장, 뭘 당하는 걸까나?",
         description: "",
         damage: 40,
-        cost: ["colorless"],
+        cost: ["red"],
       },
       {
         name: "정말, 변태♥",
@@ -5462,7 +5489,7 @@ const RAW_CARDS: Card[] = [
     abilities: [
       {
         name: "너희들의 목소리가 선장을 지탱해 줘요!",
-        description: "상대 콜라보 홀로멤에게 특수 대미지 20을 준다.",
+        description: "상대의 콜라보 홀로멤에게 특수 대미지 20을 준다.",
         timing: "bloom",
       },
       {
@@ -5491,7 +5518,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "호쇼의 해적단",
         description:
-          "자신의 덱에서, 〈호쇼 마린〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 자신의 【블룸 이펙트】 「호쇼의 해적단」은 턴에 1번 밖에 사용할 수 없다.",
+          "자신의 덱에서, 〈호쇼 마린〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 자신의 【블룸 이펙트】 「호쇼의 해적단」은 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
@@ -5520,7 +5547,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "고딕 퀸",
         description:
-          "자신의 아카이브의 홀로멤 1장을 패로 되돌릴 수 있다. 그 후, 이 홀로멤에게 겹쳐져 있는 홀로멤이 3장 이상일 때, 상대의 센터 홀로멤이나 콜리보 홀로멤에게 특수 대미지 50을 준다.",
+          "자신의 아카이브의 홀로멤 1장을 패로 되돌릴 수 있다. 그 후, 이 홀로멤에게 겹쳐져 있는 홀로멤이 3장 이상일 때, 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 50을 준다.",
         timing: "bloom",
       },
       {
@@ -5547,7 +5574,7 @@ const RAW_CARDS: Card[] = [
     holomemSubtype: "1st",
     imageUrl: "/images/hBP02/hBP02-034_RR.png",
     batonPass: 2,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
         name: "요는 풀",
@@ -5687,13 +5714,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "푸이푸이푸이~",
         description:
-          "[턴에 1번] 이 홀로멤의 아츠 「홀록슬롯」으로 카드를 공개했을 때, 공개한 서포트 카드 1장을, 아카이브하는 대신 패에 더할 수 있다.",
+          "[턴에 1번] 이 홀로멤의 아츠 「홀록슬롯」으로 카드를 공개했을 때, 공개한 서포트 카드 1장을, 아카이브 하는 대신 패에 더할 수 있다.",
         timing: "gift",
       },
       {
         name: "홀록슬롯",
         description:
-          "자신의 덱의 위에서부터 3장을 공개할 수 있다 : 공개한 홀로멤 1장당, 이 아츠 +20. 그리고 공개한 카드를 아카이브한다.",
+          "자신의 덱의 위에서부터 3장을 공개할 수 있다 : 공개한 홀로멤 1장당, 이 아츠 +20. 그리고 공개한 카드를 아카이브 한다.",
         damage: 20,
         cost: ["blue", "colorless"],
       },
@@ -5723,10 +5750,10 @@ const RAW_CARDS: Card[] = [
       {
         name: "홀록슬롯",
         description:
-          "자신의 덱의 위에서부터 3장을 공개할 수 있다 : 공개한 홀로멤 1장당, 이 아츠 +20. 그리고 공개한 카드를 아카이브한다.",
+          "자신의 덱의 위에서부터 3장을 공개할 수 있다 : 공개한 홀로멤 1장당, 이 아츠 +20. 그리고 공개한 카드를 아카이브 한다.",
         damage: 100,
         specialDamage: { color: "white", value: 50 },
-        cost: ["blue", "colorless", "colorless"],
+        cost: ["blue", "blue", "colorless"],
       },
     ],
     limit: 4,
@@ -5812,7 +5839,7 @@ const RAW_CARDS: Card[] = [
     setId: "hBP02",
     name: "무라사키 시온",
     nameJp: "紫咲シオン",
-    tags: ["#JP", "#2기생"],
+    tags: ["#JP", "#2기생", "#동물귀"],
     type: "holomem",
     hp: 170,
     color: ["purple"],
@@ -5820,7 +5847,12 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP02/hBP02-044_C.png",
     batonPass: 1,
     abilities: [
-      { name: "부끄러워", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "부끄러워",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
       {
         name: "싫다, 진짜—",
         description: "",
@@ -5927,7 +5959,7 @@ const RAW_CARDS: Card[] = [
     name: "쿠레이지 올리",
     nameJp: "クレイジー・オリー",
     type: "holomem",
-    hp: 130,
+    hp: 120,
     color: ["purple"],
     holomemSubtype: "debut",
     batonPass: 1,
@@ -5935,7 +5967,12 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP02/hBP02-048_C.png",
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
-      { name: "좀방와!", description: "", damage: 20, cost: ["colorless"] },
+      {
+        name: "좀방와!",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
     ],
     limit: 50,
   },
@@ -5955,7 +5992,7 @@ const RAW_CARDS: Card[] = [
     abilities: [
       {
         name: "올리가 항상 보고 있어",
-        description: "자신의 덱을 1장 드로우 한 후, 패 1장을 아카이브한다.",
+        description: "자신의 덱을 1장 드로우 한 후, 패 1장을 아카이브 한다.",
         timing: "collab",
       },
       {
@@ -6013,7 +6050,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "한계화!!",
         description:
-          "자신의 #ID 2기생을 가진 Debut 홀로멤 1명을, 자신의 아카이브의 홀로멤을 사용해 Bloom 할 수 있다. 자신의 【블룸 이펙트】 「한계화!!」는 턴에 1번 밖에 사용할 수 없다.",
+          "자신의 #ID 2기생을 가진 Debut 홀로멤 1명을, 자신의 아카이브의 홀로멤을 사용해 Bloom 할 수 있다. 자신의 【블룸 이펙트】 「한계화!!」는 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
@@ -6047,7 +6084,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "정의의 이름 아래, 나는",
         description:
-          "이 홀로멤에게 자색 이외의 옐이 붙어 있을 때, 이 아츠 +20.",
+          "이 홀로멤에게 홀로아츠 P 이외의 옐이 붙어 있을 때, 이 아츠 +20.",
         damage: 40,
         cost: ["colorless", "colorless"],
       },
@@ -6358,15 +6395,15 @@ const RAW_CARDS: Card[] = [
     hp: 250,
     color: ["purple"],
     holomemSubtype: "1st",
-    batonPass: 1,
+    batonPass: 2,
     tags: ["#EN", "#Myth", "#그림", "#바다"],
     imageUrl: "/images/hBP02/hBP02-064_RR.png",
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
         name: "아르카익 스마일",
         description:
-          "자신의 아카이브에 #Myth를 가진 홀로멤이, 5장 이상 있을 때, 이 홀로멤의 옐 1장을, 자신의 다른 홀로멤에게 바꿔 붙일 수 있다. 10장 이상있을 때, 다시, 이 아츠 +50.",
+          "자신의 아카이브에 #Myth를 가진 홀로멤이, 5장 이상 있을 때, 이 홀로멤의 옐 1장을, 자신의 다른 홀로멤에게 바꿔 붙일 수 있다. 10장 이상 있을 때, 다시, 이 아츠 +50.",
         damage: 60,
         cost: ["purple", "colorless"],
       },
@@ -6443,7 +6480,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "네리사와 다과회",
         description:
-          "자신의 덱의 위에서부터 3장을 본다. 그 중에서, #노래를 가진 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
+          "자신의 덱의 위에서부터 3장을 본다. 그중에서, #노래를 가진 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
         timing: "bloom",
       },
       {
@@ -6640,7 +6677,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP02-074",
     setId: "hBP02",
     name: "마법소녀 클로에",
-    nameJp: "魔法少女クロエ",
+    nameJp: "魔法少女クロヱ",
     tags: ["#홀로위치", "#비밀 결사 holoX", "#마법"],
     type: "holomem",
     hp: 70,
@@ -6784,7 +6821,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP02-081",
     setId: "hBP02",
     name: "홀로라이브 인도네시아 2기생",
-    nameJp: "ホロライブインドネシア2期生",
+    nameJp: "ホロライブ インドネシア2期生",
     keywords: ["ID2기생"],
     type: "support",
     supportSubtype: "event",
@@ -6832,7 +6869,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 홀로 파워 1장을 아카이브하지 않으면 사용할 수 없다.\n\n자신의 아카이브의 홀로아츠 P 옐 1장을, 자신의 〈무라사키 시온〉에게 보낸다. 자신의 #마법을 가진 이벤트는 턴에 1번밖에 사용할 수 없다.",
+          "이 카드는, 자신의 홀로 파워 1장을 아카이브 하지 않으면 사용할 수 없다.\n\n자신의 아카이브의 홀로아츠 P 옐 1장을, 자신의 〈무라사키 시온〉에게 보낸다. 자신의 #마법을 가진 이벤트는 턴에 1번밖에 사용할 수 없다.",
       },
     ],
     limit: 4,
@@ -7002,7 +7039,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈시라카미 후부키〉에게 붙어 있다면 능력 추가\n[턴에 1번] 자신의 메인 스탭에서, 자신의 홀로멤의 옐 2장을 아카이브 할 수 있다 : 이 턴 동안, 이 홀로멤의 아츠 +50.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈시라카미 후부키〉에게 붙어 있다면 능력 추가\n[턴에 1번] 자신의 메인 스텝에서, 자신의 홀로멤의 옐 2장을 아카이브 할 수 있다 : 이 턴 동안, 이 홀로멤의 아츠 +50.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -7076,7 +7113,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆ 〈사카마타 클로에〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 아카이브의 옐 1장을, 자신의 #비밀 결사 holoX를 가진 홀로멤에게 보낼 수 있다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈사카마타 클로에〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 아카이브의 옐 1장을, 자신의 #비밀 결사 holoX를 가진 홀로멤에게 보낼 수 있다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -7095,7 +7132,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈쿠레이지 올리〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 Bloom 했을 때, 자신의 덱을 1장 드로우 한 후, 패 1장을 아카이브한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈쿠레이지 올리〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 Bloom 했을 때, 자신의 덱을 1장 드로우 한 후, 패 1장을 아카이브 한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -7133,7 +7170,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n이 팬은, 자신의 〈시라카미 후부키〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n이 팬은, 자신의 〈시라카미 후부키〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -7142,7 +7179,7 @@ const RAW_CARDS: Card[] = [
     id: "hBP02-100",
     cardNumber: "hBP02-100",
     setId: "hBP02",
-    name: "시로가내 성기사단",
+    name: "시로가네 성기사단",
     nameJp: "白銀聖騎士団",
     type: "support",
     supportSubtype: "fan",
@@ -7151,7 +7188,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤이 받는 대미지 -10.\n\n이 팬은, 자신의 〈시로가네 노엘〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤이 받는 대미지 -10.\n\n이 팬은, 자신의 〈시로가네 노엘〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -7169,7 +7206,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 자신은 덱을 1장 드로우 한다.\n\n이 팬은, 자신의 〈오오카미 미오〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 자신은 덱을 1장 드로우 한다.\n\n이 팬은, 자신의 〈오오카미 미오〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -7179,7 +7216,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP02-102",
     setId: "hBP02",
     name: "시옷코",
-    nameJp: "塩つこ",
+    nameJp: "塩っ子",
     type: "support",
     supportSubtype: "fan",
     imageUrl: "/images/hBP02/hBP02-102_C.png",
@@ -7187,7 +7224,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "■이 팬이 붙어 있는 홀로멤의 아츠 +10.\n■이 팬이 붙어 있는 홀로멤이 대미지를 받을 때, 이 팬을 아카이브 한다.\n\n이 팬은, 자신의 〈무라사키 시온〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "■이 팬이 붙어 있는 홀로멤의 아츠 +10.\n■이 팬이 붙어 있는 홀로멤이 대미지를 받을 때, 이 팬을 아카이브 한다.\n\n이 팬은, 자신의 〈무라사키 시온〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -7230,7 +7267,7 @@ const RAW_CARDS: Card[] = [
       name: "poi",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 아카이브에 옐 1장을 자신의 백 홀로멤인 〈시시로 보탄〉에게 보낸다.",
+        "[턴에 1번] 자신의 아카이브의 옐 1장을, 자신의 백 홀로멤인 〈시시로 보탄〉에게 보낸다.",
     },
     spAbility: {
       name: "저격",
@@ -7643,7 +7680,7 @@ const RAW_CARDS: Card[] = [
         name: "보탄이 아이돌이 된다면…",
         description: "",
         damage: 40,
-        cost: ["colorless"],
+        cost: ["green"],
       },
       {
         name: "절대로, 두근거리게 해줄 테니까",
@@ -7730,7 +7767,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "어떻게든 해주는 시시로 보탄",
         description:
-          "자신의 아카이브의 홀로아츠 G 1장씩을, 자신의 #슈터를 가진 백 홀로멤 1~2명에게 보낼 수 있다.",
+          "자신의 아카이브의 홀로아츠 G 옐 1장씩을, 자신의 #슈터를 가진 백 홀로멤 1~2명에게 보낼 수 있다.",
         timing: "bloom",
       },
       {
@@ -7756,18 +7793,18 @@ const RAW_CARDS: Card[] = [
     color: ["green"],
     holomemSubtype: "1st",
     batonPass: 2,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     tags: ["#JP", "#1기생", "#하프엘프", "#술"],
     imageUrl: "/images/hBP03/hBP03-022_R.png",
     abilities: [
       {
         name: "이국의 세계의 모습",
         description:
-          "[센터 포지션・콜라보 포지션 한정] 상대의 퍼포먼스 스탭이 개시할 때 사용할 수 있다 : 이 턴 동안, 자신의 라이프는 상대의 능력으로 줄지 않는다.",
+          "[센터 포지션・콜라보 포지션 한정] 상대의 퍼포먼스 스텝이 개시할 때 사용할 수 있다 : 이 턴 동안, 자신의 라이프는 상대의 능력으로 줄지 않는다.",
         timing: "gift",
       },
       {
-        name: "정열의 밸리 댄서",
+        name: "정열의 벨리 댄서",
         description:
           "자신의 오시 홀로멤이 〈아키 로젠탈〉일 때, 자신의 툴이 붙어 있는 홀로멤 전원의 HP 10 회복.",
         damage: 50,
@@ -7789,7 +7826,7 @@ const RAW_CARDS: Card[] = [
     color: ["green"],
     holomemSubtype: "1st",
     batonPass: 2,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     imageUrl: "/images/hBP03/hBP03-023_R.png",
     abilities: [
       {
@@ -7992,7 +8029,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "엘리트 갬블",
         description:
-          "[센터 포지션 한정][턴에 1번] 자신의 메인 스탭에서, 이 홀로멤에게 〈35P〉가 붙어 있을 때, 주사위를 1번 굴릴 수 있다 : 3이나 5일 때, 이 턴 동안, 이 홀로멤의 아츠 +50.",
+          "[센터 포지션 한정][턴에 1번] 자신의 메인 스텝에서, 이 홀로멤에게 〈35P〉가 붙어 있을 때, 주사위를 1번 굴릴 수 있다 : 3이나 5일 때, 이 턴 동안, 이 홀로멤의 아츠 +50.",
         timing: "gift",
       },
       {
@@ -8088,7 +8125,7 @@ const RAW_CARDS: Card[] = [
     color: ["red"],
     holomemSubtype: "1st",
     batonPass: 2,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     tags: ["#JP", "#1기생", "#요리"],
     imageUrl: "/images/hBP03/hBP03-034_RR.png",
     abilities: [
@@ -8121,13 +8158,13 @@ const RAW_CARDS: Card[] = [
     color: ["red"],
     holomemSubtype: "1st",
     batonPass: 2,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     imageUrl: "/images/hBP03/hBP03-035_R.png",
     abilities: [
       {
         name: "challenger",
         description:
-          "자신의 오시 홀로멤이 〈타카네 루이〉일 때, 자신의 패 2장을 아카이브할 수 있다 : 자신의 덱을 3장 드로우한다.",
+          "자신의 오시 홀로멤이 〈타카네 루이〉일 때, 자신의 패 2장을 아카이브 할 수 있다 : 자신의 덱을 3장 드로우 한다.",
         damage: 50,
         cost: ["red", "colorless"],
       },
@@ -8151,7 +8188,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "해피 타임",
         description:
-          "자신의 덱에서, 〈타카나시 키아라〉 1~4장을 공개하고, 아카이브할 수 있다. 그리고 덱을 셔플한다.",
+          "자신의 덱에서, 〈타카나시 키아라〉 1~4장을 공개하고, 아카이브 할 수 있다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
       },
       {
@@ -8174,6 +8211,7 @@ const RAW_CARDS: Card[] = [
     hp: 80,
     color: ["red"],
     holomemSubtype: "debut",
+    batonPass: 0,
     tags: ["#EN", "#Advent", "#동물귀"],
     imageUrl: "/images/hBP03/hBP03-037_C.png",
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
@@ -8199,6 +8237,7 @@ const RAW_CARDS: Card[] = [
     hp: 130,
     color: ["red"],
     holomemSubtype: "1st",
+    batonPass: 0,
     tags: ["#EN", "#Advent", "#동물귀"],
     imageUrl: "/images/hBP03/hBP03-038_C.png",
     abilities: [
@@ -8236,7 +8275,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "마계의 파수견의 난폭꾼",
         description:
-          "자신의 리셋 스탭에서, 자신의 센터 홀로멤이 〈후와와 어비스가드〉일 때, 이 홀로멤은 백 포지션으로 이동해도 휴식하지 않는다.",
+          "자신의 리셋 스텝에서, 자신의 센터 홀로멤이 〈후와와 어비스가드〉일 때, 이 홀로멤은 백 포지션으로 이동해도 휴식하지 않는다.",
         timing: "gift",
       },
       {
@@ -8266,7 +8305,7 @@ const RAW_CARDS: Card[] = [
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
       {
-        name: "치외와가 아니야, 후와와야",
+        name: "치와와가 아니야, 후와와야",
         description: "",
         damage: 30,
         cost: ["colorless"],
@@ -8531,7 +8570,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "미남에게 맡겨줘",
         description:
-          "상대의 센터 홀로멤이나 백 홀로멤 어느 한 쪽에, 자신의 서로 다른 카드명인 #ReGLOSS를 가진 백 홀로멤 1명당, 특수 대미지 10을 준다.",
+          "상대의 센터 홀로멤이나 백 홀로멤 1명 어느 한 쪽에, 자신의 서로 다른 카드명인 #ReGLOSS를 가진 백 홀로멤 1명당, 특수 대미지 10을 준다.",
         damage: 50,
         cost: ["blue", "colorless", "colorless"],
       },
@@ -8691,7 +8730,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "텐Q",
         description:
-          "자신의 #노래를 가진 백 홀로멤이 있을 때, 상대의 콜라보 홀로멤에게 특수 대미지 20을 준다",
+          "자신의 #노래를 가진 백 홀로멤이 있을 때, 상대의 콜라보 홀로멤에게 특수 대미지 20을 준다.",
         damage: 50,
         cost: ["purple", "colorless"],
       },
@@ -9443,12 +9482,12 @@ const RAW_CARDS: Card[] = [
     batonPass: 2,
     tags: ["#DEV_IS", "#ReGLOSS", "#노래"],
     imageUrl: "/images/hBP03/hBP03-083_R.png",
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
         name: "난츄콧타",
         description:
-          "상대의 퍼포먼스 스텝이 종료했을 때, 그 포퍼먼스 스텝에서 자신의 라이프가 줄었다면, 자신의 아카이브의 옐 1장을 이 홀로멤에게 보낼 수 있다.",
+          "상대의 퍼포먼스 스텝이 종료할 때, 그 퍼포먼스 스텝에서 자신의 라이프가 줄었다면, 자신의 아카이브의 옐 1장을 이 홀로멤에게 보낼 수 있다.",
         timing: "gift",
       },
       {
@@ -9493,7 +9532,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "자신의 덱의 위에서부터 4장을 본다. 그중에서, [Debut 홀로멤이나 1st 홀로멤] 1장씩을 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+          "자신의 덱의 위에서부터 4장을 본다. 그중에서, [Debut 홀로멤과 1st 홀로멤] 1장씩을 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
       },
     ],
     limit: 4,
@@ -9503,7 +9542,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP03-086",
     setId: "hBP03",
     name: "듀얼 모니터 컴퓨터",
-    nameJp: "デュアルモニターバソコン",
+    nameJp: "デュアルモニターパソコン",
     keywords: ["kawaii"],
     type: "support",
     supportSubtype: "item",
@@ -9664,7 +9703,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 6장 이하가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 본다. 그중에서, #슈터을 가진 홀로멤을 원하는 매수 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
+          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 6장 이하가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 본다. 그중에서, #슈터를 가진 홀로멤을 원하는 매수 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
       },
     ],
     limit: 4,
@@ -9863,7 +9902,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 대미지를 받을 때, 이 팬을 아카이브 할 수 있다 : 이 팬이 붙어 있던 홀로멤의 받을 대미지 -30.\n\n이 팬은, 자신의 〈히메모리 루나〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 대미지를 받을 때, 이 팬을 아카이브 할 수 있다 : 이 팬이 붙어 있던 홀로멤이 받는 대미지 -30.\n\n이 팬은, 자신의 〈히메모리 루나〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -9881,7 +9920,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤의 능력으로 옐을 아카이브 할 때, 아카이브 할 옐 1장 대신, 이 팬을 아카이브할 수 있다.\n\n이 팬은, 자신의 〈시시로 보탄〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤의 능력으로 옐을 아카이브 할 때, 아카이브 할 옐 1장 대신, 이 팬을 아카이브 할 수 있다.\n\n이 팬은, 자신의 〈시시로 보탄〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -9900,7 +9939,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "■이 팬이 붙어 있는 홀로멤이 아츠를 사용할 때, 이 팬을 홀로아츠 R 옐로도 취급한다.\n■이 팬이 붙어 있는 홀로멤이 다운 했을 때, 상대는, 자신의 덱을 1장 드로우 할 수 있다.\n\n이 팬은, 자신의 〈사쿠라 미코〉에게만 붙일 수 있고, 1명당 몇장이라도 붙일 수 있다.",
+          "■이 팬이 붙어 있는 홀로멤이 아츠를 사용할 때, 이 팬을 홀로아츠 R 옐로도 취급한다.\n■이 팬이 붙어 있는 홀로멤이 다운 했을 때, 상대는, 자신의 덱을 1장 드로우 할 수 있다.\n\n이 팬은, 자신의 〈사쿠라 미코〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -9919,7 +9958,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤이 능력으로 주사위를 굴렸을 때, 이 팬을 아카이브 할 수 있다 : 그 주사위의 결과를 전부 없에고, 처음부터 주사위를 다시 굴린다.\n\n이 팬은, 자신의 〈아카이 하아토〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤이 능력으로 주사위를 굴렸을 때, 이 팬을 아카이브 할 수 있다 : 그 주사위의 결과를 전부 없애고, 처음부터 주사위를 다시 굴린다.\n\n이 팬은, 자신의 〈아카이 하아토〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -9938,7 +9977,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 자신의 아카이브의 홀로아츠 B 옐 1장을, 자신의 〈후와와 어비스가드〉에게 보낼 수 있다.\n\n이 팬은, 자신의 〈후와와 어비스가드〉나 〈모코코 어비스가드〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 자신의 아카이브의 홀로아츠 B 옐 1장을, 자신의 〈후와와 어비스가드〉에게 보낼 수 있다.\n\n이 팬은, 자신의 〈후와와 어비스가드〉나 〈모코코 어비스가드〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -9956,7 +9995,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "■이 팬이 붙어 있는 홀로멤이 아츠를 사용할 때, 이 팬을 홀로아츠 P 옐로도 취급한다.\n■이 팬이 붙어 있는 홀로멤의 아츠 -10.\n\n이 팬은, 자신의 〈로보코 씨〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "■이 팬이 붙어 있는 홀로멤이 아츠를 사용할 때, 이 팬을 홀로아츠 P 옐로도 취급한다.\n■이 팬이 붙어 있는 홀로멤의 아츠 -10.\n\n이 팬은, 자신의 〈로보코 씨〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -9992,7 +10031,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 홀로멤의 홀로아츠 Y 옐 1~2장을, 자신의 다른 〈츠노마키 와타메〉 1명에게 바꿔 붙일 수 있다.\n\n이 팬은, 자신의 〈츠노마키 와타메〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 홀로멤의 홀로아츠 Y 옐 1~2장을, 자신의 다른 〈츠노마키 와타메〉 1명에게 바꿔 붙일 수 있다.\n\n이 팬은, 자신의 〈츠노마키 와타메〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -10117,7 +10156,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-005",
     setId: "hBP04",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     type: "oshi",
     life: 5,
     color: ["purple"],
@@ -10141,7 +10180,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-006",
     setId: "hBP04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     type: "oshi",
     life: 5,
     color: ["yellow"],
@@ -10174,13 +10213,13 @@ const RAW_CARDS: Card[] = [
       name: "신비의 의식",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 덱에서, 〈고대무기〉 1장을 공개하고, 자신의 홀로멤에게 붙인다. 그리고 덱을 셔플 한다.",
+        "[턴에 1번] 자신의 덱에서, 〈고대 무기〉 1장을 공개하고, 자신의 홀로멤에게 붙인다. 그리고 덱을 셔플 한다.",
     },
     spAbility: {
       name: "인생에 대해 생각하고 있던 사람이 이긴다",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 아카이브의 옐을, 자신의 〈고대무기〉가 붙어 있는 홀로멤 전원에게 1장씩 보낸다.",
+        "[게임에 1번] 자신의 아카이브의 옐을, 자신의 〈고대 무기〉가 붙어 있는 홀로멤 전원에게 1장씩 보낸다.",
     },
     limit: 1,
   },
@@ -10218,9 +10257,9 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP04/hBP04-009_U.png",
     abilities: [
       {
-        name: "끝없는 윤회에서 헤메이는 아이들아",
+        name: "끝없는 윤회에서 헤매는 아이들아",
         description:
-          "자신의 덱의 위에서부터 3장을 본다. 그중에서, [#비밀 결사 holoX를 가진 Debut 홀로멤이나 #코요 랩을 가진 서포트 카드] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플한다.",
+          "자신의 덱의 위에서부터 3장을 본다. 그중에서, [#비밀 결사 holoX를 가진 Debut 홀로멤이나 #코요 랩을 가진 서포트 카드] 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
         damage: 20,
         cost: ["colorless"],
       },
@@ -10358,7 +10397,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "돌아오렴",
         description:
-          "자신의 아카이브의 #시라카미's 캐릭터를 가진 카드 1~2장을 패로 되돌린다.",
+          "자신의 아카이브의 #시라카미's 캐릭터를 가진 카드 1~2장을 패로 되돌릴 수 있다.",
         timing: "bloom",
       },
       {
@@ -10522,13 +10561,13 @@ const RAW_CARDS: Card[] = [
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
       {
-        name: "주우후테이 일문은 전자 견습!",
+        name: "주우후테이 일문은 전좌 견습!",
         description: "",
         damage: 20,
         cost: ["colorless"],
       },
       {
-        name: "주우후테이 라덴 입니다!",
+        name: "주우후테이 라덴입니다!",
         description: "",
         damage: 40,
         cost: ["green", "colorless"],
@@ -10553,7 +10592,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "당신에게 배움과 웃음을 전달",
         description:
-          "이 턴에 자신이 #버섯을 가진 이벤트를 사용하고 있을 때, 자신의 #ReGLOSS를 가진 홀로멤 1명의 HP 20 회복",
+          "이 턴에 자신이 #버섯을 가진 이벤트를 사용하고 있을 때, 자신의 #ReGLOSS를 가진 홀로멤 1명의 HP 20 회복.",
         timing: "collab",
       },
       {
@@ -10630,7 +10669,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "냉정 침착",
         description:
-          "[센터 포지션 한정] 상대의 메인 스탭 동안, 이 홀로멤의 HP는 상대의 능력으로 줄지 않고, 변동하지 않는다.",
+          "[센터 포지션 한정] 상대의 메인 스텝 동안, 이 홀로멤의 HP는 상대의 능력으로 줄지 않고, 변동하지 않는다.",
         timing: "gift",
       },
       {
@@ -10663,7 +10702,7 @@ const RAW_CARDS: Card[] = [
         timing: "collab",
       },
       {
-        name: "다음 준비가 다 된거 같아서",
+        name: "다음 준비가 다 된 거 같아서",
         description:
           "자신의 오시 홀로멤이 〈주우후테이 라덴〉일 때, 이 홀로멤의 옐 2장을, 자신의 백 홀로멤 2명에게 1장씩 바꿔 붙일 수 있다 : 이 아츠 +30.",
         damage: 140,
@@ -10752,7 +10791,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-029",
     setId: "hBP04",
     name: "세실리아 이머그린",
-    nameJp: "セ���リア・イマーグ��ーン",
+    nameJp: "セシリア・イマーグリーン",
     type: "holomem",
     hp: 160,
     color: ["green"],
@@ -10804,7 +10843,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-031",
     setId: "hBP04",
     name: "세실리아 이머그린",
-    nameJp: "セシリ���・イマーグリーン",
+    nameJp: "セシリア・イマーグリーン",
     type: "holomem",
     hp: 200,
     color: ["green"],
@@ -10820,9 +10859,9 @@ const RAW_CARDS: Card[] = [
         timing: "gift",
       },
       {
-        name: "멀티링궐",
+        name: "멀티링구얼",
         description:
-          "자신의 #어학을 가진 백 홀로멤 1명을 고��다. 자신의 �� 덱에서, 고른 홀로멤과 같은 색의 옐 1장을 공개하고, 고른 홀로멤에게 보낸다. 그리고 옐 덱을 셔플한다.",
+          "자신의 #어학을 가진 백 홀로멤 1명을 고른다. 자신의 옐 덱에서, 고른 홀로멤과 같은 색의 옐 1장을 공개하고, 고른 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다.",
         damage: 80,
         specialDamage: { color: "yellow", value: 50 },
         cost: ["green", "colorless"],
@@ -11183,9 +11222,14 @@ const RAW_CARDS: Card[] = [
     holomemSubtype: "1st",
     imageUrl: "/images/hBP04/hBP04-045_C.png",
     abilities: [
-      { name: "오츠라미", description: "", damage: 30, cost: ["blue"] },
       {
-        name: "보스가 공략이 안돼~",
+        name: "오츠라미",
+        description: "",
+        damage: 30,
+        cost: ["blue"],
+      },
+      {
+        name: "보스가 공략이 안 돼~",
         description: "",
         damage: 50,
         cost: ["blue", "colorless"],
@@ -11322,9 +11366,14 @@ const RAW_CARDS: Card[] = [
     batonPass: 1,
     tags: ["#EN", "#Advent"],
     imageUrl: "/images/hBP04/hBP04-050_C.png",
-    extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다",
+    extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
-      { name: "시오링~!", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "시오링~!",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 50,
   },
@@ -11374,7 +11423,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "탈옥 계획",
         description:
-          "상대의 백 홀로멤 1명에게 특수 대미지 20을 준다. 단, 다운 해도 라이프는 줄지 않는다.",
+          "상대의 백 홀로멤 1명에게 특수 대미지 20을 준다. 단, 다운 해도 상대의 라이프는 줄지 않는다.",
         timing: "bloom",
       },
       {
@@ -11423,7 +11472,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-054",
     setId: "hBP04",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 100,
@@ -11447,7 +11496,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-055",
     setId: "hBP04",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 100,
@@ -11476,7 +11525,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-056",
     setId: "hBP04",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 160,
@@ -11505,7 +11554,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-057",
     setId: "hBP04",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 130,
@@ -11534,7 +11583,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-058",
     setId: "hBP04",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 140,
@@ -11563,7 +11612,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-059",
     setId: "hBP04",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 200,
@@ -11575,7 +11624,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Yes My Dark!",
         description:
-          "자신의 패 1장을 아카이브 하는 것으로, 주사위를 3번 굴릴 수 있다 : 홀수가 나온 횟수 1번당, 자신의 덱을 1장 드로우 한다. 자신의 【블룸 이펙트】 「Yes MY Dark!」는 턴에 1번 밖에 사용할 수 없다.",
+          "자신의 패 1장을 아카이브 하는 것으로, 주사위를 3번 굴릴 수 있다 : 홀수가 나온 횟수 1번당, 자신의 덱을 1장 드로우 한다. 자신의 【블룸 이펙트】 「Yes My Dark!」는 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
@@ -11638,7 +11687,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "올리를 봐 주세요!",
         description:
-          "자신의 SP 오시 스킬 「되살아나는 올리」로 Bloom 했을 때, 자신의 〈쿠레이지 올리〉 1명의 HP 전부 회복.",
+          "자신의 SP오시 스킬 「되살아나는 올리」로 Bloom 했을 때, 자신의 〈쿠레이지 올리〉 1명의 HP 전부 회복.",
         timing: "bloom",
       },
       {
@@ -11666,6 +11715,7 @@ const RAW_CARDS: Card[] = [
     batonPass: 2,
     tags: ["#EN", "#Myth", "#노래"],
     imageUrl: "/images/hBP04/hBP04-062_R.png",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
         name: "영원한 휴식",
@@ -11688,7 +11738,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-063",
     setId: "hBP04",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 110,
     color: ["purple"],
@@ -11704,7 +11754,12 @@ const RAW_CARDS: Card[] = [
           "상대의 턴에서, 이 홀로멤이 다운 했을 때, 자신의 덱을 1장 드로우 한다.",
         timing: "gift",
       },
-      { name: "봉비쥬!", description: "", damage: 20, cost: ["colorless"] },
+      {
+        name: "봉비쥬!",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
     ],
     limit: 50,
   },
@@ -11713,7 +11768,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-064",
     setId: "hBP04",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 180,
     color: ["purple"],
@@ -11722,7 +11777,12 @@ const RAW_CARDS: Card[] = [
     tags: ["#EN", "#Advent", "#베이비"],
     imageUrl: "/images/hBP04/hBP04-064_C.png",
     abilities: [
-      { name: "빛나는 보석", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "빛나는 보석",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -11731,7 +11791,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-065",
     setId: "hBP04",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 130,
     color: ["purple"],
@@ -11760,7 +11820,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-066",
     setId: "hBP04",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 190,
     color: ["purple"],
@@ -11772,7 +11832,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "『감정 결정체』",
         description:
-          "자신의 패를 세고, 자신의 패 전부를 아카이브 할 수 있다 : 아카이브 한 카드 1장당, 자신의 덱을 1장 드로우 한다. 자신의 【블룸 이펙트】 「『감정 결정체』」는 턴에 1번 밖에 사용할 수 없다.",
+          "자신의 패를 세고, 자신의 패 전부를 아카이브 할 수 있다 : 아카이브 한 카드 1장당, 자신의 덱을 1장 드로우 한다. 자신의 【블룸 이펙트】 「『감정 결정체』」는 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
@@ -11790,7 +11850,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-067",
     setId: "hBP04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 130,
@@ -11820,7 +11880,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-068",
     setId: "hBP04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 100,
@@ -11849,7 +11909,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-069",
     setId: "hBP04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 190,
@@ -11878,7 +11938,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-070",
     setId: "hBP04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 130,
@@ -11907,7 +11967,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-071",
     setId: "hBP04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 160,
@@ -11936,8 +11996,8 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-072",
     setId: "hBP04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
-    tags: ["#JP", "#2기생", "#새"],
+    nameJp: "大空スバル",
+    tags: ["#JP", "#2기생", "#노래", "#새"],
     type: "holomem",
     hp: 190,
     color: ["yellow"],
@@ -11977,7 +12037,12 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP04/hBP04-073_C.png",
     extraRule: "이 홀로멤은 덱에 몇 장이라도 넣을 수 있다.",
     abilities: [
-      { name: "좋은 아침!", description: "", damage: 30, cost: ["yellow"] },
+      {
+        name: "좋은 아침!",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 50,
   },
@@ -12388,7 +12453,7 @@ const RAW_CARDS: Card[] = [
     type: "holomem",
     hp: 130,
     holomemSubtype: "spot",
-    batonPass: 1,
+    batonPass: 0,
     tags: ["#EN", "#Justice"],
     imageUrl: "/images/hBP04/hBP04-088_C.png",
     extraRule: "이 홀로멤은 Bloom 할 수 없다.",
@@ -12460,7 +12525,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 턴 동안, 자신의 〈이치조 리리카〉 1명의 아츠에 필요한 홀로아츠 N -1. 자신의 〈한계밥〉은 턴에 1번 밖에 사용할 수 없다.",
+          "이 턴 동안, 자신의 〈이치조 리리카〉 1명의 아츠에 필요한 홀로아츠 N -1. 자신의 〈한계밥〉은 턴에 1번밖에 사용할 수 없다.",
       },
     ],
     limit: 4,
@@ -12527,7 +12592,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP04-095",
     setId: "hBP04",
     name: "마스코트 캐처",
-    nameJp: "マスコットキヤッチャー",
+    nameJp: "マスコットキャッチャー",
     type: "support",
     supportSubtype: "event",
     limited: true,
@@ -12575,7 +12640,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆1st 이상의 〈하쿠이 코요리〉에게 붙어 있다면 능력 추가\n자신의 메인 스탭에서, 이 툴이 붙어 있는 홀로멤의 옐 1장을 아카이브 할 수 있다 : 자신의 휴식하고 있는 #비밀 결사 holoX를 가진 홀로멤 1명을 액티브로 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆1st 이상의 〈하쿠이 코요리〉에게 붙어 있다면 능력 추가\n자신의 메인 스텝에서, 이 툴이 붙어 있는 홀로멤의 옐 1장을 아카이브 할 수 있다 : 자신의 휴식하고 있는 #비밀 결사 holoX를 가진 홀로멤 1명을 액티브로 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -12685,7 +12750,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈라플라스 다크니스〉에게 붙어 있다면 능력 추가\n[콜라보 포지션 한정][턴에 1번] 자신의 메인 스탭에서, 주사위를 1번 굴릴 수 있다. : 홀수일 때, 이 마스코트가 붙어 있는 홀로멤을 백 포지션으로 이동한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 아츠 +10.\n\n◆〈라플라스 다크니스〉에게 붙어 있다면 능력 추가\n[콜라보 포지션 한정][턴에 1번] 자신의 메인 스텝에서, 주사위를 1번 굴릴 수 있다 : 홀수일 때, 이 마스코트가 붙어 있는 홀로멤을 백 포지션으로 이동한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -12703,7 +12768,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈오오조라 스바루〉에게 붙어 있다면 능력 추가\n서로의 스테이지에 옐이 합계 10장 이상 있을 때, 이 마스코트가 붙어 있는 홀로멤의 아츠 +20.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈오오조라 스바루〉에게 붙어 있다면 능력 추가\n서로의 스테이지에 옐이 합계 10장 이상 있는 동안, 이 마스코트가 붙어 있는 홀로멤의 아츠 +20.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -12722,7 +12787,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬을 홀로멤에게 패나 아카이브에서 붙였을 때, 자신의 스테이지의 옐 1장을, 이 팬이 붙어 있는 홀로멤에게 바꿔 붙일 수 있다.\n\n이 팬은, 자신의 〈하쿠이 코요리〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "이 팬을 홀로멤에게 패나 아카이브에서 붙였을 때, 자신의 스테이지의 옐 1장을, 이 팬이 붙어 있는 홀로멤에게 바꿔 붙일 수 있다.\n\n이 팬은, 자신의 〈하쿠이 코요리〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -12882,7 +12947,7 @@ const RAW_CARDS: Card[] = [
         "[턴에 1번] 이 턴 동안, 자신의 #노래를 가진 [센터 홀로멤과 콜라보 홀로멤]의 아츠 +10.",
     },
     spAbility: {
-      name: "Shoot the Moon",
+      name: "Shoot for the Moon",
       cost: "홀로 파워 -4",
       description:
         "[게임에 1번] 이 게임 동안, 자신의 〈네리사 레이븐크로프트〉 전원의 아츠에 필요한 홀로아츠 N -1.",
@@ -12906,7 +12971,7 @@ const RAW_CARDS: Card[] = [
         "[턴에 1번] 자신의 콜라보 포지션의 [Debut 홀로멤이나 1st 홀로멤이나 Spot 홀로멤]과, 백 홀로멤인 〈시라누이 후레아〉 1명을 교대시킨다.",
     },
     spAbility: {
-      name: "모두 달아 오르자!",
+      name: "모두 달아오르자!",
       cost: "홀로 파워 -2",
       description:
         "[게임에 1번] 자신의 스테이지의 옐 1~5장을 자신의 〈시라누이 후레아〉 1명에게 바꿔 붙일 수 있다. 그 후, 이 턴 동안, 자신의 센터 홀로멤의 옐 1장당, 자신의 스테이지의 홀로멤 전원의 아츠 +10.",
@@ -12952,12 +13017,17 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP05/hBP05-009_C.png",
     abilities: [
       {
-        name: "여름 찾기",
+        name: "깊은 여름",
         description:
           "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, 1st 홀로멤인 〈시로가네 노엘〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
-      { name: "여름의 추억", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "여름의 추억",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -13069,7 +13139,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Ray of Jewelry",
         description:
-          "[센터 포지션・콜라보 포지션 한정] 자신의 스테이지에 #0기생을 가진 홀로멤 전원의 아츠 +30.",
+          "[센터 포지션・콜라보 포지션 한정] 자신의 스테이지의 #0기생을 가진 홀로멤 전원의 아츠 +30.",
         timing: "gift",
       },
       {
@@ -13337,7 +13407,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "일몰에 물들다",
         description:
-          "자신의 스테이지에 옐이 4장 이상 있다면, 이 턴 동안, 자신의 #ID 1기생을 가진 홀로멤 1명의 아츠 +20.",
+          "자신의 스테이지에 옐이 4장 이상 있다면, 이 턴 동안, 자신의 스테이지의 #ID 1기생을 가진 홀로멤 1명의 아츠 +20.",
         timing: "collab",
       },
       {
@@ -13397,7 +13467,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP05/hBP05-024_R.png",
     abilities: [
       {
-        name: "아즈키네 집에서 느긋히 있자",
+        name: "아즈키네 집에서 느긋이 있자",
         description:
           "자신의 스테이지에 〈개척자〉가 있다면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈AZKi〉에게 보낸다.",
         damage: 50,
@@ -13453,7 +13523,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "트와일라잇 리조트",
         description:
-          "자신의 아카이브의 〈돌 도끼〉 1장을, 자신의 〈아키 로젠탈〉에 붙일 수 있다.",
+          "자신의 아카이브의 〈돌 도끼〉 1장을, 자신의 〈아키 로젠탈〉에게 붙일 수 있다.",
         timing: "collab",
       },
       {
@@ -13600,7 +13670,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP05/hBP05-031_C.png",
     abilities: [
       {
-        name: "아ゝ멋진 아이돌 인생인가",
+        name: "아아 멋진 아이돌 인생인가",
         description:
           "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, 〈좌원〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         damage: 30,
@@ -13661,7 +13731,7 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "내년에도 너랑 보러 오고 싶다",
-        description: "이 홀로멤에 붙어 있는 〈좌원〉 1장당, 이 아츠 +10.",
+        description: "이 홀로멤에게 붙어 있는 〈좌원〉 1장당, 이 아츠 +10.",
         damage: 70,
         cost: ["red", "colorless", "colorless"],
       },
@@ -13716,7 +13786,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "지금 건 조금 말야, 연습으로…",
         description:
-          "[센터 포지션 한정・콜라보 포지션 한정] 상대의 턴에서, 자신의 〈사쿠라 미코〉가 다운 했을 때 사용할 수 있다 : 자신의 덱에서, 〈미오레하지〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "[센터 포지션・콜라보 포지션 한정] 상대의 턴에서, 자신의 〈사쿠라 미코〉가 다운 했을 때 사용할 수 있다 : 자신의 덱에서, 〈미오레하지〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "gift",
       },
       {
@@ -13770,7 +13840,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Non-Limit Boost",
         description:
-          "이 홀로멤에게 홀로아츠 R 옐과 홀로아츠 B 옐이 붙어 있다면, 자신의 아카이브의 옐 2장을 이 홀로멤에게 보낼 수 있다. 어느쪽의 1색밖에 붙어 있지 않다면, 자신의 아카이브의 옐 1장을 이 홀로멤에게 보낼 수 있다.",
+          "이 홀로멤에게 홀로아츠 R 옐과 홀로아츠 B 옐이 붙어 있다면, 자신의 아카이브의 옐 2장을 이 홀로멤에게 보낼 수 있다. 어느 한쪽 1색밖에 붙어 있지 않다면, 자신의 아카이브의 옐 1장을 이 홀로멤에게 보낼 수 있다.",
         damage: 50,
         specialDamage: { color: "purple", value: 50 },
         cost: ["colorless"],
@@ -13803,7 +13873,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "모코쿼이",
         description:
-          "[콜라보 포지션 한정] 자신의 SP 오시 스킬 「BAU BAU!」를 사용했을 때, 이 턴 동안, 이 홀로멤의 아츠 +70. 자신의 스테이지에 2nd 홀로멤이 있다면, 다시, 이 턴 동안, 이 홀로멤의 아츠 +50.",
+          "[콜라보 포지션 한정] 자신의 SP오시 스킬 「BAU BAU!」를 사용했을 때, 이 턴 동안, 이 홀로멤의 아츠 +70. 자신의 스테이지에 2nd 홀로멤이 있다면, 다시, 이 턴 동안, 이 홀로멤의 아츠 +50.",
         timing: "gift",
       },
       {
@@ -13824,7 +13894,7 @@ const RAW_CARDS: Card[] = [
     nameJp: "一条莉々華",
     keywords: ["Buzz"],
     type: "holomem",
-    hp: 240,
+    hp: 230,
     color: ["red"],
     holomemSubtype: "1st",
     batonPass: 2,
@@ -13837,14 +13907,14 @@ const RAW_CARDS: Card[] = [
         description:
           "이 턴에 자신이 〈한계밥〉을 사용하고 있다면, 상대의 센터 홀로멤과 콜라보 홀로멤에게 특수 대미지 20을 준다.",
         damage: 40,
-        cost: ["red"],
+        cost: ["red", "colorless"],
       },
       {
         name: "언제든지 궤도 수정 할 수 있어",
         description:
           "이 아츠의 대상이 상대의 1st 이상인 콜라보 홀로멤이라면, 이 아츠 +70.",
         damage: 70,
-        cost: ["red", "red"],
+        cost: ["red", "colorless", "colorless"],
       },
     ],
     limit: 4,
@@ -13859,20 +13929,20 @@ const RAW_CARDS: Card[] = [
     type: "holomem",
     hp: 150,
     color: ["red", "blue"],
-    holomemSubtype: "spot",
+    holomemSubtype: "1st",
     batonPass: 1,
     extraRule: "이 홀로멤은 〈사쿠라 미코〉〈호시마치 스이세이〉로도 취급한다.",
     tags: ["#JP", "#0기생", "#베이비", "#노래"],
     imageUrl: "/images/hBP05/hBP05-040_U.png",
     abilities: [
       {
-        name: "비지니스 프렌드",
+        name: "비즈니스 프렌드",
         description:
           "자신의 라이프가 3 이하라면, 자신의 이 턴에 Bloom 한 센터 홀로멤인 [〈사쿠라 미코〉나 〈호시마치 스이세이〉]를, 자신의 패의 홀로멤을 사용해 다시 1번 Bloom 할 수 있다.",
         timing: "collab",
       },
       {
-        name: "비지니스 파트너",
+        name: "비즈니스 파트너",
         description:
           "이 홀로멤의 옐 1장을 자신의 백 홀로멤에게 바꿔 붙일 수 있다.",
         damage: 90,
@@ -13945,13 +14015,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "나로 괜찮지 않아~?",
         description:
-          "[콜라보 포지션 한정] 자신의#게이머즈를 가진 센터 홀로멤이 있을 때, 상대의 홀로멤의 아츠는, 자신의 콜라보 홀로멤밖에 대상으로 할 수 없다. 특수 대미지는 제외한다.",
+          "[콜라보 포지션 한정] 자신의 #게이머즈를 가진 센터 홀로멤이 있는 동안, 상대의 홀로멤의 아츠는, 자신의 콜라보 홀로멤밖에 대상으로 할 수 없다. 단, 특수 대미지는 제외한다.",
         timing: "gift",
       },
       {
         name: "아직 더 놀 수 있지~?",
         description:
-          "이 홀로멤의 홀로아츠 B 1장을 아카이브 할 수 있다 : 상대의 센터 홀로멤과 백 홀로멤 1명에게 특수 대미지 10을 준다.",
+          "이 홀로멤의 홀로아츠 B 옐 1장을 아카이브 할 수 있다 : 상대의 센터 홀로멤과 백 홀로멤 1명에게 특수 대미지 10을 준다.",
         damage: 30,
         cost: ["colorless"],
       },
@@ -13975,7 +14045,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "도시락 타임…?",
         description:
-          "상대의 센터 홀로멤과 백 홀로멤 1장에게 특수 대미지 10을 준다. 자신의 【블룸 이펙트】 「도시락 타임…?」은 턴에 1번밖에 사용할 수 없다.",
+          "상대의 센터 홀로멤과 백 홀로멤 1명에게 특수 대미지 10을 준다. 자신의 【블룸 이펙트】 「도시락 타임…?」은 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
@@ -14042,7 +14112,7 @@ const RAW_CARDS: Card[] = [
         name: "사랑하지 않아~!",
         description:
           "자신의 스테이지에 #5기생을 가진 2nd 홀로멤이 있다면, 상대의 홀로멤 1명에게 특수 대미지 20을 준다.",
-        damage: 50,
+        damage: 40,
         cost: ["blue", "colorless"],
       },
     ],
@@ -14116,7 +14186,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "빗자국을 더듬다",
         description:
-          "상대의 백 홀로멤 전원의 HP가 합계 80 이상 줄어 있다면, 자신의 아카이브의 홀로아츠 B 1장을 자신의 〈코보 카나에루〉에게 보낼 수 있다.",
+          "상대의 백 홀로멤 전원의 HP가 합계 80 이상 줄어 있다면, 자신의 아카이브의 홀로아츠 B 옐 1장을 자신의 〈코보 카나에루〉에게 보낼 수 있다.",
         damage: 60,
         specialDamage: { color: "white", value: 50 },
         cost: ["blue"],
@@ -14187,7 +14257,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "샴페인 샴페인!",
         description:
-          "자신의 스테이지에 #술을 가진 홀로멤이 3장 이상 있다면, 자신의 아카이브의 옐 1장을 자신의 #술을 가진 백 홀로멤에게 보낼 수 있다.",
+          "자신의 스테이지에 #술을 가진 홀로멤이 3명 이상 있다면, 자신의 아카이브의 옐 1장을 자신의 #술을 가진 백 홀로멤에게 보낼 수 있다.",
         damage: 20,
         cost: ["colorless"],
       },
@@ -14209,7 +14279,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP05/hBP05-052_U.png",
     abilities: [
       {
-        name: "비밀의 보건의",
+        name: "비밀의 보건실",
         description:
           "자신의 아카이브에 이벤트가 있다면, 상대의 센터 홀로멤에게 특수 대미지 10을 준다.",
         timing: "collab",
@@ -14271,7 +14341,7 @@ const RAW_CARDS: Card[] = [
         description:
           "이 아츠는, 이 턴에 자신이 #음식을 가진 이벤트 카드를 2장 이상 사용하고 있다면, 옐 1장을 필요로 하지 않고 사용할 수 있다.",
         damage: 30,
-        cost: ["purple"],
+        cost: ["colorless"],
       },
     ],
     limit: 4,
@@ -14293,10 +14363,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "늦잠꾸러기 악마",
         description:
-          "[센터 포지션 한정] 상대의 퍼포먼스 스텝이 종료할 때, 이 홀로멤의 HP가 줄어 있지 않다면, 자신의 옐 덱의 위에서 부터 1장을 자신의 〈유즈키 초코〉 1명에게 보낼 수 있다.",
+          "[센터 포지션 한정] 상대의 퍼포먼스 스텝이 종료할 때, 이 홀로멤의 HP가 줄어 있지 않다면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈유즈키 초코〉에게 보낼 수 있다.",
         timing: "gift",
       },
-      { name: "아아아아아", description: "", damage: 30, cost: ["purple"] },
+      {
+        name: "아아아아아",
+        description: "",
+        damage: 30,
+        cost: ["purple"],
+      },
     ],
     limit: 4,
   },
@@ -14318,14 +14393,14 @@ const RAW_CARDS: Card[] = [
         name: "사랑을 담아서",
         description:
           "이 턴에 자신이 사용했던 #음식을 가진 이벤트 1장당, 이 아츠 +20. 단, 세는 매수는 2장까지.",
-        damage: 50,
+        damage: 90,
         specialDamage: { color: "blue", value: 50 },
         cost: ["purple", "colorless"],
       },
       {
         name: "밤에 다가붙는",
         description:
-          "자신의 패 2장을 아카이브 할 수 있다 : 자신의 아카이브의 #음식를 가진 홀로멤 1명을 패로 되돌린다.",
+          "자신의 패 2장을 아카이브 할 수 있다 : 자신의 아카이브의 #요리를 가진 홀로멤 1장을 패로 되돌린다.",
         damage: 150,
         specialDamage: { color: "blue", value: 50 },
         cost: ["purple", "colorless", "colorless"],
@@ -14372,13 +14447,14 @@ const RAW_CARDS: Card[] = [
     hp: 100,
     color: ["purple"],
     holomemSubtype: "debut",
+    batonPass: 0,
     tags: ["#EN", "#Advent", "#노래", "#새"],
     imageUrl: "/images/hBP05/hBP05-058_C.png",
     abilities: [
       {
         name: "SUGOIDEKAI",
         description:
-          "자신이 후공이고 최초의 턴일 때, 자신의 오시 홀로멤이 〈네리사 레이븐크로프트〉라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+          "자신이 후공이고 최초의 턴이며, 자신의 오시 홀로멤이 〈네리사 레이븐크로프트〉라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
         timing: "collab",
       },
       {
@@ -14641,7 +14717,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "컬러풀 스트림",
         description:
-          "이 홀로멤이 아츠를 사용했을 때, 이 홀로멤의 옐 2장을 자신의 백 홀로멤 1명에게 보낼 수 있다. 그 후, 자신의 아카이브의, 옐을 보낸 홀로멤과 같은 이름인 1st 홀로멤을 패로 되돌린다.",
+          "이 홀로멤이 아츠를 사용했을 때, 이 홀로멤의 옐 2장을 자신의 백 홀로멤 1명에게 보낼 수 있다. 그 후, 자신의 아카이브의, 옐을 받은 홀로멤과 같은 카드명인 1st 홀로멤 1장을 패로 되돌린다.",
         timing: "gift",
       },
       {
@@ -14799,7 +14875,7 @@ const RAW_CARDS: Card[] = [
         description:
           "[센터 포지션 한정] 이 홀로멤에게 옐이 4장 이상 붙어 있다면, 이 턴 동안, 이 홀로멤과 자신의 콜라보 홀로멤의 아츠 +50.",
         damage: 50,
-        cost: ["yellow"],
+        cost: ["yellow", "yellow"],
       },
       {
         name: "와타메랑 해변 데이트",
@@ -14826,7 +14902,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP05/hBP05-073_R.png",
     abilities: [
       {
-        name: "BRRR",
+        name: "BRRRR",
         description:
           "자신의 옐 덱의 위에서부터 3장을 본다. 그중에서, 옐 1장을 공개하고, 자신의 〈아윤다 리스〉에게 보낸다. 그리고 남은 옐을 원하는 순서로 옐 덱의 아래로 되돌린다. 그 후, 자신의 덱을 1장 드로우 한다.",
         timing: "collab",
@@ -14912,7 +14988,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 6장 이하가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 본다. 그중에서, 〈시라카미 후부키〉와 〈시라누이 후레아〉와 〈츠노마키 와타메〉와 〈오미루 폴카〉를 원하는 매수 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
+          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 6장 이하가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 본다. 그중에서, 〈시라카미 후부키〉와 〈시라누이 후레아〉와 〈츠노마키 와타메〉와 〈오마루 폴카〉를 원하는 매수 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
       },
     ],
     limit: 4,
@@ -15099,7 +15175,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 홀로멤의 옐 1장을 자신의 다른 #노래를 가진 홀로멤에게 바꿔 붙일 수 있다.\n\n이 팬은, 자신의 〈네리사 레이븐크로프트〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 홀로멤의 옐 1장을 자신의 다른 #노래를 가진 홀로멤에게 바꿔 붙일 수 있다.\n\n이 팬은, 자신의 〈네리사 레이븐크로프트〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -15118,13 +15194,13 @@ const RAW_CARDS: Card[] = [
       name: "BIG CAT means...",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 센터 홀로멤이 〈라오라 판테라〉라면, 자신의 덱에서, 자신의 콜라보 홀로멤과 같은 카드명인 홀로멤 1장을 공개하고 패에 더한다. 그리고 덱을 셔플 한다.",
+        "[턴에 1번] 자신의 센터 홀로멤이 〈라오라 판테라〉라면, 자신의 덱에서, 자신의 콜라보 홀로멤과 같은 카드명인 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     spAbility: {
       name: "BIG TROUBLE!!",
       cost: "홀로 파워 -1",
       description:
-        "[게임에 1번] 이 게임 동안, 자신의 〈라오라 판테라〉 전원은, 리셋 스탭에서 휴식하지 않는다.",
+        "[게임에 1번] 이 게임 동안, 자신의 〈라오라 판테라〉 전원은, 리셋 스텝에서 휴식하지 않는다.",
     },
     limit: 1,
   },
@@ -15145,7 +15221,7 @@ const RAW_CARDS: Card[] = [
         "[턴에 1번] 자신의 덱의 위에서부터 2장을 아카이브 한다. 그 후, 이 턴 동안, 자신의 #FLOW GLOW를 가진 [센터 홀로멤과 콜라보 홀로멤]의 아츠 +20.",
     },
     spAbility: {
-      name: "살아 나가는 거에요!",
+      name: "살아 나가는 거예요!",
       cost: "홀로 파워 -1",
       description:
         "[게임에 1번] 자신의 덱의 매수가 5장 이하이고, 자신의 #FLOW GLOW를 가진 홀로멤이 상대의 센터 홀로멤을 다운 시켰을 때 사용할 수 있다 : 상대의 라이프 -1.",
@@ -15214,7 +15290,7 @@ const RAW_CARDS: Card[] = [
       name: "혼돈의 화신",
       cost: "홀로 파워 -1",
       description:
-        "[턴에 1번] 이 게임 중에, 자신의 SP 오시 스킬을 사용하고 있다면, 주사위를 1번 굴린다. 자신의 패가 나온 눈의 수와 같아질 때까지, 자신의 덱을 드로우 한다.",
+        "[턴에 1번] 이 게임 중에, 자신의 SP오시 스킬을 사용하고 있다면, 주사위를 1번 굴린다. 자신의 패가 나온 눈의 수와 같아질 때까지, 자신의 덱을 드로우 한다.",
     },
     spAbility: {
       name: "ƎNOZ Nꓵꓞ ƎHꓕ Oꓕ ƎWOꓛꓶƎM",
@@ -15286,11 +15362,11 @@ const RAW_CARDS: Card[] = [
       name: "축제다 왓쇼이!",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 주사위를 1번 굴린다 : 나온 눈의 수가 자신의 라이프 이상이라면, 자신의 덱에서, 카드를 1장 패에 더한다. 그리고 덱을 셔플 한다. 나온 눈의 수가 자신의 라이프 이하라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+        "[턴에 1번] 주사위를 1번 굴린다. 나온 눈의 수가 자신의 라이프 이상이라면, 자신의 덱에서, 카드를 1장 패에 더한다. 그리고 덱을 셔플 한다. 나온 눈의 수가 자신의 라이프 이하라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
     },
     spAbility: {
       name: "절대 이기고 싶어!!!!!!!",
-      cost: "홀로 파워 -2",
+      cost: "홀로 파워 -1",
       description:
         "[게임에 1번] 자신의 센터 홀로멤이 〈나츠이로 마츠리〉라면, 이 턴 동안, 자신이 사용할 수 있는 LIMITED 서포트 카드의 매수는 2장이 된다.",
     },
@@ -15366,10 +15442,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "RAORAO",
         description:
-          "자신의 덱에서 #Justice를 가진 [데뷔 홀로멤이나 1st 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "자신의 덱에서, #Justice를 가진 [Debut 홀로멤이나 1st 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
-      { name: "Mamma mia", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "Mamma mia",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -15416,10 +15497,10 @@ const RAW_CARDS: Card[] = [
     batonPass: 2,
     tags: ["#EN", "#Justice", "#동물귀", "#그림"],
     imageUrl: "/images/hBP06/hBP06-013_R.png",
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
-        name: "CATCH ALL CHATTINI AROUND THE WORLD!!",
+        name: "CATCH ALL CHATTINI AROUND THE WORLD!!!",
         description:
           "자신의 덱에서, 〈Chattino〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
@@ -15533,7 +15614,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP06/hBP06-017_C.png",
     abilities: [
       {
-        name: "꿈의 아레나레서 하는 라이브",
+        name: "꿈의 아레나에서 하는 라이브",
         description: "",
         damage: 40,
         cost: ["colorless"],
@@ -15597,7 +15678,7 @@ const RAW_CARDS: Card[] = [
         timing: "bloom",
       },
       {
-        name: "이외로 열혈 타입?",
+        name: "의외로 열혈 타입?",
         description: "자신의 덱의 위에서부터 1장을 아카이브 한다.",
         damage: 40,
         cost: ["white"],
@@ -15628,7 +15709,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "레조넌스 로어",
         description:
-          "자신의 덱의 위에서부터 1~3장을 아카이브 한다. 아카이브한 카드 1장당, 이 아츠 +20.",
+          "자신의 덱의 위에서부터 1~3장을 아카이브 한다. 아카이브 한 카드 1장당, 이 아츠 +20.",
         damage: 150,
         specialDamage: { color: "red", value: 50 },
         cost: ["white", "colorless", "colorless"],
@@ -15653,7 +15734,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "너에게 닿아라",
         description:
-          "이 턴 동안, 자신의 #비밀 결사 holoX를 가진 홀로멤 1명의 아츠 +30. 이 홀로멤에게 #코요 랩을 가진 서포트 카드가 붙어 있다면, 대신, 그 홀로멤의 아츠 +50.",
+          "이 턴 동안, 자신의 스테이지의 #비밀 결사 holoX를 가진 홀로멤 1명의 아츠 +30. 이 홀로멤에게 #코요 랩을 가진 서포트 카드가 붙어 있다면, 대신, 그 홀로멤의 아츠 +50.",
         timing: "collab",
       },
       {
@@ -15681,7 +15762,12 @@ const RAW_CARDS: Card[] = [
     batonPass: 1,
     imageUrl: "/images/hBP06/hBP06-022_C.png",
     abilities: [
-      { name: "수제 부적", description: "", damage: 10, cost: ["green"] },
+      {
+        name: "수제 부적",
+        description: "",
+        damage: 10,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -15700,12 +15786,17 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP06/hBP06-023_U.png",
     abilities: [
       {
-        name: "홉 스탭 점프!",
+        name: "홉 스텝 점프!",
         description:
           "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, Buzz 홀로멤인 〈카자마 이로하〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
-      { name: "GOZAGOZA536", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "GOZAGOZA536",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -15813,7 +15904,7 @@ const RAW_CARDS: Card[] = [
         timing: "gift",
       },
       {
-        name: "함께 스탭",
+        name: "함께 스텝",
         description:
           "자신의 오시 홀로멤이 〈카자마 이로하〉고, 자신의 콜라보 홀로멤이 있다면, 이 아츠 +40. 다시, 이 홀로멤이 Buzz 홀로멤에서 Bloom 하고 있다면, 이 아츠 대미지는 경감되지 않는다.",
         damage: 160,
@@ -15841,7 +15932,7 @@ const RAW_CARDS: Card[] = [
         name: "응나아아아아아이",
         description: "",
         damage: 30,
-        cost: ["green"],
+        cost: ["colorless"],
       },
     ],
     limit: 4,
@@ -15954,10 +16045,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "FOR! JUSTICE!",
         description:
-          "자신��� 옐 덱의 위에서부터 1장을 이 홀로멤 이외의 자신의 #Justice를 가진 홀로멤에게 보낸다.",
+          "자신의 옐 덱의 위에서부터 1장을 이 홀로멤 이외의 자신의 #Justice를 가진 홀로멤에게 보낸다.",
         timing: "collab",
       },
-      { name: "봄의 추억", description: "", damage: 20, cost: ["colorless"] },
+      {
+        name: "봄의 추억",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -15978,7 +16074,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "칠흑색 틈새",
         description:
-          "이 턴에 자신이 #버섯을 가진 이벤트를 사용하고 있다면, 자신의 덱을 2장 드로우 한다. 자신의 【블룸 이펙트】 「칠흑색 틈새」 는 턴에 1번밖에 사용할 수 없다.",
+          "이 턴에 자신이 #버섯을 가진 이벤트를 사용하고 있다면, 자신의 덱을 2장 드로우 한다. 자신의 【블룸 이펙트】 「칠흑색 틈새」는 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
@@ -16119,7 +16215,7 @@ const RAW_CARDS: Card[] = [
     batonPass: 1,
     abilities: [
       {
-        name: "가끔식 늘어나요",
+        name: "가끔씩 늘어나요",
         description:
           "자신의 옐 덱의 위에서부터 1장을 아카이브 할 수 있다 : 자신의 아카이브의 〈나키리 아야메〉 1장을 패로 되돌린다.",
         timing: "collab",
@@ -16151,13 +16247,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "요, 아무것도 안 듣고 있었어",
         description:
-          "자신의 콜라보 홀로멤이 있고, 상대의 콜라보 홀로멤이 없다면, 자신의 홀로멤 전원은 상대에게서 아츠 대미지를 받지 않는다.",
+          "[센터 포지션 한정] 자신의 콜라보 홀로멤이 있고, 상대의 콜라보 홀로멤이 없다면, 자신의 홀로멤 전원은 상대에게서 아츠 대미지를 받지 않는다.",
         timing: "gift",
       },
       {
         name: "백귀난무 -농월-",
         description:
-          "자신의 오시 홀로멤이 〈나키리 아아메〉라면, 자신의 옐 덱의 위에서부터 1~3장을 아카이브 할 수 있다 : 아카이브 한 옐 1장당, 이 아츠 +40. 이 아츠는, 자신의 라이프가 2 이하가 아니라면 콜라보 포지션에서는 사용할 수 없다.",
+          "자신의 오시 홀로멤이 〈나키리 아야메〉라면, 자신의 옐 덱의 위에서부터 1~3장을 아카이브 할 수 있다 : 아카이브 한 옐 1장당, 이 아츠 +40. 이 아츠는, 자신의 라이프가 2 이하가 아니라면 콜라보 포지션에서는 사용할 수 없다.",
         damage: 80,
         specialDamage: { color: "green", value: 50 },
         cost: ["red", "red"],
@@ -16199,7 +16295,7 @@ const RAW_CARDS: Card[] = [
     hp: 110,
     color: ["red"],
     holomemSubtype: "debut",
-    batonPass: 1,
+    batonPass: 0,
     tags: ["#EN", "#Promise", "#동물귀"],
     imageUrl: "/images/hBP06/hBP06-041_U.png",
     abilities: [
@@ -16288,11 +16384,16 @@ const RAW_CARDS: Card[] = [
       {
         name: "휠 오브 포츈",
         description:
-          "이 게임 중에, 자신의 SP 오시 스킬 「ƎNOZ Nꓵꓞ ƎHꓕ Oꓕ ƎWOꓛꓶƎM」을 사용하고 있다면, 주사위를 1번 굴린다 : 나온 눈의 수 1개당, 이 아츠 +10.",
+          "이 게임 중에, 자신의 SP오시 스킬 「ƎNOZ Nꓵꓞ ƎHꓕ Oꓕ ƎWOꓛꓶƎM」을 사용하고 있다면, 주사위를 1번 굴린다. 나온 눈의 수 1개당, 이 아츠 +10.",
         damage: 30,
         cost: ["red"],
       },
-      { name: "고맙츄!", description: "", damage: 70, cost: ["red", "red"] },
+      {
+        name: "고맙츄!",
+        description: "",
+        damage: 70,
+        cost: ["red", "red"],
+      },
     ],
     limit: 4,
   },
@@ -16321,7 +16422,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "¡¡SSꓵHƆSꓶƎԀԀOꓷ",
         description:
-          "이 게임 중에, 자신의 SP 오시 스킬 「ƎNOZ Nꓵꓞ ƎHꓕ Oꓕ ƎWOꓛꓶƎM」을 사용하고 있다면, 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 100을 준다.",
+          "이 게임 중에, 자신의 SP오시 스킬 「ƎNOZ Nꓵꓞ ƎHꓕ Oꓕ ƎWOꓛꓶƎM」을 사용하고 있다면, 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 100을 준다.",
         damage: 100,
         specialDamage: { color: "purple", value: 50 },
         cost: ["red", "colorless", "colorless"],
@@ -16346,7 +16447,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "틀렸다고!",
         description:
-          "이 게임 중에, 자신의 SP 오시 스킬 「호크 아이」를 사용하고 있다면, 이 홀로멤의 아츠 +20.",
+          "이 게임 중에, 자신의 SP오시 스킬 「호크 아이」를 사용하고 있다면, 이 홀로멤의 아츠 +20.",
         timing: "gift",
       },
       {
@@ -16408,7 +16509,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "문 페이스",
         description:
-          "이 홀로멤에게 홀로아츠 B 이외의 옐 붙어 있다면, 상대의 백 홀로멤 1명에게 특수 대미지 10을 준다. 단, 다운 해도 상대의 라이프는 줄지 않는다.",
+          "이 홀로멤에게 홀로아츠 B 이외의 옐이 붙어 있다면, 상대의 백 홀로멤 1명에게 특수 대미지 10을 준다. 단, 다운 해도 상대의 라이프는 줄지 않는다.",
         damage: 20,
         cost: ["colorless"],
       },
@@ -16634,7 +16735,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "갸루마타랑 등교",
         description:
-          "이 게임 중에, 자신의 SP 오시 스킬 「인셋 리셋 버튼」을 사용하고 있다면, 이 홀로멤의 아츠 「사카마타랑 청춘 하자?」에 필요한 무 -1.",
+          "이 게임 중에, 자신의 SP오시 스킬 「인생 리셋 버튼」을 사용하고 있다면, 이 홀로멤의 아츠 「사카마타랑 청춘 하자?」에 필요한 홀로아츠 N -1.",
         timing: "gift",
       },
       {
@@ -16643,7 +16744,7 @@ const RAW_CARDS: Card[] = [
           "자신의 덱의 위에서부터 6장을 공개한다. 공개한 홀로멤 1장당, 이 아츠 +20. 그리고 공개한 카드를 아카이브 한다.",
         damage: 120,
         specialDamage: { color: "purple", value: 50 },
-        cost: ["blue", "colorless", "colorless", "colorless"],
+        cost: ["blue", "blue", "colorless", "colorless"],
       },
     ],
     limit: 4,
@@ -16686,7 +16787,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP06/hBP06-058_U.png",
     abilities: [
       {
-        name: "Yes, Chef",
+        name: "Yes, Chef.",
         description: "자신의 덱을 3장 드로우 한 후, 패 2장을 아카이브 한다.",
         timing: "collab",
       },
@@ -16862,7 +16963,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "장난칠거야~!",
         description:
-          "자신의 오시 홀로멤이 〈로보코 씨〉라면, 자신의 패 1~2장을 아카이브 힐 수 있다 : 아카이브 한 카드 1장당, 자신의 아카이브의 〈로보사〉 1장을 패로 되돌릴 수 있다.",
+          "자신의 오시 홀로멤이 〈로보코 씨〉라면, 자신의 패 1~2장을 아카이브 할 수 있다 : 아카이브 한 카드 1장당, 자신의 아카이브의 〈로보사〉 1장을 패로 되돌린다.",
         timing: "collab",
       },
       {
@@ -17019,7 +17120,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "시바키아게 펀칭",
         description:
-          "이 턴에 자신의 오시 스킬 「무한한 체력」으로 액티브가 되었다면, 이 아츠 +50.",
+          "이 턴에 이 홀로멤이 자신의 오시 스킬 「무한한 체력」으로 액티브가 되었다면, 이 아츠 +50.",
         damage: 30,
         cost: ["colorless"],
       },
@@ -17062,7 +17163,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP06-071",
     setId: "hBP06",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 200,
@@ -17131,10 +17232,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "같이 있어 줄래…?",
         description:
-          "자신이 후공이며 최초의 턴이고, 자신의 오시 홀로멤이 〈나츠이로 마츠리〉라면, 자신의 덱에서 LIMITED인 서포트 카드 1장을 공개하고 패에 더한다. 그리고 덱을 셔플 한다.",
+          "자신이 후공이며 최초의 턴이고, 자신의 오시 홀로멤이 〈나츠이로 마츠리〉라면, 자신의 덱에서 LIMITED인 서포트 카드 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
-      { name: "고마워", description: "", damage: 10, cost: ["colorless"] },
+      {
+        name: "고마워",
+        description: "",
+        damage: 10,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -17217,7 +17323,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "마츠리 쨩에게 해롱해롱 하라구♥",
         description:
-          "이 아츠의 대상이 상대의 2nd 홀로멤이고, 이 턴에 자신이 LIMITED인 서포트 카드를 사용하고 있다면, 이 아츠 +70.",
+          "이 아츠의 대상이 상대의 2nd 홀로멤이고, 이 턴에 자신이 LIMITED인 이벤트를 사용하고 있다면, 이 아츠 +70.",
         damage: 50,
         cost: ["yellow", "colorless"],
       },
@@ -17260,7 +17366,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP06-078",
     setId: "hBP06",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 100,
@@ -17289,7 +17395,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP06-079",
     setId: "hBP06",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 140,
@@ -17303,7 +17409,12 @@ const RAW_CARDS: Card[] = [
         description: "자신의 아카이브의 옐 1장을 이 홀로멤에게 보낼 수 있다.",
         timing: "collab",
       },
-      { name: "짠물껼 쏘리", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "짠물껼 쏘리",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -17312,7 +17423,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP06-080",
     setId: "hBP06",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 130,
@@ -17341,7 +17452,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP06-081",
     setId: "hBP06",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생", "#새"],
     type: "holomem",
     hp: 200,
@@ -17357,7 +17468,7 @@ const RAW_CARDS: Card[] = [
         timing: "bloom",
       },
       {
-        name: "태양 소녀",
+        name: "GUILTY or INNOCENT",
         description:
           "자신의 라이프가 3 이하라면, 이 홀로멤의 옐 1장당, 자신의 옐 덱의 위에서부터 1장을, 자신의 황색 홀로멤 1명에게 보낼 수 있다.",
         damage: 100,
@@ -17384,7 +17495,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "잠들지 않는 거리",
         description:
-          "[콜라보 포지션 한정] 자신의 오시 홀로멤이 〈아냐 멜핏사〉라면, 자신의 〈고대무기〉가 붙어 있는 [센터 홀로멤과 콜라보 홀로멤]이 받는 아츠 대미지 -30.",
+          "[콜라보 포지션 한정] 자신의 오시 홀로멤이 〈아냐 멜핏사〉라면, 자신의 〈고대 무기〉가 붙어 있는 [센터 홀로멤과 콜라보 홀로멤]이 받는 아츠 대미지 -30.",
         timing: "gift",
       },
       {
@@ -17422,9 +17533,9 @@ const RAW_CARDS: Card[] = [
         timing: "collab",
       },
       {
-        name: "l am 스바루＆와타메! Yeah!!",
+        name: "I am 스바루＆와타메! Yeah!!",
         description:
-          "[콜라보 포지션 한정] 자신의 오시 홀로멤이 〈츠노마키 와타메〉나 〈오오조라 스바루〉라면, 이 아츠에 필요한 황 -1. 자신의 센터 홀로멤이 2nd 홀로멤인 〈츠노마키 와타메〉라면, 대신, 이 아츠에 필요한 홀로아츠 Y -3.",
+          "[콜라보 포지션 한정] 자신의 오시 홀로멤이 〈츠노마키 와타메〉나 〈오오조라 스바루〉라면, 이 아츠에 필요한 홀로아츠 Y -1. 자신의 센터 홀로멤이 2nd 홀로멤인 〈츠노마키 와타메〉라면, 대신, 이 아츠에 필요한 홀로아츠 Y -3.",
         damage: 80,
         cost: ["yellow", "yellow", "yellow"],
       },
@@ -17442,13 +17553,15 @@ const RAW_CARDS: Card[] = [
     hp: 150,
     color: [],
     holomemSubtype: "spot",
+    batonPass: 0,
     tags: ["#JP", "#비밀 결사 holoX", "#동물귀"],
     extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     imageUrl: "/images/hBP06/hBP06-084_U.png",
     abilities: [
       {
         name: "「콘코요」, 낡아진 건가?",
-        description: "",
+        description:
+          "이 홀로멤이 배턴 터치해서 백 포지션으로 이동했을 때, 이 턴 동안, 자신의 스테이지의 〈하쿠이 코요리〉 1명의 아츠 +20.",
         timing: "gift",
       },
       {
@@ -17512,7 +17625,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는 자신의 오시 홀로멤이 〈주우후테이 라덴〉이 아니라면 사용할 수 없다.\n\n자신의 옐 덱의 위에서부터 1장을 아카이브 한다. 그 후, 자신의 아카이브의 〈주우후테이 라덴〉 1장을 패로 되돌린다.",
+          "이 카드는, 자신의 오시 홀로멤이 〈주우후테이 라덴〉이 아니라면 사용할 수 없다.\n\n자신의 옐 덱의 위에서부터 1장을 아카이브 한다. 그 후, 자신의 아카이브의 〈주우후테이 라덴〉 1장을 패로 되돌린다.",
       },
     ],
     limit: 4,
@@ -17531,7 +17644,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는 직전 상대의 턴에 자신의 홀로멤이 다운 했었고, 자신의 라이프가 상대보다 적을 때밖에 사용할 수 없다.\n\n상대의 센터 홀로멤이나 콜라보 홀로멤을 고른다. 고른 홀로멤을 휴식시키고 백 포지션으로 이동시킨다. 고른 홀로멤은, 다음 상대의 리셋 스탭에서 액티브가 되지 않는다.",
+          "이 카드는, 직전 상대의 턴에 자신의 홀로멤이 다운 했었고, 자신의 라이프가 상대보다 적을 때밖에 사용할 수 없다.\n\n상대의 센터 홀로멤이나 콜라보 홀로멤을 고른다. 고른 홀로멤을 휴식시키고 백 포지션으로 이동시킨다. 고른 홀로멤은, 다음 상대의 리셋 스텝에서 액티브가 되지 않는다.",
       },
     ],
     limit: 4,
@@ -17550,7 +17663,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "자신의 옐 덱에서, 옐 1장을 공개하고, 자신의 #그림을 가진 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다. 그 후, 자신의 아카이브의 #그림을 가지 홀로멤 1장을 패로 되돌린다.",
+          "자신의 옐 덱에서, 옐 1장을 공개하고, 자신의 #그림을 가진 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다. 그 후, 자신의 아카이브의 #그림을 가진 홀로멤 1장을 패로 되돌린다.",
       },
     ],
     limit: 4,
@@ -17663,7 +17776,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 스테이지의 홀로멤 전원이 #ID 1기생를 가진 홀로멤이 아니라면 사용할 수 없다.\n\n자신의 덱에서, #ID 1기생를 가진 홀로멤 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 옐 덱의 매수가 0장이라면, 이 턴 동안, 자신의 #ID 1기생을 가진 홀로멤이 상대의 센터 홀로멤을 다운 시켰을 때, 상대의 라이프 -1.",
+          "이 카드는, 자신의 스테이지의 홀로멤 전원이 #ID 1기생을 가진 홀로멤이 아니라면 사용할 수 없다.\n\n자신의 덱에서, #ID 1기생을 가진 홀로멤 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 옐 덱의 매수가 0장이라면, 이 턴 동안, 자신의 #ID 1기생을 가진 홀로멤이 상대의 센터 홀로멤을 다운 시켰을 때, 상대의 라이프 -1.",
       },
     ],
     limit: 4,
@@ -17701,7 +17814,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "◆Buzz 홀로멤에게 붙어 있다면 능력 추가\n■이 툴이 붙어 있는 홀로멤의 HP +30.\n■상대의 메인 스탭 동안, 이 툴이 붙어 있는 홀로멤의 HP는 상대의 능력으로 줄지 않고, 변동하지 않는다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "◆Buzz 홀로멤에게 붙어 있다면 능력 추가\n■이 툴이 붙어 있는 홀로멤의 HP +30.\n■상대의 메인 스텝 동안, 이 툴이 붙어 있는 홀로멤의 HP는 상대의 능력으로 줄지 않고, 변동하지 않는다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -17828,7 +17941,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 턴에서, 이 팬이 붙은 홀로멤이 다운 했을 때, 자신의 옐 덱의 위에서부터 1장을 자신의 〈오오조라 스바루〉에게 보낼 수 있다.\n\n이 팬은, 자신의 〈오오조라 스바루〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 자신의 옐 덱의 위에서부터 1장을 자신의 〈오오조라 스바루〉에게 보낼 수 있다.\n\n이 팬은, 자신의 〈오오조라 스바루〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -17877,7 +17990,7 @@ const RAW_CARDS: Card[] = [
       name: "불가능 따윈 없으니까!",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 아카이브의 [마스코트나 팬]을 원하는 매수 고르고, 자신의 #ID 3기생을 가진 홀로멤 1명에게 붙인다. 3장 이상 붙였다면, 그 홀로멤의 아츠 +100.",
+        "[게임에 1번] 자신의 아카이브의 [마스코트와 팬]을 원하는 매수 고르고, 자신의 #ID 3기생을 가진 홀로멤 1명에게 붙인다. 3장 이상 붙였다면, 이 턴 동안, 그 홀로멤의 아츠 +100.",
     },
     limit: 1,
   },
@@ -17924,7 +18037,7 @@ const RAW_CARDS: Card[] = [
       name: "월드와이드 한 최강 아이돌",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 백 포지션의 Debut 홀로멤인 〈아카이 하아토〉 1명을 덱으로 되돌린다. 그 후, 자신의 스테이지의 〈아카이 하아토〉 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +50.",
+        "[턴에 1번] 자신의 백 포지션의 Debut 홀로멤인 〈아카이 하아토〉 1명을 덱의 아래로 되돌린다. 그 후, 자신의 스테이지의 〈아카이 하아토〉 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +50.",
     },
     limit: 1,
   },
@@ -17957,7 +18070,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP07-006",
     setId: "hBP07",
     name: "AZKi",
-    nameJp: "古石ビジュ―",
+    nameJp: "AZKi",
     keywords: ["아즈키"],
     type: "oshi",
     life: 5,
@@ -17972,7 +18085,7 @@ const RAW_CARDS: Card[] = [
       name: "가자. 개척자.",
       cost: "홀로 파워 -1",
       description:
-        "[턴에 1번] 직전 상대의 턴에 자신의 홀로멤이 다운 했었다면, 자신의 덱에서, 이벤트 1장을 공개하고, 패에 더한다 그리고 덱을 셔플 한다.",
+        "[턴에 1번] 직전 상대의 턴에 자신의 홀로멤이 다운 했었다면, 자신의 덱에서, 이벤트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
     },
     limit: 1,
   },
@@ -18039,7 +18152,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP07/hBP07-009_U.png",
     abilities: [
       {
-        name: "덥썩덥썩!",
+        name: "덥석덥석!",
         description: "[센터 포지션 한정] 이 아츠 +20.",
         damage: 20,
         cost: ["white"],
@@ -18093,13 +18206,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "빙글빙글 시프",
         description:
-          "자신의 덱에서, 1st 홀로멤인 〈츠노카미 와타메〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 자신의 【블룸 이펙트】 「빙글빙글 시프」는 턴에 1번밖에 사용할 수 없다.",
+          "자신의 덱에서, 1st 홀로멤인 〈츠노마키 와타메〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 자신의 【블룸 이펙트】 「빙글빙글 시프」는 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
-        name: "이거 단추 날라가버려",
+        name: "이거 단추 날아가버려",
         description:
-          "이 홀로멤에게 홀로아츠 W이 2장 이상 붙어 있다면, 이 아츠에 필요한 홀로아츠 N -1.",
+          "이 홀로멤에게 홀로아츠 W 옐이 2장 이상 붙어 있다면, 이 아츠에 필요한 홀로아츠 N -1.",
         damage: 70,
         cost: ["colorless", "colorless", "colorless"],
       },
@@ -18243,7 +18356,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Pat the BAZO",
         description:
-          "이 홀로멤에게 마스코트가 붙어 있을 때, 이 홀로멤의 HP +30.",
+          "이 홀로멤에게 마스코트가 붙어 있다면, 이 홀로멤의 HP +30.",
         timing: "gift",
       },
       {
@@ -18332,7 +18445,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "준비 완료!",
         description:
-          "자신의 덱에서, [〈BAZO〉나 〈Zecretaty〉] 1장을 공개하고, 자신의 〈베스티아 제타〉에게 붙인다. 그리고 덱을 셔플 한다.",
+          "자신의 덱에서, [〈BAZO〉나 〈Zecretary〉] 1장을 공개하고, 자신의 〈베스티아 제타〉에게 붙인다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
       },
       {
@@ -18392,13 +18505,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "임무 도와줄래?",
         description:
-          "자신의 아카이브의 [〈BAZO〉나 〈Zecretary〉] 1장을 자신의 홀로멤에게 보낸다.",
+          "자신의 아카이브의 [〈BAZO〉나 〈Zecretary〉] 1장을 자신의 홀로멤에게 붙인다.",
         timing: "bloom",
       },
       {
         name: "최고의 시크릿 에이전트",
         description:
-          "자신의 스테이지의 #ID 3기생을 가진 Buzz 홀로멤이 있다면, 이 아츠 +40.",
+          "자신의 스테이지에 #ID 3기생을 가진 Buzz 홀로멤이 있다면, 이 아츠 +40.",
         damage: 160,
         specialDamage: { color: "purple", value: 50 },
         cost: ["white", "white", "colorless", "colorless"],
@@ -18423,7 +18536,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "근육은 배신하지 않아!",
         description:
-          "[콜라보 포지션 한정] 상대의 턴에서, 자신의 #3기생을 가진 센터 홀로멤이 다운 했을 때, 그 홀로멤을 포함해 겹쳐저 있는 홀로멤 전부를 패로 되돌린다.",
+          "[콜라보 포지션 한정] 상대의 턴에서, 자신의 #3기생을 가진 센터 홀로멤이 다운 했을 때, 그 홀로멤을 포함해 겹쳐져 있는 홀로멤 전부를 패로 되돌린다.",
         timing: "gift",
       },
       {
@@ -18454,10 +18567,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "점술 파워 주입!",
         description:
-          "자신이 후공이고 최초의 턴이라면, 자신의 덱의 위에서부터 3장을 본다. 그중에서, 카드 1장을 패에 더한다. 그리고 남은 카드를 원하는 순으로 덱의 위로 되돌린다.",
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱의 위에서부터 3장을 본다. 그중에서, 카드 1장을 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 위로 되돌린다.",
         timing: "collab",
       },
-      { name: "MIOON!", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "MIOON!",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -18536,7 +18654,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP07/hBP07-026_C.png",
     abilities: [
       {
-        name: "빨리 안 올려나…",
+        name: "빨리 안 오려나…",
         description:
           "자신의 덱에서, [〈하토타우로스〉나 〈미오파〉] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
@@ -18558,10 +18676,10 @@ const RAW_CARDS: Card[] = [
     nameJp: "大神ミオ",
     tags: ["#JP", "#게이머즈", "#동물귀", "#요리"],
     type: "holomem",
-    hp: 170,
+    hp: 160,
     color: ["green"],
     holomemSubtype: "1st",
-    batonPass: 1,
+    batonPass: 2,
     imageUrl: "/images/hBP07/hBP07-027_R.png",
     abilities: [
       {
@@ -18634,7 +18752,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Upright Leading",
         description:
-          "자신의 덱의 위에서부터 1장을 아카이브 할 수 있다. 아카이브 한 카드가 홀로멤이라면, 자신의 옐 덱의 위에서부터 1장을 자신의 홀로멤에게 보낸다. 서포트 카드라면, 이 홀로멤의 아츠 +50.",
+          "자신의 덱의 위에서부터 1장을 아카이브 할 수 있다. 아카이브 한 카드가 홀로멤이라면, 자신의 옐 덱의 위에서부터 1장을 자신의 홀로멤에게 보낸다. 서포트 카드라면, 이 아츠 +50.",
         damage: 130,
         specialDamage: { color: "yellow", value: 50 },
         cost: ["colorless", "colorless", "colorless"],
@@ -18685,7 +18803,7 @@ const RAW_CARDS: Card[] = [
     holomemSubtype: "1st",
     keywords: ["Buzz"],
     batonPass: 2,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     tags: ["#ID", "#ID 1기생", "#그림"],
     imageUrl: "/images/hBP07/hBP07-031_R.png",
     abilities: [
@@ -18749,7 +18867,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP07/hBP07-033_U.png",
     abilities: [
       {
-        name: "틸 메이드",
+        name: "틸 머메이드",
         description:
           "자신의 이 턴에 Bloom 한 #FLOW GLOW를 가진 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +30.",
         timing: "bloom",
@@ -18807,9 +18925,9 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP07/hBP07-035_RR.png",
     abilities: [
       {
-        name: "부릉부릉 달려주마!!!",
+        name: "Give Me Hype!!",
         description:
-          "이 턴에, 자신의#FLOW GLOW를 가진 홀로멤이 Bloom 한 횟수 1번당, 자신의 옐 덱의 위에서부터 1장을 이 홀로멤에게 보낸다.",
+          "이 턴에, 자신의 #FLOW GLOW를 가진 홀로멤이 Bloom 한 횟수 1번당, 자신의 옐 덱의 위에서부터 1장을 이 홀로멤에게 보낸다.",
         timing: "collab",
       },
       {
@@ -18898,7 +19016,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "환수 미식 헌터",
         description:
-          "주사위를 1번 굴린다 : 홀수라면, 상대의 센터 홀로멤에게 특수 대미지 20을 준다. 짝수라면, 자신의 덱을 1장 드로우 한다.",
+          "주사위를 1번 굴린다. 홀수라면, 상대의 센터 홀로멤에게 특수 대미지 20을 준다. 짝수라면, 자신의 덱을 1장 드로우 한다.",
         timing: "bloom",
       },
       {
@@ -18957,7 +19075,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Haachama ♥ Restaurant",
         description:
-          "자신의 백 포지션의 Debut 홀로멤인 〈아카이 하아토〉 1명을 덱의 아래로 되돌릴 수 있다 : 자신의 덱에서, Buzz 이외의 [1st 홀로멤이나 2nd 홀로멤] 1장을 공개하고 패에 더한다. 그리고 덱을 셔플 한다.",
+          "자신의 백 포지션의 Debut 홀로멤인 〈아카이 하아토〉 1명을 덱의 아래로 되돌릴 수 있다 : 자신의 덱에서, Buzz 이외의 [1st 홀로멤이나 2nd 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
       {
@@ -19024,7 +19142,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "행복으로의 여행길",
         description:
-          "이 턴에 자신의 홀로멤이 스테이지에서 덱을 되돌아 갔었다면, 이 아츠 +50.",
+          "이 턴에 자신의 홀로멤이 스테이지에서 덱으로 되돌아갔다면, 이 아츠 +50.",
         damage: 140,
         specialDamage: { color: "purple", value: 50 },
         cost: ["red", "colorless", "colorless"],
@@ -19084,10 +19202,10 @@ const RAW_CARDS: Card[] = [
         timing: "gift",
       },
       {
-        name: "스탭 퍼스트입니다!",
+        name: "스태프 퍼스트입니다!",
         description:
-          "자신의 덱의 위에서부터 2장을 아카이브 한다. 그 후, 자신의 아카이브의 스탭 1장을 패로 되돌린다.",
-        damage: 110,
+          "자신의 덱의 위에서부터 2장을 아카이브 한다. 그 후, 자신의 아카이브의 스태프 1장을 패로 되돌릴 수 있다.",
+        damage: 120,
         specialDamage: { color: "purple", value: 50 },
         cost: ["red", "red"],
       },
@@ -19113,7 +19231,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "텐션 올라왔다!",
         description:
-          "[센터 포지션・콜라보 포지션 한정] 자신의 SP 오시 스킬을 사용했을 때, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+          "[센터 포지션・콜라보 포지션 한정] 자신의 SP오시 스킬을 사용했을 때, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
         timing: "gift",
       },
       {
@@ -19195,7 +19313,7 @@ const RAW_CARDS: Card[] = [
     extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
-        name: "Queen of impersonation",
+        name: "Queen of Impersonation",
         description:
           "이 홀로멤은, 자신의 스테이지의 #EN을 가진 홀로멤 전원의 아츠를, 전부 사용할 수 있다(아츠를 사용하기 위한 옐은 필요).",
         timing: "gift",
@@ -19316,7 +19434,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "내 새로운 캐치프레이즈. 어때?",
         description:
-          "자신의 스테이지의 〈오로 크로니〉 이외의 #Promise를 가진 홀로멤이 있다면, 이 아츠 +10.",
+          "자신의 스테이지에 〈오로 크로니〉 이외의 #Promise를 가진 홀로멤이 있다면, 이 아츠 +10.",
         damage: 30,
         cost: ["colorless"],
       },
@@ -19432,7 +19550,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "You're not ready for me.",
         description:
-          "이 홀로멤의 옐 1장을 자신의 #Promise를 가진 홀로멤에게 바꿔 붙일 수 있다. 그 후, 자신의 오시 홀로멤이 〈오로 크로니〉라면, 이 아츠 +100.",
+          "이 홀로멤의 옐 1장을 자신의 다른 #Promise를 가진 홀로멤에게 바꿔 붙일 수 있다. 그 후, 자신의 오시 홀로멤이 〈오로 크로니〉라면, 이 아츠 +100.",
         damage: 80,
         specialDamage: { color: "red", value: 50 },
         cost: ["blue", "blue", "colorless", "colorless"],
@@ -19575,7 +19693,7 @@ const RAW_CARDS: Card[] = [
         timing: "bloom",
       },
       {
-        name: "놓칠리가 없잖아?",
+        name: "놓칠 리가 없잖아?",
         description: "상대의 백 홀로멤 1명에게 특수 대미지 20을 준다.",
         damage: 20,
         cost: ["blue"],
@@ -19751,7 +19869,7 @@ const RAW_CARDS: Card[] = [
         timing: "bloom",
       },
       {
-        name: "너와 단 둘 뿐인 밤",
+        name: "너와 단둘뿐인 밤",
         description:
           "자신의 패 1장을 아카이브 할 수 있다 : 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 20을 준다.",
         damage: 40,
@@ -19859,7 +19977,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP07-071",
     setId: "hBP07",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 120,
@@ -19888,7 +20006,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP07-072",
     setId: "hBP07",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 150,
@@ -19900,7 +20018,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Secret Love -La+-",
         description:
-          "자신의 스테이지의 #비밀 결사 holoX를 가진 홀로멤 1명을 골라, 주사위를 3번 굴린다 : 이 턴 동안, 이 능력으로 홀수가 나온 횟수 1번당, 고른 홀로멤의 아츠 +10.",
+          "자신의 스테이지의 #비밀 결사 holoX를 가진 홀로멤 1명을 골라, 주사위를 3번 굴린다. 이 턴 동안, 이 능력으로 홀수가 나온 횟수 1번당, 고른 홀로멤의 아츠 +10.",
         timing: "bloom",
       },
       {
@@ -19917,7 +20035,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP07-073",
     setId: "hBP07",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터", "#노래"],
     type: "holomem",
     hp: 170,
@@ -19946,7 +20064,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP07-074",
     setId: "hBP07",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터", "#노래"],
     type: "holomem",
     hp: 200,
@@ -19976,7 +20094,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP07-075",
     setId: "hBP07",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 200,
     color: ["purple"],
@@ -20080,7 +20198,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "너도 이쪽으로 와~!",
         description:
-          "자신의 덱의 위에서부터 5장을 본다. 그중에서, 〈넷코〉1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+          "자신의 덱의 위에서부터 5장을 본다. 그중에서, 〈넷코〉 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
         timing: "collab",
       },
       {
@@ -20109,12 +20227,12 @@ const RAW_CARDS: Card[] = [
       {
         name: "네네치 라이브 스타트!",
         description: "자신의 아카이브의 옐 1장을 이 홀로멤에게 보낼 수 있다.",
-        timing: "gift",
+        timing: "bloom",
       },
       {
         name: "자유롭게 사용해주세요!",
         description:
-          "자신의 덱에서, 〈야메나〉1장을 공개하고, 자신의 홀로멤에게 붙인다. 그리고 덱을 셔플 한다.",
+          "자신의 덱에서, 〈야메나〉 1장을 공개하고, 자신의 홀로멤에게 붙인다. 그리고 덱을 셔플 한다.",
         damage: 30,
         cost: ["colorless"],
       },
@@ -20138,7 +20256,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "오렌지 아이돌",
         description:
-          "[턴에 1번] 자신의 오시 홀로멤이 〈모모스즈 네네〉라면, 자신의 메인 스탭에 사용할 수 있다 : 자신의 아카이브의 〈넷코〉1장을 이 홀로멤에게 붙인다.",
+          "[턴에 1번] 자신의 오시 홀로멤이 〈모모스즈 네네〉라면, 자신의 메인 스텝에 사용할 수 있다 : 자신의 아카이브의 〈넷코〉 1장을 이 홀로멤에게 붙인다.",
         timing: "gift",
       },
       {
@@ -20227,7 +20345,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "모두의 에너지 드링크",
         description:
-          "[센터 포지션 한정] 다음 상대의 턴 종료 시까지, 서로의 스테이지의 홀로멤 전원의 아츠 +40. 다시, 자신의 2nd 홀로멤인 〈모모스즈 네네〉 전원의 아츠 +60.",
+          "[센터 포지션 한정] 다음 상대의 턴 종료 시까지, 서로의 스테이지의 홀로멤 전원의 아츠 +40. 다시, 자신의 스테이지의 2nd 홀로멤인 〈모모스즈 네네〉 전원의 아츠 +60.",
         timing: "bloom",
       },
       {
@@ -20614,7 +20732,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "자신의 덱을 2장 드로우 한다. 그 후, 직전 상대의 턴에 자신의 홀로멤이 다운 했었다면, 자신의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20. 다시, 직전의 상대의 턴에 다운 했었던 자신의 홀로멤이 〈라프라스 다크니스〉라면, 자신의 덱을 2장 드로우 한다.",
+          "자신의 덱을 2장 드로우 한다. 그 후, 직전 상대의 턴에 자신의 홀로멤이 다운 했었다면, 자신의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20. 다시, 직전 상대의 턴에 다운 했었던 자신의 홀로멤이 〈라플라스 다크니스〉라면, 자신의 덱을 2장 드로우 한다.",
       },
     ],
     limit: 4,
@@ -20662,7 +20780,7 @@ const RAW_CARDS: Card[] = [
     id: "hBP07-102",
     cardNumber: "hBP07-102",
     setId: "hBP07",
-    name: "츠노마키 와타메의 헤머",
+    name: "츠노마키 와타메의 해머",
     nameJp: "角巻わためのハンマー",
     type: "support",
     supportSubtype: "tool",
@@ -20671,7 +20789,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 툴이 붙어 있는 〈츠노마키 와타메〉의 아츠 +20.\n\n◆2nd인 〈츠노마키 와타메〉에게 붙어 있다면 능력 추가\n■[센터 포지션 한정] 이 홀로멤의 아츠 +30.\n■[센터 포지션 한정] 이 홀로멤이 아츠를 사용했을 때, 주사위를 1번 굴린다. 3이나 5라면, 이 홀로멤 이외의 자신의 홀로멤 1명에게 특수 대미지 50을 준다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 툴이 붙어 있는 〈츠노마키 와타메〉의 아츠 +20.\n\n◆2nd 〈츠노마키 와타메〉에게 붙어 있다면 능력 추가\n■[센터 포지션 한정] 이 홀로멤의 아츠 +30.\n■[센터 포지션 한정] 이 홀로멤이 아츠를 사용했을 때, 주사위를 1번 굴린다. 3이나 5라면, 이 홀로멤 이외의 자신의 홀로멤 1명에게 특수 대미지 50을 준다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -20708,7 +20826,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 툴이 붙어 있는 〈엘리자베스 로즈 블러드플레임〉의 아츠 +20.\n\n◆2nd인 〈엘리자베스 로즈 블러드플레임〉에게 붙어 있다면 능력 추가\n이 홀로멤의 HP가 줄어 있다면, 이 홀로멤의 아츠 +20.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 툴이 붙어 있는 〈엘리자베스 로즈 블러드플레임〉의 아츠 +20.\n\n◆2nd 〈엘리자베스 로즈 블러드플레임〉에게 붙어 있다면 능력 추가\n이 홀로멤의 HP가 줄어 있다면, 이 홀로멤의 아츠 +20.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -20765,7 +20883,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈오로 크로니〉에게 붙어 있다면 능력 추가\n이 게임 중에, 자신의 〈오로 크로니〉의 SP 오시 스킬 「시간의 감옥」을 사용하고 있다면, 이 홀로멤의 아츠 +20.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈오로 크로니〉에게 붙어 있다면 능력 추가\n이 게임 중에, 자신의 〈오로 크로니〉의 SP오시 스킬 「시간의 감옥」을 사용하고 있다면, 이 홀로멤의 아츠 +20.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -20784,7 +20902,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "■이 팬이 붙어 있는 홀로멤이 아츠를 사용할 때, 자신의 오시 홀로멤이 〈베스티아 제타〉라면, 이 팬을 홀로아츠 W로도 취급한다.\n■상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 대미지를 받았을 때, 이 팬을 아카이브 한다.\n\n이 팬은, 자신의 〈베스티아 제타〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+          "■이 팬이 붙어 있는 홀로멤이 아츠를 사용할 때, 자신의 오시 홀로멤이 〈베스티아 제타〉라면, 이 팬을 홀로아츠 W 옐로도 취급한다.\n■상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 대미지를 받았을 때, 이 팬을 아카이브 한다.\n\n이 팬은, 자신의 〈베스티아 제타〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -20837,6 +20955,7 @@ const RAW_CARDS: Card[] = [
     batonPass: 1,
     tags: ["#JP", "#0기생", "#노래"],
     imageUrl: "/images/PR/hPR-001_P.png",
+    extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     abilities: [
       {
         name: "누군가의 싹이 되었으면",
@@ -20868,7 +20987,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 6장 이하가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 본다. 그 중에서, #ReGLOSS를 가진 홀로멤을 원하는 매수 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
+          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 6장 이하가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 4장을 본다. 그중에서, #ReGLOSS를 가진 홀로멤을 원하는 매수 공개하고, 공개한 홀로멤을 패에 더한다. 그리고 남은 카드는 원하는 순서로 덱의 아래로 되돌린다.",
       },
     ],
     limit: 4,
@@ -21042,10 +21161,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "HOPE",
         description:
-          "자신의 홀로 파워를 본다. 그 중에서 1장을 공개하고, 패에 더한다. 그리고 자신의 패 1장을 홀로 파워로 한다.",
+          "자신의 홀로 파워를 본다. 그중에서 1장을 공개하고, 패에 더한다. 그리고 자신의 패 1장을 홀로 파워로 한다.",
         timing: "collab",
       },
-      { name: "희망의 화신", description: "", damage: 20, cost: ["white"] },
+      {
+        name: "희망의 화신",
+        description: "",
+        damage: 20,
+        cost: ["white"],
+      },
     ],
     limit: 4,
   },
@@ -21182,7 +21306,7 @@ const RAW_CARDS: Card[] = [
         timing: "collab",
       },
       {
-        name: "그림그리기 즐거워ー!",
+        name: "그림그리기 즐거워—!",
         description: "",
         damage: 20,
         cost: ["green"],
@@ -21195,6 +21319,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD01-013",
     setId: "hSD01",
     name: "SorAZ",
+    nameJp: "SorAZ",
     keywords: ["소라아즈", "토키노 소라", "아즈키"],
     type: "holomem",
     hp: 130,
@@ -21227,10 +21352,15 @@ const RAW_CARDS: Card[] = [
     color: [],
     holomemSubtype: "spot",
     batonPass: 1,
-    extraRule: "이 홀로멤은 Bloom할 수 없다.",
+    extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     imageUrl: "/images/hSD01/hSD01-014_U.png",
     abilities: [
-      { name: "헤이", description: "", damage: 30, cost: ["white", "green"] },
+      {
+        name: "헤이",
+        description: "",
+        damage: 30,
+        cost: ["white", "green"],
+      },
     ],
     limit: 4,
   },
@@ -21249,10 +21379,16 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD01/hSD01-015_U.png",
     abilities: [
       {
-        name: "퓨어퓨어퓨어~",
+        name: "SoAzKo",
         description:
-          "■〈토키노 소라〉와 콜라보했을 때, 자신의 덱을 1장 드로우 한다.\n■〈AZKi〉와 콜라보했을 때, 자신의 옐 덱의 위에서부터 1장을, 자신의 센터 홀로멤에게 보낸다.",
+          "■〈토키노 소라〉와 콜라보 했을 때, 자신의 덱을 1장 드로우 한다.\n■〈AZKi〉와 콜라보 했을 때, 자신의 옐 덱의 위에서부터 1장을, 자신의 센터 홀로멤에게 보낸다.",
         timing: "collab",
+        damage: 10,
+        cost: ["colorless"],
+      },
+      {
+        name: "퓨어퓨어퓨어~",
+        description: "",
         damage: 10,
         cost: ["colorless"],
       },
@@ -21286,7 +21422,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 1장 이상 없다면 사용할 수 없다.\n\n자신은 패 전부를 덱으로 되돌리고 셔플 한다. 그리고 자신의 덱을 5장 드로우 한다.",
+          "이 카드는, 자신의 패가 이 카드를 포함하지 않고 1장 이상 없다면 사용할 수 없다.\n\n자신의 패 전부를 덱으로 되돌리고 셔플 한다. 그리고 자신의 덱을 5장 드로우 한다.",
       },
     ],
     limit: 4,
@@ -21323,7 +21459,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 옐 1장을 아카이브 하지 않으면 사용할 수 없다.\n\n자신의 덱에서 Buzz 이외의 [1st 홀로멤이나 2nd 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "이 카드는, 자신의 스테이지의 옐 1장을 아카이브 하지 않으면 사용할 수 없다.\n\n자신의 덱에서, Buzz 이외의 [1st 홀로멤이나 2nd 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
       },
     ],
     limit: 4,
@@ -21495,10 +21631,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "생일 모임",
         description:
-          "자신의 패 1장을 아카이브할 수 있다 : 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 20을 준다.",
+          "자신의 패 1장을 아카이브 할 수 있다 : 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 20을 준다.",
         timing: "bloom",
       },
-      { name: "함께 축하", description: "", damage: 30, cost: ["red"] },
+      {
+        name: "함께 축하",
+        description: "",
+        damage: 30,
+        cost: ["red"],
+      },
     ],
     limit: 4,
   },
@@ -21519,7 +21660,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "어느—쪽 어느 쪽♪",
         description:
-          "Debut에서 Bloom했을 때, 자신의 덱의 위에서부터 2장을 본다. 그 중에서, 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 아카이브한다.",
+          "Debut에서 Bloom 했을 때, 자신의 덱의 위에서부터 2장을 본다. 그 중에서, 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 아카이브 한다.",
         timing: "bloom",
       },
       {
@@ -21545,7 +21686,7 @@ const RAW_CARDS: Card[] = [
     holomemSubtype: "1st",
     imageUrl: "/images/hSD02/hSD02-008_R.png",
     batonPass: 1,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     abilities: [
       {
         name: "팬시 버스데이",
@@ -21556,7 +21697,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "선물은 뭘까나?",
         description:
-          "자신의 패 1장을 아카이브할 수 있다 : 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 50을 준다.",
+          "자신의 패 1장을 아카이브 할 수 있다 : 상대의 센터 홀로멤이나 콜라보 홀로멤에게 특수 대미지 50을 준다.",
         damage: 50,
         cost: ["red", "red", "colorless"],
       },
@@ -21587,7 +21728,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "요—다요",
         description:
-          "자신의 패 1~3장을 아카이브할 수 있다 : 상대의 센터 홀로멤에게, 아카이브한 카드 1장당, 특수 대미지 40을 준다.",
+          "자신의 패 1~3장을 아카이브 할 수 있다 : 상대의 센터 홀로멤에게, 아카이브 한 카드 1장당, 특수 대미지 40을 준다.",
         damage: 40,
         specialDamage: { color: "yellow", value: 50 },
         cost: ["red", "red", "colorless"],
@@ -21605,7 +21746,7 @@ const RAW_CARDS: Card[] = [
     hp: 80,
     holomemSubtype: "spot",
     batonPass: 1,
-    extraRule: "이 홀로멤은 Bloom할 수 없다.",
+    extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     tags: ["#JP", "#1기생", "#게이머즈", "#동물귀", "#그림"],
     imageUrl: "/images/hSD02/hSD02-010_U.png",
     abilities: [
@@ -21677,7 +21818,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD02-013",
     setId: "hSD02",
     name: "아수라&나찰",
-    nameJp: "阿修羅&羅刹",
+    nameJp: "阿修羅＆羅刹",
     type: "support",
     supportSubtype: "tool",
     imageUrl: "/images/hSD02/hSD02-013_C.png",
@@ -21685,7 +21826,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆1st 이상의 〈나키리 아야메〉에 붙어 있다면 능력 추가\n이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆1st 이상의 〈나키리 아야메〉에게 붙어 있다면 능력 추가\n이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -21704,7 +21845,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈나키리 아야메〉에 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 Bloom했을 때, 자신의 덱을 1장 드로우한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈나키리 아야메〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 Bloom 했을 때, 자신의 덱을 1장 드로우 한다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -21728,7 +21869,7 @@ const RAW_CARDS: Card[] = [
       name: "백 샷",
       cost: "홀로 파워 -1",
       description:
-        "[게임에 1번] 자신의 스테이지의 홀로멤이 상대의 백 홀로멤에게 데미지를 주었을 때 사용할 수 있다 : 그 상대의 백 홀로멤 1명에게 특수 데미지 50을 준다.",
+        "[게임에 1번] 자신의 스테이지의 홀로멤이 상대의 백 홀로멤에게 대미지를 주었을 때 사용할 수 있다 : 그 상대의 백 홀로멤 1명에게 특수 대미지 50을 준다.",
     },
     limit: 1,
   },
@@ -21985,7 +22126,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD03-011",
     setId: "hSD03",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 60,
@@ -22043,7 +22184,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤이 센터 포지션이나 콜라보 포지션에서 받는 대미지 -10.\n\n◆〈네코마타 오카유〉에 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤의 능력으로 옐을 아카이브 할 때, 아카이브 할 홀로아츠 B 옐 1장 대신, 이 마스코트를 아카이브 할 수 있다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤이 센터 포지션이나 콜라보 포지션에서 받는 대미지 -10.\n\n◆〈네코마타 오카유〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤의 능력으로 옐을 아카이브 할 때, 아카이브 할 홀로아츠 B 옐 1장 대신, 이 마스코트를 아카이브 할 수 있다.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -22061,7 +22202,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n이 팬은, 자신의 〈네코마다 오카유〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n이 팬은, 자신의 〈네코마타 오카유〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -22159,10 +22300,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "지옥 고봉밥",
         description:
-          "자신의 패 1장을 아카이브할 수 있다 : 자신의 덱에서, #음식을 가진 이벤트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱에서, #음식을 가진 이벤트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
-      { name: "잔뜩 먹어줘♡", description: "", damage: 20, cost: ["purple"] },
+      {
+        name: "잔뜩 먹어줘♡",
+        description: "",
+        damage: 20,
+        cost: ["purple"],
+      },
     ],
     limit: 4,
   },
@@ -22311,7 +22457,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD04-010",
     setId: "hSD04",
     name: "오오조라 스바루",
-    nameJp: "大空スパル",
+    nameJp: "大空スバル",
     tags: ["#JP", "#2기생"],
     type: "holomem",
     hp: 60,
@@ -22346,7 +22492,7 @@ const RAW_CARDS: Card[] = [
     type: "holomem",
     hp: 60,
     batonPass: 1,
-    extraRule: "이 홀로멤은 Bloom할 수 없다.",
+    extraRule: "이 홀로멤은 Bloom 할 수 없다.",
     color: [],
     holomemSubtype: "spot",
     imageUrl: "/images/hSD04/hSD04-011_U.png",
@@ -22357,7 +22503,12 @@ const RAW_CARDS: Card[] = [
           "자신의 홀로 파워를 본다. 그중에서 1장을 공개하고, 패에 더한다. 그리고 자신의 패 1장을 홀로 파워로 한다.",
         timing: "collab",
       },
-      { name: "응나~~", description: "", damage: 10, cost: ["colorless"] },
+      {
+        name: "응나~~",
+        description: "",
+        damage: 10,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -22366,7 +22517,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD04-012",
     setId: "hSD04",
     name: "스바초코루나",
-    nameJp: "スパちょこルーナ",
+    nameJp: "スバちょこルーナ",
     type: "support",
     supportSubtype: "event",
     limited: true,
@@ -22404,7 +22555,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD04-014",
     setId: "hSD04",
     name: "쇼콜라",
-    nameJp: "しよこら",
+    nameJp: "しょこら",
     type: "support",
     supportSubtype: "mascot",
     imageUrl: "/images/hSD04/hSD04-014_C.png",
@@ -22412,7 +22563,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈유즈키 초코〉에 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 Bloom했을 때, 이 홀로멤의 HP 20 회복.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈유즈키 초코〉에게 붙어 있다면 능력 추가\n이 마스코트가 붙어 있는 홀로멤이 Bloom 했을 때, 이 홀로멤의 HP 20 회복.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -22430,8 +22581,7 @@ const RAW_CARDS: Card[] = [
     oshiAbility: {
       name: "화이트 마이크",
       cost: "홀로 파워 -2",
-      description:
-        "[턴에 1번] 이 턴 동안, 자신의 백색 센터 홀로멤의 아츠 + 20.",
+      description: "[턴에 1번] 이 턴 동안, 자신의 백색 센터 홀로멤의 아츠 +20.",
     },
     spAbility: {
       name: "퀵 가드",
@@ -22630,7 +22780,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD05/hSD05-009_RR.png",
     abilities: [
       {
-        name: "댄스로 이 세계에 색체를!",
+        name: "댄스로 이 세계에 색채를!",
         description:
           "자신의 덱에서 #ReGLOSS를 가진 [Debut 홀로멤이나 1st 홀로멤] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
@@ -22663,7 +22813,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "잠깐 한 자리",
         description:
-          "자신의 아카이브의 옐 1장을, #ReGLOSS를 가진 홀로멤에게 보낼 수 있다.",
+          "자신의 아카이브의 옐 1장을, 자신의 #ReGLOSS를 가진 홀로멤에게 보낼 수 있다.",
         damage: 20,
         cost: ["colorless"],
       },
@@ -22781,7 +22931,7 @@ const RAW_CARDS: Card[] = [
       description: "[턴에 1번] 이 턴 동안, 자신의 녹색 센터 홀로멤의 아츠 +20.",
     },
     spAbility: {
-      name: "모두 힘내자ー!",
+      name: "모두 힘내자—!",
       cost: "홀로 파워 -1",
       description: "[게임에 1번] 자신의 녹색 홀로멤 전원의 HP 20 회복.",
     },
@@ -22898,7 +23048,7 @@ const RAW_CARDS: Card[] = [
     color: ["green"],
     holomemSubtype: "1st",
     batonPass: 2,
-    extraRule: "이 홀로멤이 다운했을 때, 자신의 라이프 -2.",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
     imageUrl: "/images/hSD06/hSD06-006_R.png",
     abilities: [
       {
@@ -22998,7 +23148,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD06-010",
     setId: "hSD06",
     name: "라플라스 다크니스",
-    nameJp: "ラブラス・ダークネス",
+    nameJp: "ラプラス・ダークネス",
     tags: ["#JP", "#비밀 결사 holoX", "#슈터"],
     type: "holomem",
     hp: 60,
@@ -23010,8 +23160,8 @@ const RAW_CARDS: Card[] = [
       {
         name: "광기의 축제",
         description:
-          "[콜라보 포지션 한정] 이 턴의 자신의 메인 스텝에서 자신의 SP 오시 스킬을 사용하고 있을 때, 이 아츠 +50.",
-        damage: 20,
+          "[콜라보 포지션 한정] 이 턴의 자신의 메인 스텝에서 자신의 SP오시 스킬을 사용하고 있을 때, 이 아츠 +50.",
+        damage: 30,
         cost: ["colorless"],
       },
     ],
@@ -23030,7 +23180,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆1st 이상의 〈카자마 이로하〉에게 붙어 있다면 능력 추가\n[턴에 1번] 상대의 턴에서, 이 툴이 붙어 있는 홀로멤이 대미지를 받았을 때, 상대의 센터 홀로멤에게 특수 대미지 20을 준다. 단, 다운해도 상대의 라이프는 줄지 않는다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆1st 이상의 〈카자마 이로하〉에게 붙어 있다면 능력 추가\n[턴에 1번] 상대의 턴에서, 이 툴이 붙어 있는 홀로멤이 대미지를 받았을 때, 상대의 센터 홀로멤에게 특수 대미지 20을 준다. 단, 다운 해도 상대의 라이프는 줄지 않는다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -23118,10 +23268,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "소중한 동료들과",
         description:
-          "자신의 스테이지의 홀로멤이 5명 이하일 때, 자신의 덱에서, Debut 홀로멤인 [〈오마루 폴카〉나 〈사쿠라 미코〉나 〈호시마치 스이세이〉나 〈시로가네 노엘〉] 1장을 공개하고, 스테이지에 낼 수 있다. 그리고 덱을 셔플 한다.",
+          "자신의 스테이지의 홀로멤이 5명 이하일 때, 자신의 덱에서, Debut 홀로멤인 [〈오마루 폴카〉나 〈사쿠라 미코〉나 〈호시마치 스이세이〉나 〈시로가네 노엘〉] 1장을 공개할 수 있다 : 공개한 홀로멤을 스테이지에 낸다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
-      { name: "너와 함께 외출", description: "", damage: 20, cost: ["yellow"] },
+      {
+        name: "너와 함께 외출",
+        description: "",
+        damage: 20,
+        cost: ["yellow"],
+      },
     ],
     limit: 4,
   },
@@ -23217,7 +23372,7 @@ const RAW_CARDS: Card[] = [
     hp: 150,
     color: ["yellow"],
     holomemSubtype: "1st",
-    batonPass: 1,
+    batonPass: 2,
     imageUrl: "/images/hSD07/hSD07-007_U.png",
     abilities: [
       {
@@ -23436,7 +23591,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n이 팬은, 자신의 〈시라누이 후레아〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n이 팬은, 자신의 〈시라누이 후레아〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -23481,7 +23636,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "홀로 서머",
         description:
-          "자신의 덱의 위에서부터 5장을 본다, 그중에서, #서머를 가진 Debut 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+          "자신의 덱의 위에서부터 5장을 본다. 그중에서, #서머를 가진 Debut 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
         timing: "collab",
       },
       {
@@ -23550,7 +23705,7 @@ const RAW_CARDS: Card[] = [
           "[턴에 1번] 이 아츠로 상대의 센터 홀로멤을 다운 시켰을 때, 상대의 2nd 홀로멤 1명에게 특수 대미지 40을 준다.",
         damage: 120,
         specialDamage: { color: "red", value: 50 },
-        cost: ["white", "colorless", "colorless"],
+        cost: ["white", "white", "colorless"],
       },
     ],
     limit: 4,
@@ -23572,10 +23727,15 @@ const RAW_CARDS: Card[] = [
       {
         name: "뭐든지 들어가는 주머니",
         description:
-          "[콜라보 포지션 한정] 상대의 턴에서, 자신의 홀로멤이 다운 했을 때, 자신의 라이프가 상대 이하라면, 자신의 아카이브의 카드명에 「컴퓨터」를 가진 아이템 1장을 패로 되돌릴 수 있다.",
+          "[콜라보 포지션 한정] 상대의 턴에서, 자신의 홀로멤이 다운 했을 때, 자신의 라이프가 상대 이하라면, 자신의 아카이브의 카드명에 「컴퓨터」를 포함하는 아이템 1장을 패로 되돌릴 수 있다.",
         timing: "gift",
       },
-      { name: "축제이노라", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "축제이노라",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
     ],
     limit: 4,
   },
@@ -23708,7 +23868,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "모두 우승하자고",
         description:
-          "상대의 센터 홀로멤에게, 자신의 스테이지에 서로 다른 카드명인 #3기생을 가진 홀로멤 1장당, 특수 대미지 10을 준다.",
+          "상대의 센터 홀로멤에게, 자신의 스테이지의 서로 다른 카드명인 #3기생을 가진 홀로멤 1명당, 특수 대미지 10을 준다.",
         timing: "collab",
       },
       {
@@ -23941,7 +24101,7 @@ const RAW_CARDS: Card[] = [
         name: "파워풀한 운전수야!",
         description:
           "자신의 스테이지에 #FLOW GLOW를 가진 홀로멤이 3명 이상 있다면, 자신의 옐 덱의 위에서부터 1장을 자신의 백 홀로멤에게 보낼 수 있다.",
-        damage: 80,
+        damage: 50,
         cost: ["green", "colorless"],
       },
     ],
@@ -23964,7 +24124,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "FLOW GLOW의 DJ 겸 운전수 담당",
         description:
-          "자신의 아카이브의 #FLOW GLOW를 가진 홀로멤 1~3장을 원하는 순서로 덱의 아래로 되돌린다. 홀로멤 3장을 덱으로 되돌렸다면, 자신의 옐 덱의 위에서부터 1장을 자신의 홀로멤에게 보낼 수 있다.",
+          "자신의 아카이브의 #FLOW GLOW를 가진 홀로멤 1~3장을 원하는 순서로 덱의 아래로 되돌릴 수 있다. 홀로멤 3장을 덱으로 되돌렸다면, 자신의 옐 덱의 위에서부터 1장을 자신의 홀로멤에게 보낼 수 있다.",
         timing: "collab",
       },
       {
@@ -24079,7 +24239,7 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "비질런스 비너스",
-        description: "상대의 패 1장당, 이 아츠 +10",
+        description: "상대의 패 1장당, 이 아츠 +10.",
         damage: 80,
         specialDamage: { color: "blue", value: 50 },
         cost: ["purple", "colorless"],
@@ -24096,6 +24256,7 @@ const RAW_CARDS: Card[] = [
     type: "holomem",
     hp: 170,
     holomemSubtype: "spot",
+    batonPass: 0,
     tags: ["#DEV_IS", "#FLOW GLOW"],
     imageUrl: "/images/hSD10/hSD10-010_RR.png",
     extraRule: "이 홀로멤은 Bloom 할 수 없다.",
@@ -24168,7 +24329,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 툴이 붙어 있는 #FLOW GLOW를 가진 홀로멤의 아츠 +10.\n\n◆#FLOW GLOW를 가진 홀로멤에게 붙어 있다면 능력 추가\n자신의 엔드 스텝이 개시할 때, 이 턴에 이 툴이 붙어 있는 홀로멤이 아츠를 사용하고 있다면 사용할 수 있다 : 자신의 덱에서 #FLOW GLOW를 가진 [Debut 홀로멤이나 Spot 홀로멤] 1장을 공개하고, 스테이지에 낸다. 그리고 덱을 셔플 한다. 그 후, 이 툴을 덱의 아래로 되돌린다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 툴이 붙어 있는 #FLOW GLOW를 가진 홀로멤의 아츠 +10.\n\n◆#FLOW GLOW를 가진 홀로멤에게 붙어 있다면 능력 추가\n자신의 엔드 스텝이 개시할 때, 이 턴에 이 홀로멤이 아츠를 사용하고 있다면 사용할 수 있다 : 자신의 덱에서 #FLOW GLOW를 가진 [Debut 홀로멤이나 Spot 홀로멤] 1장을 공개하고, 스테이지에 낸다. 그리고 덱을 셔플 한다. 그 후, 이 홀로멤에게 붙어 있는 〈후구타로〉 1장을 덱의 아래로 되돌린다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -24215,7 +24376,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "니코 땅이~ 왔다!",
         description: "",
-        damage: 30,
+        damage: 20,
         cost: ["colorless"],
       },
     ],
@@ -24271,7 +24432,7 @@ const RAW_CARDS: Card[] = [
         timing: "bloom",
       },
       {
-        name: "자신의 인생 미저 바칠 수 있다",
+        name: "자신의 인생마저 바칠 수 있다",
         description:
           "자신의 옐 덱의 위에서부터 1장을 자신의 〈코가네이 니코〉에게 보낼 수 있다.",
         damage: 30,
@@ -24326,7 +24487,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "희소의 사자",
         description:
-          "자신의 퍼포먼스 스텝이 개시할 때, 자신의 패의 #FLOW GLOW를 가진 홀로멤 1장을 아카이브 할 수 있다 : 자신의 아카이브의 홀로아츠 Y 1장을 자신의 〈코가네이 니코〉에게 보낸다.",
+          "자신의 퍼포먼스 스텝이 개시할 때, 자신의 패의 #FLOW GLOW를 가진 홀로멤 1장을 아카이브 할 수 있다 : 자신의 아카이브의 홀로아츠 Y 옐 1장을 자신의 〈코가네이 니코〉에게 보낸다.",
         timing: "gift",
       },
       {
@@ -24358,7 +24519,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "슈피슈와",
         description:
-          "상대의 센터 포지션의 홀로멤 1명은, 다음 상대의 턴이 종료할 때까지 배턴 터치에 필요한 홀로아츠 N +1.",
+          "상대의 센터 홀로멤을 고른다. 다음 상대의 턴이 종료할 때까지, 고른 홀로멤의 배턴 터치에 필요한 홀로아츠 N +1.",
         damage: 20,
         cost: ["colorless"],
       },
@@ -24455,7 +24616,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD12-002",
     setId: "hSD12",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "oshi",
     life: 5,
     color: ["purple"],
@@ -24494,7 +24655,7 @@ const RAW_CARDS: Card[] = [
         timing: "collab",
       },
       {
-        name: "아듀, 친해하는 청자님",
+        name: "아듀, 친애하는 청자님",
         description: "",
         damage: 20,
         cost: ["colorless"],
@@ -24607,7 +24768,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD12/hSD12-007_RR.png",
     abilities: [
       {
-        name: "어떤 지식을 얻을 수 있을려나",
+        name: "어떤 지식을 얻을 수 있으려나",
         description:
           "[턴에 1번] 이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 아카이브의 LIMITED 이외의 서포트 카드 1장을 패로 되돌린다.",
         timing: "gift",
@@ -24628,7 +24789,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD12-008",
     setId: "hSD12",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 110,
     color: ["purple"],
@@ -24657,7 +24818,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD12-009",
     setId: "hSD12",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 130,
     color: ["purple"],
@@ -24676,7 +24837,7 @@ const RAW_CARDS: Card[] = [
         name: "무척 감사하고 있어",
         description: "",
         damage: 30,
-        cost: ["purple"],
+        cost: ["colorless"],
       },
     ],
     limit: 4,
@@ -24686,16 +24847,21 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD12-010",
     setId: "hSD12",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
-    hp: 140,
+    hp: 170,
     color: ["purple"],
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Advent", "#베이비"],
     imageUrl: "/images/hSD12/hSD12-010_U.png",
     abilities: [
-      { name: "스며드는 빛", description: "", damage: 30, cost: ["colorless"] },
+      {
+        name: "스며드는 빛",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
       {
         name: "Your Princess AWAKENS!",
         description:
@@ -24711,7 +24877,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hSD12-011",
     setId: "hSD12",
     name: "코세키 비쥬",
-    nameJp: "古石ビジュ―",
+    nameJp: "古石ビジュー",
     type: "holomem",
     hp: 200,
     color: ["purple"],
@@ -24721,7 +24887,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD12/hSD12-011_RR.png",
     abilities: [
       {
-        name: "비부랑 같이 놀다가지 않을래?",
+        name: "비부랑 같이 놀다 가지 않을래?",
         description:
           "자신의 덱을 1장 드로우 한다. 그 후, 자신의 스테이지의 옐 1장을 아카이브 할 수 있다. 아카이브 했다면, 자신의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +40.",
         timing: "bloom",
@@ -24802,6 +24968,7 @@ const RAW_CARDS: Card[] = [
     hp: 100,
     color: ["blue"],
     holomemSubtype: "debut",
+    batonPass: 0,
     tags: ["#EN", "#Advent", "#동물귀"],
     imageUrl: "/images/hSD12/hSD12-014_C.png",
     abilities: [
@@ -24833,7 +25000,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 스테이지의 홀로멤 전원이 #Advent를 가진 홀로멤이 아니라면 사용할 수 없다.\n\n상대의 센터 홀로멤에게 특수 대미지 20을 준다. 그 후, 자신의 아카이브의 옐 1장을 자신의 홀로멤에게 보낸다.\n자신의 〈탈옥을 달성한 공범자들〉은 턴에 1번밖에 사용할 수 없다.",
+          "이 카드는, 자신의 스테이지의 홀로멤 전원이 #Advent를 가진 홀로멤이 아니라면 사용할 수 없다.\n\n상대의 센터 홀로멤에게 특수 대미지 20을 준다. 그 후, 자신의 아카이브의 옐 1장을 자신의 홀로멤에게 보낸다.\n\n자신의 〈탈옥을 달성한 공범자들〉은 턴에 1번밖에 사용할 수 없다.",
       },
     ],
     limit: 4,
@@ -24870,13 +25037,13 @@ const RAW_CARDS: Card[] = [
       name: "질서의 선구자",
       cost: "홀로 파워 -3",
       description:
-        "[턴에 1번] 자신의 홀로멤 1명이 상대에게서 아츠 대미지를 받을 때, 자신의 스테이지의 [Buzz나 2nd]인 적색 홀로멤 1명을 고른다 : 그 대미지를, 고른 홀로멤이 대신 받는다.",
+        "[턴에 1번] 자신의 홀로멤 1명이 상대에게서 아츠 대미지를 받을 때, 자신의 스테이지의 [Buzz나 2nd]인 적색 홀로멤 1명을 고를 수 있다 : 그 대미지를, 고른 홀로멤이 대신 받는다.",
     },
     spAbility: {
       name: "JUST LIKE THAT",
       cost: "홀로 파워 -3",
       description:
-        "[게임에 1번] 자신의 아카이브의 #Justice를 가진 홀로멤 1명을 스테이지에 낸다. 그 후, 자신의 아카이브의 옐 1~5장을 그 홀로멤에게 보낸다.",
+        "[게임에 1번] 자신의 아카이브의 #Justice를 가진 홀로멤 1장을 스테이지에 낸다. 그 후, 자신의 아카이브의 옐 1~5장을 그 홀로멤에게 보낸다.",
     },
     limit: 1,
   },
@@ -24993,7 +25160,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Bring It On!",
         description:
-          "자신의 #Justice를 가진 가진 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20.",
+          "자신의 스테이지의 #Justice를 가진 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20.",
         timing: "bloom",
       },
       {
@@ -25110,7 +25277,7 @@ const RAW_CARDS: Card[] = [
         cost: ["yellow"],
       },
       {
-        name: "장난을 좋아라는 그렘린",
+        name: "장난을 좋아하는 그렘린",
         description: "",
         damage: 60,
         cost: ["yellow", "colorless"],
@@ -25194,7 +25361,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "재기의 스트랭스",
         description:
-          "[턴에 1번] 자신의 메인 스탭에서, 자신의 〈지지 무린〉에게 겹쳐져 있는 홀로멤 1장을 아카이브 할 수 있다 : 자신의 옐 덱의 위에서부터 1장을 이 홀로멤에게 보낸다.",
+          "[턴에 1번] 자신의 메인 스텝에서, 자신의 〈지지 무린〉에게 겹쳐져 있는 홀로멤 1장을 아카이브 할 수 있다 : 자신의 옐 덱의 위에서부터 1장을 이 홀로멤에게 보낸다.",
         timing: "gift",
       },
       {
@@ -25342,7 +25509,7 @@ const RAW_CARDS: Card[] = [
       name: "모두 같이 가자앗",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 마스코트가 붙어 있는 〈시라카미 후부키〉 1명을 고른다. 이 턴 동안 고른 홀로멤의 아츠 +20.",
+        "[턴에 1번] 자신의 마스코트가 붙어 있는 〈시라카미 후부키〉 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20.",
     },
     spAbility: {
       name: "마스코츠, 어셈블!",
@@ -25438,7 +25605,8 @@ const RAW_CARDS: Card[] = [
     abilities: [
       {
         name: "하나둘, 셋넷",
-        description: "자신의 센터 홀로멤을 고른다. 고른 홀로멤의 아츠 +10.",
+        description:
+          "자신의 센터 홀로멤을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +10.",
         timing: "collab",
       },
       {
@@ -25552,7 +25720,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD14/hSD14-009_RR.png",
     abilities: [
       {
-        name: "나는 쓰리질 수 없어",
+        name: "나는 쓰러질 수 없어",
         description:
           "상대의 턴에서, 이 홀로멤이 다운 했을 때, 이 홀로멤에게 마스코트가 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
         timing: "gift",
@@ -25562,7 +25730,7 @@ const RAW_CARDS: Card[] = [
         description: "",
         damage: 90,
         specialDamage: { color: "red", value: 30 },
-        cost: ["colorless", "colorless"],
+        cost: ["white", "colorless"],
       },
     ],
     limit: 4,
@@ -25611,7 +25779,7 @@ const RAW_CARDS: Card[] = [
     color: ["green"],
     imageUrl: "/images/hSD15/hSD15-001_OC.png",
     oshiAbility: {
-      name: "조금 가다릴뿐~ ♪",
+      name: "조금 기다릴 뿐~ ♪",
       cost: "홀로 파워 -2",
       description:
         "[턴에 1번] 자신의 덱에서 #버섯을 가진 이벤트 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
@@ -25714,7 +25882,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD15/hSD15-005_U.png",
     abilities: [
       {
-        name: "체력 만들기 열심히 할거야—!",
+        name: "체력 만들기 열심히 할 거야—!",
         description:
           "상대의 턴에서, 이 홀로멤이 다운 했을 때, 이 홀로멤의 옐 1장을 자신의 다른 홀로멤에게 바꿔 붙일 수 있다.",
         timing: "gift",
@@ -25774,7 +25942,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "여행 전날",
         description:
-          "자신의 덱의 위에서부터 1장을 아카이브 한다. 자신의 아카이브의 Debut 홀로멤 1장을 스테이지에 낼 수 있다.",
+          "자신의 덱의 위에서부터 1장을 아카이브 한다. 그 후, 자신의 아카이브의 Debut 홀로멤 1장을 스테이지에 낼 수 있다.",
         timing: "collab",
       },
       {
@@ -25823,7 +25991,7 @@ const RAW_CARDS: Card[] = [
     name: "주우후테이 라덴",
     nameJp: "儒烏風亭らでん",
     type: "holomem",
-    hp: 140,
+    hp: 170,
     color: ["green"],
     holomemSubtype: "2nd",
     batonPass: 2,
@@ -25839,7 +26007,7 @@ const RAW_CARDS: Card[] = [
         name: "전통과 혁신을 당신에게",
         description: "",
         damage: 90,
-        specialDamage: { color: "blue", value: 50 },
+        specialDamage: { color: "blue", value: 30 },
         cost: ["green", "colorless", "colorless"],
       },
     ],
@@ -26083,7 +26251,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "35P, 고마워—!",
         description:
-          "이 턴 동안, 자신의 스테이지의 〈35P〉 1장당 이 홀로멤의 아츠 +10.",
+          "이 턴 동안, 자신의 스테이지의 〈35P〉 1장당, 이 홀로멤의 아츠 +10.",
         timing: "bloom",
       },
       {
@@ -26109,7 +26277,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD17/hSD17-001_OC.png",
     oshiAbility: {
       name: "최고로 열심히 하자——!!!",
-      cost: "홀로 파워 -2",
+      cost: "홀로 파워 -3",
       description:
         "[턴에 1번] 자신의 옐 덱의 위에서부터 1장을 자신의 홀로멤에게 보낸다.",
     },
@@ -26263,7 +26431,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD17/hSD17-007_U.png",
     abilities: [
       {
-        name: "Message for you -스이세이-",
+        name: "Message for You -스이세이-",
         description:
           "[백 포지션 한정] 상대의 백 홀로멤 1명에게 특수 대미지 10을 준다.",
         timing: "bloom",
@@ -26321,7 +26489,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD17/hSD17-009_RR.png",
     abilities: [
       {
-        name: "춤 추는 사람이 승리!",
+        name: "춤추는 사람이 승리!",
         description: "이 턴 동안, 이 홀로멤의 아츠 +20.",
         timing: "collab",
       },
@@ -26348,7 +26516,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 Debut 이외의 백 홀로멤 1명에게 특수 대미지 20을 준다.\n자신의 〈스텔라〉는 턴에 1번밖에 사용할 수 없다.",
+          "상대의 Debut 이외의 백 홀로멤 1명에게 특수 대미지 20을 준다. 자신의 〈스텔라〉는 턴에 1번밖에 사용할 수 없다.",
       },
     ],
     limit: 4,
@@ -26374,7 +26542,7 @@ const RAW_CARDS: Card[] = [
       name: "세계를 잇는 랩",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 아카이브의 홀로멤이 6장 이상 있다면, 이 턴 동안, 자신의 스테이지의 〈모리 칼리오페〉 전원의 아츠 +30.",
+        "[게임에 1번] 자신의 아카이브에 홀로멤이 6장 이상 있다면, 이 턴 동안, 자신의 스테이지의 〈모리 칼리오페〉 전원의 아츠 +30.",
     },
     limit: 1,
   },
@@ -26431,7 +26599,7 @@ const RAW_CARDS: Card[] = [
     name: "모리 칼리오페",
     nameJp: "森カリオペ",
     type: "holomem",
-    hp: 80,
+    hp: 90,
     color: ["purple"],
     holomemSubtype: "debut",
     batonPass: 1,
@@ -26441,7 +26609,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "여—러분",
         description:
-          "자신이 후공이고 최초의 턴이라면, 자신의 덱의 위에서부터 1장을 아카이브 한다. 자신의 덱을 1장 드로우 한다.",
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱의 위에서부터 1장을 아카이브 한다. 그 후, 자신의 덱을 1장 드로우 한다.",
         timing: "collab",
       },
       {
@@ -26503,7 +26671,7 @@ const RAW_CARDS: Card[] = [
         cost: ["colorless"],
       },
       {
-        name: "지지않아, 포기하지 않아",
+        name: "지지 않아, 포기하지 않아",
         description: "",
         damage: 50,
         cost: ["purple", "colorless"],
@@ -26612,7 +26780,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hSD19/hSD19-001_OC.png",
     oshiAbility: {
       name: "미안한데",
-      cost: "홀로 파워 -2",
+      cost: "홀로 파워 -3",
       description: "[턴에 1번] 자신의 아카이브의 홀로멤 1장을 패로 되돌린다.",
     },
     spAbility: {
@@ -26630,7 +26798,7 @@ const RAW_CARDS: Card[] = [
     name: "오오조라 스바루",
     nameJp: "大空スバル",
     type: "holomem",
-    hp: 80,
+    hp: 90,
     color: ["yellow"],
     holomemSubtype: "debut",
     batonPass: 1,
@@ -26640,7 +26808,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "아지마루 아지마루~",
         description: "",
-        damage: 20,
+        damage: 10,
         cost: ["colorless"],
       },
     ],
@@ -26653,7 +26821,7 @@ const RAW_CARDS: Card[] = [
     name: "오오조라 스바루",
     nameJp: "大空スバル",
     type: "holomem",
-    hp: 60,
+    hp: 80,
     color: ["yellow"],
     holomemSubtype: "debut",
     batonPass: 1,
@@ -26742,7 +26910,7 @@ const RAW_CARDS: Card[] = [
         cost: ["colorless"],
       },
       {
-        name: "잔뜩 즐길거야!",
+        name: "잔뜩 즐길 거야!",
         description: "",
         damage: 40,
         cost: ["yellow", "colorless"],
@@ -26855,7 +27023,7 @@ const RAW_CARDS: Card[] = [
       name: "화이트 배턴",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 이 턴 동안, 자신의 백색 콜라보 홀로멤의 아츠 + 20.",
+        "[턴에 1번] 이 턴 동안, 자신의 백색 콜라보 홀로멤의 아츠 +20.",
     },
     spAbility: {
       name: "퀵 가드",
@@ -26882,7 +27050,7 @@ const RAW_CARDS: Card[] = [
         "[턴에 1번] 이 턴 동안, 자신의 녹색 콜라보 홀로멤의 아츠 +20.",
     },
     spAbility: {
-      name: "모두 힘내자ー!",
+      name: "모두 힘내자—!",
       cost: "홀로 파워 -1",
       description: "[게임에 1번] 자신의 녹색 홀로멤 전원의 HP 20 회복.",
     },
@@ -26902,7 +27070,7 @@ const RAW_CARDS: Card[] = [
       name: "레드 배턴",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 이 턴 동안, 자신의 적색 콜라보 홀로멤의 아츠 + 20.",
+        "[턴에 1번] 이 턴 동안, 자신의 적색 콜라보 홀로멤의 아츠 +20.",
     },
     spAbility: {
       name: "자! 다시 한 번!",
@@ -26932,7 +27100,7 @@ const RAW_CARDS: Card[] = [
       name: "백 샷",
       cost: "홀로 파워 -1",
       description:
-        "[게임에 1번] 자신의 홀로멤이 상대의 백 홀로멤에게 데미지를 주었을 때 사용할 수 있다 : 그 상대의 백 홀로멤 1명에게 특수 데미지 50을 준다.",
+        "[게임에 1번] 자신의 홀로멤이 상대의 백 홀로멤에게 대미지를 주었을 때 사용할 수 있다 : 그 상대의 백 홀로멤 1명에게 특수 대미지 50을 준다.",
     },
     limit: 1,
   },
@@ -26950,16 +27118,16 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-001_OSR.png",
     limit: 1,
     oshiAbility: {
-      name: "오시 스킬",
+      name: "네피림의 축복",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20. 고른 홀로멤에게 홀로아츠 P이 붙어 있다면, 대신, 그 홀로멤의 아츠 +50.",
+        "[턴에 1번] 자신의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +20. 고른 홀로멤에게 홀로아츠 P 옐이 붙어 있다면, 대신, 그 홀로멤의 아츠 +50.",
     },
     spAbility: {
       name: "HOPE and DESPAIR",
       cost: "홀로 파워 -2",
       description:
-        "[게임에 1번] 자신의 〈IRyS〉 전원의 옐 1장당, 자신의 덱을 1장 드로우 한다. 그 후, 자신의 〈IRyS〉 전원의 홀로아츠 P 1장당, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+        "[게임에 1번] 자신의 〈IRyS〉 전원의 옐 1장당, 자신의 덱을 1장 드로우 한다. 그 후, 자신의 〈IRyS〉 전원의 홀로아츠 P 옐 1장당, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
     },
   },
   {
@@ -26976,13 +27144,13 @@ const RAW_CARDS: Card[] = [
     oshiStageAbility: {
       name: "Justice의 고대 자동 인형",
       description:
-        "자신의 <세실리아 이머그린> 전원은 리셋 스텝에 액티브 되지 않는다.",
+        "자신의 〈세실리아 이머그린〉 전원은, 리셋 스텝에서 액티브가 되지 않는다.",
     },
     oshiAbility: {
       name: "SPIN TO WIN!",
       cost: "홀로 파워 -2",
       description:
-        "자신의 옐 덱 위에서 2장을 자신의 오야스미 중인 <세실리아 이머그린>에게 나눠 붙인다. 그 후, 이 효과로 옐을 붙인 휴식 중인 홀로멤 전원을 액티브한다.",
+        "[턴에 1번] 자신의 옐 덱의 위에서부터 2장을 자신의 휴식하고 있는 〈세실리아 이머그린〉에게 나눠서 보낸다. 그 후, 이 능력으로 옐을 받은 홀로멤 전원을 액티브로 한다.",
     },
   },
   {
@@ -27000,13 +27168,13 @@ const RAW_CARDS: Card[] = [
     oshiStageAbility: {
       name: "준비는 됐지!",
       description:
-        "자신의 [〈후와와 어비스가드〉와 〈모코코 어비스가드〉]에 붙어 있는 홀로아츠 R전부는, 홀로아츠 B로도 취급한다.",
+        "자신의 [〈후와와 어비스가드〉와 〈모코코 어비스가드〉]에게 붙어 있는 홀로아츠 R 옐 전부는, 홀로아츠 B 옐로도 취급한다.",
     },
     oshiAbility: {
-      name: "모두의 미소는 모코코가 지킬거야!",
+      name: "모두의 미소는 모코코가 지킬 거야!",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 스테이지에 홀로아츠 R이 있다면, 자신의 아카이브의 #Advent를 가진 홀로멤 1장을 패로 되돌린다. 홀로아츠 B이 있다면, 자신의 아카이브의 옐 1장을 자신의 #Advent를 가진 홀로멤에게 보낸다.",
+        "[턴에 1번] 자신의 스테이지에 홀로아츠 R 옐이 있다면, 자신의 아카이브의 #Advent를 가진 홀로멤 1장을 패로 되돌린다. 홀로아츠 B 옐이 있다면, 자신의 아카이브의 옐 1장을 자신의 #Advent를 가진 홀로멤에게 보낸다.",
     },
   },
   {
@@ -27053,7 +27221,7 @@ const RAW_CARDS: Card[] = [
       name: "호이사 호이사",
       cost: "홀로 파워 -2",
       description:
-        "[턴에 1번] 자신의 패 2장을 아카이브 한다. 이 능력으로 2장 아카이브 했다면, 상대의 Debut 이외의 [센터 홀로멤과 콜라보 홀로멤에게] 특수 대미지 50을 준다.",
+        "[턴에 1번] 자신의 패 2장을 아카이브 한다. 이 능력으로 2장 아카이브 했다면, 상대의 Debut 이외의 [센터 홀로멤과 콜라보 홀로멤]에게 특수 대미지 50을 준다.",
     },
   },
   {
@@ -27069,13 +27237,13 @@ const RAW_CARDS: Card[] = [
     oshiStageAbility: {
       name: "WORLD DOMINATION",
       description:
-        "상대의 스테이지의 홀로멤 전원이 오시 홀로멤과 다른 색을 가진다면, 자신의 니노마에 이나니스 전원의 아츠는 엘을 필요로 하지 않는다",
+        "상대의 스테이지의 홀로멤 전원이, 상대의 오시 홀로멤과 서로 다른 색을 가진다면, 자신의 〈니노마에 이나니스〉 전원의 아츠는, 옐을 필요로 하지 않고 사용할 수 있다.",
     },
     oshiAbility: {
       name: "이나니스의 색채",
       cost: "홀로 파워 -X",
       description:
-        "이 능력으로 아카이브한 홀로파워 1장당 상대 스테이지의 홀로멤을 1명 고른다. 고른 홀로멤은 모든 색을 가진 것으로 취급한다",
+        "[턴에 1번] 이 능력으로 아카이브 한 홀로 파워 1장당, 상대의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤은, 모든 색을 가진 홀로멤으로 취급한다.",
     },
     limit: 1,
   },
@@ -27121,7 +27289,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "Promise of Spring",
         description:
-          "자신이 후공이고 최초의 턴이라면, 자신의 스테이지의 #Promise를 가진 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +30. 다시, 자신의 스테이지에 홀로아츠 P이 있다면, 자신의 덱을 1장 드로우 한다.",
+          "자신이 후공이고 최초의 턴이라면, 자신의 스테이지의 #Promise를 가진 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +30. 다시, 자신의 스테이지에 홀로아츠 P 옐이 있다면, 자신의 덱을 1장 드로우 한다.",
         timing: "collab",
       },
       {
@@ -27155,7 +27323,7 @@ const RAW_CARDS: Card[] = [
         timing: "collab",
       },
       {
-        name: "나는 좀더 깊은 곳을 보고있어",
+        name: "나는 좀 더 깊은 곳을 보고 있어",
         description: "",
         damage: 20,
         cost: ["colorless"],
@@ -27182,7 +27350,7 @@ const RAW_CARDS: Card[] = [
         name: "Race with Me!!",
         timing: "bloom",
         description:
-          "자신의 덱에서, [〈Bloom&Gloom〉이나 〈GuyRys〉] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "자신의 덱에서, [〈Bloom&Gloom〉이나 〈GuyRyS〉] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
       },
       {
         name: "I am Lightning Speed",
@@ -27212,16 +27380,17 @@ const RAW_CARDS: Card[] = [
         name: "The Hot Pink One",
         timing: "collab",
         description:
-          "이 홀로멤에게 홀로아츠 W옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
+          "이 홀로멤에게 홀로아츠 W 옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
       },
       {
         name: "Hot Ending",
         cost: ["colorless"],
         damage: 30,
         description:
-          "이 홀로멤에게 홀로아츠 P옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
+          "이 홀로멤에게 홀로아츠 P 옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-012",
@@ -27247,7 +27416,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "한쪽은 천사 한쪽은 악마",
         description:
-          "이 홀로멤에게 홀로아츠 P이 붙어 있다면, 상대의 센터 홀로멤에게 특수 대미지 20을 준다.",
+          "이 홀로멤에게 홀로아츠 P 옐이 붙어 있다면, 상대의 센터 홀로멤에게 특수 대미지 20을 준다.",
         damage: 50,
         cost: ["white", "colorless"],
       },
@@ -27277,7 +27446,7 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "모에모에 큥 했어?",
-        description: "이 홀로멤에게 홀로아츠 P이 붙어 있다면, 이 아츠 +50.",
+        description: "이 홀로멤에게 홀로아츠 P 옐이 붙어 있다면, 이 아츠 +50.",
         damage: 70,
         specialDamage: { color: "purple", value: 50 },
         cost: ["white", "colorless"],
@@ -27303,13 +27472,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "절망에 남은 빛",
         description:
-          "상대의 센터 홀로멤에게 특수 대미지 30을 준다. 다시, 이 홀로멤에게 홀로아츠 P 이 붙어 있다면, 상대의 콜라보 홀로멤에게 특수 대미지 30을 준다.",
+          "상대의 센터 홀로멤에게 특수 대미지 30을 준다. 다시, 이 홀로멤에게 홀로아츠 P 옐이 붙어 있다면, 상대의 콜라보 홀로멤에게 특수 대미지 30을 준다.",
         timing: "bloom",
       },
       {
         name: "프리즈마틱・앤섬",
         description:
-          "이 턴 동안, 이 홀로멤의 홀로아츠 P 1장당, 자신의 스테이지의 홀로멤 전원의 아츠 +20.",
+          "이 턴 동안, 이 홀로멤의 홀로아츠 P 옐 1장당, 자신의 스테이지의 홀로멤 전원의 아츠 +20.",
         damage: 130,
         specialDamage: { color: "red", value: 50 },
         cost: ["white", "colorless", "colorless"],
@@ -27332,7 +27501,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-015_C.png",
     abilities: [
       {
-        name: "나한테 이길 수 있을려나?",
+        name: "나한테 이길 수 있으려나?",
         description: "이 홀로멤이 상대의 홀로멤에게서 받는 아츠 대미지 -10.",
         timing: "gift",
       },
@@ -27367,7 +27536,7 @@ const RAW_CARDS: Card[] = [
         cost: ["colorless"],
       },
       {
-        name: "그 때의 하늘로…",
+        name: "그때의 하늘로…",
         description: "",
         damage: 90,
         cost: ["white", "colorless", "colorless"],
@@ -27453,7 +27622,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "부온 아페티토 -즐거운 식사-",
         description:
-          "■ 이 홀로멤에게 〈Chattino〉가 붙어 있지 않다면, 이 홀로멤의 아츠에 필요한 백 -1.\n■ 이 홀로멤에게 〈Chattino〉가 붙어 있다면, 이 홀로멤의 HP +30.",
+          "■이 홀로멤에게 〈Chattino〉가 붙어 있지 않다면, 이 홀로멤의 아츠에 필요한 홀로아츠 W -1.\n■이 홀로멤에게 〈Chattino〉가 붙어 있다면, 이 홀로멤의 HP +30.",
         timing: "gift",
       },
       {
@@ -27484,13 +27653,14 @@ const RAW_CARDS: Card[] = [
         name: "섹시 댄스 퀸",
         timing: "collab",
         description:
-          "자신의 덱의 위에서부터 1~2장을 아카이브 한다 : 아카이브 한 카드 1장당, 자신의 덱을 1장 드로우 한다.",
+          "자신의 덱의 위에서부터 1~2장을 아카이브 할 수 있다 : 아카이브 한 카드 1장당, 자신의 덱을 1장 드로우 한다.",
       },
       {
         name: "도전의 눈빛",
         description:
           "이 턴에 자신의 덱에서 카드를 3장 이상 아카이브 하고 있다면, 이 아츠 +40.",
         damage: 110,
+        specialDamage: { color: "red", value: 50 },
         cost: ["white", "colorless"],
       },
     ],
@@ -27513,11 +27683,11 @@ const RAW_CARDS: Card[] = [
       {
         name: "Automaton, Roll Out!",
         description:
-          "자신이 후공이고, 최초의 턴이라면, 자신의 덱에서 <OTOMO> 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, 〈Otomo〉 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
       {
-        name: "",
+        name: "축제를 울려 퍼지게 하자",
         description: "",
         damage: 30,
         cost: ["colorless"],
@@ -27540,13 +27710,13 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-022_U.png",
     abilities: [
       {
-        name: "에스케이프 멘트",
+        name: "에스케이프먼트",
         description:
           "이 홀로멤이 배턴 터치해서 백 포지션으로 이동했을 때, 이 홀로멤을 휴식시킨다.",
         timing: "gift",
       },
       {
-        name: "엘레강트하게 가는 거에요",
+        name: "엘레강트하게 가는 거예요",
         description: "",
         damage: 20,
         cost: ["colorless"],
@@ -27600,7 +27770,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "구테・라이제 -좋은 여행을-",
         description:
-          "[센터 포지션・콜라보 포지션 한정] 상대의 메인 스탭 동안, 자신의 휴식하고 있는 〈세실리아 이머그린〉 전원의 HP는 상대의 능력으로 줄지 않고, 변동하지 않는다.",
+          "[센터 포지션・콜라보 포지션 한정] 상대의 메인 스텝 동안, 자신의 휴식하고 있는 〈세실리아 이머그린〉 전원의 HP는 상대의 능력으로 줄지 않고, 변동하지 않는다.",
         timing: "gift",
       },
       {
@@ -27658,7 +27828,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "기교의 슈트라히",
         description:
-          "자신의 휴식하고 있는 #Justice를 가진 홀로멤이 2장 이상 있다면, 이 턴 동안, 이 홀로멤의 아츠 +50.",
+          "자신의 휴식하고 있는 #Justice를 가진 홀로멤이 2명 이상 있다면, 이 턴 동안, 이 홀로멤의 아츠 +50.",
         timing: "collab",
       },
       {
@@ -27775,7 +27945,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-030_C.png",
     abilities: [
       {
-        name: "한 걸음 씩",
+        name: "한 걸음씩",
         description:
           "자신의 패의 #ID 2기생을 가진 홀로멤 1장을 아카이브 할 수 있다 : 자신의 옐 덱의 위에서부터 1장을 자신의 백 홀로멤에게 보낸다.",
         timing: "collab",
@@ -27795,6 +27965,7 @@ const RAW_CARDS: Card[] = [
     setId: "hBP08",
     name: "파볼리아 레이네",
     nameJp: "パヴォリア・レイネ",
+    keywords: ["Buzz"],
     type: "holomem",
     holomemSubtype: "1st",
     color: ["green"],
@@ -27807,7 +27978,7 @@ const RAW_CARDS: Card[] = [
         name: "SPY-C1000",
         timing: "gift",
         description:
-          "[센터 포지션・콜라보. 포지션 한정][턴에 1번] 자신의 턴에서, 자신의 옐이 아카이브에 놓여졌을 때, 자신의 덱을 1장 드로우 한다.",
+          "[센터 포지션・콜라보 포지션 한정][턴에 1번] 자신의 턴에서, 자신의 옐이 아카이브에 놓여졌을 때, 자신의 덱을 1장 드로우 한다.",
       },
       {
         name: "GWS+",
@@ -27817,6 +27988,7 @@ const RAW_CARDS: Card[] = [
           "자신의 옐 덱의 위에서부터 1장을 아카이브 한다. 그 후, 자신의 스테이지의 옐 1색당, 자신의 홀로멤 1명의 HP 10 회복.",
       },
     ],
+    limit: 4,
     extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
   },
   {
@@ -27842,7 +28014,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "스트럭추럴・컬러",
         description:
-          "자신의 〈파볼리아 레이네〉 이외의 #ID 2기생을 가진 홀로멤에게 홀로아츠 P이나 홀로아츠 Y이 붙어 있다면, 이 아츠 +70.",
+          "자신의 〈파볼리아 레이네〉 이외의 #ID 2기생을 가진 홀로멤에게 홀로아츠 P 옐이나 홀로아츠 Y 옐이 붙어 있다면, 이 아츠 +70.",
         damage: 80,
         specialDamage: { color: "blue", value: 50 },
         cost: ["colorless", "colorless"],
@@ -27928,7 +28100,7 @@ const RAW_CARDS: Card[] = [
     abilities: [
       {
         name: "아싸 대승리야!!",
-        description: "이 홀로멤에게 홀로아츠 B이 붙어 있다면, 이 아츠 +30.",
+        description: "이 홀로멤에게 홀로아츠 B 옐이 붙어 있다면, 이 아츠 +30.",
         damage: 10,
         cost: ["red"],
       },
@@ -27989,7 +28161,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "간BAU 할게—!",
         description:
-          "이 홀로멤에게 홀로아츠 B이 2장 이상 붙어 있다면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈후와와 어비스가드〉에게 보낸다.",
+          "이 홀로멤에게 홀로아츠 B 옐이 2장 이상 붙어 있다면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈후와와 어비스가드〉에게 보낸다.",
         damage: 30,
         cost: ["red", "red"],
       },
@@ -28045,13 +28217,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "심연에서의 신뢰",
         description:
-          "자신의 스테이지에 홀로아츠 B이 6장 이상 있다면, 자신의 휴식하고 있는 〈후와와 어비스가드〉 1장을 액티브 한다.",
+          "자신의 스테이지에 홀로아츠 B 옐이 6장 이상 있다면, 자신의 휴식하고 있는 〈후와와 어비스가드〉 1명을 액티브로 한다.",
         timing: "bloom",
       },
       {
         name: "푹신푹신 바운티 헌터",
         description:
-          "이 홀로멤의 홀로아츠 B 1장당, 이 아츠 +20. 그 후, 이 홀로멤의 홀로아츠 B을 원하는 매수 골라, 자신의 〈후와와 어비스가드〉 1명에게 바꿔 붙인다.",
+          "이 홀로멤의 홀로아츠 B 옐 1장당, 이 아츠 +20. 그 후, 이 홀로멤의 홀로아츠 B 옐을 원하는 매수 골라, 자신의 〈후와와 어비스가드〉 1명에게 바꿔 붙인다.",
         damage: 90,
         specialDamage: { color: "purple", value: 50 },
         cost: ["red", "red", "red"],
@@ -28083,7 +28255,7 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "꽃구경 데이트",
-        description: "자신의 아카이브의 홀로아츠 R 1장당, 이 아츠 +10.",
+        description: "자신의 아카이브의 홀로아츠 R 옐 1장당, 이 아츠 +10.",
         damage: 30,
         cost: ["red", "colorless"],
       },
@@ -28111,12 +28283,13 @@ const RAW_CARDS: Card[] = [
           "상대의 턴에서, 이 홀로멤이 다운 했을 때, 이 홀로멤을 아카이브 하는 대신에 패로 되돌릴 수 있다.",
       },
       {
-        name: '"열광적인 밤"은 실존한다!!!',
+        name: "\"열광적인 밤\"은 실존한다!!!",
         cost: ["colorless"],
         damage: 20,
         description: "자신의 덱의 위에서부터 1장을 아카이브 한다.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-042",
@@ -28136,12 +28309,12 @@ const RAW_CARDS: Card[] = [
         name: "구텐 모르겐 -상쾌한 아침-",
         timing: "bloom",
         description:
-          "자신의 패 1~3장을 아카이브 할 수 있다 : 자신의 스테이지의 홀로멤 1명을 고른다. 이 능력으로 아카이브 한 카드 1장당, 이 턴 동안, 고른 홀로멤의 아츠 +10",
+          "자신의 패 1~3장을 아카이브 할 수 있다 : 자신의 스테이지의 홀로멤 1명을 고른다. 이 능력으로 아카이브 한 카드 1장당, 이 턴 동안, 고른 홀로멤의 아츠 +10.",
       },
       {
         name: "키와와와 촌카즈&스무디",
         description: "",
-        damage: 50,
+        damage: 40,
         cost: ["red"],
       },
     ],
@@ -28153,6 +28326,7 @@ const RAW_CARDS: Card[] = [
     setId: "hBP08",
     name: "타카나시 키아라",
     nameJp: "小鳥遊キアラ",
+    keywords: ["Buzz"],
     type: "holomem",
     color: ["red"],
     hp: 240,
@@ -28165,7 +28339,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "불새 검무",
         description:
-          "자신의 아카이브의 홀로멤이 10장 이상 있다면, 이 턴 동안, 이 홀로멤의 아츠에 필요한 적 -2.",
+          "자신의 아카이브에 홀로멤이 10장 이상 있다면, 이 턴 동안, 이 홀로멤의 아츠에 필요한 홀로아츠 R -2.",
         timing: "collab",
       },
       {
@@ -28195,7 +28369,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "빛, 다시 켜져",
         description:
-          "자신의 메인 스탭에서, 자신의 아카이브에 홀로멤이 10장 이상 있다면, 자신의 홀로멤을, 아카이브의 이 홀로멤을 사용해 Bloom 할 수 있다(이 능력은 아카이브에 있을 때만 사용할 수 있다).",
+          "자신의 메인 스텝에서, 자신의 아카이브에 홀로멤이 10장 이상 있다면, 자신의 홀로멤을, 아카이브의 이 홀로멤을 사용해 Bloom 할 수 있다(이 능력은 아카이브에 있을 때만 사용할 수 있다).",
         timing: "gift",
       },
       {
@@ -28324,6 +28498,7 @@ const RAW_CARDS: Card[] = [
         description: "",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-049",
@@ -28346,7 +28521,7 @@ const RAW_CARDS: Card[] = [
         timing: "gift",
       },
       {
-        name: "너무 괜찮다면 더 얘기하자",
+        name: "너만 괜찮다면 더 얘기하자",
         description: "",
         damage: 50,
         cost: ["blue", "colorless"],
@@ -28462,16 +28637,16 @@ const RAW_CARDS: Card[] = [
       {
         name: "슈피슈와~~!!!!",
         description:
-          "[센터 포지션 한정] 상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N 이 5개 이상이라면, 상대의 센터 홀로멤의 아츠에 필요한 홀로아츠 N +2.",
+          "[센터 포지션 한정] 상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N이 5개 이상이라면, 상대의 센터 홀로멤의 아츠에 필요한 홀로아츠 N +2.",
         timing: "gift",
       },
       {
         name: "닿아라, 이 사랑",
         description:
-          "상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N 이 5개 이상이라면, 상대의 Debut 이외의 홀로멤 1명에게 특수 대미지 100을 준다.",
+          "상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N이 5개 이상이라면, 상대의 Debut 이외의 홀로멤 1명에게 특수 대미지 100을 준다.",
         damage: 50,
         specialDamage: { color: "white", value: 50 },
-        cost: ["blue", "colorless", "colorless"],
+        cost: ["blue", "blue", "colorless"],
       },
     ],
     limit: 4,
@@ -28488,13 +28663,13 @@ const RAW_CARDS: Card[] = [
     hp: 200,
     imageUrl: "/images/hBP08/hBP08-054_R.png",
     tags: ["#ID", "#ID 1기생", "#노래"],
-    batonPass: 1,
+    batonPass: 2,
     abilities: [
       {
         name: "이 유대가 우리들!",
         timing: "bloom",
         description:
-          "자신의 오시 홀로멤의 색이 녹색이나 청색이나 황색이라면, 자신의 아카이브의 홀로아츠 B을 자신의 #ID 1기생을 가진 홀로멤 1~3명에게 1장씩 보낸다.",
+          "자신의 오시 홀로멤의 색이 녹색이나 청색이나 황색이라면, 자신의 아카이브의 홀로아츠 B 옐을 자신의 #ID 1기생을 가진 홀로멤 1~3명에게 1장씩 보낸다.",
       },
       {
         name: "혼자가 아니야, 지금은 함께",
@@ -28505,6 +28680,7 @@ const RAW_CARDS: Card[] = [
           "이 홀로멤에게 붙어 있는 옐 3장을 아카이브 할 수 있다 : 자신의 덱을 3장 드로우 한다.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-055",
@@ -28532,9 +28708,10 @@ const RAW_CARDS: Card[] = [
         cost: ["blue"],
         damage: 20,
         description:
-          "이 홀로멤에게 홀로아츠 R옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
+          "이 홀로멤에게 홀로아츠 R 옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-056",
@@ -28589,7 +28766,7 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "가까이 기대는 두 사람",
-        description: "이 홀로멤에게 홀로아츠 R이 붙어 있다면, 이 아츠 +20.",
+        description: "이 홀로멤에게 홀로아츠 R 옐이 붙어 있다면, 이 아츠 +20.",
         damage: 30,
         cost: ["blue"],
       },
@@ -28612,15 +28789,15 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-058_R.png",
     abilities: [
       {
-        name: "이길리 없잖아!",
+        name: "이길 리 없잖아!",
         description:
-          "자신의 아카이브의 홀로아츠 B 1~2장을 골라, 자신의 #Advent를 가진 홀로멤에게 나눠 보낸다.",
+          "자신의 아카이브의 홀로아츠 B 옐 1~2장을 골라, 자신의 #Advent를 가진 홀로멤에게 나눠 보낸다.",
         damage: 100,
         specialDamage: { color: "white", value: 50 },
         cost: ["blue", "colorless"],
       },
       {
-        name: "폭신폭신 비운더리 스패너",
+        name: "이번엔 이쪽 차례야!",
         description:
           "자신의 오시 홀로멤이 청색인 〈FUWAMOCO〉라면, 이 홀로멤의 옐 2장을 아카이브 할 수 있다 : 상대의 Debut 이외의 홀로멤 1명에게 특수 대미지 50을 준다.",
         damage: 160,
@@ -28648,13 +28825,13 @@ const RAW_CARDS: Card[] = [
       {
         name: "심연에서의 애정",
         description:
-          "자신의 스테이지에 홀로아츠 R이 6장 이상 있다면, 이 홀로멤의 아츠는, 상대의 Debut 이외의 백 홀로멤도 대상으로 할 수 있다.",
+          "자신의 스테이지에 홀로아츠 R 옐이 6장 이상 있다면, 이 홀로멤의 아츠는, 상대의 Debut 이외의 백 홀로멤도 대상으로 할 수 있다.",
         timing: "gift",
       },
       {
-        name: "폭신폭신 비운더리 스패너",
+        name: "폭신폭신 바운더리 스패너",
         description:
-          "이 턴에 자신의 〈모코코 어비스가드〉가 아츠를 사용하고 있다면, 이 아츠 +50. 그 후, 이 홀로멤의 홀로아츠 R을 원하는 매수 골라, 자신의 〈모코코 어비스가드〉 1명에게 바꿔 붙인다.",
+          "이 턴에 자신의 〈모코코 어비스가드〉가 아츠를 사용하고 있다면, 이 아츠 +50. 그 후, 이 홀로멤의 홀로아츠 R 옐을 원하는 매수 골라, 자신의 〈모코코 어비스가드〉 1명에게 바꿔 붙인다.",
         damage: 80,
         specialDamage: { color: "white", value: 50 },
         cost: ["blue", "blue", "blue"],
@@ -28671,7 +28848,7 @@ const RAW_CARDS: Card[] = [
     keywords: ["후와모코", "후와와 어비스가드", "모코코 어비스가드", "kawaii"],
     type: "holomem",
     hp: 170,
-    color: ["blue"],
+    color: ["blue", "red"],
     holomemSubtype: "1st",
     batonPass: 1,
     tags: ["#EN", "#Advent", "#동물귀"],
@@ -28680,7 +28857,7 @@ const RAW_CARDS: Card[] = [
       "이 홀로멤은 〈후와와 어비스가드〉〈모코코 어비스가드〉로도 취급한다.",
     abilities: [
       {
-        name: '"BAU" DOL♡',
+        name: "\"BAU\" DOL♡",
         description:
           "[콜라보 포지션 한정] 자신의 오시 스킬 「모코쨩!」의 [홀로 파워 -3]을 [홀로 파워 -2]로 변경한다.",
         timing: "gift",
@@ -28741,7 +28918,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "다운 당할 각오",
         description:
-          "자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱에서, 엑스트라 「이 홀로멤은 덱에 몇장이라도 넣을 수 있다」를 가진 Debut 홀로멤 1장을 스테이지에 낸다. 그리고 덱을 셔플 한다.",
+          "자신의 패 1장을 아카이브 할 수 있다 : 자신의 덱에서, 엑스트라 「이 홀로멤은 덱에 몇 장이라도 넣을 수 있다」를 가진 Debut 홀로멤 1장을 스테이지에 낸다. 그리고 덱을 셔플 한다.",
         timing: "collab",
       },
       {
@@ -28764,7 +28941,7 @@ const RAW_CARDS: Card[] = [
     color: ["purple"],
     holomemSubtype: "1st",
     batonPass: 1,
-    tags: ["#JP", "#비밀 결사 holoX", "#새"],
+    tags: ["#JP", "#비밀 결사 holoX", "#새", "#술"],
     imageUrl: "/images/hBP08/hBP08-063_C.png",
     abilities: [
       {
@@ -28829,7 +29006,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "역배 떴다———!",
         description:
-          "[센터 포지션 한정] 자신의 패 1장을 아카이브 할 수 있다 : 주사위를 1번 굴린다. 1이라면, 자신의 덱을 3장 드로우 한다. 1 이외라면, 자신의 덱을 1장을 드로우 한다.",
+          "[센터 포지션 한정] 자신의 패 1장을 아카이브 할 수 있다 : 주사위를 1번 굴린다. 1이라면, 자신의 덱을 3장 드로우 한다. 1 이외라면, 자신의 덱을 1장 드로우 한다.",
         timing: "bloom",
       },
       {
@@ -28856,7 +29033,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-066_U.png",
     abilities: [
       {
-        name: "그렇게나 얼굴이 빨게?",
+        name: "그렇게나 얼굴이 빨개?",
         description:
           "자신의 아카이브의 서포트 카드 1장을 덱의 위로 되돌릴 수 있다.",
         timing: "collab",
@@ -28895,7 +29072,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "역전의 한 수",
         description:
-          "자신의 패가 2장 이하라면, 이 아츠 +50. 자신의 패가 0장 이라면, 대신, 이 아츠 +70",
+          "자신의 패가 2장 이하라면, 이 아츠 +50. 자신의 패가 0장이라면, 대신, 이 아츠 +70.",
         damage: 130,
         specialDamage: { color: "green", value: 50 },
         cost: ["purple", "purple", "purple"],
@@ -29038,11 +29215,11 @@ const RAW_CARDS: Card[] = [
       {
         name: "Natsu Ina!!",
         description:
-          "자신의 아카이브의 #Myth를 가진 홀로멤이 8장 이상 있다면, 자신의 아카이브의 #Myth를 가진 홀로멤 1장을 패로 되돌린다. 자신의 블룸 이펙트 「Natsu Ina!!」는 턴에 1번밖에 사용할 수 없다.",
+          "자신의 아카이브에 #Myth를 가진 홀로멤이 8장 이상 있다면, 자신의 아카이브의 #Myth를 가진 홀로멤 1장을 패로 되돌린다. 자신의 블룸 이펙트 「Natsu Ina!!」는 턴에 1번밖에 사용할 수 없다.",
         timing: "bloom",
       },
       {
-        name: "멀티 컬러・스캐치",
+        name: "멀티 컬러・스케치",
         description:
           "상대의 오시 홀로멤과 서로 다른 색을 가진 상대의 스테이지의 홀로멤 1명당, 이 아츠 +10.",
         damage: 30,
@@ -29066,13 +29243,13 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-073_U.png",
     abilities: [
       {
-        name: "",
+        name: "얌전히 굴어야 해?",
         description:
           "상대의 스테이지의 홀로멤을 2명 고른다. 이 턴 동안 고른 홀로멤은 모든 색을 가진 홀로멤으로 취급한다.",
         timing: "collab",
       },
       {
-        name: "",
+        name: "간식 쿠키는 없어!",
         description: "",
         damage: 90,
         specialDamage: { color: "blue", value: 50 },
@@ -29134,7 +29311,7 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "같이 밖으로 가자",
-        description: "이 홀로멤에 붙어 있는 〈로보사〉 1장당, 이 아츠 +20.",
+        description: "이 홀로멤에게 붙어 있는 〈로보사〉 1장당, 이 아츠 +20.",
         damage: 110,
         specialDamage: { color: "yellow", value: 50 },
         cost: ["purple", "purple"],
@@ -29152,20 +29329,20 @@ const RAW_CARDS: Card[] = [
     hp: 200,
     color: ["purple"],
     holomemSubtype: "2nd",
-    batonPass: 1,
+    batonPass: 2,
     tags: ["#JP", "#2기생", "#요리"],
     imageUrl: "/images/hBP08/hBP08-076_R.png",
     abilities: [
       {
-        name: "",
+        name: "맛있는 밥의 꿈",
         description:
-          "자신의 덱의 위에서부터 3장을 본다. 그 중에서, [#요리를 가진 홀로멤과 #음식을 가진 이벤트] 1장씩을 공개하고, 패에 더한다. 그리고 남은 카드를 덱의 아래로 되돌린다.",
+          "자신의 덱의 위에서부터 3장을 본다. 그 중에서, [#요리를 가진 홀로멤과 #음식을 가진 이벤트] 1장씩을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
         timing: "collab",
       },
       {
-        name: "",
+        name: "밥을 잔뜩 먹은 후에는……",
         description:
-          "자신의 아카이브에 #음식을 가진 이벤트가 3장 이상 있다면, 이 홀로멤의 HP 100 회복한다.",
+          "자신의 아카이브에 #음식을 가진 이벤트가 3장 이상 있다면, 이 홀로멤의 HP 100 회복.",
         damage: 120,
         specialDamage: { color: "blue", value: 50 },
         cost: ["purple", "colorless", "colorless"],
@@ -29188,7 +29365,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-077_C.png",
     abilities: [
       {
-        name: "불러보왔다, 들어 주세요",
+        name: "불러 보았다, 들어 주세요",
         description:
           "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, [1st 홀로멤인 〈오토노세 카나데〉와 〈리코더〉] 1장씩을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
         timing: "collab",
@@ -29200,7 +29377,7 @@ const RAW_CARDS: Card[] = [
         cost: ["colorless"],
       },
     ],
-    limit: 50,
+    limit: 4,
   },
   {
     id: "hBP08-078",
@@ -29259,6 +29436,7 @@ const RAW_CARDS: Card[] = [
           "자신의 아카이브의 옐 1장을 자신의 #ReGLOSS를 가진 센터 홀로멤에게 보낼 수 있다.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-080",
@@ -29275,7 +29453,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hBP08/hBP08-080_C.png",
     abilities: [
       {
-        name: "파인딩 옐",
+        name: "파이팅 옐",
         description:
           "자신의 스테이지의 옐의 매수가 상대보다 많다면, 자신의 덱에서, #ReGLOSS를 가진 Debut 홀로멤 1장을 스테이지에 낼 수 있다. 그리고 덱을 셔플 한다.",
         timing: "bloom",
@@ -29403,7 +29581,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "마츄도 공주님♡",
         description:
-          "자신의 스테이지의 #1기생을 가진 2nd 홀로멤이 있다면, 이 아츠 +30.",
+          "자신의 스테이지에 #1기생을 가진 2nd 홀로멤이 있다면, 이 아츠 +30.",
         damage: 30,
         cost: ["colorless"],
       },
@@ -29427,7 +29605,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "손, 잡고 있으면 따듯하네",
         description:
-          "패 1장을 아카이브 할 수 있다 : 자신의 아카이브의 [Debut 홀로멤이나 1st 홀로멤이나 Spot 홀로멤] 1장을 패로 되돌린다.",
+          "자신의 패 1장을 아카이브 할 수 있다 : 자신의 아카이브의 [Debut 홀로멤이나 1st 홀로멤이나 Spot 홀로멤] 1장을 패로 되돌린다.",
         timing: "collab",
       },
       {
@@ -29457,7 +29635,7 @@ const RAW_CARDS: Card[] = [
         name: "오레노 이나—!",
         timing: "bloom",
         description:
-          "자신의 옐 덱의 위에서부터 1장을 자신위 [〈시라누이 후레아〉나 #EN을 가진 홀로멤]에게 보낸다.",
+          "자신의 옐 덱의 위에서부터 1장을 자신의 [〈시라누이 후레아〉나 #EN을 가진 홀로멤]에게 보낼 수 있다.",
       },
       {
         name: "최고의 친구",
@@ -29489,13 +29667,14 @@ const RAW_CARDS: Card[] = [
           "자신의 아카이브의 옐 1~2장을 자신의 센터 홀로멤인 [〈시라누이 후레아〉나 #EN을 가진 홀로멤]에게 보낼 수 있다.",
       },
       {
-        name: "무무 꿈에서 깨어나면",
+        name: "꿈에서 깨어나면",
         cost: ["colorless", "colorless"],
         damage: 90,
         specialDamage: { color: "blue", value: 50 },
         description: "",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-088",
@@ -29519,13 +29698,14 @@ const RAW_CARDS: Card[] = [
       },
       {
         name: "릴레이션 판타지",
-        cost: ["yellow", "colorless", "colorless"],
+        cost: ["yellow", "yellow", "colorless"],
         damage: 140,
         specialDamage: { color: "white", value: 50 },
         description:
           "[콜라보 포지션 한정] 자신의 센터 홀로멤이 #3기생을 가진 홀로멤이라면, 이 아츠 +30.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-089",
@@ -29562,7 +29742,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-090",
     setId: "hBP08",
     name: "엘레강트 컴퓨터",
-    nameJp: "エレガントコンピューター",
+    nameJp: "エレガントパソコン",
     type: "support",
     supportSubtype: "item",
     limited: true,
@@ -29571,7 +29751,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "자신의 아카이브의 [마스코트나 팬] 합계 1~3장을 덱에 되돌리고 셔플 한다. 그 후, 자신의 덱을 2장 드로우 한다.",
+          "자신의 아카이브의 [마스코트와 팬] 합계 1~3장을 덱에 되돌리고 셔플 한다. 그 후, 자신의 덱을 2장 드로우 한다.",
       },
     ],
     limit: 4,
@@ -29581,6 +29761,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-091",
     setId: "hBP08",
     name: "크리에이터 컴퓨터",
+    nameJp: "クリエイターパソコン",
     type: "support",
     supportSubtype: "item",
     imageUrl: "/images/hBP08/hBP08-091_U.png",
@@ -29618,6 +29799,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-093",
     setId: "hBP08",
     name: "초코의 가지육회",
+    nameJp: "ちょこのなすユッケ",
     type: "support",
     supportSubtype: "event",
     tags: ["#음식"],
@@ -29636,6 +29818,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-094",
     setId: "hBP08",
     name: "아빠는 일을 그만둘 거란다",
+    nameJp: "パパは仕事を辞める",
     type: "support",
     supportSubtype: "event",
     limited: true,
@@ -29644,7 +29827,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 콜라보 홀로멤이 있을 때밖에 사용할 수 없다.\n\n자신의 센터 홀로멤을 고른다. 다음 상대의 턴 중, 고른 홀로멤이 센터 포지션에서 최초로 받는 아츠 대미지 -300.",
+          "이 카드는, 자신의 콜라보 홀로멤이 있을 때밖에 사용할 수 없다.\n\n자신의 센터 홀로멤을 고른다. 다음 상대의 턴 동안, 고른 홀로멤이 센터 포지션에서 최초로 받는 아츠 대미지 -300.",
       },
     ],
     limit: 4,
@@ -29654,6 +29837,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-095",
     setId: "hBP08",
     name: "파멸의 주문",
+    nameJp: "破滅の呪文",
     type: "support",
     supportSubtype: "event",
     limited: true,
@@ -29662,15 +29846,17 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 스테이지의 전원이 #EN을 가진 홀로멤이고, 자신의 라이프가 3 이하가 아니라면 사용할 수 없다.\n\n서로의 센터 홀로멤과 콜라보 홀로멤에게 특수 대미지 50을 준다. 단, 이 능력으로 다운 해도 라이프는 줄지 않는다.",
+          "이 카드는, 자신의 스테이지의 홀로멤 전원이 #EN을 가진 홀로멤이고, 자신의 라이프가 3 이하가 아니라면 사용할 수 없다.\n\n서로의 센터 홀로멤과 콜라보 홀로멤에게 특수 대미지 50을 준다. 단, 이 능력으로 다운 해도 라이프는 줄지 않는다.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-096",
     cardNumber: "hBP08-096",
     setId: "hBP08",
     name: "상냥한 몬스터",
+    nameJp: "優しいモンスター",
     type: "support",
     supportSubtype: "event",
     limited: true,
@@ -29679,7 +29865,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는, 자신의 오시 홀로멤이 〈이치조 리리카〉가 아니라면 사용할 수 없다.\n\n자신의 덱에서, [〈이치조 리리카〉와 〈한계밥〉] 1장씩을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 아카이브의 〈한계밥〉이 3장 이상 있다면, 이 턴 동안, 자신의 스테이지의 〈이치조 리리카〉 전원의 아츠 +50.",
+          "이 카드는, 자신의 오시 홀로멤이 〈이치조 리리카〉가 아니라면 사용할 수 없다.\n\n자신의 덱에서, [〈이치조 리리카〉와 〈한계밥〉] 1장씩을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 아카이브에 〈한계밥〉이 3장 이상 있다면, 이 턴 동안, 자신의 스테이지의 〈이치조 리리카〉 전원의 아츠 +50.",
       },
     ],
     limit: 4,
@@ -29689,6 +29875,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-097",
     setId: "hBP08",
     name: "릿치 쇼콜라의 햄버그",
+    nameJp: "りっちしょこらのハンバーグ",
     type: "support",
     supportSubtype: "event",
     tags: ["#음식"],
@@ -29746,6 +29933,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-100",
     setId: "hBP08",
     name: "Myth",
+    nameJp: "Myth",
     type: "support",
     supportSubtype: "event",
     limited: true,
@@ -29774,7 +29962,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 카드는 자신의 스테이지의 홀로멤 전원이 #ReGLOSS를 가진 홀로멤이 아니라면 사용할 수 없다.\n\n자신의 덱에서, #ReGLOSS를 가진 홀로멤 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 스테이지의 홀로멤이 상대보다 적다면, 자신의 덱을 1장 드로우 한 후, 패 1장을 아카이브 한다.",
+          "이 카드는, 자신의 스테이지의 홀로멤 전원이 #ReGLOSS를 가진 홀로멤이 아니라면 사용할 수 없다.\n\n자신의 덱에서, #ReGLOSS를 가진 홀로멤 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다. 그 후, 자신의 스테이지의 홀로멤이 상대보다 적다면, 자신의 덱을 1장 드로우 한 후, 패 1장을 아카이브 한다.",
       },
     ],
     limit: 4,
@@ -29784,6 +29972,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-102",
     setId: "hBP08",
     name: "쿨한 파카",
+    nameJp: "クールなパーカー",
     type: "support",
     tags: ["#Buzz 굿즈"],
     supportSubtype: "tool",
@@ -29795,12 +29984,14 @@ const RAW_CARDS: Card[] = [
           "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆Buzz 홀로멤에게 붙어 있다면 능력 추가\n[턴에 1번] 이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 덱을 2장 드로우 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
+    limit: 4,
   },
   {
     id: "hBP08-103",
     cardNumber: "hBP08-103",
     setId: "hBP08",
     name: "홀로 망토",
+    nameJp: "ホロマント",
     type: "support",
     supportSubtype: "tool",
     imageUrl: "/images/hBP08/hBP08-103_U.png",
@@ -29818,6 +30009,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-104",
     setId: "hBP08",
     name: "기척",
+    nameJp: "けはい",
     type: "support",
     supportSubtype: "tool",
     imageUrl: "/images/hBP08/hBP08-104_C.png",
@@ -29825,7 +30017,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "◆〈미즈미야 스우〉에게 붙어 있다면 능력 추가\n■[센터 포지션・콜라보 포지션 한정] 상대의 센터 홀로멤의 배턴 터치에 필요한 무 +1.\n■이 홀로멤의 Bloom 레벨이 올랐을 때, 자신의 덱을 1장 드로우 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "◆〈미즈미야 스우〉에게 붙어 있다면 능력 추가\n■[센터 포지션・콜라보 포지션 한정] 상대의 센터 홀로멤의 배턴 터치에 필요한 홀로아츠 N +1.\n■이 홀로멤의 Bloom 레벨이 올랐을 때, 자신의 덱을 1장 드로우 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -29835,7 +30027,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-105",
     setId: "hBP08",
     name: "Bloom&Gloom",
-    nameJp: "Bloom&Gloom",
+    nameJp: "Bloom＆Gloom",
     keywords: ["블룸 앤 글룸"],
     type: "support",
     supportSubtype: "mascot",
@@ -29844,7 +30036,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈IRyS〉에게 붙어 있다면 능력 추가\n이 홀로멤에게 홀로아츠 W과 홀로아츠 P이 붙어 있다면, 이 홀로멤의 아츠 +20.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 마스코트가 붙어 있는 홀로멤의 HP +20.\n\n◆〈IRyS〉에게 붙어 있다면 능력 추가\n이 홀로멤에게 홀로아츠 W 옐과 홀로아츠 P 옐이 붙어 있다면, 이 홀로멤의 아츠 +20.\n\n마스코트는, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -29863,7 +30055,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬에 붙어 있는 홀로멤의 옐 1장을, 자신의 다른 홀로멤에게 옮겨 붙인다.\n\n이 팬은, 자신의 〈IRyS〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤의 옐 1장을, 자신의 다른 홀로멤에게 바꿔 붙인다.\n\n이 팬은, 자신의 〈IRyS〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -29882,7 +30074,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤의 아츠 +10.\n\n이 팬을 홀로멤에게 패나 아카이브에서 붙였을 때, 이 팬이 붙어 있는 홀로멤을 액티브하거나 휴식시킨다.\n\n이 팬은, 자신의 〈세실리아 이머그린〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤의 아츠 +10.\n\n이 팬을 홀로멤에게 패나 아카이브에서 붙였을 때, 이 팬이 붙어 있는 홀로멤을 액티브로 하거나 휴식시킨다.\n\n이 팬은, 자신의 〈세실리아 이머그린〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -29892,6 +30084,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hBP08-108",
     setId: "hBP08",
     name: "장난스런 Ruffians",
+    nameJp: "いたずらなRuffians",
     type: "support",
     supportSubtype: "fan",
     imageUrl: "/images/hBP08/hBP08-108_C.png",
@@ -29899,7 +30092,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤에게 적 옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.\n\n이 팬은, 자신의 〈후와와 어비스가드〉나 〈모코코 어비스가드〉에게만 붙일 수 있고, 1명당 몇 장이라도 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤의 HP +10.\n\n상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤에게 홀로아츠 R 옐이 붙어 있다면, 자신의 덱을 1장 드로우 한다.\n\n이 팬은, 자신의 〈후와와 어비스가드〉나 〈모코코 어비스가드〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -29917,7 +30110,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 팬이 붙어 있는 홀로멤의 아츠 +10.\n\n상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤의 [홀로아츠 R이나 홀로아츠 P] 1장을 자신의 다른 홀로멤에게 바꿔 붙인다.\n\n이 팬은, 자신의 〈타카네 루이〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
+          "이 팬이 붙어 있는 홀로멤의 아츠 +10.\n\n상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤의 [홀로아츠 R 옐이나 홀로아츠 P 옐] 1장을 자신의 다른 홀로멤에게 바꿔 붙인다.\n\n이 팬은, 자신의 〈타카네 루이〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -29926,8 +30119,8 @@ const RAW_CARDS: Card[] = [
     id: "hBP08-110",
     cardNumber: "hBP08-110",
     setId: "hBP08",
-    name: "Takodach",
-    nameJp: "Takodach",
+    name: "Takodachi",
+    nameJp: "Takodachi",
     keywords: ["타코다치", "타코타치"],
     type: "support",
     supportSubtype: "fan",
@@ -30025,7 +30218,7 @@ const RAW_CARDS: Card[] = [
     imageUrl: "/images/hEB01/hEB01-004_C.png",
     abilities: [
       {
-        name: "기분좋은 거리감",
+        name: "기분 좋은 거리감",
         description: "자신의 덱을 1장 드로우 한다.",
         damage: 20,
         cost: ["red"],
@@ -30079,7 +30272,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "내, 유카타…… 어때?",
         description:
-          "상대의 턴에서, 이 홀로멤이 다운했을 때, 이 홀로멤에게 붙어 있는 서포트 카드 1장을 패로 되돌릴 수 있다.",
+          "상대의 턴에서, 이 홀로멤이 다운 했을 때, 이 홀로멤에게 붙어 있는 서포트 카드 1장을 패로 되돌릴 수 있다.",
         timing: "gift",
       },
       {
@@ -30394,7 +30587,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "저기, 입가의 초코…… 떼줘?♡",
         description:
-          "자신의 오시 홀로멤이 〈호쇼 마린〉이라면, 이 홀로멤에게 겹쳐져 있는 홀로멤 전부를 아카이브 할 수 있다 : 1장 이상 아카이브 했다면, 아츠 +100. 5장 이상 아카이브 했다면, 다시, 상대의 Debut 이외의 백 홀로멤 1명에게 특수 대미지 100을 준다.",
+          "자신의 오시 홀로멤이 〈호쇼 마린〉이라면, 이 홀로멤에게 겹쳐져 있는 홀로멤 전부를 아카이브 할 수 있다 : 1장 이상 아카이브 했다면, 이 아츠 +100. 5장 이상 아카이브 했다면, 다시, 상대의 Debut 이외의 백 홀로멤 1명에게 특수 대미지 100을 준다.",
         damage: 100,
         cost: ["blue", "blue", "colorless", "colorless"],
         specialDamage: { color: "red", value: 50 },
@@ -30419,7 +30612,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "코요를 여름 축제로 데려가줄래?",
         description:
-          "상대의 턴에서, 이 홀로멤이 다운했을 때, 이 홀로멤에게 붙어 있는 #코요 랩을 가진 서포트 카드 1장을 패로 되돌릴 수 있다.",
+          "상대의 턴에서, 이 홀로멤이 다운 했을 때, 이 홀로멤에게 붙어 있는 #코요 랩을 가진 서포트 카드 1장을 패로 되돌릴 수 있다.",
         timing: "gift",
       },
       {
@@ -30681,7 +30874,7 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "자신의 스테이지의 2nd 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +30 하고, 그 홀로멤이 아츠 데미지로 홀로멤을 다운 시켰을 때, 자신의 덱을 2장 드로우 한다.",
+          "자신의 스테이지의 2nd 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +30 하고, 그 홀로멤이 아츠 대미지로 홀로멤을 다운 시켰을 때, 자신의 덱을 2장 드로우 한다.",
       },
     ],
     limit: 4,
@@ -30784,7 +30977,7 @@ const RAW_CARDS: Card[] = [
     cardNumber: "hEB01-034",
     setId: "hEB01",
     name: "뭐든지 폭해!",
-    nameJp: "なんでも爆解!",
+    nameJp: "なんでも爆解！",
     type: "support",
     supportSubtype: "tool",
     tags: ["#코요 랩"],
@@ -30793,7 +30986,3023 @@ const RAW_CARDS: Card[] = [
       {
         name: "",
         description:
-          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆2nd 〈하쿠이 코요리〉에게 붙어 있다면 능력 추가\n[센터 포지션·콜라보 포지션 한정] 자신의 퍼포먼스 스텝이 종료할 때, 이 홀로멤에게 붙어 있는 〈뭐든지 폭해!〉 1장을 아카이브 할 수 있다 : 상대의 센터 홀로멤에게 특수 대미지 30을 준다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+          "이 툴이 붙어 있는 홀로멤의 아츠 +10.\n\n◆2nd 〈하쿠이 코요리〉에게 붙어 있다면 능력 추가\n[센터 포지션・콜라보 포지션 한정] 자신의 퍼포먼스 스텝이 종료할 때, 이 홀로멤에게 붙어 있는 〈뭐든지 폭해!〉 1장을 아카이브 할 수 있다 : 상대의 센터 홀로멤에게 특수 대미지 30을 준다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-001",
+    cardNumber: "hBP09-001",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "oshi",
+    color: ["white"],
+    life: 5,
+    imageUrl: "/images/hBP09/hBP09-001_OSR.png",
+    oshiStageAbility: {
+      name: "질서를 지키는 서장",
+      description:
+        "자신의 〈오오조라 스바루〉 전원의 아츠에 필요한 홀로아츠 W -1.",
+    },
+    oshiAbility: {
+      name: "오오조라 경찰 출동!",
+      cost: "홀로 파워 -2",
+      description:
+        "[턴에 1번] 상대의 스테이지의 홀로멤 1명을 고른다. 자신의 덱에서, 고른 홀로멤과 같은 Bloom 레벨인 〈오오조라 스바루〉 1장을 스테이지에 낸다. 그리고 덱을 셔플 한다.",
+    },
+    limit: 1,
+  },
+  {
+    id: "hBP09-002",
+    cardNumber: "hBP09-002",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "oshi",
+    color: ["white"],
+    life: 5,
+    imageUrl: "/images/hBP09/hBP09-002_OSR.png",
+    oshiStageAbility: {
+      name: "노려라, 우주 제일의 반쵸!",
+      description:
+        "[턴에 1번] 자신의 〈토도로키 하지메〉가 배턴 터치 했을 때, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+    },
+    oshiAbility: {
+      name: "웃겼다면 더욱 좋고, 미끄러져도 좋고",
+      cost: "홀로 파워 -X",
+      description:
+        "[턴에 1번] 자신의 센터에 있는 〈토도로키 하지메〉를 고른다. 이 턴 동안, 이 능력으로 아카이브 한 홀로 파워 1장당, 고른 홀로멤의 아츠 +10. 다시, 7장 이상이라면, 이 턴 동안, 자신의 스테이지의 〈토도로키 하지메〉 전원의 아츠 +100.",
+    },
+    limit: 1,
+  },
+  {
+    id: "hBP09-003",
+    cardNumber: "hBP09-003",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    type: "oshi",
+    color: ["green"],
+    life: 5,
+    imageUrl: "/images/hBP09/hBP09-003_OSR.png",
+    oshiStageAbility: {
+      name: "강철 위장 대마신",
+      description:
+        "[턴에 1번] 자신이 〈규동〉을 사용했을 때, 자신의 옐 덱의 위에서부터 1장을 자신의 〈시로가네 노엘〉에게 보낸다. 다시, 자신의 스테이지에 2nd 홀로멤이 있다면, 자신의 덱을 1장 드로우 한다.",
+    },
+    oshiAbility: {
+      name: "넘쳐나는 규동 사랑",
+      cost: "홀로 파워 -2",
+      description:
+        "[턴에 1번] 자신의 아카이브의 옐 1장을 자신의 〈시로가네 노엘〉에게 보낸다. 자신의 아카이브에 〈규동〉이 3장 이상 있다면, 대신, 자신의 아카이브의 옐 1~2장을 자신의 〈시로가네 노엘〉에게 나눠서 보낸다.",
+    },
+    limit: 1,
+  },
+  {
+    id: "hBP09-004",
+    cardNumber: "hBP09-004",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    type: "oshi",
+    color: ["red"],
+    life: 5,
+    imageUrl: "/images/hBP09/hBP09-004_OSR.png",
+    oshiStageAbility: {
+      name: "TO THE FORGE NOW",
+      description:
+        "[턴에 1번] 자신의 #카엘라's 암즈를 가진 툴을, 〈카엘라 코발스키아〉에게 붙였을 때, 자신의 덱을 2장 드로우 한다.",
+    },
+    oshiAbility: {
+      name: "레어 아이템을 발견해라!",
+      cost: "홀로 파워 -2",
+      description:
+        "[턴에 1번] 자신의 스테이지의 #카엘라's 암즈를 가진 툴을 2장 아카이브 한다. 이 능력으로 2장 아카이브 했다면, 상대의 Debut 이외의 [센터 홀로멤이나 콜라보 홀로멤]에게, 특수 대미지 100을 준다.",
+    },
+    limit: 1,
+  },
+  {
+    id: "hBP09-005",
+    cardNumber: "hBP09-005",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "oshi",
+    color: ["blue"],
+    life: 5,
+    imageUrl: "/images/hBP09/hBP09-005_OSR.png",
+    oshiStageAbility: {
+      name: "마탄의 사수",
+      description:
+        "[턴에 1번] 자신의 센터에 있는 〈토코야미 토와〉는, 아츠를 사용한 후, 그 홀로멤이 가진 다른 아츠명의 아츠를 1번 더 사용할 수 있다.",
+    },
+    oshiAbility: {
+      name: "있는 힘껏 오버한 샷",
+      cost: "홀로 파워 -2",
+      description:
+        "[턴에 1번] 자신의 퍼포먼스 스텝이 종료할 때 사용할 수 있다 : 이 턴에 자신의 #노래를 가진 홀로멤이 아츠를 사용한 횟수 1번당, 자신의 덱을 1장 드로우 한다.",
+    },
+    limit: 1,
+  },
+  {
+    id: "hBP09-006",
+    cardNumber: "hBP09-006",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "oshi",
+    color: ["purple"],
+    life: 5,
+    imageUrl: "/images/hBP09/hBP09-006_OSR.png",
+    oshiAbility: {
+      name: "전설의 美(비)",
+      cost: "홀로 파워 -2",
+      description:
+        "[턴에 1번] 자신의 덱을 3장 드로우 하고, 상대는, 자신의 덱을 2장 드로우 한다.",
+    },
+    spAbility: {
+      name: "나이 비비! 가라 비비! 멋져 비비!",
+      cost: "홀로 파워 -3",
+      description:
+        "[게임에 1번] 자신의 센터가 2nd 〈키키라라 비비〉라면, 서로의 [패 전부와 아카이브의 홀로멤과 서포트 전부]를 덱으로 되돌리고 셔플 한다. 그리고 각각의 덱을 7장 드로우 한다.",
+    },
+    limit: 1,
+  },
+  {
+    id: "hBP09-007",
+    cardNumber: "hBP09-007",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "oshi",
+    color: ["yellow"],
+    life: 5,
+    imageUrl: "/images/hBP09/hBP09-007_OSR.png",
+    oshiStageAbility: {
+      name: "지복의 한때",
+      description:
+        "자신의 스테이지의 〈유키하나 라미〉 전원의 아츠 +20. 자신의 아카이브에 #라미의 술을 가진 서포트가 5장 이상 있다면, 대신, 자신의 스테이지의 〈유키하나 라미〉 전원의 아츠 +50.",
+    },
+    oshiAbility: {
+      name: "사랑하는 것에게 둘러싸여",
+      cost: "홀로 파워 -2",
+      description:
+        "[턴에 1번] 자신의 덱에서, #라미의 술을 가진 서포트 1~2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+    },
+    limit: 1,
+  },
+  {
+    id: "hBP09-008",
+    cardNumber: "hBP09-008",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "holomem",
+    hp: 110,
+    color: ["white"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#2기생", "#새"],
+    imageUrl: "/images/hBP09/hBP09-008_C.png",
+    abilities: [
+      {
+        name: "캐주얼 스바루",
+        description:
+          "[턴에 1번] 상대의 턴에서, 이 홀로멤이 1번에 40 이상의 아츠 대미지를 받았을 때, 상대의 센터 홀로멤에게 특수 대미지 30을 준다.",
+        timing: "gift",
+      },
+      {
+        name: "장발, 어울림까?",
+        description: "",
+        damage: 30,
+        cost: ["white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-009",
+    cardNumber: "hBP09-009",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "holomem",
+    hp: 130,
+    color: ["white"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#2기생", "#새"],
+    imageUrl: "/images/hBP09/hBP09-009_U.png",
+    abilities: [
+      {
+        name: "걸리 스바루",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 다음 상대의 턴 동안, 자신의 〈오오조라 스바루〉 전원이 1st 홀로멤에게서 받는 아츠 대미지 -100.",
+        timing: "collab",
+      },
+      {
+        name: "부드러운 햇빛",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-010",
+    cardNumber: "hBP09-010",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "holomem",
+    hp: 170,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#2기생", "#새"],
+    imageUrl: "/images/hBP09/hBP09-010_C.png",
+    abilities: [
+      {
+        name: "높아지는 텐션",
+        description:
+          "자신의 덱을 2장 드로우 하고, 패 2장을 원하는 순서로 덱의 아래로 되돌린다.",
+        timing: "collab",
+      },
+      {
+        name: "여기부터 고조됨다!",
+        description: "상대의 스테이지의 툴 1장을 아카이브 한다.",
+        damage: 30,
+        cost: ["white", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-011",
+    cardNumber: "hBP09-011",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "holomem",
+    hp: 180,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#2기생", "#새"],
+    imageUrl: "/images/hBP09/hBP09-011_C.png",
+    abilities: [
+      {
+        name: "비 속의 햇님",
+        description:
+          "[턴에 1번] 상대의 턴에서, 이 홀로멤이 1번에 100 이상의 아츠 대미지를 받았을 때, 자신의 덱을 2장 드로우 한다.",
+        timing: "gift",
+      },
+      {
+        name: "비에도 지지 않고 바람에도 지지 않고",
+        description: "자신의 덱을 1장 드로우 한다.",
+        damage: 40,
+        cost: ["white", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-012",
+    cardNumber: "hBP09-012",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "holomem",
+    hp: 160,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#2기생", "#새"],
+    imageUrl: "/images/hBP09/hBP09-012_R.png",
+    abilities: [
+      {
+        name: "BIG3 친목회 side S",
+        description:
+          "자신의 오시 홀로멤이 〈오오조라 스바루〉고, 상대의 홀로 파워가 2장 이상이라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다. 자신의 【블룸 이펙트】 「BIG3 친목회 side S」는 턴에 1번밖에 사용할 수 없다.",
+        timing: "bloom",
+      },
+      {
+        name: "모츠 더 주세요",
+        description:
+          "직전 상대의 턴에 자신의 홀로멤이 다운 했었다면, 이 아츠 +50.",
+        damage: 80,
+        cost: ["white", "white", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-013",
+    cardNumber: "hBP09-013",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "holomem",
+    hp: 190,
+    color: ["white"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#2기생", "#새"],
+    imageUrl: "/images/hBP09/hBP09-013_U.png",
+    abilities: [
+      {
+        name: "병아리 실내복",
+        description:
+          "자신의 덱에서, [〈오오조라 경찰〉이나 〈스피드 위반〉] 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "릴랙스 홀리데이",
+        description: "",
+        damage: 100,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["white", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-014",
+    cardNumber: "hBP09-014",
+    setId: "hBP09",
+    name: "오오조라 스바루",
+    nameJp: "大空スバル",
+    type: "holomem",
+    hp: 200,
+    color: ["white"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#2기생", "#새"],
+    imageUrl: "/images/hBP09/hBP09-014_RR.png",
+    abilities: [
+      {
+        name: "그거, 몰수임다!",
+        description:
+          "[턴에 1번] 상대의 턴에서, 이 홀로멤이 1번에 200 이상의 아츠 대미지를 받았을 때, 상대는, 자신의 센터 홀로멤의 옐 전부를 원하는 순서로 옐 덱의 아래로 되돌린다.",
+        timing: "gift",
+      },
+      {
+        name: "저물지 않는 태양",
+        description:
+          "직전 상대의 턴에, 다운 했었던 자신의 홀로멤 1명당, 이 아츠 +40.",
+        damage: 160,
+        specialDamage: { color: "purple", value: 50 },
+        cost: ["white", "white", "white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-015",
+    cardNumber: "hBP09-015",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "holomem",
+    hp: 130,
+    color: ["white"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#ReGLOSS", "#베이비"],
+    imageUrl: "/images/hBP09/hBP09-015_C.png",
+    abilities: [
+      {
+        name: "꾸준한 댄스 트레이닝",
+        description:
+          "자신의 스테이지에 홀로멤이 3명 이상 있다면, 이 홀로멤의 배턴 터치에 필요한 홀로아츠 N -1.",
+        timing: "gift",
+      },
+      {
+        name: "상쾌한 스텝",
+        description:
+          "이 턴에 자신의 홀로멤이 배턴 터치 하고 있다면, 이 아츠 +20.",
+        damage: 20,
+        cost: ["white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-016",
+    cardNumber: "hBP09-016",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "holomem",
+    hp: 110,
+    color: ["white"],
+    holomemSubtype: "debut",
+    batonPass: 0,
+    tags: ["#DEV_IS", "#ReGLOSS", "#베이비"],
+    imageUrl: "/images/hBP09/hBP09-016_U.png",
+    abilities: [
+      {
+        name: "하지메의 오기",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, 배턴 터치에 필요한 홀로아츠 N가 1개인 〈토도로키 하지메〉 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "선두에 나선다!",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-017",
+    cardNumber: "hBP09-017",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "holomem",
+    hp: 160,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 0,
+    tags: ["#DEV_IS", "#ReGLOSS", "#베이비"],
+    imageUrl: "/images/hBP09/hBP09-017_C.png",
+    abilities: [
+      {
+        name: "훤소 중의 밀사",
+        description: "이 홀로멤이 받는 아츠 대미지 -30.",
+        timing: "gift",
+      },
+      {
+        name: "만나기로 한 모퉁이에서",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-018",
+    cardNumber: "hBP09-018",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "holomem",
+    hp: 150,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#ReGLOSS", "#베이비"],
+    imageUrl: "/images/hBP09/hBP09-018_C.png",
+    abilities: [
+      {
+        name: "하지메의 자켓",
+        description: "[센터 포지션 한정] 자신의 덱을 2장 드로우 한다.",
+        timing: "bloom",
+      },
+      {
+        name: "어룬스려운 복짱",
+        description: "[콜라보 포지션 한정] 이 아츠 +20.",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-019",
+    cardNumber: "hBP09-019",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "holomem",
+    hp: 170,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#ReGLOSS", "#베이비"],
+    imageUrl: "/images/hBP09/hBP09-019_R.png",
+    abilities: [
+      {
+        name: "하지메의 애챠",
+        description:
+          "[백 포지션 한정] 자신의 스테이지의 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 배턴 터치에 필요한 홀로아츠 N -2.",
+        timing: "bloom",
+      },
+      {
+        name: "붕붕 반쵸",
+        description:
+          "[센터 포지션 한정] 이 턴에 자신의 홀로멤이 배턴 터치 하고 있다면, 이 아츠 +20.",
+        damage: 40,
+        cost: ["white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-020",
+    cardNumber: "hBP09-020",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "holomem",
+    hp: 190,
+    color: ["white"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#ReGLOSS", "#베이비"],
+    imageUrl: "/images/hBP09/hBP09-020_U.png",
+    abilities: [
+      {
+        name: "기상천외한 상황",
+        description: "이 홀로멤은 리셋 스텝에서 휴식하지 않는다.",
+        timing: "gift",
+      },
+      {
+        name: "깨달아라!",
+        description:
+          "[콜라보 포지션 한정] 이 턴 동안, 자신의 센터 홀로멤의 아츠에 필요한 홀로아츠 W -1.",
+        damage: 60,
+        specialDamage: { color: "purple", value: 50 },
+        cost: ["white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-021",
+    cardNumber: "hBP09-021",
+    setId: "hBP09",
+    name: "토도로키 하지메",
+    nameJp: "轟はじめ",
+    type: "holomem",
+    hp: 200,
+    color: ["white"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#ReGLOSS", "#베이비"],
+    imageUrl: "/images/hBP09/hBP09-021_RR.png",
+    abilities: [
+      {
+        name: "스토익 댄서",
+        description:
+          "이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+        timing: "gift",
+      },
+      {
+        name: "끊이지 않는 열정",
+        description:
+          "이 턴에 자신의 홀로멤이 배턴 터치 하고 있다면, 이 아츠 +80.",
+        damage: 80,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["white", "white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-022",
+    cardNumber: "hBP09-022",
+    setId: "hBP09",
+    name: "츠노마키 와타메",
+    nameJp: "角巻わため",
+    type: "holomem",
+    hp: 210,
+    color: ["white"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#4기생", "#동물귀", "#노래"],
+    imageUrl: "/images/hBP09/hBP09-022_R.png",
+    abilities: [
+      {
+        name: "와타메이트의 낙원",
+        description:
+          "상대의 스테이지의 홀로멤 1명을 고른다. 자신의 홀로 파워가 10장 이상이라면, 이 턴 동안, 고른 홀로멤은 2nd 홀로멤으로도 취급한다.",
+        timing: "bloom",
+      },
+      {
+        name: "꽃이 이쁘네",
+        description: "자신의 홀로 파워가 4장 이상이라면, 이 아츠 +50.",
+        damage: 100,
+        specialDamage: { color: "purple", value: 50 },
+        cost: ["white", "white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-023",
+    cardNumber: "hBP09-023",
+    setId: "hBP09",
+    name: "베스티아 제타",
+    nameJp: "ベスティア・ゼータ",
+    keywords: ["Buzz"],
+    type: "holomem",
+    hp: 220,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-023_R.png",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
+    abilities: [
+      {
+        name: "고딕 제타",
+        description:
+          "이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 오시 홀로멤이 〈베스티아 제타〉라면, 주사위를 2번 굴린다. 나온 눈의 합계수가 서로의 라이프의 합계수와 같다면, 상대의 라이프 -1.",
+        timing: "gift",
+      },
+      {
+        name: "칠흑의 첩보",
+        description:
+          "[센터 포지션 한정] 이 턴에 자신의 오시 스킬 「Good Luck, holoh3ro!」를 사용하고 있다면, 이 아츠 +80.",
+        damage: 120,
+        cost: ["white", "white", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-024",
+    cardNumber: "hBP09-024",
+    setId: "hBP09",
+    name: "이사키 리오나",
+    nameJp: "響咲リオナ",
+    keywords: ["Buzz"],
+    type: "holomem",
+    hp: 240,
+    color: ["white"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-024_R.png",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
+    abilities: [
+      {
+        name: "수줍음을 숨기는 미소",
+        description:
+          "[센터 포지션 한정] 자신의 #FLOW GLOW를 가진 콜라보 홀로멤의 아츠에 필요한 옐의 색 전부를 홀로아츠 N로 한다.",
+        timing: "gift",
+      },
+      {
+        name: "리더에게 주는 보답",
+        description:
+          "[센터 포지션 한정] 자신의 스테이지에 〈코가네이 니코〉와 〈미즈미야 스우〉와 〈린도 치하야〉와 〈키키라라 비비〉가 있다면, 이 아츠 +100.",
+        damage: 70,
+        cost: ["white", "white"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-025",
+    cardNumber: "hBP09-025",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    type: "holomem",
+    hp: 130,
+    color: ["green"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#3기생", "#술"],
+    imageUrl: "/images/hBP09/hBP09-025_C.png",
+    abilities: [
+      {
+        name: "캐주얼 노엘",
+        description:
+          "자신의 오시 홀로멤이 오시 스테이지 스킬을 가진다면, 이 홀로멤의 HP +20.",
+        timing: "gift",
+      },
+      {
+        name: "오늘은 프라이빗!",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-026",
+    cardNumber: "hBP09-026",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    type: "holomem",
+    hp: 140,
+    color: ["green"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#3기생", "#술"],
+    imageUrl: "/images/hBP09/hBP09-026_U.png",
+    abilities: [
+      {
+        name: "머슬・그레이스",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, [Debut 〈시로가네 노엘〉과 〈규동〉] 1장씩을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "자애의 철퇴",
+        description: "",
+        damage: 20,
+        cost: ["green"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-027",
+    cardNumber: "hBP09-027",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    type: "holomem",
+    hp: 160,
+    color: ["green"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#3기생", "#술"],
+    imageUrl: "/images/hBP09/hBP09-027_C.png",
+    abilities: [
+      {
+        name: "단장 출진!",
+        description:
+          "이 홀로멤의 HP가 줄어 있지 않다면, 이 홀로멤이 1st 홀로멤에게서 받는 아츠 대미지 -50.",
+        timing: "gift",
+      },
+      {
+        name: "상냥하고 천하장사!",
+        description: "",
+        damage: 40,
+        cost: ["green", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-028",
+    cardNumber: "hBP09-028",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    type: "holomem",
+    hp: 150,
+    color: ["green"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#3기생", "#술"],
+    imageUrl: "/images/hBP09/hBP09-028_C.png",
+    abilities: [
+      {
+        name: "노엘의 모험",
+        description:
+          "자신의 덱에서, 〈규동〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "bloom",
+      },
+      {
+        name: "시로가네 기사단 집합!",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-029",
+    cardNumber: "hBP09-029",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    keywords: ["Buzz"],
+    type: "holomem",
+    hp: 260,
+    color: ["green"],
+    holomemSubtype: "1st",
+    batonPass: 3,
+    tags: ["#JP", "#3기생", "#술"],
+    imageUrl: "/images/hBP09/hBP09-029_R.png",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
+    abilities: [
+      {
+        name: "BIG3 친목회 side N",
+        description:
+          "자신의 덱에서, 2nd 〈시로가네 노엘〉 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        damage: 100,
+        cost: ["green", "green", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-030",
+    cardNumber: "hBP09-030",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    type: "holomem",
+    hp: 220,
+    color: ["green"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#3기생", "#술"],
+    imageUrl: "/images/hBP09/hBP09-030_U.png",
+    abilities: [
+      {
+        name: "시로가네 기사단을 짊어진 자",
+        description:
+          "자신의 아카이브의 〈규동〉 1장당, 자신의 홀로멤 1명의 HP 10 회복.",
+        timing: "collab",
+      },
+      {
+        name: "믿음직한 근력",
+        description: "자신의 아카이브의 〈규동〉 1장당, 이 아츠 +10.",
+        damage: 100,
+        specialDamage: { color: "yellow", value: 50 },
+        cost: ["green", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-031",
+    cardNumber: "hBP09-031",
+    setId: "hBP09",
+    name: "시로가네 노엘",
+    nameJp: "白銀ノエル",
+    type: "holomem",
+    hp: 220,
+    color: ["green"],
+    holomemSubtype: "2nd",
+    batonPass: 3,
+    tags: ["#JP", "#3기생", "#술"],
+    imageUrl: "/images/hBP09/hBP09-031_RR.png",
+    abilities: [
+      {
+        name: "궁극의 규동도",
+        description:
+          "[턴에 1번] 이 홀로멤이 〈규동〉의 능력으로 회복하는 HP +100.",
+        timing: "gift",
+      },
+      {
+        name: "규동은~ 음료수!",
+        description:
+          "자신의 오시 홀로멤이 〈시로가네 노엘〉이고, 이 홀로멤의 남은 HP가 200 이상이라면, 이 아츠 +200.",
+        damage: 10,
+        specialDamage: { color: "blue", value: 50 },
+        cost: ["green", "green", "green", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-032",
+    cardNumber: "hBP09-032",
+    setId: "hBP09",
+    name: "오오카미 미오",
+    nameJp: "大神ミオ",
+    type: "holomem",
+    hp: 100,
+    color: ["green"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#게이머즈", "#동물귀", "#요리"],
+    imageUrl: "/images/hBP09/hBP09-032_C.png",
+    abilities: [
+      {
+        name: "흑발 동물귀 소녀",
+        description:
+          "자신의 패의 [마스코트나 팬] 1장을 공개하고, 덱의 위로 되돌릴 수 있다 : 자신의 옐 덱의 위에서부터 1장을 자신의 #게이머즈를 가진 홀로멤에게 보낸다.",
+        timing: "collab",
+      },
+      {
+        name: "갔다와묭",
+        description: "",
+        damage: 20,
+        cost: ["green"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-033",
+    cardNumber: "hBP09-033",
+    setId: "hBP09",
+    name: "오오카미 미오",
+    nameJp: "大神ミオ",
+    type: "holomem",
+    hp: 170,
+    color: ["green"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#게이머즈", "#동물귀", "#요리"],
+    imageUrl: "/images/hBP09/hBP09-033_U.png",
+    abilities: [
+      {
+        name: "젖은 머리 미오샤",
+        description:
+          "자신의 덱의 위에서부터 1장을 아카이브 할 수 있다 : 아카이브 한 카드가 서포트라면, 자신의 옐 덱의 위에서부터 1장을 자신의 홀로멤에게 보낸다.",
+        timing: "bloom",
+      },
+      {
+        name: "달아오르는 목욕",
+        description: "",
+        damage: 50,
+        cost: ["green", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-034",
+    cardNumber: "hBP09-034",
+    setId: "hBP09",
+    name: "오오카미 미오",
+    nameJp: "大神ミオ",
+    keywords: ["Buzz"],
+    type: "holomem",
+    hp: 240,
+    color: ["green"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#게이머즈", "#동물귀", "#요리"],
+    imageUrl: "/images/hBP09/hBP09-034_R.png",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
+    abilities: [
+      {
+        name: "미오샤의 가는 길",
+        description:
+          "자신의 아카이브의 [마스코트와 팬] 합계 2장을 원하는 순서로 덱의 위로 되돌릴 수 있다 : 자신의 홀로멤 1명의 HP 100 회복.",
+        timing: "collab",
+      },
+      {
+        name: "나랑 같이 가자!",
+        description: "",
+        damage: 110,
+        cost: ["green", "green", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-035",
+    cardNumber: "hBP09-035",
+    setId: "hBP09",
+    name: "오오카미 미오",
+    nameJp: "大神ミオ",
+    type: "holomem",
+    hp: 210,
+    color: ["green"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#게이머즈", "#동물귀", "#요리"],
+    imageUrl: "/images/hBP09/hBP09-035_RR.png",
+    abilities: [
+      {
+        name: "치유의 공간",
+        description:
+          "자신의 오시 홀로멤이 〈오오카미 미오〉라면, 자신의 덱을 3장 드로우 하고, 패 2장을 원하는 순서로 덱의 위로 되돌린다.",
+        timing: "bloom",
+      },
+      {
+        name: "요리는 애정",
+        description:
+          "자신의 덱의 위에서부터 2장을 아카이브 할 수 있다 : 자신의 스테이지의 홀로멤 1명을 고른다. 이 능력으로 아카이브 한 서포트 1장당, 이 턴 동안, 고른 홀로멤의 아츠 +30.",
+        damage: 180,
+        specialDamage: { color: "blue", value: 50 },
+        cost: ["green", "colorless", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-036",
+    cardNumber: "hBP09-036",
+    setId: "hBP09",
+    name: "카자마 이로하",
+    nameJp: "風真いろは",
+    type: "holomem",
+    hp: 160,
+    color: ["green"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#비밀 결사 holoX"],
+    imageUrl: "/images/hBP09/hBP09-036_R.png",
+    abilities: [
+      {
+        name: "백만일심",
+        description:
+          "자신의 스테이지의 〈AZKi〉 1명을 고른다. 자신의 옐 덱에서, 고른 홀로멤과 같은 색의 옐 1장을 고른 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "도우미, 고맙소이다",
+        description: "자신의 센터에 있는 〈AZKi〉의 옐 1장당, 이 아츠 +20.",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-037",
+    cardNumber: "hBP09-037",
+    setId: "hBP09",
+    name: "린도 치하야",
+    nameJp: "輪堂千速",
+    type: "holomem",
+    hp: 200,
+    color: ["green"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-037_R.png",
+    abilities: [
+      {
+        name: "Fantastic Driver",
+        description:
+          "이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 #FLOW GLOW를 가진 백 홀로멤 1명을 고른다. 고른 홀로멤을 포함해 겹쳐져 있는 홀로멤 전부를 패로 되돌릴 수 있다.",
+        timing: "gift",
+      },
+      {
+        name: "Victory Feast",
+        description:
+          "자신의 오시 홀로멤이 〈린도 치하야〉라면, 자신의 스테이지의 Debut 이외의 홀로멤 1명당, 이 아츠 +30.",
+        damage: 80,
+        specialDamage: { color: "yellow", value: 50 },
+        cost: ["green", "green", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-038",
+    cardNumber: "hBP09-038",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    type: "holomem",
+    hp: 110,
+    color: ["red"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-038_C.png",
+    abilities: [
+      {
+        name: "Blacksmith",
+        description:
+          "이 홀로멤에게 툴이 붙어 있다면, 자신의 덱을 1장 드로우 한다.",
+        timing: "collab",
+      },
+      {
+        name: "금속 세공에 건 마음",
+        description: "",
+        damage: 30,
+        cost: ["red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-039",
+    cardNumber: "hBP09-039",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    type: "holomem",
+    hp: 130,
+    color: ["red"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-039_U.png",
+    abilities: [
+      {
+        name: "Workaholic!",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, 툴 2장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "자재 수집은 맡겨줘!",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-040",
+    cardNumber: "hBP09-040",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    type: "holomem",
+    hp: 180,
+    color: ["red"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-040_C.png",
+    abilities: [
+      {
+        name: "영리한 일꾼",
+        description:
+          "자신의 아카이브의 #카엘라's 암즈를 가진 툴 1장을 패로 되돌릴 수 있다.",
+        timing: "collab",
+      },
+      {
+        name: "끝나지 않는 탐구",
+        description: "",
+        damage: 40,
+        cost: ["red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-041",
+    cardNumber: "hBP09-041",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    type: "holomem",
+    hp: 170,
+    color: ["red"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-041_C.png",
+    abilities: [
+      {
+        name: "아름다운 차림의 장인",
+        description:
+          "이 홀로멤에게 #카엘라's 암즈를 가진 툴이 붙어 있다면, 이 홀로멤의 아츠에 필요한 홀로아츠 R -1.",
+        timing: "gift",
+      },
+      {
+        name: "겸비한 냉정과 열의",
+        description:
+          "자신의 Buzz 홀로멤이나 2nd 홀로멤에게 #카엘라's 암즈를 가진 툴이 붙어 있다면, 이 아츠 +20.",
+        damage: 30,
+        cost: ["red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-042",
+    cardNumber: "hBP09-042",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    keywords: ["Buzz"],
+    type: "holomem",
+    hp: 240,
+    color: ["red"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-042_R.png",
+    extraRule: "이 홀로멤이 다운 했을 때, 자신의 라이프 -2.",
+    abilities: [
+      {
+        name: "숲의 현자",
+        description:
+          "이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 아카이브의 홀로멤 1장을 패로 되돌린다.",
+        timing: "gift",
+      },
+      {
+        name: "나무숲에 숨은 신비",
+        description:
+          "자신의 아카이브의 #카엘라's 암즈를 가진 툴 1장을 이 홀로멤에게 붙인다.",
+        damage: 70,
+        cost: ["red", "red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-043",
+    cardNumber: "hBP09-043",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    type: "holomem",
+    hp: 200,
+    color: ["red"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-043_U.png",
+    abilities: [
+      {
+        name: "Happy Summer Days",
+        description:
+          "자신의 스테이지에 #카엘라's 암즈를 가진 툴이 2장 이상 있다면, 자신의 아카이브의 옐 1장을 자신의 홀로멤에게 보낸다.",
+        timing: "collab",
+      },
+      {
+        name: "Vacation on Islands",
+        description: "상대의 콜라보 홀로멤에게 특수 대미지 30을 준다.",
+        damage: 60,
+        specialDamage: { color: "yellow", value: 50 },
+        cost: ["red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-044",
+    cardNumber: "hBP09-044",
+    setId: "hBP09",
+    name: "카엘라 코발스키아",
+    nameJp: "カエラ・コヴァルスキア",
+    type: "holomem",
+    hp: 200,
+    color: ["red"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#ID", "#ID 3기생"],
+    imageUrl: "/images/hBP09/hBP09-044_RR.png",
+    abilities: [
+      {
+        name: "스승에게서 물려받은 것",
+        description:
+          "이 홀로멤에게 툴이 붙어 있다면, 이 홀로멤은, #카엘라's 암즈를 가진 툴을 1장 더 붙일 수 있다.",
+        timing: "gift",
+      },
+      {
+        name: "대장장이의 본회",
+        description:
+          "이 홀로멤에게 #카엘라's 암즈를 가진 툴이 붙어 있다면, 이 아츠 +60.",
+        damage: 100,
+        specialDamage: { color: "green", value: 50 },
+        cost: ["red", "red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-045",
+    cardNumber: "hBP09-045",
+    setId: "hBP09",
+    name: "아카이 하아토",
+    nameJp: "赤井はあと",
+    type: "holomem",
+    hp: 200,
+    color: ["red"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#1기생", "#요리"],
+    imageUrl: "/images/hBP09/hBP09-045_R.png",
+    abilities: [
+      {
+        name: "스위트 하쨔마",
+        description:
+          "주사위를 1번 굴린다. 홀수라면, 상대의 센터 홀로멤에게 특수 대미지 30을 준다. 짝수라면, 자신의 덱을 2장 드로우 한다.",
+        timing: "bloom",
+      },
+      {
+        name: "맛있는 과자를 만들래!",
+        description:
+          "자신의 아카이브의 Debut 〈아카이 하아토〉 1장을 스테이지에 낸다.",
+        damage: 170,
+        specialDamage: { color: "yellow", value: 50 },
+        cost: ["red", "red", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-046",
+    cardNumber: "hBP09-046",
+    setId: "hBP09",
+    name: "나키리 아야메",
+    nameJp: "百鬼あやめ",
+    type: "holomem",
+    hp: 110,
+    color: ["red"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#2기생", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-046_U.png",
+    abilities: [
+      {
+        name: "오니의 장난",
+        description:
+          "자신의 옐 덱의 위에서부터 1장을 아카이브 할 수 있다 : 자신의 덱에서, Debut 〈나키리 아야메〉 1장을 스테이지에 낸다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "오니의 연회",
+        description: "",
+        damage: 20,
+        cost: ["red"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-047",
+    cardNumber: "hBP09-047",
+    setId: "hBP09",
+    name: "하코스 벨즈",
+    nameJp: "ハコス・ベールズ",
+    type: "holomem",
+    hp: 100,
+    color: ["red"],
+    holomemSubtype: "debut",
+    batonPass: 0,
+    tags: ["#EN", "#Promise", "#동물귀"],
+    imageUrl: "/images/hBP09/hBP09-047_C.png",
+    abilities: [
+      {
+        name: "FUNNY RAT",
+        description:
+          "자신의 센터가 〈오오조라 스바루〉라면, 자신의 덱을 1장 드로우 한다.",
+        timing: "collab",
+      },
+      {
+        name: "풍선은 어때요?",
+        description:
+          "자신의 스테이지에 〈오오조라 스바루〉가 있다면, 이 아츠 +20.",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-048",
+    cardNumber: "hBP09-048",
+    setId: "hBP09",
+    name: "하코스 벨즈",
+    nameJp: "ハコス・ベールズ",
+    type: "holomem",
+    hp: 160,
+    color: ["red"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Promise", "#동물귀"],
+    imageUrl: "/images/hBP09/hBP09-048_U.png",
+    abilities: [
+      {
+        name: "CHAOTIC INVITATION",
+        description:
+          "자신의 오시 홀로멤이 〈오오조라 스바루〉라면, 자신의 덱에서, 1st [〈오오조라 스바루〉와 〈하코스 벨즈〉] 1장씩을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        timing: "bloom",
+      },
+      {
+        name: "나랑 즐기자!",
+        description:
+          "주사위를 1번 굴린다. 홀수라면, 상대의 콜라보 홀로멤에게 특수 대미지 20을 준다.",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-049",
+    cardNumber: "hBP09-049",
+    setId: "hBP09",
+    name: "하코스 벨즈",
+    nameJp: "ハコス・ベールズ",
+    type: "holomem",
+    hp: 190,
+    color: ["red"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#EN", "#Promise", "#동물귀"],
+    imageUrl: "/images/hBP09/hBP09-049_R.png",
+    abilities: [
+      {
+        name: "뜨거운 취조",
+        description:
+          "자신의 오시 홀로멤이 〈오오조라 스바루〉라면, 이 홀로멤의 아츠에 필요한 홀로아츠 N -3.",
+        timing: "gift",
+      },
+      {
+        name: "시치미 떼지마!",
+        description:
+          "자신의 오시 홀로멤이 〈오오조라 스바루〉라면, 자신의 아카이브의 [〈오오조라 스바루〉나 〈하코스 벨즈〉] 1장을 패로 되돌린다.",
+        damage: 80,
+        specialDamage: { color: "green", value: 50 },
+        cost: ["colorless", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-050",
+    cardNumber: "hBP09-050",
+    setId: "hBP09",
+    name: "하코스 벨즈",
+    nameJp: "ハコス・ベールズ",
+    type: "holomem",
+    hp: 200,
+    color: ["red"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#EN", "#Promise", "#동물귀"],
+    imageUrl: "/images/hBP09/hBP09-050_RR.png",
+    abilities: [
+      {
+        name: "오오조라 경찰 국제부 대표",
+        description:
+          "자신의 오시 홀로멤이 〈오오조라 스바루〉라면, 상대의 백 홀로멤 1명을 고른다. 고른 홀로멤과 상대의 콜라보 홀로멤을 교대시킨다. 상대의 콜라보 홀로멤이 없다면, 대신, 고른 홀로멤을 콜라보 포지션으로 이동시킨다.",
+        timing: "collab",
+      },
+      {
+        name: "쥐의 대체포",
+        description:
+          "자신의 스테이지의 〈오오조라 스바루〉 1명당, 이 아츠 +20.",
+        damage: 100,
+        specialDamage: { color: "purple", value: 50 },
+        cost: ["colorless", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-051",
+    cardNumber: "hBP09-051",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "holomem",
+    hp: 130,
+    color: ["blue"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#4기생", "#노래", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-051_C.png",
+    abilities: [
+      {
+        name: "사랑받는 계열 소악마",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+      {
+        name: "이런 것도 괜찮지?",
+        description:
+          "이 홀로멤의 옐 1장을 자신의 #노래를 가진 백 홀로멤에게 바꿔 붙일 수 있다.",
+        damage: 30,
+        cost: ["blue", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-052",
+    cardNumber: "hBP09-052",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "holomem",
+    hp: 130,
+    color: ["blue"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#4기생", "#노래", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-052_U.png",
+    abilities: [
+      {
+        name: "방송이 끝난 뒤의 한때",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈토코야미 토와〉에게 보낸다.",
+        timing: "collab",
+      },
+      {
+        name: "이 뒤에 뭐할까?",
+        description: "",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-053",
+    cardNumber: "hBP09-053",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "holomem",
+    hp: 180,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#4기생", "#노래", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-053_C.png",
+    abilities: [
+      {
+        name: "스트리트 토와",
+        description: "",
+        damage: 30,
+        cost: ["blue"],
+      },
+      {
+        name: "토코야미 권속과 보내는 한때",
+        description: "",
+        damage: 80,
+        cost: ["blue", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-054",
+    cardNumber: "hBP09-054",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "holomem",
+    hp: 160,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#4기생", "#노래", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-054_C.png",
+    abilities: [
+      {
+        name: "화려한 바이올렛",
+        description:
+          "자신의 옐 덱의 위에서부터 1장을 자신의 〈토코야미 토와〉에게 보낸다.",
+        timing: "bloom",
+      },
+      {
+        name: "열정의 팔레트",
+        description:
+          "자신의 스테이지에 #노래를 가진 2nd 홀로멤이 있다면, 상대의 홀로멤 1명에게 특수 대미지 20을 준다.",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-055",
+    cardNumber: "hBP09-055",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "holomem",
+    hp: 170,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#4기생", "#노래", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-055_R.png",
+    abilities: [
+      {
+        name: "소악마의 미소",
+        description: "",
+        damage: 20,
+        cost: ["blue"],
+      },
+      {
+        name: "지금, 잤지~?",
+        description:
+          "이 아츠가 이 턴에 사용하는 2번째 아츠라면, 이 홀로멤의 옐 1장을 자신의 다른 #노래를 가진 홀로멤에게 바꿔 붙일 수 있다.",
+        damage: 50,
+        cost: ["blue", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-056",
+    cardNumber: "hBP09-056",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "holomem",
+    hp: 210,
+    color: ["blue"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#4기생", "#노래", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-056_U.png",
+    abilities: [
+      {
+        name: "투지 넘쳐나는 파이터",
+        description:
+          "자신의 아카이브의 옐 1장을 자신의 #노래를 가진 홀로멤에게 보낸다.",
+        damage: 40,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["colorless"],
+      },
+      {
+        name: "연구 끝의 일격",
+        description:
+          "이 아츠가 이 턴에 사용하는 2번째 아츠라면, 자신의 덱의 위에서부터 1장을 홀로 파워로 한다.",
+        damage: 50,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["blue", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-057",
+    cardNumber: "hBP09-057",
+    setId: "hBP09",
+    name: "토코야미 토와",
+    nameJp: "常闇トワ",
+    type: "holomem",
+    hp: 200,
+    color: ["blue"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#4기생", "#노래", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-057_RR.png",
+    abilities: [
+      {
+        name: "마계학교의 우등생",
+        description:
+          "이 아츠가 이 턴에 사용하는 2번째 아츠라면, 자신의 덱의 위에서부터 4장을 본다. 그중에서, 서포트 카드 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+        damage: 70,
+        specialDamage: { color: "white", value: 50 },
+        cost: ["blue", "colorless"],
+      },
+      {
+        name: "한 사람분의 악마가 되기 위해서",
+        description:
+          "이 아츠가 이 턴에 사용하는 3번째 아츠라면, 상대의 홀로멤 1명에게 특수 대미지 50을 준다.",
+        damage: 100,
+        specialDamage: { color: "white", value: 50 },
+        cost: ["blue", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-058",
+    cardNumber: "hBP09-058",
+    setId: "hBP09",
+    name: "네코마타 오카유",
+    nameJp: "猫又おかゆ",
+    type: "holomem",
+    hp: 150,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#게이머즈", "#동물귀"],
+    imageUrl: "/images/hBP09/hBP09-058_R.png",
+    abilities: [
+      {
+        name: "거나한 오카융",
+        description:
+          "자신의 오시 홀로멤이 〈네코마타 오카유〉라면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈네코마타 오카유〉에게 보낸다.",
+        timing: "bloom",
+      },
+      {
+        name: "고양이와 꿈결 같은 밤",
+        description: "상대의 홀로멤 1명에게 특수 대미지 10을 준다.",
+        damage: 30,
+        cost: ["blue"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-059",
+    cardNumber: "hBP09-059",
+    setId: "hBP09",
+    name: "무나 호시노바",
+    nameJp: "ムーナ・ホシノヴァ",
+    type: "holomem",
+    hp: 130,
+    color: ["blue"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#ID", "#ID 1기생", "#노래"],
+    imageUrl: "/images/hBP09/hBP09-059_C.png",
+    abilities: [
+      {
+        name: "달의 가수",
+        description:
+          "상대의 턴에서, 자신의 〈무나 호시노바〉가 다운 했을 때, 자신의 옐 덱의 위에서부터 1장을 이 홀로멤 이외의 자신의 #ID 1기생을 가진 백 홀로멤에게 보낸다. 자신의 【기프트】 「달의 가수」는 턴에 1번밖에 사용할 수 없다.",
+        timing: "gift",
+      },
+      {
+        name: "영혼을 흔드는 샤우트",
+        description: "",
+        damage: 30,
+        cost: ["blue"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-060",
+    cardNumber: "hBP09-060",
+    setId: "hBP09",
+    name: "무나 호시노바",
+    nameJp: "ムーナ・ホシノヴァ",
+    type: "holomem",
+    hp: 140,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#ID", "#ID 1기생", "#노래"],
+    imageUrl: "/images/hBP09/hBP09-060_U.png",
+    abilities: [
+      {
+        name: "어른스러운 대학생",
+        description:
+          "자신의 덱의 위에서부터 3장을 본다. 그중에서, #ID 1기생을 가진 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+        timing: "bloom",
+      },
+      {
+        name: "오늘은 누나 모드",
+        description:
+          "상대의 센터 홀로멤과 콜라보 홀로멤에게 특수 대미지 10을 준다.",
+        damage: 50,
+        cost: ["blue", "blue"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-061",
+    cardNumber: "hBP09-061",
+    setId: "hBP09",
+    name: "무나 호시노바",
+    nameJp: "ムーナ・ホシノヴァ",
+    type: "holomem",
+    hp: 180,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#ID", "#ID 1기생", "#노래"],
+    imageUrl: "/images/hBP09/hBP09-061_R.png",
+    abilities: [
+      {
+        name: "달의 여신",
+        description:
+          "자신의 오시 홀로멤이 〈무나 호시노바〉라면, 자신의 옐 덱의 위에서부터 1장을 이 홀로멤에게 보낸다.",
+        timing: "collab",
+      },
+      {
+        name: "달 그림자 비추는 도표",
+        description:
+          "이 홀로멤의 옐 2장을 자신의 #ID 1기생을 가진 백 홀로멤 1명에게 바꿔 붙인다.",
+        damage: 80,
+        cost: ["blue", "blue", "blue"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-062",
+    cardNumber: "hBP09-062",
+    setId: "hBP09",
+    name: "무나 호시노바",
+    nameJp: "ムーナ・ホシノヴァ",
+    type: "holomem",
+    hp: 200,
+    color: ["blue"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#ID", "#ID 1기생", "#노래"],
+    imageUrl: "/images/hBP09/hBP09-062_RR.png",
+    abilities: [
+      {
+        name: "밤을 비추는 빛",
+        description:
+          "이 홀로멤이 상대의 홀로멤을 다운 시켰을 때, 자신의 스테이지에 #ID 1기생을 가진 홀로멤이 5명 이상 있다면, 상대의 홀로멤 1명에게 특수 대미지 50을 준다.",
+        timing: "gift",
+      },
+      {
+        name: "유혹의 자태",
+        description:
+          "자신의 오시 홀로멤이 〈무나 호시노바〉라면, 이 홀로멤의 홀로아츠 B 옐 5장을 아카이브 할 수 있다 : 자신의 스테이지의 #ID 1기생을 가진 홀로멤 1명당, 이 아츠 +20.",
+        damage: 120,
+        specialDamage: { color: "red", value: 50 },
+        cost: ["blue", "blue", "blue", "blue", "blue"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-063",
+    cardNumber: "hBP09-063",
+    setId: "hBP09",
+    name: "오로 크로니",
+    nameJp: "オーロ・クロニー",
+    type: "holomem",
+    hp: 150,
+    color: ["blue"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Promise"],
+    imageUrl: "/images/hBP09/hBP09-063_R.png",
+    abilities: [
+      {
+        name: "Student of Time",
+        description:
+          "자신의 덱의 아래에서부터 1장을 드로우 한다. 자신의 【블룸 이펙트】 「Student of Time」은 턴에 1번밖에 사용할 수 없다.",
+        timing: "bloom",
+      },
+      {
+        name: "Let's Study Together!",
+        description:
+          "자신의 덱에서, [〈Boros〉나 〈Kronies〉] 1장을 자신의 〈오로 크로니〉에게 붙인다. 그리고 덱을 셔플 한다.",
+        damage: 30,
+        cost: ["blue"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-064",
+    cardNumber: "hBP09-064",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "holomem",
+    hp: 130,
+    color: ["purple"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-064_C.png",
+    abilities: [
+      {
+        name: "이제 떨어지지 말라고~",
+        description: "상대의 패가 4장 이상 있다면, 이 아츠 +20.",
+        damage: 20,
+        cost: ["purple"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-065",
+    cardNumber: "hBP09-065",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "holomem",
+    hp: 120,
+    color: ["purple"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-065_U.png",
+    abilities: [
+      {
+        name: "반짝반짝한 선물",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱에서, 〈키키라라 비비〉 2장을 공개하고, 패에 더한다. 그리고 자신의 덱을 셔플 한다. 상대는, 자신의 덱을 1장 드로우 한다.",
+        timing: "collab",
+      },
+      {
+        name: "기뻐해주면 비비도 기뻐!",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-066",
+    cardNumber: "hBP09-066",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "holomem",
+    hp: 160,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-066_C.png",
+    abilities: [
+      {
+        name: "럭키키한 호출",
+        description:
+          "이 턴 동안, 이 홀로멤의 아츠 +20. 상대의 패가 7장 이상 있다면, 대신, 이 턴 동안, 자신의 스테이지의 〈키키라라 비비〉 전원의 아츠 +20.",
+        timing: "collab",
+      },
+      {
+        name: "쇼핑에 어울려줘!",
+        description: "",
+        damage: 20,
+        cost: ["purple"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-067",
+    cardNumber: "hBP09-067",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "holomem",
+    hp: 130,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-067_C.png",
+    abilities: [
+      {
+        name: "달콤달콤 비비",
+        description:
+          "자신의 오시 홀로멤이 〈키키라라 비비〉라면, 자신의 덱을 2장 드로우 하고, 상대는, 자신의 덱을 1장 드로우 한다. 자신의 【블룸 이펙트】 「달콤달콤 비비」는 턴에 1번밖에 사용할 수 없다.",
+        timing: "bloom",
+      },
+      {
+        name: "빨리 이쪽으로 와~",
+        description: "",
+        damage: 50,
+        cost: ["purple", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-068",
+    cardNumber: "hBP09-068",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "holomem",
+    hp: 170,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-068_R.png",
+    abilities: [
+      {
+        name: "화장품에 대한 고집",
+        description: "",
+        damage: 40,
+        cost: ["purple"],
+      },
+      {
+        name: "이거, 확인해볼까",
+        description:
+          "이 홀로멤에게 〈메이크 업〉이 붙어 있다면, 자신의 덱에서 #FLOW GLOW를 가진 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+        damage: 60,
+        cost: ["purple", "purple"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-069",
+    cardNumber: "hBP09-069",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "holomem",
+    hp: 200,
+    color: ["purple"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-069_U.png",
+    abilities: [
+      {
+        name: "12번째 선수",
+        description:
+          "상대의 패가 7장 이상 있다면, 이 홀로멤이 받는 아츠 대미지 -50.",
+        timing: "gift",
+      },
+      {
+        name: "비비는 디펜스 최애야!",
+        description: "",
+        damage: 100,
+        specialDamage: { color: "green", value: 50 },
+        cost: ["purple", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-070",
+    cardNumber: "hBP09-070",
+    setId: "hBP09",
+    name: "키키라라 비비",
+    nameJp: "綺々羅々ヴィヴィ",
+    type: "holomem",
+    hp: 200,
+    color: ["purple"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#DEV_IS", "#FLOW GLOW"],
+    imageUrl: "/images/hBP09/hBP09-070_RR.png",
+    abilities: [
+      {
+        name: "스트롱 커뮤니케이터",
+        description:
+          "[센터 포지션 한정] 상대의 패가 7장 이상 있다면, 이 홀로멤의 아츠에 필요한 홀로아츠 N -2.",
+        timing: "gift",
+      },
+      {
+        name: "비베이셔스 비전",
+        description:
+          "상대의 패가 7장 이상 있다면, 이 아츠 +70. 상대의 패가 10장 이상 있다면, 대신, 이 아츠 +100.",
+        damage: 120,
+        specialDamage: { color: "yellow", value: 50 },
+        cost: ["purple", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-071",
+    cardNumber: "hBP09-071",
+    setId: "hBP09",
+    name: "AZKi",
+    nameJp: "AZKi",
+    type: "holomem",
+    hp: 160,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#0기생", "#노래"],
+    imageUrl: "/images/hBP09/hBP09-071_R.png",
+    abilities: [
+      {
+        name: "개척의 여행길을 걷는 소녀",
+        description:
+          "자신의 스테이지의 〈카자마 이로하〉 1명을 고른다. 이 턴 동안, 자신의 홀로 파워 1장당, 고른 홀로멤의 아츠 +10.",
+        timing: "collab",
+      },
+      {
+        name: "빛나는 만남",
+        description:
+          "자신의 스테이지에 〈카자마 이로하〉가 있다면, 자신의 덱을 1장 드로우 한다.",
+        damage: 40,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-072",
+    cardNumber: "hBP09-072",
+    setId: "hBP09",
+    name: "쿠레이지 올리",
+    nameJp: "クレイジー・オリー",
+    type: "holomem",
+    hp: 160,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#ID", "#ID 2기생", "#어학"],
+    imageUrl: "/images/hBP09/hBP09-072_R.png",
+    abilities: [
+      {
+        name: "댄스・마카블",
+        description:
+          "이 턴에 자신의 홀로멤이 아카이브에서 Bloom 하고 있다면, 자신의 덱을 2장 드로우 한다. 자신의 【블룸 이펙트】 「댄스・마카블」은 턴에 1번밖에 사용할 수 없다.",
+        timing: "bloom",
+      },
+      {
+        name: "푸른 꽃보라의 축복",
+        description:
+          "이 턴에 자신의 홀로멤이 아카이브에서 Bloom 하고 있다면, 이 아츠 +30.",
+        damage: 30,
+        cost: ["purple"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-073",
+    cardNumber: "hBP09-073",
+    setId: "hBP09",
+    name: "네리사 레이븐크로프트",
+    nameJp: "ネリッサ・レイヴンクロフト",
+    type: "holomem",
+    hp: 130,
+    color: ["purple"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#EN", "#Advent", "#노래", "#새"],
+    imageUrl: "/images/hBP09/hBP09-073_C.png",
+    abilities: [
+      {
+        name: "노래에 싣는 소원",
+        description:
+          "[센터 포지션 한정] 자신의 홀로 파워가 2장 이상 있다면, 자신의 〈네리사 레이븐크로프트〉 전원이 받는 아츠 대미지 -30.",
+        timing: "gift",
+      },
+      {
+        name: "마력 조사",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-074",
+    cardNumber: "hBP09-074",
+    setId: "hBP09",
+    name: "네리사 레이븐크로프트",
+    nameJp: "ネリッサ・レイヴンクロフト",
+    type: "holomem",
+    hp: 150,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Advent", "#노래", "#새"],
+    imageUrl: "/images/hBP09/hBP09-074_U.png",
+    abilities: [
+      {
+        name: "마인의 비의",
+        description:
+          "자신의 아카이브의 #Advent를 가진 [Debut 홀로멤이나 1st 홀로멤] 1장을 패로 되돌릴 수 있다.",
+        timing: "bloom",
+      },
+      {
+        name: "비의의 가호",
+        description: "이 아츠의 대상이 1st 이상인 홀로멤이라면, 이 아츠 +50.",
+        damage: 50,
+        cost: ["colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-075",
+    cardNumber: "hBP09-075",
+    setId: "hBP09",
+    name: "네리사 레이븐크로프트",
+    nameJp: "ネリッサ・レイヴンクロフト",
+    type: "holomem",
+    hp: 140,
+    color: ["purple"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#EN", "#Advent", "#노래", "#새"],
+    imageUrl: "/images/hBP09/hBP09-075_R.png",
+    abilities: [
+      {
+        name: "마인의 오프 모드",
+        description:
+          "[센터 포지션 한정] 자신의 오시 스킬을 사용했을 때, 이 턴 동안, 자신의 콜라보의 〈네리사 레이븐크로프트〉의 아츠에 필요한 홀로아츠 P -1.",
+        timing: "gift",
+      },
+      {
+        name: "평안의 노래",
+        description:
+          "자신의 오시 홀로멤이 〈네리사 레이븐크로프트〉라면, 자신의 덱을 1장 드로우 하고, 자신의 패 1장을 홀로 파워로 한다.",
+        damage: 40,
+        cost: ["purple"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-076",
+    cardNumber: "hBP09-076",
+    setId: "hBP09",
+    name: "네리사 레이븐크로프트",
+    nameJp: "ネリッサ・レイヴンクロフト",
+    type: "holomem",
+    hp: 200,
+    color: ["purple"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#EN", "#Advent", "#노래", "#새"],
+    imageUrl: "/images/hBP09/hBP09-076_RR.png",
+    abilities: [
+      {
+        name: "마인의 침소",
+        description:
+          "자신의 홀로 파워 1~3장을 아카이브 할 수 있다 : 아카이브 한 홀로 파워 1장당, 이 턴 동안, 자신의 스테이지의 #노래를 가진 홀로멤 전원의 아츠 +30.",
+        timing: "bloom",
+      },
+      {
+        name: "요염한 음색",
+        description:
+          "이 아츠로 상대의 홀로멤을 다운 시켰을 때, 자신의 아카이브의 〈네리사 레이븐크로프트〉 1장을 패로 되돌린다.",
+        damage: 140,
+        specialDamage: { color: "green", value: 50 },
+        cost: ["purple", "purple", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-077",
+    cardNumber: "hBP09-077",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "holomem",
+    hp: 130,
+    color: ["yellow"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#5기생", "#하프엘프", "#술"],
+    imageUrl: "/images/hBP09/hBP09-077_C.png",
+    abilities: [
+      {
+        name: "캐주얼 라미",
+        description:
+          "주사위를 1번 굴린다. 6이라면, 이 턴 동안, 이 홀로멤의 아츠 +20. 1이라면, 이 홀로멤을 휴식 시킨다.",
+        timing: "collab",
+      },
+      {
+        name: "기다렸어?",
+        description: "",
+        damage: 30,
+        cost: ["yellow"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-078",
+    cardNumber: "hBP09-078",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "holomem",
+    hp: 130,
+    color: ["yellow"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#5기생", "#하프엘프", "#술"],
+    imageUrl: "/images/hBP09/hBP09-078_U.png",
+    abilities: [
+      {
+        name: "열띤 눈동자",
+        description:
+          "자신이 후공이고 최초의 턴이라면, 자신의 덱을 3장 드로우 하고, 패 1장을 아카이브 한다. 아카이브 한 카드가 #라미의 술을 가지고 있지 않다면, 다시 자신의 패 1장을 아카이브 한다.",
+        timing: "collab",
+      },
+      {
+        name: "술자리 권유",
+        description: "",
+        damage: 10,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-079",
+    cardNumber: "hBP09-079",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "holomem",
+    hp: 160,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#5기생", "#하프엘프", "#술"],
+    imageUrl: "/images/hBP09/hBP09-079_C.png",
+    abilities: [
+      {
+        name: "네포라보의 라 담당",
+        description:
+          "자신의 덱의 위에서부터 5장을 본다. 그중에서, #라미의 술을 가진 서포트 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+        timing: "bloom",
+      },
+      {
+        name: "영애의 윙크",
+        description:
+          "자신의 서포트가 붙어 있는 홀로멤이 있다면, 자신의 덱을 1장 드로우 한다.",
+        damage: 30,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-080",
+    cardNumber: "hBP09-080",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "holomem",
+    hp: 190,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 2,
+    tags: ["#JP", "#5기생", "#하프엘프", "#술"],
+    imageUrl: "/images/hBP09/hBP09-080_C.png",
+    abilities: [
+      {
+        name: "질투 유니리아",
+        description:
+          "자신의 아카이브의 옐 1장을 자신의 #술을 가진 홀로멤에게 보낸다.",
+        timing: "collab",
+      },
+      {
+        name: "라미만 사랑하는 게 아니야?",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-081",
+    cardNumber: "hBP09-081",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "holomem",
+    hp: 170,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#5기생", "#하프엘프", "#술"],
+    imageUrl: "/images/hBP09/hBP09-081_R.png",
+    abilities: [
+      {
+        name: "BIG3 친목회 side L",
+        description:
+          "자신의 아카이브의 #라미의 술을 가진 서포트가 1장 이하라면, 이 홀로멤의 아츠에 필요한 홀로아츠 N +1.",
+        timing: "gift",
+      },
+      {
+        name: "음—! 엄청 맛있어—!",
+        description:
+          "이 홀로멤의 옐 2장을 아카이브 할 수 있다 : 상대의 Debut 이외의 홀로멤 1명에게 특수 대미지 40을 준다.",
+        damage: 60,
+        cost: ["yellow", "yellow"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-082",
+    cardNumber: "hBP09-082",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "holomem",
+    hp: 200,
+    color: ["yellow"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#5기생", "#하프엘프", "#술"],
+    imageUrl: "/images/hBP09/hBP09-082_U.png",
+    abilities: [
+      {
+        name: "트레이닝 완료",
+        description:
+          "자신의 아카이브에 #라미의 술을 가진 서포트가 있다면, 자신의 옐 덱의 위에서부터 1장을 자신의 〈유키하나 라미〉에게 보낸다.",
+        timing: "bloom",
+      },
+      {
+        name: "이 뒤에는 지복의 한 잔으로",
+        description: "",
+        damage: 130,
+        specialDamage: { color: "blue", value: 50 },
+        cost: ["yellow", "colorless", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-083",
+    cardNumber: "hBP09-083",
+    setId: "hBP09",
+    name: "유키하나 라미",
+    nameJp: "雪花ラミィ",
+    type: "holomem",
+    hp: 200,
+    color: ["yellow"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#5기생", "#하프엘프", "#술"],
+    imageUrl: "/images/hBP09/hBP09-083_RR.png",
+    abilities: [
+      {
+        name: "얼굴이 간",
+        description:
+          "자신의 아카이브의 #라미의 술을 가진 서포트가 4장 이하라면, 이 홀로멤의 아츠에 필요한 홀로아츠 N +2.",
+        timing: "gift",
+      },
+      {
+        name: "술, 술, 안주, 술, 술, 술!",
+        description:
+          "주사위를 1번 굴린다. 6이라면, 이 아츠 +100. 1이라면, 이 아츠 -100.",
+        damage: 160,
+        specialDamage: { color: "white", value: 50 },
+        cost: ["yellow"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-084",
+    cardNumber: "hBP09-084",
+    setId: "hBP09",
+    name: "나츠이로 마츠리",
+    nameJp: "夏色まつり",
+    type: "holomem",
+    hp: 110,
+    color: ["yellow"],
+    holomemSubtype: "debut",
+    batonPass: 1,
+    tags: ["#JP", "#1기생", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-084_C.png",
+    abilities: [
+      {
+        name: "서프라이즈한 프레젠트",
+        description:
+          "자신의 패의 LIMITED인 서포트 1장을 아카이브 할 수 있다 : 자신의 덱에서, Debut 〈나츠이로 마츠리〉 1~2장을 스테이지에 낸다. 그리고 덱을 셔플 한다.",
+        timing: "collab",
+      },
+      {
+        name: "리본, 기쁘네",
+        description: "",
+        damage: 20,
+        cost: ["colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-085",
+    cardNumber: "hBP09-085",
+    setId: "hBP09",
+    name: "나츠이로 마츠리",
+    nameJp: "夏色まつり",
+    type: "holomem",
+    hp: 140,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#1기생", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-085_U.png",
+    abilities: [
+      {
+        name: "수업 중에 몰래……",
+        description:
+          "자신의 오시 홀로멤이 〈나츠이로 마츠리〉라면, 자신의 아카이브의 LIMITED인 서포트 1장을 덱의 아래로 되돌릴 수 있다 : 자신의 스테이지의 〈나츠이로 마츠리〉 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +30.",
+        timing: "bloom",
+      },
+      {
+        name: "귀엽게 그려졌으니까 봐바~",
+        description: "",
+        damage: 50,
+        cost: ["yellow", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-086",
+    cardNumber: "hBP09-086",
+    setId: "hBP09",
+    name: "나츠이로 마츠리",
+    nameJp: "夏色まつり",
+    type: "holomem",
+    hp: 170,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#JP", "#1기생", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-086_R.png",
+    abilities: [
+      {
+        name: "축제 법석",
+        description:
+          "자신의 오시 홀로멤이 〈나츠이로 마츠리〉라면, 자신의 덱의 위에서부터 5장을 본다. 그중에서, LIMITED인 서포트 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+        timing: "bloom",
+      },
+      {
+        name: "태고로 왓쇼—이!",
+        description: "",
+        damage: 40,
+        cost: ["yellow"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-087",
+    cardNumber: "hBP09-087",
+    setId: "hBP09",
+    name: "나츠이로 마츠리",
+    nameJp: "夏色まつり",
+    type: "holomem",
+    hp: 210,
+    color: ["yellow"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#1기생", "#슈터"],
+    imageUrl: "/images/hBP09/hBP09-087_RR.png",
+    abilities: [
+      {
+        name: "얄미운 청초담당",
+        description:
+          "자신의 오시 홀로멤이 황색인 〈나츠이로 마츠리〉고, 자신의 스테이지의 홀로멤 전원이 〈나츠이로 마츠리〉라면, 자신의 홀로 파워의 위에서부터 1장을 아카이브 할 수 있다 : 이 턴 동안, 자신이 사용할 수 있는 LIMITED인 서포트의 매수는 2장이 된다.",
+        timing: "collab",
+      },
+      {
+        name: "나츠이로 마츠리는 청초하지!?",
+        description:
+          "자신의 아카이브에 LIMITED인 서포트가 5장 이상 있다면, 이 아츠 +60.",
+        damage: 60,
+        specialDamage: { color: "white", value: 50 },
+        cost: ["yellow"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-088",
+    cardNumber: "hBP09-088",
+    setId: "hBP09",
+    name: "모모스즈 네네",
+    nameJp: "桃鈴ねね",
+    type: "holomem",
+    hp: 180,
+    color: ["yellow"],
+    holomemSubtype: "2nd",
+    batonPass: 2,
+    tags: ["#JP", "#5기생", "#노래", "#그림"],
+    imageUrl: "/images/hBP09/hBP09-088_R.png",
+    abilities: [
+      {
+        name: "너랑 두번 자기",
+        description:
+          "자신의 오시 홀로멤이 〈모모스즈 네네〉라면, 이 홀로멤은 1번에 200 이상의 아츠 대미지를 받지 않는다.",
+        timing: "gift",
+      },
+      {
+        name: "이불에 파고들거야",
+        description:
+          "자신의 아카이브의 옐을 자신의 #5기생을 가진 홀로멤 1~2명에게 1장씩 보낸다.",
+        damage: 100,
+        specialDamage: { color: "blue", value: 50 },
+        cost: ["yellow", "yellow"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-089",
+    cardNumber: "hBP09-089",
+    setId: "hBP09",
+    name: "아윤다 리스",
+    nameJp: "アユンダ・リス",
+    type: "holomem",
+    hp: 150,
+    color: ["yellow"],
+    holomemSubtype: "1st",
+    batonPass: 1,
+    tags: ["#ID", "#ID 1기생", "#동물귀", "#노래"],
+    imageUrl: "/images/hBP09/hBP09-089_R.png",
+    abilities: [
+      {
+        name: "이 열정이 우리들!",
+        description:
+          "자신의 스테이지에 [홀로아츠 G 옐과 홀로아츠 B 옐과 홀로아츠 Y 옐]이 있다면, 자신의 #ID 1기생을 가진 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +30.",
+        timing: "bloom",
+      },
+      {
+        name: "세계에 울려퍼지는 미성",
+        description:
+          "자신의 오시 홀로멤의 색이 녹색이나 청색이나 황색이라면, 자신의 옐 덱의 위에서부터 1장을 자신의 #ID 1기생을 가진 홀로멤에게 보낸다.",
+        damage: 50,
+        cost: ["yellow", "colorless"],
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-090",
+    cardNumber: "hBP09-090",
+    setId: "hBP09",
+    name: "콜라보 컴퓨터",
+    nameJp: "コラボパソコン",
+    type: "support",
+    supportSubtype: "item",
+    imageUrl: "/images/hBP09/hBP09-090_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 홀로 파워 1장을 아카이브 하지 않으면 사용할 수 없다.\n\n자신의 덱에서, 【콜라보 이펙트】를 가진, 자신의 오시 홀로멤과 같은 카드명인 홀로멤 1장을 공개하고, 패에 더한다. 그리고 덱을 셔플 한다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-091",
+    cardNumber: "hBP09-091",
+    setId: "hBP09",
+    name: "아즈이로 BESTIE DAYS",
+    nameJp: "あずいろ BESTIE DAYS",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-091_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈AZKi〉나 〈카자마 이로하〉고, 직전 상대의 턴에 자신의 홀로멤이 다운 하지 않았다면 사용할 수 없다.\n\n자신의 덱에서, 1st [〈AZKi〉와 〈카자마 이로하〉] 1장씩을 스테이지에 낸다. 그리고 덱을 셔플 한다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-092",
+    cardNumber: "hBP09-092",
+    setId: "hBP09",
+    name: "비 오는 날 비비",
+    nameJp: "雨の日ヴィヴィ",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-092_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈키키라라 비비〉가 아니라면 사용할 수 없다.\n\n서로 각각의 덱을 2장 드로우 한다. 그 후, 상대의 패가 7장 이상 있다면, 이 턴 동안, 자신의 스테이지의 〈키키라라 비비〉 전원의 아츠 +30.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-093",
+    cardNumber: "hBP09-093",
+    setId: "hBP09",
+    name: "응원하는 홀로리스",
+    nameJp: "応援するホロリス",
+    type: "support",
+    supportSubtype: "event",
+    imageUrl: "/images/hBP09/hBP09-093_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 스테이지의 옐 1~2장을 골라, 자신의 홀로멤에게 나눠서 바꿔 붙인다. 그 후, 자신의 옐이 붙어 있는 홀로멤이 4명 이상 있다면, 자신의 아카이브의 옐 1장을 자신의 홀로멤에게 보낸다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-094",
+    cardNumber: "hBP09-094",
+    setId: "hBP09",
+    name: "오오조라 경찰",
+    nameJp: "大空警察",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-094_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈오오조라 스바루〉고, 직전 상대의 턴에 자신의 홀로멤이 다운 하지 않았다면 사용할 수 없다.\n\n상대의 백 홀로멤 1명을 고른다. 고른 홀로멤을 휴식시킨다. 그 홀로멤은, 다음 상대의 리셋 스텝에서 액티브가 되지 않는다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-095",
+    cardNumber: "hBP09-095",
+    setId: "hBP09",
+    name: "너에게 건배",
+    nameJp: "君に乾杯",
+    type: "support",
+    supportSubtype: "event",
+    tags: ["#라미의 술"],
+    imageUrl: "/images/hBP09/hBP09-095_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈유키하나 라미〉가 아니라면 사용할 수 없다.\n\n상대의 센터 홀로멤이나 콜라보 홀로멤을 고른다. 고른 홀로멤에게 특수 대미지 10을 준다. 자신의 아카이브에 〈너에게 건배〉가 2장 이상 있다면, 대신, 고른 홀로멤에게 특수 대미지 40을 준다.\n\n자신의 〈너에게 건배〉는 턴에 1번밖에 사용할 수 없다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-096",
+    cardNumber: "hBP09-096",
+    setId: "hBP09",
+    name: "콩코 콩콩코 콩콩콩",
+    nameJp: "コンコ コンコンコ コンコンコン",
+    type: "support",
+    supportSubtype: "event",
+    imageUrl: "/images/hBP09/hBP09-096_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 스테이지의 #ReGLOSS를 가진 홀로멤 1명을 고른다. 이 턴 동안, 고른 홀로멤의 배턴 터치에 필요한 홀로아츠 N -1. 그 후, 자신의 아카이브의 옐 1장을 자신의 백에 있는 〈토도로키 하지메〉에게 보낸다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-097",
+    cardNumber: "hBP09-097",
+    setId: "hBP09",
+    name: "콤비 플레이",
+    nameJp: "コンビプレイ",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-097_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 덱을 2장 드로우 한다. 그 후, 자신의 스테이지의 옐 1장을 옐 덱의 아래로 되돌리고, 자신의 옐 덱에서, 옐 1장을 자신의 홀로멤에게 보낸다. 그리고 옐 덱을 셔플 한다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-098",
+    cardNumber: "hBP09-098",
+    setId: "hBP09",
+    name: "수박 버블",
+    nameJp: "スイカバブル",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-098_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 덱을 4장 드로우 한다. 그 후, 자신의 아카이브에 LIMITED인 서포트가 있다면, 자신의 패 4장을 원하는 순서로 덱의 아래로 되돌린다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-099",
+    cardNumber: "hBP09-099",
+    setId: "hBP09",
+    name: "스피드 위반",
+    nameJp: "スピード違反",
+    type: "support",
+    supportSubtype: "event",
+    imageUrl: "/images/hBP09/hBP09-099_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈오오조라 스바루〉고, 자신의 스테이지의 옐의 매수가 상대보다 적을 때밖에 사용할 수 없다.\n\n자신의 아카이브의 옐 2장을, 자신의 홀로멤 1명에게 보낸다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-100",
+    cardNumber: "hBP09-100",
+    setId: "hBP09",
+    name: "노엘의 특곱빼기 규동",
+    nameJp: "ノエルの特盛牛丼",
+    type: "support",
+    supportSubtype: "event",
+    tags: ["#음식"],
+    extraRule: "이 이벤트는 〈규동〉으로도 취급한다.",
+    imageUrl: "/images/hBP09/hBP09-100_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "자신의 스테이지의 〈시로가네 노엘〉 1명을 고른다. 이 턴 동안, 고른 홀로멤의 아츠 +10. 다시, 고른 홀로멤이 Buzz 홀로멤이나 2nd 홀로멤이라면, 그 홀로멤의 HP 50 회복.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-101",
+    cardNumber: "hBP09-101",
+    setId: "hBP09",
+    name: "바보! 변태! 시끄러워! 이제 몰라!",
+    nameJp: "バカ！変態！うるさーい！もう知らなーい！",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-101_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈토코야미 토와〉가 아니라면 사용할 수 없다.\n\n상대의 센터 홀로멤에게 특수 대미지 20을 준다. 그 후, 이 턴 동안, 자신의 〈토코야미 토와〉의 3번째 아츠는, 상대의 Debut 이외의 백 홀로멤도 대상으로 할 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-102",
+    cardNumber: "hBP09-102",
+    setId: "hBP09",
+    name: "반쵸 댄스",
+    nameJp: "ばんちょーダンス",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-102_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈토도로키 하지메〉가 아니라면 사용할 수 없다.\n\n자신의 덱의 위에서부터 2장을 홀로 파워로 한다. 그 후, 자신의 홀로 파워를 본다. 그중에서 1~2장을 패에 더한다. 그리고 홀로 파워를 셔플 한다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-103",
+    cardNumber: "hBP09-103",
+    setId: "hBP09",
+    name: "이상한 움직임",
+    nameJp: "変な動き",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-103_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈시로가네 노엘〉이 아니라면 사용할 수 없다.\n\n자신의 아카이브의 [〈시로가네 노엘〉과 〈규동〉] 1장씩을 패로 되돌린다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-104",
+    cardNumber: "hBP09-104",
+    setId: "hBP09",
+    name: "홀로라이브 체력왕 결정전",
+    nameJp: "ホロライブ体力王決定戦",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-104_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 턴 동안, 자신의 스테이지의 남은 HP가 가장 많은 홀로멤 전원의 아츠 +30.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-105",
+    cardNumber: "hBP09-105",
+    setId: "hBP09",
+    name: "BIG3",
+    nameJp: "BIG3",
+    type: "support",
+    supportSubtype: "event",
+    limited: true,
+    imageUrl: "/images/hBP09/hBP09-105_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 카드는, 자신의 오시 홀로멤이 〈오오조라 스바루〉나 〈시로가네 노엘〉이나 〈유키하나 라미〉가 아니라면 사용할 수 없다.\n\n자신의 덱을 2장 드로우 한다. 그 후, 자신의 덱의 위에서부터 3장을 본다. 그중에서, 자신의 오시 홀로멤과 같은 카드명인 홀로멤 1장을 공개하고, 패에 더한다. 그리고 남은 카드를 원하는 순서로 덱의 아래로 되돌린다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-106",
+    cardNumber: "hBP09-106",
+    setId: "hBP09",
+    name: "카엘라가 만든 홀로 실드",
+    nameJp: "カエラが作ったホロシールド",
+    type: "support",
+    supportSubtype: "tool",
+    tags: ["#카엘라's 암즈"],
+    imageUrl: "/images/hBP09/hBP09-106_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 툴이 붙어 있는 [Buzz나 2nd]인 〈카엘라 코발스키아〉의 HP +40.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-107",
+    cardNumber: "hBP09-107",
+    setId: "hBP09",
+    name: "카엘라가 만든 홀로 소드",
+    nameJp: "カエラが作ったホロソード",
+    type: "support",
+    supportSubtype: "tool",
+    tags: ["#카엘라's 암즈"],
+    imageUrl: "/images/hBP09/hBP09-107_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 툴이 붙어 있는 [Buzz나 2nd]인 〈카엘라 코발스키아〉의 아츠 +40.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-108",
+    cardNumber: "hBP09-108",
+    setId: "hBP09",
+    name: "토코야미 토와의 브레이크 마이크",
+    nameJp: "常闇トワのブレイクマイク",
+    type: "support",
+    supportSubtype: "tool",
+    imageUrl: "/images/hBP09/hBP09-108_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 툴이 붙어 있는 〈토코야미 토와〉의 아츠 +20.\n\n◆2nd 〈토코야미 토와〉에게 붙어 있다면 능력 추가\n이 홀로멤에게 붙어 있는 홀로아츠 B 옐 전부는, 홀로아츠 P 옐로도 취급한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-109",
+    cardNumber: "hBP09-109",
+    setId: "hBP09",
+    name: "메이크 업",
+    nameJp: "メイクアップ",
+    type: "support",
+    supportSubtype: "tool",
+    imageUrl: "/images/hBP09/hBP09-109_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "이 툴이 붙어 있는 〈키키라라 비비〉의 아츠 +20.\n\n◆1st 이상의 〈키키라라 비비〉에게 붙어 있다면 능력 추가\n[센터 포지션 한정] 자신의 퍼포먼스 스텝이 종료할 때, 이 턴에 Bloom 한 #FLOW GLOW를 가진 홀로멤 1명을, 자신의 패의 홀로멤을 사용해 1번 더 Bloom 할 수 있다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-110",
+    cardNumber: "hBP09-110",
+    setId: "hBP09",
+    name: "유키요즈키",
+    nameJp: "雪夜月",
+    type: "support",
+    supportSubtype: "tool",
+    tags: ["#라미의 술"],
+    imageUrl: "/images/hBP09/hBP09-110_U.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "◆〈유키하나 라미〉에게 붙어 있다면 능력 추가\n자신의 퍼포먼스 스텝이 종료할 때, 이 턴에 이 홀로멤이 아츠를 사용하고 있다면, 이 홀로멤에게 붙어 있는 〈유키요즈키〉 1장을 아카이브 하고, 자신의 덱을 1장 드로우 한다.\n\n툴은, 자신의 홀로멤 1명당 1장만 붙일 수 있다.",
+      },
+    ],
+    limit: 4,
+  },
+  {
+    id: "hBP09-111",
+    cardNumber: "hBP09-111",
+    setId: "hBP09",
+    name: "Pemaloe",
+    nameJp: "Pemaloe",
+    type: "support",
+    supportSubtype: "fan",
+    imageUrl: "/images/hBP09/hBP09-111_C.png",
+    abilities: [
+      {
+        name: "",
+        description:
+          "상대의 턴에서, 이 팬이 붙어 있는 홀로멤이 다운 했을 때, 이 팬이 붙어 있는 홀로멤의 옐 1장을 자신의 다른 홀로멤에게 바꿔 붙인다.\n\n이 팬은, 자신의 〈카엘라 코발스키아〉에게만 붙일 수 있고, 1명당 몇 장이든 붙일 수 있다.",
       },
     ],
     limit: 4,
@@ -30806,6 +34015,7 @@ export const CARDS: Card[] = RAW_CARDS.map((c) =>
 );
 
 export const SETS = [
+  { id: "hBP09", name: "Booster Pack Vol.9" },
   { id: "hEB01", name: "섬머 홀로그램" },
   { id: "hBP08", name: "Booster Pack Vol.8" },
   { id: "hBP07", name: "Booster Pack Vol.7" },

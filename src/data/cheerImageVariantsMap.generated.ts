@@ -15,6 +15,7 @@ export const CHEER_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/SY/hY01-010_SY.png",
     "/images/SY/hY01-012_SY.png",
     "/images/SY/hY01-013_SY.png",
+    "/images/SY/hY01-015_SY.png",
   ],
   green: [
     "/images/hY/hY02.png",
@@ -27,6 +28,7 @@ export const CHEER_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/SY/hY02-008_SY.png",
     "/images/SY/hY02-010_SY.png",
     "/images/SY/hY02-011_SY.png",
+    "/images/SY/hY02-013_SY.png",
   ],
   red: [
     "/images/hY/hY03.png",
@@ -43,6 +45,7 @@ export const CHEER_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/SY/hY03-013_SY.png",
     "/images/SY/hY03-014_SY.png",
     "/images/SY/hY03-015_SY.png",
+    "/images/SY/hY03-017_SY.png",
   ],
   blue: [
     "/images/hY/hY04.png",
@@ -56,6 +59,7 @@ export const CHEER_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/SY/hY04-010_SY.png",
     "/images/SY/hY04-011_SY.png",
     "/images/SY/hY04-012_SY.png",
+    "/images/SY/hY04-014_SY.png",
   ],
   purple: [
     "/images/hY/hY05.png",
@@ -67,6 +71,7 @@ export const CHEER_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/SY/hY05-008_SY.png",
     "/images/SY/hY05-009_SY.png",
     "/images/SY/hY05-010_SY.png",
+    "/images/SY/hY05-012_SY.png",
   ],
   yellow: [
     "/images/hY/hY06.png",
@@ -78,5 +83,6 @@ export const CHEER_IMAGE_VARIANTS: Record<string, string[]> = {
     "/images/SY/hY06-007_SY.png",
     "/images/SY/hY06-009_SY.png",
     "/images/SY/hY06-010_SY.png",
+    "/images/SY/hY06-012_SY.png",
   ],
 };

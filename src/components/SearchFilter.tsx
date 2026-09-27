@@ -20,7 +20,7 @@ import type {
 } from "../types/card";
 
 // 이벤트컵 필터 UI 노출 여부 — true로 바꾸면 다시 표시된다.
-const SHOW_EVENT_POOL_FILTER = false;
+const SHOW_EVENT_POOL_FILTER = true;
 
 const TYPES: CardType[] = ["oshi", "holomem", "support"];
 const COLORS: CardColor[] = [

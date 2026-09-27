@@ -25,12 +25,10 @@ describe('setRange', () => {
 });
 
 describe('getEventPool', () => {
-  it('셀렉션 컵 풀에 hBP07/08 + hSD14~19 포함', () => {
+  it('셀렉션 컵 풀은 hBP08 + hEB01 + hBP09 세트 전체', () => {
     const pool = getEventPool('selection-cup');
     expect(pool).toBeDefined();
-    expect(pool!.sets).toEqual(
-      expect.arrayContaining(['hBP07', 'hBP08', 'hSD14', 'hSD15', 'hSD16', 'hSD17', 'hSD18', 'hSD19']),
-    );
+    expect(pool!.sets).toEqual(['hBP08', 'hEB01', 'hBP09']);
   });
   it('빈/미존재 id는 undefined', () => {
     expect(getEventPool(null)).toBeUndefined();
@@ -46,11 +44,21 @@ describe('getOutOfPoolCards', () => {
     const deck = makeDeck({
       oshi: card('hBP08-001', 'hBP08'),
       mainDeck: [
-        { card: card('hBP07-010', 'hBP07'), count: 4 },
-        { card: card('hSD14-001', 'hSD14'), count: 2 },
+        { card: card('hBP09-010', 'hBP09'), count: 4 },
+        { card: card('hEB01-004', 'hEB01'), count: 2 },
       ],
     });
     expect(getOutOfPoolCards(deck, pool)).toEqual([]);
+  });
+
+  it('이전 풀(hBP07·hSD14)의 카드는 이제 풀 외', () => {
+    const deck = makeDeck({
+      mainDeck: [
+        { card: card('hBP07-010', 'hBP07'), count: 1 },
+        { card: card('hSD14-001', 'hSD14'), count: 1 },
+      ],
+    });
+    expect(getOutOfPoolCards(deck, pool).map((c) => c.cardNumber)).toEqual(['hBP07-010', 'hSD14-001']);
   });
 
   it('풀 밖 카드만 골라냄', () => {
@@ -85,9 +93,12 @@ describe('getOutOfPoolCards', () => {
   });
 
   it('세트 밖이라도 개별 허용 카드(cards)면 사용 가능', () => {
-    // hBP01은 세트 풀 밖이지만 hBP01-104(보통 컴퓨터)는 개별 허용됨
+    // hBP01은 세트 풀 밖이지만 hBP01-104(보통 컴퓨터)·hBP01-072(하코스 벨즈, hBP09 재록)는 개별 허용됨
     const deck = makeDeck({
-      mainDeck: [{ card: card('hBP01-104', 'hBP01'), count: 1 }],
+      mainDeck: [
+        { card: card('hBP01-104', 'hBP01'), count: 1 },
+        { card: card('hBP01-072', 'hBP01'), count: 1 },
+      ],
     });
     expect(getOutOfPoolCards(deck, pool)).toEqual([]);
   });
