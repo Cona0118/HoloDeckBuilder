@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import type { Card } from "../types/card";
 import { getAccentColor } from "../utils/cardUtils";
 import { useDeckStore } from "../store/deckStore";
@@ -9,19 +9,24 @@ interface CardItemProps {
   compact?: boolean;
 }
 
-export default function CardItem({ card, compact = false }: CardItemProps) {
-  const { addCard, removeCard, getActiveDeck, setOshi } = useDeckStore();
-  const activeDeck = getActiveDeck();
+function CardItem({ card, compact = false }: CardItemProps) {
+  // 카드 1000여 장이 동시에 마운트되므로 스토어 전체가 아니라 이 카드의 수량만 구독한다
+  // (덱에 한 장 추가할 때 전 카드가 리렌더되지 않도록)
+  const addCard = useDeckStore((s) => s.addCard);
+  const removeCard = useDeckStore((s) => s.removeCard);
+  const setOshi = useDeckStore((s) => s.setOshi);
+  const countInDeck = useDeckStore(
+    (s) => s.getActiveDeck()?.mainDeck.find((e) => e.card.id === card.id)?.count ?? 0,
+  );
+  const isOshiSelected = useDeckStore(
+    (s) => card.type === "oshi" && s.getActiveDeck()?.oshi?.id === card.id,
+  );
   const [previewOpen, setPreviewOpen] = useState(false);
   const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
   const isTouch = useRef(false);
 
   const accent = getAccentColor(card);
-  const entry = activeDeck?.mainDeck.find((e) => e.card.id === card.id);
-  const countInDeck = entry?.count ?? 0;
-  const isOshiSelected =
-    card.type === "oshi" && activeDeck?.oshi?.id === card.id;
   const highlighted = countInDeck > 0 || isOshiSelected;
 
   function startLongPress(e: React.PointerEvent) {
@@ -111,6 +116,7 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
               className="w-full h-full object-cover"
               draggable={false}
               loading="lazy"
+              decoding="async"
               style={{ pointerEvents: 'none' }}
             />
           ) : (
@@ -136,12 +142,12 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
 
         </div>
 
-        {/* Info */}
+        {/* Info — 뷰포트가 아니라 카드 목록 폭(CardGrid @container) 기준: Fold 펼침처럼 목록이 좁으면 이름 우선 */}
         <div className="px-2 py-2 flex items-baseline justify-between gap-1 w-full">
-          <p className="text-[10px] md:text-sm font-semibold text-white leading-tight line-clamp-2 md:truncate min-w-0">
+          <p className="text-[10px] @xl:text-sm font-semibold text-white leading-tight line-clamp-2 @xl:truncate min-w-0">
             {card.name}
           </p>
-          <span className="hidden md:inline text-xs text-gray-500 shrink-0">
+          <span className="hidden @xl:inline text-xs text-gray-500 shrink-0">
             {card.cardNumber}
           </span>
         </div>
@@ -150,3 +156,4 @@ export default function CardItem({ card, compact = false }: CardItemProps) {
   );
 }
 
+export default memo(CardItem);

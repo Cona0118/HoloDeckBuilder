@@ -815,6 +815,14 @@ function loadImage(src: string): Promise<HTMLImageElement> {
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = reject;
+    // CDN(크로스 오리진) 이미지는 CORS 모드로 받아야 캔버스가 오염(tainted)되지 않아 toDataURL이 가능하다.
+    // 그리드 <img>가 no-cors로 받아 둔 HTTP 캐시(ACAO 헤더 없음)와 섞이지 않도록 쿼리로 캐시 키를 분리.
+    // CORS 미설정이면 로드 실패 → 호출부에서 해당 카드만 빈 슬롯으로 그린다.
+    const url = new URL(src, location.href);
+    if (/^https?:$/.test(url.protocol) && url.origin !== location.origin) {
+      img.crossOrigin = "anonymous";
+      src += (src.includes("?") ? "&" : "?") + "cors";
+    }
     img.src = src;
   });
 }

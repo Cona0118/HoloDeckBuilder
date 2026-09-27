@@ -28,7 +28,7 @@
 
 body {
   margin: 0;
-  min-width: 320px;
+  /* min-width 금지: Galaxy Fold 1세대 커버(280px) 등에서 페이지가 뷰포트보다 넓어져 우측이 잘린다 */
   min-height: 100vh;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   background-color: #0f0f1a;
