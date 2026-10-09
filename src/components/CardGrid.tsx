@@ -20,6 +20,8 @@ const SIZE_LABELS: Record<CardSize, string> = { sm: 'S', md: 'M', lg: 'L' };
 
 export default function CardGrid() {
   const filter = useDeckStore((s) => s.filter);
+  // 잠금 토글은 덱 패널 오시 칸에 있다 — 여기서는 카드가 왜 안 들어가는지 상태만 보여 준다
+  const locked = useDeckStore((s) => s.getActiveDeck()?.locked ?? false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [cardSize, setCardSize] = useState<CardSize>('md');
 
@@ -44,13 +46,20 @@ export default function CardGrid() {
       <div className="flex items-center justify-between gap-2 px-3 py-2 bg-gray-900 border-b border-gray-800">
         <span className="min-w-0 truncate text-xs text-gray-400">
           {filtered.length}장 / 전체 {CARDS.length}장
-          <span className="ml-2 text-gray-600 pointer-coarse:hidden">좌클릭 추가 · 우클릭 제거</span>
-          {/* 길게 눌러 상세는 그리드 카드에만 있다 (리스트 행에는 없음) */}
-          {viewMode === 'grid' && (
-            <span className="ml-2 text-gray-600 hidden pointer-coarse:inline">탭 추가 · 길게 눌러 상세</span>
+          {locked ? (
+            <span className="ml-2 text-amber-400">덱리 잠금 중</span>
+          ) : (
+            <>
+              <span className="ml-2 text-gray-600 pointer-coarse:hidden">좌클릭 추가 · 우클릭 제거</span>
+              {/* 길게 눌러 상세는 그리드 카드에만 있다 (리스트 행에는 없음) */}
+              {viewMode === 'grid' && (
+                <span className="ml-2 text-gray-600 hidden pointer-coarse:inline">탭 추가 · 길게 눌러 상세</span>
+              )}
+            </>
           )}
         </span>
         <div className="flex shrink-0 items-center gap-2">
+
           {/* Card size selector (grid mode only) */}
           {viewMode === 'grid' && (
             <div className="flex gap-0.5 border border-gray-700 rounded overflow-hidden">

@@ -147,6 +147,8 @@ interface DeckState {
   deleteDeck: (id: string) => void;
   renameDeck: (id: string, name: string) => void;
   setActiveDeck: (id: string) => void;
+  /** 활성 덱의 덱리 잠금 토글. */
+  toggleDeckLock: () => void;
 
   setOshi: (card: Card) => void;
   /** card + imageUrl 조합으로 1장 추가. 같은 cardId 내 총합이 limit 이하일 때만. */
@@ -252,6 +254,17 @@ export const useDeckStore = create<DeckState>()(
       },
 
       setActiveDeck: (id) => set({ activeDeckId: id }),
+
+      toggleDeckLock: () => {
+        set((s) => {
+          const id = s.activeDeckId ?? s.decks[0]?.id;
+          return {
+            decks: s.decks.map((d) =>
+              d.id === id ? { ...d, locked: !d.locked } : d
+            ),
+          };
+        });
+      },
 
       setOshi: (card) => {
         set((s) => {

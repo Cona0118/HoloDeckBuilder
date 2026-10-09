@@ -81,6 +81,8 @@ export interface Deck {
   oshiImageUrl?: string;
   /** 색상별 옐 일러스트 선택. 없는 색상은 기본 옐 이미지 사용. */
   cheerImages?: Partial<Record<CardColor, string>>;
+  /** 덱리 잠금. true면 카드 목록을 눌러도 이 덱에 추가·제거되지 않는다. */
+  locked?: boolean;
   createdAt: number;
   updatedAt: number;
 }

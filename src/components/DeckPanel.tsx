@@ -1524,6 +1524,7 @@ export default function DeckPanel() {
     setOshiImage,
     setEntryImage,
     splitEntryImage,
+    toggleDeckLock,
     filter,
   } = useDeckStore();
   const deck = getActiveDeck();
@@ -1728,31 +1729,69 @@ export default function DeckPanel() {
 
       {/* Oshi slot + Stats */}
       <div className="px-3 py-1 md:py-2 border-b border-gray-800">
-        {/* Header - 모바일에서 접기/펼치기 */}
-        <button
-          className="md:pointer-events-none w-full flex items-center justify-between mb-1.5"
-          onClick={() => setOshiOpen((v) => !v)}
-        >
-          <p className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">
-            오시 {deck.oshi ? `· ${deck.oshi.name}` : ""}
-            <span className="text-gray-600 ml-1 font-medium">
-              {mainCount}/50
-            </span>
-          </p>
-          <svg
-            className={`w-3.5 h-3.5 text-gray-500 md:hidden transition-transform ${oshiOpen ? "rotate-180" : ""}`}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <div className="flex items-center gap-1 mb-1.5">
+          {/* Header - 모바일에서 접기/펼치기 */}
+          <button
+            className="md:pointer-events-none flex-1 min-w-0 flex items-center justify-between"
+            onClick={() => setOshiOpen((v) => !v)}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
+            <p className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">
+              오시 {deck.oshi ? `· ${deck.oshi.name}` : ""}
+              <span className="text-gray-600 ml-1 font-medium">
+                {mainCount}/50
+              </span>
+            </p>
+            <svg
+              className={`w-3.5 h-3.5 text-gray-500 md:hidden transition-transform ${oshiOpen ? "rotate-180" : ""}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          {/* 덱리 잠금: 켜면 카드 목록을 눌러도 이 덱에 추가·제거되지 않는다 (덱별 저장).
+              헤더 버튼(접기/펼치기) 안에 넣으면 버튼 중첩이 되므로 형제로 둔다. */}
+          <button
+            onClick={toggleDeckLock}
+            aria-pressed={!!deck.locked}
+            aria-label={deck.locked ? "덱리 잠금 해제" : "덱리 잠금"}
+            title={
+              deck.locked
+                ? "덱리 잠금 해제"
+                : "덱리 잠금 (카드를 눌러도 덱에 추가되지 않음)"
+            }
+            className={`shrink-0 -my-1 p-1 rounded transition-colors ${
+              deck.locked
+                ? "text-amber-400 bg-amber-900/40 hover:bg-amber-900/60"
+                : "text-gray-500 hover:text-white hover:bg-gray-800"
+            }`}
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={
+                  deck.locked
+                    ? "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    : "M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
+                }
+              />
+            </svg>
+          </button>
+        </div>
 
         <div className={`${oshiOpen ? "" : "hidden md:block"}`}>
           <div className="flex gap-2 md:gap-3 items-start">
