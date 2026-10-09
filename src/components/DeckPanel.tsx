@@ -77,6 +77,7 @@ function DeckEntryCard({
   onMoveRight,
   onSelectImage,
   onSplitImage,
+  locked,
 }: {
   entry: DeckEntry;
   /** 같은 cardId의 모든 엔트리 합계 (limit 검사용). */
@@ -107,6 +108,8 @@ function DeckEntryCard({
   onMoveRight: () => void;
   onSelectImage: (imageUrl: string) => void;
   onSplitImage: (imageUrl: string) => void;
+  /** 덱리 잠금: +/− 오버레이를 숨긴다 (매수 변경은 스토어에서도 무시). */
+  locked: boolean;
 }) {
   const accent = getAccentColor(entry.card);
   const cardLimit = getLiveLimit(entry.card.id, entry.card.limit);
@@ -289,8 +292,8 @@ function DeckEntryCard({
             </div>
           )}
 
-          {/* Hover overlay (desktop) / tap overlay (mobile) — hidden in edit mode */}
-          {!editMode && (
+          {/* Hover overlay (desktop) / tap overlay (mobile) — hidden in edit mode / 덱리 잠금 */}
+          {!editMode && !locked && (
             <div
               className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
                 overlayVisible
@@ -487,7 +490,7 @@ function DeckSelector() {
             >
               이름 변경
             </button>
-            {activeDeck && (
+            {activeDeck && !activeDeck.locked && (
               <button
                 onClick={() => {
                   if (
@@ -562,6 +565,7 @@ function CheerCard({
   overlayVisible,
   onShowOverlay,
   onHideOverlay,
+  locked,
 }: {
   color: CardColor;
   count: number;
@@ -577,6 +581,8 @@ function CheerCard({
   overlayVisible: boolean;
   onShowOverlay: () => void;
   onHideOverlay: () => void;
+  /** 덱리 잠금: +/− 오버레이를 숨긴다 (매수 변경은 스토어에서도 무시). */
+  locked: boolean;
 }) {
   const isTouch = useRef(false);
   const startPos = useRef<{ x: number; y: number } | null>(null);
@@ -664,33 +670,35 @@ function CheerCard({
           </span>
         )}
 
-        {/* Hover overlay (desktop) / tap overlay (mobile) */}
-        <div
-          className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
-            overlayVisible ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-          }`}
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onRemove();
-              onHideOverlay();
-            }}
-            className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
+        {/* Hover overlay (desktop) / tap overlay (mobile) — 덱리 잠금 시 숨김 */}
+        {!locked && (
+          <div
+            className={`absolute inset-0 bg-black/60 transition-opacity flex items-center justify-center gap-1.5 ${
+              overlayVisible ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+            }`}
           >
-            −
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onAdd();
-              onHideOverlay();
-            }}
-            className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 text-white text-base font-bold flex items-center justify-center"
-          >
-            +
-          </button>
-        </div>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onRemove();
+                onHideOverlay();
+              }}
+              className="w-6 h-6 rounded bg-red-700 hover:bg-red-600 text-white text-base font-bold flex items-center justify-center"
+            >
+              −
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onAdd();
+                onHideOverlay();
+              }}
+              className="w-6 h-6 rounded bg-green-700 hover:bg-green-600 text-white text-base font-bold flex items-center justify-center"
+            >
+              +
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -759,7 +767,7 @@ function CheerSection() {
           </div>
         </button>
         <div className="flex items-center gap-1">
-          {deck.oshi && total < CHEER_MAX && (
+          {!deck.locked && deck.oshi && total < CHEER_MAX && (
             <button
               onClick={() => fillCheers()}
               className="px-2 py-0.5 text-[10px] text-gray-500 hover:text-green-300 hover:bg-green-900/40 rounded border border-gray-700 transition-colors"
@@ -767,7 +775,7 @@ function CheerSection() {
               20장 채우기
             </button>
           )}
-          {total > 0 && (
+          {!deck.locked && total > 0 && (
             <button
               onClick={() => clearCheers()}
               className="px-2 py-0.5 text-[10px] text-gray-500 hover:text-amber-300 hover:bg-amber-900/40 rounded border border-gray-700 transition-colors"
@@ -798,6 +806,7 @@ function CheerSection() {
                 overlayVisible={activeColor === color}
                 onShowOverlay={() => setActiveColor(color)}
                 onHideOverlay={() => setActiveColor(null)}
+                locked={!!deck.locked}
               />
             );
           })}
@@ -1727,267 +1736,25 @@ export default function DeckPanel() {
     <div className="flex flex-col h-full overflow-hidden bg-gray-950">
       <DeckSelector />
 
-      {/* Oshi slot + Stats */}
-      <div className="px-3 py-1 md:py-2 border-b border-gray-800">
-        <div className="flex items-center gap-1 mb-1.5">
-          {/* Header - 모바일에서 접기/펼치기 */}
-          <button
-            className="md:pointer-events-none flex-1 min-w-0 flex items-center justify-between"
-            onClick={() => setOshiOpen((v) => !v)}
-          >
-            <p className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">
-              오시 {deck.oshi ? `· ${deck.oshi.name}` : ""}
-              <span className="text-gray-600 ml-1 font-medium">
-                {mainCount}/50
-              </span>
-            </p>
-            <svg
-              className={`w-3.5 h-3.5 text-gray-500 md:hidden transition-transform ${oshiOpen ? "rotate-180" : ""}`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-
-          {/* 덱리 잠금: 켜면 카드 목록을 눌러도 이 덱에 추가·제거되지 않는다 (덱별 저장).
-              헤더 버튼(접기/펼치기) 안에 넣으면 버튼 중첩이 되므로 형제로 둔다. */}
-          <button
-            onClick={toggleDeckLock}
-            aria-pressed={!!deck.locked}
-            aria-label={deck.locked ? "덱리 잠금 해제" : "덱리 잠금"}
-            title={
-              deck.locked
-                ? "덱리 잠금 해제"
-                : "덱리 잠금 (카드를 눌러도 덱에 추가되지 않음)"
-            }
-            className={`shrink-0 -my-1 p-1 rounded transition-colors ${
-              deck.locked
-                ? "text-amber-400 bg-amber-900/40 hover:bg-amber-900/60"
-                : "text-gray-500 hover:text-white hover:bg-gray-800"
-            }`}
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={
-                  deck.locked
-                    ? "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    : "M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
-                }
-              />
-            </svg>
-          </button>
-        </div>
-
-        <div className={`${oshiOpen ? "" : "hidden md:block"}`}>
-          <div className="flex gap-2 md:gap-3 items-start">
-            {/* Oshi image */}
-            {oshiPreviewOpen && deck.oshi && (
-              <CardPreviewModal
-                card={deck.oshi}
-                onClose={() => setOshiPreviewOpen(false)}
-                selectedImageUrl={oshiResolvedImageUrl}
-                onSelectImage={(url) => setOshiImage(url)}
-              />
-            )}
-            <div
-              className="w-10 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2 select-none"
-              style={{
-                borderColor:
-                  deck.oshi && cardOutOfPool(deck.oshi)
-                    ? "#ef4444"
-                    : oshiAccent + "aa",
-                WebkitTouchCallout: "none",
-              }}
-              onPointerDown={deck.oshi ? startOshiLongPress : undefined}
-              onPointerUp={cancelOshiLongPress}
-              onPointerLeave={cancelOshiLongPress}
-              onPointerCancel={cancelOshiLongPress}
-            >
-              {deck.oshi ? (
-                oshiResolvedImageUrl ? (
-                  <img
-                    src={oshiResolvedImageUrl}
-                    alt={deck.oshi.name}
-                    className="w-full h-full object-cover"
-                    draggable={false}
-                    style={{ pointerEvents: "none" }}
-                    onError={hideBrokenImg}
-                  />
-                ) : (
-                  <div
-                    className="w-full h-full flex items-center justify-center text-2xl font-bold"
-                    style={{ background: oshiAccent + "33", color: oshiAccent }}
-                  >
-                    {deck.oshi.name[0]}
-                  </div>
-                )
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gray-800">
-                  <span className="text-xs text-gray-500 text-center leading-tight px-1">
-                    오시 선택
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Right: oshi info + stats */}
-            <div className="flex-1 min-w-0 flex flex-col gap-1 md:gap-2">
-              {(deck.oshi || eventPool) && (
-                <div className="flex items-start justify-between gap-2">
-                  {deck.oshi && (
-                    <div className="min-w-0">
-                      <p className="text-xs md:text-sm font-semibold text-amber-200 truncate">
-                        {deck.oshi.name}
-                      </p>
-                      <p className="text-[10px] md:text-xs text-gray-400">
-                        {deck.oshi.cardNumber}
-                      </p>
-                    </div>
-                  )}
-                  {/* 이벤트컵 사용 가능/불가 배지 (오시 이름·코드 옆) */}
-                  {eventPool && (
-                    <span
-                      title={
-                        poolLegal
-                          ? undefined
-                          : `풀 외 ${outOfPoolCards.length}종: ${outOfPoolCards.map((c) => c.cardNumber).join(", ")}`
-                      }
-                      className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium border ${
-                        poolLegal
-                          ? "bg-emerald-900/50 border-emerald-700 text-emerald-300"
-                          : "bg-rose-900/70 border-rose-500 text-rose-200"
-                      }`}
-                    >
-                      {eventPool.name} {poolLegal ? "사용 가능" : "사용 불가"}
-                    </span>
-                  )}
-                </div>
-              )}
-
-              {/* Errors */}
-              {errors.length > 0 && (
-                <div className="flex flex-col gap-0.5">
-                  {errors.map((e, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-1 text-xs text-amber-400"
-                    >
-                      <svg
-                        className="w-3.5 h-3.5 shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {e}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Progress bar */}
-              <div>
-                <div className="flex justify-between text-[10px] md:text-xs mb-0.5 md:mb-1">
-                  <span className="text-gray-400">메인 덱</span>
-                  <span
-                    className={
-                      mainCount === 50
-                        ? "text-green-400 font-bold"
-                        : "text-white font-medium"
-                    }
-                  >
-                    {mainCount} / 50
-                  </span>
-                </div>
-                <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all ${mainCount === 50 ? "bg-green-500" : mainCount > 50 ? "bg-red-500" : "bg-indigo-500"}`}
-                    style={{
-                      width: `${Math.min((mainCount / 50) * 100, 100)}%`,
-                    }}
-                  />
-                </div>
-              </div>
-
-              {mainCount > 0 && (
-                <div className="flex flex-col gap-0.5 md:gap-1 text-[10px] md:text-[11px]">
-                  {holomemCount > 0 && (
-                    <div className="flex items-center flex-wrap gap-1">
-                      <span className="text-emerald-400 font-medium">
-                        홀로멤 {holomemCount}
-                      </span>
-                      {(() => {
-                        const parts = (
-                          ["debut", "1st", "2nd", "spot"] as HolomemSubtype[]
-                        )
-                          .filter((sub) => holomemSubtypeCounts[sub])
-                          .map(
-                            (sub) => `${sub} : ${holomemSubtypeCounts[sub]}`,
-                          );
-                        return parts.length > 0 ? (
-                          <span className="text-emerald-600">
-                            ( {parts.join(" / ")} )
-                          </span>
-                        ) : null;
-                      })()}
-                    </div>
-                  )}
-                  {supportCount > 0 && (
-                    <div className="flex gap-2 items-center">
-                      <span className="text-sky-400 font-medium">
-                        서포트 {supportCount}
-                      </span>
-                      {limitedCount > 0 && (
-                        <span className="text-rose-400">
-                          ( 리미티드 : {limitedCount} )
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card image grid */}
-      <div className="flex-1 overflow-y-auto py-2">
-        {/* Edit mode toggle */}
-        {deck.mainDeck.length > 0 && (
-          <div className="flex justify-end gap-2 px-3 pb-1.5">
+      {/* 덱 내용(오시·메인덱·엘 덱). 덱리 잠금 중엔 위에 빗금을 덮는다 — pointer-events-none이라
+          길게 눌러 상세·일러스트 변경·순서 편집은 그대로 동작한다. */}
+      <div className="relative flex-1 min-h-0 flex flex-col">
+        {/* Oshi slot + Stats */}
+        <div className="px-3 py-1 md:py-2 border-b border-gray-800">
+          <div className="flex items-center gap-1 mb-1.5">
+            {/* Header - 모바일에서 접기/펼치기 */}
             <button
-              onClick={() => {
-                setEditMode((v) => !v);
-                setSelectedCardId(null);
-              }}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all ${
-                editMode
-                  ? "bg-indigo-700 border-indigo-500 text-white"
-                  : "bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
-              }`}
+              className="md:pointer-events-none flex-1 min-w-0 flex items-center justify-between"
+              onClick={() => setOshiOpen((v) => !v)}
             >
+              <p className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">
+                오시 {deck.oshi ? `· ${deck.oshi.name}` : ""}
+                <span className="text-gray-600 ml-1 font-medium">
+                  {mainCount}/50
+                </span>
+              </p>
               <svg
-                className="w-3.5 h-3.5"
+                className={`w-3.5 h-3.5 text-gray-500 md:hidden transition-transform ${oshiOpen ? "rotate-180" : ""}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1996,18 +1763,240 @@ export default function DeckPanel() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
+                  d="M19 9l-7 7-7-7"
                 />
               </svg>
-              {editMode ? "편집 완료" : "순서 편집"}
             </button>
-            {editMode && (
+
+            {/* 덱리 잠금: 켜면 카드 목록을 눌러도 이 덱에 추가·제거되지 않는다 (덱별 저장).
+                헤더 버튼(접기/펼치기) 안에 넣으면 버튼 중첩이 되므로 형제로 둔다. */}
+            <button
+              onClick={toggleDeckLock}
+              aria-pressed={!!deck.locked}
+              aria-label={deck.locked ? "덱리 잠금 해제" : "덱리 잠금"}
+              title={
+                deck.locked
+                  ? "덱리 잠금 해제"
+                  : "덱리 잠금 (카드를 눌러도 덱에 추가되지 않음)"
+              }
+              className={`relative z-20 shrink-0 -my-1 p-1 rounded transition-colors ${
+                deck.locked
+                  ? "text-amber-400 bg-amber-900/40 hover:bg-amber-900/60"
+                  : "text-gray-500 hover:text-white hover:bg-gray-800"
+              }`}
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={
+                    deck.locked
+                      ? "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      : "M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
+                  }
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div className={`${oshiOpen ? "" : "hidden md:block"}`}>
+            <div className="flex gap-2 md:gap-3 items-start">
+              {/* Oshi image */}
+              {oshiPreviewOpen && deck.oshi && (
+                <CardPreviewModal
+                  card={deck.oshi}
+                  onClose={() => setOshiPreviewOpen(false)}
+                  selectedImageUrl={oshiResolvedImageUrl}
+                  onSelectImage={(url) => setOshiImage(url)}
+                />
+              )}
+              <div
+                className="w-10 md:w-24 shrink-0 aspect-2.5/3.5 rounded-lg overflow-hidden border-2 select-none"
+                style={{
+                  borderColor:
+                    deck.oshi && cardOutOfPool(deck.oshi)
+                      ? "#ef4444"
+                      : oshiAccent + "aa",
+                  WebkitTouchCallout: "none",
+                }}
+                onPointerDown={deck.oshi ? startOshiLongPress : undefined}
+                onPointerUp={cancelOshiLongPress}
+                onPointerLeave={cancelOshiLongPress}
+                onPointerCancel={cancelOshiLongPress}
+              >
+                {deck.oshi ? (
+                  oshiResolvedImageUrl ? (
+                    <img
+                      src={oshiResolvedImageUrl}
+                      alt={deck.oshi.name}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                      style={{ pointerEvents: "none" }}
+                      onError={hideBrokenImg}
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full flex items-center justify-center text-2xl font-bold"
+                      style={{ background: oshiAccent + "33", color: oshiAccent }}
+                    >
+                      {deck.oshi.name[0]}
+                    </div>
+                  )
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-800">
+                    <span className="text-xs text-gray-500 text-center leading-tight px-1">
+                      오시 선택
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Right: oshi info + stats */}
+              <div className="flex-1 min-w-0 flex flex-col gap-1 md:gap-2">
+                {(deck.oshi || eventPool) && (
+                  <div className="flex items-start justify-between gap-2">
+                    {deck.oshi && (
+                      <div className="min-w-0">
+                        <p className="text-xs md:text-sm font-semibold text-amber-200 truncate">
+                          {deck.oshi.name}
+                        </p>
+                        <p className="text-[10px] md:text-xs text-gray-400">
+                          {deck.oshi.cardNumber}
+                        </p>
+                      </div>
+                    )}
+                    {/* 이벤트컵 사용 가능/불가 배지 (오시 이름·코드 옆) */}
+                    {eventPool && (
+                      <span
+                        title={
+                          poolLegal
+                            ? undefined
+                            : `풀 외 ${outOfPoolCards.length}종: ${outOfPoolCards.map((c) => c.cardNumber).join(", ")}`
+                        }
+                        className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium border ${
+                          poolLegal
+                            ? "bg-emerald-900/50 border-emerald-700 text-emerald-300"
+                            : "bg-rose-900/70 border-rose-500 text-rose-200"
+                        }`}
+                      >
+                        {eventPool.name} {poolLegal ? "사용 가능" : "사용 불가"}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {/* Errors */}
+                {errors.length > 0 && (
+                  <div className="flex flex-col gap-0.5">
+                    {errors.map((e, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-1 text-xs text-amber-400"
+                      >
+                        <svg
+                          className="w-3.5 h-3.5 shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        {e}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Progress bar */}
+                <div>
+                  <div className="flex justify-between text-[10px] md:text-xs mb-0.5 md:mb-1">
+                    <span className="text-gray-400">메인 덱</span>
+                    <span
+                      className={
+                        mainCount === 50
+                          ? "text-green-400 font-bold"
+                          : "text-white font-medium"
+                      }
+                    >
+                      {mainCount} / 50
+                    </span>
+                  </div>
+                  <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all ${mainCount === 50 ? "bg-green-500" : mainCount > 50 ? "bg-red-500" : "bg-indigo-500"}`}
+                      style={{
+                        width: `${Math.min((mainCount / 50) * 100, 100)}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {mainCount > 0 && (
+                  <div className="flex flex-col gap-0.5 md:gap-1 text-[10px] md:text-[11px]">
+                    {holomemCount > 0 && (
+                      <div className="flex items-center flex-wrap gap-1">
+                        <span className="text-emerald-400 font-medium">
+                          홀로멤 {holomemCount}
+                        </span>
+                        {(() => {
+                          const parts = (
+                            ["debut", "1st", "2nd", "spot"] as HolomemSubtype[]
+                          )
+                            .filter((sub) => holomemSubtypeCounts[sub])
+                            .map(
+                              (sub) => `${sub} : ${holomemSubtypeCounts[sub]}`,
+                            );
+                          return parts.length > 0 ? (
+                            <span className="text-emerald-600">
+                              ( {parts.join(" / ")} )
+                            </span>
+                          ) : null;
+                        })()}
+                      </div>
+                    )}
+                    {supportCount > 0 && (
+                      <div className="flex gap-2 items-center">
+                        <span className="text-sky-400 font-medium">
+                          서포트 {supportCount}
+                        </span>
+                        {limitedCount > 0 && (
+                          <span className="text-rose-400">
+                            ( 리미티드 : {limitedCount} )
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card image grid */}
+        <div className="flex-1 overflow-y-auto py-2">
+          {/* Edit mode toggle */}
+          {deck.mainDeck.length > 0 && (
+            <div className="flex justify-end gap-2 px-3 pb-1.5">
               <button
                 onClick={() => {
-                  sortMainDeckDefault();
+                  setEditMode((v) => !v);
                   setSelectedCardId(null);
                 }}
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all ${
+                  editMode
+                    ? "bg-indigo-700 border-indigo-500 text-white"
+                    : "bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
+                }`}
               >
                 <svg
                   className="w-3.5 h-3.5"
@@ -2019,129 +2008,164 @@ export default function DeckPanel() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 4h13M3 8h9M3 12h5m4 0l4-4m0 0l4 4m-4-4v12"
+                    d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
-                기본 정렬
+                {editMode ? "편집 완료" : "순서 편집"}
               </button>
-            )}
-          </div>
-        )}
+              {editMode && (
+                <button
+                  onClick={() => {
+                    sortMainDeckDefault();
+                    setSelectedCardId(null);
+                  }}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border transition-all bg-gray-800 border-gray-700 text-gray-400 hover:text-white hover:border-gray-500"
+                >
+                  <svg
+                    className="w-3.5 h-3.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 4h13M3 8h9M3 12h5m4 0l4-4m0 0l4 4m-4-4v12"
+                    />
+                  </svg>
+                  기본 정렬
+                </button>
+              )}
+            </div>
+          )}
 
-        {deck.mainDeck.length === 0 ? (
-          <div className="flex items-center justify-center h-20 text-xs text-gray-600">
-            카드를 추가하세요
-          </div>
-        ) : (
-          sections.map((section) =>
-            section.entries.length === 0 ? null : (
-              <div key={section.label} className="mb-3">
-                <p className="text-xs text-gray-400 font-medium uppercase tracking-wider px-3 py-1.5">
-                  {section.label}{" "}
-                  <span className="text-gray-500 font-normal">
-                    ({section.entries.reduce((s, e) => s + e.count, 0)})
-                  </span>
-                </p>
-                <div className="grid grid-cols-5 gap-1 px-2">
-                  {section.entries.map((entry, idx) => {
-                    const eKey = entryKey(entry.card.id, entry.imageUrl);
-                    const totalForCard = deck.mainDeck
-                      .filter((e) => e.card.id === entry.card.id)
-                      .reduce((s, e) => s + e.count, 0);
-                    // 좌우 이동: 같은 섹션의 인접 엔트리와 위치 교환
-                    const prevEntry = section.entries[idx - 1];
-                    const nextEntry = section.entries[idx + 1];
-                    return (
-                      <DeckEntryCard
-                        key={eKey}
-                        entry={entry}
-                        totalCardCount={totalForCard}
-                        onSelectImage={(url) =>
-                          setEntryImage(entry.card.id, entry.imageUrl, url)
-                        }
-                        onSplitImage={(url) =>
-                          splitEntryImage(entry.card.id, entry.imageUrl, url)
-                        }
-                        onAdd={() => addCard(entry.card, entry.imageUrl)}
-                        onRemove={() => removeCard(entry.card, entry.imageUrl)}
-                        overlayVisible={activeCardId === eKey}
-                        onShowOverlay={() => setActiveCardId(eKey)}
-                        onHideOverlay={() => setActiveCardId(null)}
-                        isDragging={
-                          dragRender.phase !== "idle" &&
-                          dragRender.cardId === eKey
-                        }
-                        dropIndicator={
-                          dropTarget?.cardId === eKey
-                            ? dropTarget.before
-                              ? "before"
-                              : "after"
-                            : null
-                        }
-                        editMode={editMode}
-                        isSelected={selectedCardId === eKey}
-                        outOfPool={cardOutOfPool(entry.card)}
-                        canMoveLeft={idx > 0}
-                        canMoveRight={idx < section.entries.length - 1}
-                        onMoveLeft={() => {
-                          if (prevEntry) {
-                            swapMainDeckEntries(
-                              eKey,
-                              entryKey(prevEntry.card.id, prevEntry.imageUrl),
-                            );
+          {deck.mainDeck.length === 0 ? (
+            <div className="flex items-center justify-center h-20 text-xs text-gray-600">
+              카드를 추가하세요
+            </div>
+          ) : (
+            sections.map((section) =>
+              section.entries.length === 0 ? null : (
+                <div key={section.label} className="mb-3">
+                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wider px-3 py-1.5">
+                    {section.label}{" "}
+                    <span className="text-gray-500 font-normal">
+                      ({section.entries.reduce((s, e) => s + e.count, 0)})
+                    </span>
+                  </p>
+                  <div className="grid grid-cols-5 gap-1 px-2">
+                    {section.entries.map((entry, idx) => {
+                      const eKey = entryKey(entry.card.id, entry.imageUrl);
+                      const totalForCard = deck.mainDeck
+                        .filter((e) => e.card.id === entry.card.id)
+                        .reduce((s, e) => s + e.count, 0);
+                      // 좌우 이동: 같은 섹션의 인접 엔트리와 위치 교환
+                      const prevEntry = section.entries[idx - 1];
+                      const nextEntry = section.entries[idx + 1];
+                      return (
+                        <DeckEntryCard
+                          key={eKey}
+                          entry={entry}
+                          totalCardCount={totalForCard}
+                          onSelectImage={(url) =>
+                            setEntryImage(entry.card.id, entry.imageUrl, url)
                           }
-                        }}
-                        onMoveRight={() => {
-                          if (nextEntry) {
-                            swapMainDeckEntries(
-                              eKey,
-                              entryKey(nextEntry.card.id, nextEntry.imageUrl),
-                            );
+                          onSplitImage={(url) =>
+                            splitEntryImage(entry.card.id, entry.imageUrl, url)
                           }
-                        }}
-                        onTap={() => {
-                          if (selectedCardId === null) {
-                            setSelectedCardId(eKey);
-                          } else if (selectedCardId === eKey) {
-                            setSelectedCardId(null);
-                          } else {
-                            const selectedEntry = deck?.mainDeck.find(
-                              (e) =>
-                                entryKey(e.card.id, e.imageUrl) === selectedCardId,
-                            );
-                            if (
-                              selectedEntry &&
-                              selectedEntry.card.type === entry.card.type
-                            ) {
-                              swapMainDeckEntries(selectedCardId, eKey);
+                          onAdd={() => addCard(entry.card, entry.imageUrl)}
+                          onRemove={() => removeCard(entry.card, entry.imageUrl)}
+                          overlayVisible={activeCardId === eKey}
+                          onShowOverlay={() => setActiveCardId(eKey)}
+                          onHideOverlay={() => setActiveCardId(null)}
+                          isDragging={
+                            dragRender.phase !== "idle" &&
+                            dragRender.cardId === eKey
+                          }
+                          dropIndicator={
+                            dropTarget?.cardId === eKey
+                              ? dropTarget.before
+                                ? "before"
+                                : "after"
+                              : null
+                          }
+                          editMode={editMode}
+                          isSelected={selectedCardId === eKey}
+                          outOfPool={cardOutOfPool(entry.card)}
+                          locked={!!deck.locked}
+                          canMoveLeft={idx > 0}
+                          canMoveRight={idx < section.entries.length - 1}
+                          onMoveLeft={() => {
+                            if (prevEntry) {
+                              swapMainDeckEntries(
+                                eKey,
+                                entryKey(prevEntry.card.id, prevEntry.imageUrl),
+                              );
                             }
-                            setSelectedCardId(null);
-                          }
-                        }}
-                        onDragStart={(imageUrl, x, y, w, h) => {
-                          const next: DragPhase = {
-                            phase: "potential",
-                            cardId: eKey,
-                            imageUrl,
-                            x,
-                            y,
-                            w,
-                            h,
-                          };
-                          dragRef.current = next;
-                          setDragRender({ ...next });
-                        }}
-                      />
-                    );
-                  })}
+                          }}
+                          onMoveRight={() => {
+                            if (nextEntry) {
+                              swapMainDeckEntries(
+                                eKey,
+                                entryKey(nextEntry.card.id, nextEntry.imageUrl),
+                              );
+                            }
+                          }}
+                          onTap={() => {
+                            if (selectedCardId === null) {
+                              setSelectedCardId(eKey);
+                            } else if (selectedCardId === eKey) {
+                              setSelectedCardId(null);
+                            } else {
+                              const selectedEntry = deck?.mainDeck.find(
+                                (e) =>
+                                  entryKey(e.card.id, e.imageUrl) === selectedCardId,
+                              );
+                              if (
+                                selectedEntry &&
+                                selectedEntry.card.type === entry.card.type
+                              ) {
+                                swapMainDeckEntries(selectedCardId, eKey);
+                              }
+                              setSelectedCardId(null);
+                            }
+                          }}
+                          onDragStart={(imageUrl, x, y, w, h) => {
+                            const next: DragPhase = {
+                              phase: "potential",
+                              cardId: eKey,
+                              imageUrl,
+                              x,
+                              y,
+                              w,
+                              h,
+                            };
+                            dragRef.current = next;
+                            setDragRender({ ...next });
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ),
-          )
+              ),
+            )
+          )}
+        </div>
+
+        <CheerSection />
+        {deck.locked && (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(-45deg, rgba(251, 191, 36, 0.22) 0 2px, transparent 2px 10px)",
+            }}
+          />
         )}
       </div>
-
-      <CheerSection />
       <ExportPanel
         onOpenDrawSim={() => setDrawSimOpen(true)}
         onShare={() => setShareOpen(true)}

@@ -83,6 +83,12 @@ function createEmptyDeck(name = '새 덱'): Deck {
   };
 }
 
+/** 활성 덱이 덱리 잠금 상태인지. 잠금 중엔 오시·메인덱·엘 매수를 바꾸는 액션이 무시된다. */
+function isActiveDeckLocked(s: Pick<DeckState, 'decks' | 'activeDeckId'>): boolean {
+  const id = s.activeDeckId ?? s.decks[0]?.id;
+  return !!s.decks.find((d) => d.id === id)?.locked;
+}
+
 function getCheerTotal(cheers: Partial<Record<CardColor, number>>): number {
   return Object.values(cheers).reduce((s, v) => s + (v ?? 0), 0);
 }
@@ -267,6 +273,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       setOshi: (card) => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           return {
@@ -286,6 +293,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       addCard: (card, imageUrl) => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const activeDeck = s.decks.find((d) => d.id === id);
@@ -328,6 +336,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       removeCard: (card, imageUrl) => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const activeDeck = s.decks.find((d) => d.id === id);
@@ -480,6 +489,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       addCheer: (color) => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const deck = s.decks.find((d) => d.id === id);
@@ -496,6 +506,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       removeCheer: (color) => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const deck = s.decks.find((d) => d.id === id);
@@ -530,6 +541,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       clearDeck: () => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           return {
@@ -595,6 +607,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       clearCheers: () => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           return {
@@ -606,6 +619,7 @@ export const useDeckStore = create<DeckState>()(
       },
 
       fillCheers: () => {
+        if (isActiveDeckLocked(get())) return;
         set((s) => {
           const id = s.activeDeckId ?? s.decks[0]?.id;
           const deck = s.decks.find((d) => d.id === id);

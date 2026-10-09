@@ -21,7 +21,6 @@ function CardItem({ card, compact = false }: CardItemProps) {
   const isOshiSelected = useDeckStore(
     (s) => card.type === "oshi" && s.getActiveDeck()?.oshi?.id === card.id,
   );
-  const locked = useDeckStore((s) => s.getActiveDeck()?.locked ?? false);
   const [previewOpen, setPreviewOpen] = useState(false);
   const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
@@ -52,7 +51,6 @@ function CardItem({ card, compact = false }: CardItemProps) {
       didLongPress.current = false;
       return;
     }
-    if (locked) return;
     if (card.type === "oshi") setOshi(card);
     else addCard(card);
   }
@@ -61,7 +59,6 @@ function CardItem({ card, compact = false }: CardItemProps) {
     e.preventDefault();
     if (isTouch.current) return;
     if (didLongPress.current) { didLongPress.current = false; return; }
-    if (locked) return;
     if (card.type !== "oshi") removeCard(card);
   }
 
