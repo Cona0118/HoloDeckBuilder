@@ -2232,6 +2232,15 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
     return pool;
   }
 
+  /** 옐 덱: 메인덱과 별도로 색상별 매수만큼 쌓는다. */
+  function buildCheerPool(): CardColor[] {
+    const pool: CardColor[] = [];
+    for (const color of CHEER_COLORS) {
+      for (let i = 0; i < (deck.cheers?.[color] ?? 0); i++) pool.push(color);
+    }
+    return pool;
+  }
+
   function shuffle<T>(arr: T[]): T[] {
     const a = [...arr];
     for (let i = a.length - 1; i > 0; i--) {
@@ -2246,6 +2255,8 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
     return {
       hand: shuffled.slice(0, INITIAL_HAND),
       remaining: shuffled.slice(INITIAL_HAND),
+      cheers: [] as CardColor[],
+      cheerRemaining: shuffle(buildCheerPool()),
     };
   }
 
@@ -2258,8 +2269,18 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
   function drawOne() {
     if (state.remaining.length === 0) return;
     setState((prev) => ({
+      ...prev,
       hand: [...prev.hand, prev.remaining[0]],
       remaining: prev.remaining.slice(1),
+    }));
+  }
+
+  function drawCheer() {
+    if (state.cheerRemaining.length === 0) return;
+    setState((prev) => ({
+      ...prev,
+      cheers: [...prev.cheers, prev.cheerRemaining[0]],
+      cheerRemaining: prev.cheerRemaining.slice(1),
     }));
   }
 
@@ -2303,6 +2324,13 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
           <span>
             덱 잔여:{" "}
             <strong className="text-white">{state.remaining.length}</strong>장
+          </span>
+          <span>
+            옐 잔여:{" "}
+            <strong className="text-white">
+              {state.cheerRemaining.length}
+            </strong>
+            장
           </span>
         </div>
 
@@ -2350,6 +2378,35 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
               );
             })}
           </div>
+
+          {/* 뽑은 옐 (패와 별도) */}
+          {state.cheers.length > 0 && (
+            <div className="mt-4">
+              <p className="text-xs text-gray-400 font-medium mb-2">
+                옐{" "}
+                <span className="text-gray-500 font-normal">
+                  ({state.cheers.length})
+                </span>
+              </p>
+              <div className="grid grid-cols-5 sm:grid-cols-7 gap-2">
+                {state.cheers.map((color, i) => (
+                  <div
+                    key={`${color}-${i}`}
+                    className="relative aspect-2.5/3.5 rounded overflow-hidden border bg-gray-800"
+                    style={{ borderColor: COLOR_ACCENT[color] + "66" }}
+                  >
+                    <img
+                      src={resolveCheerImage(color, deck.cheerImages?.[color])}
+                      alt={color}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                      onError={hideBrokenImg}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Actions */}
@@ -2358,7 +2415,8 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
             onClick={reset}
             className="flex-1 py-2 rounded-lg text-sm font-medium bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-all"
           >
-            멀리건 (다시 셔플)
+            {/* 버튼 3개가 한 줄이라 좁은 화면에선 부연을 숨겨 줄바꿈을 막는다 */}
+            멀리건<span className="hidden sm:inline"> (다시 셔플)</span>
           </button>
           <button
             onClick={drawOne}
@@ -2366,6 +2424,13 @@ function DrawSimModal({ deck, onClose }: { deck: Deck; onClose: () => void }) {
             className="flex-1 py-2 rounded-lg text-sm font-medium bg-indigo-800 hover:bg-indigo-700 text-indigo-200 border border-indigo-700 transition-all disabled:opacity-40"
           >
             1장 드로우
+          </button>
+          <button
+            onClick={drawCheer}
+            disabled={state.cheerRemaining.length === 0}
+            className="flex-1 py-2 rounded-lg text-sm font-medium bg-teal-800 hover:bg-teal-700 text-teal-100 border border-teal-700 transition-all disabled:opacity-40"
+          >
+            옐 1장 드로우
           </button>
         </div>
       </div>
