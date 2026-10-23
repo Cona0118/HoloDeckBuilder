@@ -46,7 +46,9 @@ holo덱빌더는 홀로라이브 OCG(hololive OFFICIAL CARD GAME) 덱을 만들�
 
 Spec 없이 Structure가 요약하는 빌더 편의 기능(현재 유효): 검색 범위 드롭다운·효과 텍스트
 검색·홀로멤 기프트/콜라보/블룸 서브필터, 클립보드 텍스트 덱 가져오기(`parseDeckText`)와
-텍스트 내보내기, 드로우 시뮬레이션(메인덱 패·드로우, 옐 덱 별도 셔플·옐 드로우), 금지/제한(`limit`) 위반 카드 빨간 배지, 덱 순서편집
+텍스트 내보내기, 홀로부리(holoburi.com) 덱 코드 가져오기·내보내기(덱 선택 아래 「홀로부리
+코드로 불러오기」 대화상자, 하단 내보내기·FAB 「홀로부리 코드」 복사. 클립보드 텍스트 가져오기도
+`hocg1.` 코드를 자동 인식), 드로우 시뮬레이션(메인덱 패·드로우, 옐 덱 별도 셔플·옐 드로우), 금지/제한(`limit`) 위반 카드 빨간 배지, 덱 순서편집
 ◀▶ 이동, 모바일 좌하단 FAB 덱 액션 메뉴, 덱리 잠금(오시 칸 자물쇠, 덱별 `Deck.locked` —
 잠금 중엔 스토어가 오시·메인덱·엘 매수 변경 액션을 무시해 카드 목록·덱 패널 어디서도 매수가
 바뀌지 않음, 덱 패널 내용에 빗금 표시. 상세 보기·일러스트 변경·순서 편집은 허용).
@@ -123,6 +125,9 @@ Galaxy Fold 커버(280~344px)·펼침(882px)에서도 카드가 과도하게 작
   manage_id 매핑은 외부 `hocg_cards.json`) —
   권위: [src/utils/decklogPublish.ts](../../src/utils/decklogPublish.ts),
   [src/utils/decklogApi.ts](../../src/utils/decklogApi.ts).
+- 홀로부리 덱 코드(`"hocg1." + base64url(UTF-8 JSON {n,o,m,c,a?})`, 카드번호는 공식 번호, 옐은
+  일러스트별 `hY0N-NNN`, 일러스트는 카드당 1종이며 번호 없는 레어도 코드만 교환) —
+  권위: [src/utils/holoburiCode.ts](../../src/utils/holoburiCode.ts).
 
 ## 외부 연동
 
@@ -131,6 +136,9 @@ Galaxy Fold 커버(280~344px)·펼침(882px)에서도 카드가 과도하게 작
 - 공식 QnA 검색 — 카드 상세 모달에서 `cardNumber` 기반 외부 링크(`<a target="_blank">`,
   PWA 팝업 차단 회피를 위해 `window.open` 사용 금지).
 - `hocg_cards.json`(Qrimpuff/hocg-fan-sim-assets) — 카드번호→Deck Log manage_id 매핑 소스.
+- 홀로부리(holoburi.com, 비공식 hOCG 시뮬레이터) — 덱 코드 형식은 프로덕션 번들 역분석 기반이라
+  예고 없이 바뀔 수 있다(접두사 `hocg1.`의 버전이 바뀌면 불러오기가 형식 오류로 실패한다). 네트워크
+  호출은 없고 코드 문자열만 주고받는다.
 
 ## 빌드·테스트·배포
 
