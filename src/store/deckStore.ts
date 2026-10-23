@@ -148,6 +148,7 @@ interface DeckState {
       oshiImageUrl?: string;
       mainDeck: DeckEntry[];
       cheers: Partial<Record<CardColor, number>>;
+      cheerImages?: Partial<Record<CardColor, string>>;
     },
   ) => string;
   deleteDeck: (id: string) => void;
@@ -237,6 +238,7 @@ export const useDeckStore = create<DeckState>()(
           oshiImageUrl: resolved.oshiImageUrl,
           mainDeck: resolved.mainDeck.map((e) => ({ ...e })),
           cheers: { ...resolved.cheers },
+          ...(resolved.cheerImages ? { cheerImages: { ...resolved.cheerImages } } : {}),
         };
         set((s) => ({ decks: [...s.decks, deck], activeDeckId: deck.id }));
         return deck.id;

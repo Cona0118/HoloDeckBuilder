@@ -14,7 +14,13 @@ import { Link } from "react-router-dom";
 import CardPreviewModal from "./CardPreviewModal";
 import CheerPreviewModal from "./CheerPreviewModal";
 import SharePostDialog from "./SharePostDialog";
+import HoloburiImportDialog from "./HoloburiImportDialog";
 import { parseDeckText } from "../utils/deckSnapshot";
+import {
+  containsHoloburiCode,
+  deckToHoloburiCode,
+  parseHoloburiCode,
+} from "../utils/holoburiCode";
 import { publishToDeckLog } from "../utils/decklogPublish";
 import { getEventPool, getOutOfPoolCards, isCardInPool } from "../data/eventPools";
 
@@ -376,8 +382,35 @@ function DeckSelector() {
   const [renaming, setRenaming] = useState(false);
   const [newName, setNewName] = useState("");
   const [importing, setImporting] = useState(false);
-  const [imported, setImported] = useState(false);
+  const [imported, setImported] = useState<"text" | "holoburi" | null>(null);
+  const [holoburiOpen, setHoloburiOpen] = useState(false);
+  const importedTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const activeDeck = getActiveDeck();
+
+  /** 불러오기 결과 알림: 누락 카드가 있으면 alert, 없으면 누른 버튼에 잠깐 ✓ 표시. */
+  function notifyImported(
+    from: "text" | "holoburi",
+    name: string,
+    missingCardCount: number,
+  ) {
+    if (missingCardCount > 0) {
+      alert(
+        `"${name}" 덱을 가져왔습니다. (${missingCardCount}장은 카드를 찾지 못해 제외되었습니다.)`,
+      );
+    } else {
+      clearTimeout(importedTimer.current);
+      setImported(from);
+      importedTimer.current = setTimeout(() => setImported(null), 2000);
+    }
+  }
+
+  /** 홀로부리 덱 코드로 새 덱을 만든다. 코드가 잘못되면 Error를 던진다. */
+  function importHoloburi(text: string, from: "text" | "holoburi") {
+    const parsed = parseHoloburiCode(text);
+    const name = parsed.name ?? "홀로부리 덱";
+    createDeckFromSnapshot(name, parsed);
+    notifyImported(from, name, parsed.missingCardCount);
+  }
 
   function startRename() {
     setNewName(activeDeck?.name ?? "");
@@ -406,6 +439,16 @@ function DeckSelector() {
         return;
       }
 
+      // 홀로부리 덱 코드가 복사돼 있으면 코드로 불러온다.
+      if (containsHoloburiCode(text)) {
+        try {
+          importHoloburi(text, "text");
+        } catch (e) {
+          alert(e instanceof Error ? e.message : "덱 코드를 읽을 수 없습니다.");
+        }
+        return;
+      }
+
       const parsed = parseDeckText(text);
       if (!parsed.recognizedAny) {
         alert(
@@ -420,15 +463,7 @@ function DeckSelector() {
         mainDeck: parsed.mainDeck,
         cheers: parsed.cheers,
       });
-
-      if (parsed.missingCardCount > 0) {
-        alert(
-          `"${name}" 덱을 가져왔습니다. (${parsed.missingCardCount}장은 카드를 찾지 못해 제외되었습니다.)`,
-        );
-      } else {
-        setImported(true);
-        setTimeout(() => setImported(false), 2000);
-      }
+      notifyImported("text", name, parsed.missingCardCount);
     } finally {
       setImporting(false);
     }
@@ -518,34 +553,54 @@ function DeckSelector() {
                 삭제
               </button>
             )}
-            <button
-              onClick={importFromClipboard}
-              disabled={importing}
-              title="클립보드에 복사된 덱리스트 텍스트로 새 덱을 만듭니다"
-              className="ml-auto flex items-center gap-1 px-2 py-1 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 text-gray-300 hover:text-white text-xs rounded border border-gray-700 transition-colors whitespace-nowrap"
-            >
-              <svg
-                className="w-3.5 h-3.5 shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                />
-              </svg>
-              {importing
-                ? "불러오는 중…"
-                : imported
-                  ? "✓ 불러왔습니다"
-                  : "텍스트로 덱 불러오기"}
-            </button>
           </>
         )}
       </div>
+
+      <div className="flex gap-1">
+        <button
+          onClick={importFromClipboard}
+          disabled={importing}
+          title="클립보드에 복사된 덱리스트 텍스트(또는 홀로부리 덱 코드)로 새 덱을 만듭니다"
+          className="flex-1 min-w-0 flex items-center justify-center gap-1 px-2 py-1 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 text-gray-300 hover:text-white text-xs rounded border border-gray-700 transition-colors whitespace-nowrap"
+        >
+          <svg
+            className="w-3.5 h-3.5 shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            />
+          </svg>
+          {importing
+            ? "불러오는 중…"
+            : imported === "text"
+              ? "✓ 불러왔습니다"
+              : "텍스트로 덱 불러오기"}
+        </button>
+        <button
+          onClick={() => setHoloburiOpen(true)}
+          title="홀로부리(holoburi.com) 덱 코드로 새 덱을 만듭니다"
+          className="flex-1 min-w-0 px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white text-xs rounded border border-gray-700 transition-colors whitespace-nowrap"
+        >
+          {imported === "holoburi" ? "✓ 불러왔습니다" : "홀로부리 코드로 불러오기"}
+        </button>
+      </div>
+
+      {holoburiOpen && (
+        <HoloburiImportDialog
+          onClose={() => setHoloburiOpen(false)}
+          onSubmit={(text) => {
+            importHoloburi(text, "holoburi");
+            setHoloburiOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -1160,6 +1215,7 @@ async function exportDeckAsImage(
 function useDeckActions() {
   const { exportDeckText, getActiveDeck } = useDeckStore();
   const [copied, setCopied] = useState(false);
+  const [holoburiCopied, setHoloburiCopied] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [publishUrl, setPublishUrl] = useState<string | null>(null);
@@ -1210,6 +1266,20 @@ function useDeckActions() {
     setTimeout(() => setCopied(false), 2000);
   }
 
+  async function handleCopyHoloburi() {
+    const deck = getActiveDeck();
+    if (!deck) return;
+    const code = deckToHoloburiCode(deck);
+    try {
+      await navigator.clipboard.writeText(code);
+      setHoloburiCopied(true);
+      setTimeout(() => setHoloburiCopied(false), 2000);
+    } catch {
+      // 클립보드 권한이 없으면 직접 복사할 수 있게 코드를 보여준다.
+      window.prompt("아래 홀로부리 덱 코드를 복사해주세요.", code);
+    }
+  }
+
   async function handleImageExport(mode: "expanded" | "compact") {
     const deck = getActiveDeck();
     if (!deck) return;
@@ -1223,6 +1293,7 @@ function useDeckActions() {
 
   return {
     copied,
+    holoburiCopied,
     exporting,
     publishing,
     publishUrl,
@@ -1232,6 +1303,7 @@ function useDeckActions() {
     handlePublish,
     handleCopyCode,
     handleCopy,
+    handleCopyHoloburi,
     handleImageExport,
   };
 }
@@ -1300,6 +1372,7 @@ function ExportPanel({
 }) {
   const {
     copied,
+    holoburiCopied,
     exporting,
     publishing,
     publishUrl,
@@ -1309,6 +1382,7 @@ function ExportPanel({
     handlePublish,
     handleCopyCode,
     handleCopy,
+    handleCopyHoloburi,
     handleImageExport,
   } = useDeckActions();
 
@@ -1350,6 +1424,14 @@ function ExportPanel({
           {copied ? "✓ 복사됨" : "텍스트 복사"}
         </button>
         <span className="text-gray-700">·</span>
+        <button
+          onClick={handleCopyHoloburi}
+          title="홀로부리(holoburi.com) 덱 코드를 복사합니다. 홀로부리의 「덱 코드 불러오기」에 붙여넣으세요."
+          className="hover:text-white px-1.5 py-0.5 transition-colors"
+        >
+          {holoburiCopied ? "✓ 코드 복사됨" : "홀로부리 코드"}
+        </button>
+        <span className="text-gray-700">·</span>
         <button onClick={() => handleImageExport("expanded")} disabled={exporting} className="hover:text-white px-1.5 py-0.5 transition-colors disabled:opacity-50">
           이미지(전체)
         </button>
@@ -1383,6 +1465,7 @@ export function DeckMobileFab() {
   const { getActiveDeck, getDeckErrors } = useDeckStore();
   const {
     copied,
+    holoburiCopied,
     exporting,
     publishing,
     publishUrl,
@@ -1392,6 +1475,7 @@ export function DeckMobileFab() {
     handlePublish,
     handleCopyCode,
     handleCopy,
+    handleCopyHoloburi,
     handleImageExport,
   } = useDeckActions();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -1449,6 +1533,12 @@ export function DeckMobileFab() {
             className="w-full text-left px-3 py-2 rounded-lg text-sm bg-gray-800/60 hover:bg-gray-800 text-gray-200 border border-gray-700 transition-colors"
           >
             {copied ? "✓ 복사됨" : "텍스트 복사"}
+          </button>
+          <button
+            onClick={handleCopyHoloburi}
+            className="w-full text-left px-3 py-2 rounded-lg text-sm bg-gray-800/60 hover:bg-gray-800 text-gray-200 border border-gray-700 transition-colors"
+          >
+            {holoburiCopied ? "✓ 코드 복사됨" : "홀로부리 코드 복사"}
           </button>
           <button
             onClick={() => handleImageExport("expanded")}
